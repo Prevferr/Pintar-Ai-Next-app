@@ -7,7 +7,7 @@ const Trusted = () => {
 			direction="right"
 			speed={50}
 			gradientWidth={0}
-			className="bg-gradient-to-t from-[#f9f9f9] via-[#D9D9D9] to-transparent"
+			className="bg-gradient-to-t from-[#f2f2f2] via-[#f2f2f2] to-transparent"
 		>
 			<div className="mx-8 lg:mx-16">
 				<img
