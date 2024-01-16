@@ -1,7 +1,9 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,6 +18,8 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@prisma/client": "^5.8.0"
-  }
+    "@prisma/client": "^5.8.0",
+    "dotenv": "^16.3.1"
+  },
+  "description": ""
 }
