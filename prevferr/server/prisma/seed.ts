@@ -17,12 +17,25 @@ async function main() {
     comment: "Bagus sekali",
   };
 
+  const Payment = {
+    // Data untuk Comment
+    // ...
+    price: 500000,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    // Investor: "alvin",
+    // investorId: 1,
+    status: false,
+    invoice: "Ini adalah invoice"
+  };
+
   const Project = {
     // Data untuk Project
     // ...
     project_name: "Pertanian Desa",
     description_project: "Pertanian yang dilakukan di desa",
-    project_image: "https://pertanian.uma.ac.id/wp-content/uploads/2023/06/Desain-tanpa-judul-34.png",
+    project_image:
+      "https://pertanian.uma.ac.id/wp-content/uploads/2023/06/Desain-tanpa-judul-34.png",
     project_status: false, // or false
     starting_date: new Date(), // Replace with actual starting date
     expected_finish_date: new Date(), // Replace with actual expected finish date
@@ -81,7 +94,32 @@ async function main() {
       Project: { create: Project },
     },
   });
-  console.log({ dzul, vincent });
+
+  // Untuk Investor
+  const alvin = await prisma.investor.upsert({
+    where: { email: "alvin@mail.com" },
+    update: {},
+    create: {
+      email: "alvin@mail.com",
+      password: "alvin123",
+      fistname: "Alvin",
+      lastname: "Gunawan",
+      budget: 3000000,
+      profileImage: "https://static.wikia.nocookie.net/naruto/images/2/21/Sasuke_Part_3_V2.png/revision/latest?cb=20170627161720&path-prefix=id",
+      institution: "Pribadi",
+      range_member: "5-10",
+      industry: "Agrikultur",
+      industry_type: "Agrikultur",
+      isPremium: true,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      Comment: { create: Comment },
+      Project: { create: Project },
+      payment: { create: Payment },
+
+    },
+  });
+  console.log({ dzul, vincent, alvin });
 }
 main()
   .then(async () => {

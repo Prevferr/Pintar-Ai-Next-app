@@ -12,7 +12,7 @@ datasource db {
 
 model Researcher {
   id           Int       @id @default(autoincrement())
-  fistname    String
+  firstname    String
   lastname     String
   education    String
   scope        String
@@ -36,7 +36,7 @@ model Investor {
   id            Int       @id @default(autoincrement())
   email         String    @unique
   password      String
-  fistname      String
+  firstname      String
   lastname      String
   budget        Int
   profileImage  String
