@@ -58,7 +58,6 @@ const ModalLogin: React.FC<ModalLoginProps> = () => {
 						</div>
 					</div>
 				</section>
-				{/* ////// */}
 			</Modal>
 		</>
 	);
