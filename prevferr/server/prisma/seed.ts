@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import {hashText} from "../../helpers/utils/hash"
 
 const prisma = new PrismaClient();
 
@@ -57,7 +58,7 @@ async function main() {
       profileImage:
         "https://i0.wp.com/anitrendz.net/news/wp-content/uploads/2022/10/roadtonarutopv_screenshot.png?resize=696%2C392&ssl=1",
       email: "dzul@mail.com",
-      password: "dzul123",
+      password: hashText("dzul123"),
       background: "Pertanian",
       gender: "Male",
       role: "Dosen",
@@ -82,7 +83,7 @@ async function main() {
       profileImage:
         "https://static.wikia.nocookie.net/naruto/images/7/70/Boruto_Boruto_Movie.png/revision/latest/thumbnail/width/360/height/360?cb=20150526164416&path-prefix=id",
       email: "vincent@mail.com",
-      password: "vincent123",
+      password: hashText("vincent123"),
       background: "Perkapalan",
       gender: "Male",
       role: "Dosen",
@@ -101,7 +102,7 @@ async function main() {
     update: {},
     create: {
       email: "alvin@mail.com",
-      password: "alvin123",
+      password: hashText("alvin123"),
       fistname: "Alvin",
       lastname: "Gunawan",
       budget: 3000000,
