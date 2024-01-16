@@ -1,5 +1,6 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
+import { MarqueItem } from "../constants";
 
 const Trusted = () => {
 	return (
@@ -9,12 +10,14 @@ const Trusted = () => {
 			gradientWidth={0}
 			className="bg-gradient-to-t from-[#f2f2f2] via-[#f2f2f2] to-transparent"
 		>
-			<div className="mx-8 lg:mx-16">
-				<img
-					alt="Belinsky Studio"
-					src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/meta2x.b364aec.png"
-					className="w-[8rem] lg:w-[10rem] custom-marq "
-				/>
+			<div className="flex justify-between gap-12">
+				{MarqueItem.map((e) => (
+					<img
+						alt="prevferr image"
+						src={e}
+						className="w-[8rem] lg:w-[10rem] custom-marq "
+					/>
+				))}
 			</div>
 		</Marquee>
 	);

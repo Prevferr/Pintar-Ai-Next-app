@@ -65,3 +65,9 @@ export const FooterItems = [
 		"Contact Sales",
 	],
 ];
+
+export const MarqueItem = [
+	"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/meta2x.b364aec.png",
+	"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/google2x.4fa6c20.png",
+	"https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/paypal2x.d2fa54d.png",
+];
