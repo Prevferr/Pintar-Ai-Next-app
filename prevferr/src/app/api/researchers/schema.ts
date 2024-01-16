@@ -1,7 +1,5 @@
 import { z } from "zod";
 
-
-
 const schema = z.object({
   firstname: z.string(),
   lastname: z.string(),
