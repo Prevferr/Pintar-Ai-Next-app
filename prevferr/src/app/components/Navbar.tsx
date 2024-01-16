@@ -1,8 +1,16 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Icon } from "@iconify/react";
+import DropDown from "../login/components/DropDown";
+import ModalLogin from "../login/components/ModalLogin";
 
 const Navbar = () => {
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
+	const closeModal = () => {
+		setIsModalOpen(false);
+	};
+
 	return (
 		<div className="absolute top-10 w-full">
 			<nav className="paddingX paddingYShorter4 bg-transparent flex justify-between text-[#ffffff]">
@@ -13,21 +21,19 @@ const Navbar = () => {
 							<li>Prevferr Pro</li>
 							<Icon icon="mingcute:down-line" />
 						</div>
-						<div className="flex justify-start gap-2 px-3 py-1 rounded-lg items-center cursor-pointer">
-							<li>Explore</li>
-							<Icon icon="mingcute:down-line" />
-						</div>
+						<DropDown />
 						<div className="flex justify-start gap-1 px-3 py-1 rounded-lg items-center cursor-pointer">
 							<Icon icon="bitcoin-icons:globe-outline" width={30} />
 							<li>English</li>
 						</div>
 						<li>Sign in</li>
 					</ul>
-					<button className="border border-[#fff] px-3 py-1 rounded-lg">
-						Join
-					</button>
+					<ModalLogin
+						open={isModalOpen}
+						onOk={closeModal}
+						onCancel={closeModal}
+					/>
 				</div>
-				{/* <Icon icon="eva:menu-fill" width={40} /> */}
 			</nav>
 		</div>
 	);

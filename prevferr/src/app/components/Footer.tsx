@@ -8,7 +8,7 @@ const Footer = () => {
 				<div className="w-[20%] flex flex-col gap-4">
 					<p className="font-semibold">Categories</p>
 					{FooterItems[0].map((e) => (
-						<p className="text-[#74767e] text-sm cursor-pointer hover:underline">
+						<p className="text-[#74767e] text-sm font-light cursor-pointer hover:underline">
 							{e}
 						</p>
 					))}
@@ -16,7 +16,7 @@ const Footer = () => {
 				<div className="w-[20%] flex flex-col gap-4">
 					<p className="font-semibold">About</p>
 					{FooterItems[1].map((e) => (
-						<p className="text-[#74767e] text-sm cursor-pointer hover:underline">
+						<p className="text-[#74767e] font-light text-sm cursor-pointer hover:underline">
 							{e}
 						</p>
 					))}
@@ -24,7 +24,7 @@ const Footer = () => {
 				<div className="w-[20%] flex flex-col gap-4">
 					<p className="font-semibold">Support and Education</p>
 					{FooterItems[2].map((e) => (
-						<p className="text-[#74767e] text-sm cursor-pointer hover:underline">
+						<p className="text-[#74767e] font-light text-sm cursor-pointer hover:underline">
 							{e}
 						</p>
 					))}
@@ -32,7 +32,7 @@ const Footer = () => {
 				<div className="w-[20%] flex flex-col gap-4">
 					<p className="font-semibold">Community</p>
 					{FooterItems[3].map((e) => (
-						<p className="text-[#74767e] text-sm cursor-pointer hover:underline">
+						<p className="text-[#74767e] font-light text-sm cursor-pointer hover:underline">
 							{e}
 						</p>
 					))}
@@ -40,7 +40,7 @@ const Footer = () => {
 				<div className="w-[20%] flex flex-col gap-4">
 					<p className="font-semibold">Business Solutions</p>
 					{FooterItems[4].map((e) => (
-						<p className="text-[#74767e] text-sm cursor-pointer hover:underline">
+						<p className="text-[#74767e] font-light text-sm cursor-pointer hover:underline">
 							{e}
 						</p>
 					))}
