@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
-import {hashText} from "../../helpers/utils/hash"
+
+import { hashText } from "../../helpers/utils/hash";
 
 const prisma = new PrismaClient();
 
@@ -27,7 +28,7 @@ async function main() {
     // Investor: "alvin",
     // investorId: 1,
     status: false,
-    invoice: "Ini adalah invoice"
+    invoice: "Ini adalah invoice",
   };
 
   const Project = {
@@ -106,7 +107,8 @@ async function main() {
       fistname: "Alvin",
       lastname: "Gunawan",
       budget: 3000000,
-      profileImage: "https://static.wikia.nocookie.net/naruto/images/2/21/Sasuke_Part_3_V2.png/revision/latest?cb=20170627161720&path-prefix=id",
+      profileImage:
+        "https://static.wikia.nocookie.net/naruto/images/2/21/Sasuke_Part_3_V2.png/revision/latest?cb=20170627161720&path-prefix=id",
       institution: "Pribadi",
       range_member: "5-10",
       industry: "Agrikultur",
@@ -117,7 +119,6 @@ async function main() {
       Comment: { create: Comment },
       Project: { create: Project },
       payment: { create: Payment },
-
     },
   });
   console.log({ dzul, vincent, alvin });
