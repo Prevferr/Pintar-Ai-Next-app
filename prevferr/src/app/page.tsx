@@ -28,7 +28,7 @@ export default function Home() {
 				/>
 				<Navbar />
 			</div>
-			<Trusted />
+			{/* <Trusted /> */}
 			<CardPopular />
 			<Footer />
 		</section>
