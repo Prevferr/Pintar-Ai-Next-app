@@ -7,5 +7,5 @@ export const getAllUsers = async () => {
 
 export const PostUser = async (body: any) => {
   const res = await api.post(`/researchers`, body);
-  return res.data;
+  retrn res.data;
 };
