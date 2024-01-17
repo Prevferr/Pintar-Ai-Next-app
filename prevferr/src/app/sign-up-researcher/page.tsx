@@ -10,7 +10,7 @@ import { button } from "@nextui-org/react";
 
 // Api
 import { useMutation } from "@tanstack/react-query";
-import { PostUser } from "../../../api/routes/researchers";
+import { PostResearcher } from "../../../api/routes/researchers";
 
 // import { PostUser } from "../../../api/routes/researchers";
 
@@ -19,7 +19,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 const initialValues = {
-  fistname: "",
+  firstname: "",
   lastname: "",
   password: "",
   education: "",
@@ -48,7 +48,7 @@ export default function SignUpPage() {
     }
   };
 
-  const newUserMutation = useMutation(PostUser, {
+  const newUserMutation = useMutation(PostResearcher, {
     onSuccess: () => {
       toast.success("Successfully registered");
       setData(initialValues);
@@ -74,14 +74,14 @@ export default function SignUpPage() {
           placeholder="First Name"
           type="text"
           name="fistname"
-          value={data?.fistname}
+          value={data?.firstname}
           onChange={(e) => handleChange(e)}
         />
         <CustomInput
           placeholder="Last Name"
           type="text"
           name="lastname"
-          value={data?.fistname}
+          value={data?.lastname}
           onChange={(e) => handleChange(e)}
         />
         <CustomInput
