@@ -26,7 +26,7 @@ const ModalLogin: React.FC<ModalLoginProps> = () => {
 	return (
 		<>
 			<button
-				className="border border-[#fff] px-3 py-1 rounded-lg hover:text-[#fff] hover:bg-[#084225]"
+				className="border border-[#fff] px-5 py-1 rounded-xl  hover:rounded-md hover:bg-[#fff] hover:text-[#084225]"
 				onClick={showModal}
 			>
 				Join
