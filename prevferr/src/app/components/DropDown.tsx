@@ -49,9 +49,9 @@ const DropDown: React.FC = () => {
 			placement="bottom"
 			arrow={{ pointAtCenter: true }}
 		>
-			<div className="flex justify-start gap-2 px-3 py-1 rounded-lg items-center cursor-pointer">
-				<li>Explore</li>
-				<Icon icon="mingcute:down-line" />
+			<div className="flex justify-start gap-2 px-3 py-1  items-center cursor-pointer rounded-lg bg-[#fff]">
+				<li className="text-[#252525] font-light">Explore</li>
+				<Icon icon="mingcute:down-line" color="#252525" />
 			</div>
 		</Dropdown>
 	);

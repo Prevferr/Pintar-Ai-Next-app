@@ -18,15 +18,16 @@
     "antd": "^5.13.1",
     "axios": "^1.6.5",
     "bard-ai": "^2.0.3",
-    "zod": "^3.22.4",
     "next": "14.0.4",
     "next-auth": "^4.24.5",
+    "openai": "^4.24.7",
     "react": "^18",
     "react-dom": "^18",
     "react-fast-marquee": "^1.6.2",
     "react-hot-toast": "^2.4.1",
-    "swiper": "^11.0.5"
- },
+    "swiper": "^11.0.5",
+    "zod": "^3.22.4"
+  },
   "devDependencies": {
     "@iconify/react": "^4.1.1",
     "@types/bcryptjs": "^2.4.6",
