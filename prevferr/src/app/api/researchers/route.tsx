@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
   const hashedPassword = await hash(body.password, 10);
   const userNew = await prisma.researcher.create({
     data: {
-      firstname: body.firstname,
+      fistname: body.fistname,
       lastname: body.lastname,
       password: hashedPassword,
       education: body.education,

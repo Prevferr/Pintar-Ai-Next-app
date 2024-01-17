@@ -1,7 +1,7 @@
 -- CreateTable
 CREATE TABLE "Researcher" (
     "id" SERIAL NOT NULL,
-    "fistname" TEXT NOT NULL,
+    "firstname" TEXT NOT NULL,
     "lastname" TEXT NOT NULL,
     "education" TEXT NOT NULL,
     "scope" TEXT NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE "Investor" (
     "id" SERIAL NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
-    "fistname" TEXT NOT NULL,
+    "firstname" TEXT NOT NULL,
     "lastname" TEXT NOT NULL,
     "budget" INTEGER NOT NULL,
     "profileImage" TEXT NOT NULL,

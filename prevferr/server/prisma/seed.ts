@@ -1,10 +1,15 @@
 import { PrismaClient } from "@prisma/client";
 
-import { hashText } from "../../helpers/utils/hash";
-
 const prisma = new PrismaClient();
+// import { hashText } from "../../helpers/utils/hash";
+import * as bcryptjs from "bcryptjs";
+// npx prisma migrate reset --force
 
 async function main() {
+  const pass1 = await bcryptjs.hash("dzul123", 10);
+  const pass2 = await bcryptjs.hash("vincent123", 10);
+  const pass3 = await bcryptjs.hash("alvin123", 10);
+
   const Jurnal = {
     // Data untuk portofolio Jurnal
     // ...
@@ -50,7 +55,7 @@ async function main() {
     where: { email: "dzul@mail.com" },
     update: {},
     create: {
-      fistname: "Dzul",
+      firstname: "Dzuuul",
       lastname: "Sucipto",
       education: "S3",
       scope: "Pertanian",
@@ -59,7 +64,7 @@ async function main() {
       profileImage:
         "https://i0.wp.com/anitrendz.net/news/wp-content/uploads/2022/10/roadtonarutopv_screenshot.png?resize=696%2C392&ssl=1",
       email: "dzul@mail.com",
-      password: hashText("dzul123"),
+      password: pass1,
       background: "Pertanian",
       gender: "Male",
       role: "Dosen",
@@ -75,7 +80,7 @@ async function main() {
     where: { email: "vincent@mail.com" },
     update: {},
     create: {
-      fistname: "Vincent",
+      firstname: "Vincent",
       lastname: "Widodo",
       education: "S2",
       scope: "Perkapalan",
@@ -84,7 +89,7 @@ async function main() {
       profileImage:
         "https://static.wikia.nocookie.net/naruto/images/7/70/Boruto_Boruto_Movie.png/revision/latest/thumbnail/width/360/height/360?cb=20150526164416&path-prefix=id",
       email: "vincent@mail.com",
-      password: hashText("vincent123"),
+      password: pass2,
       background: "Perkapalan",
       gender: "Male",
       role: "Dosen",
@@ -103,8 +108,8 @@ async function main() {
     update: {},
     create: {
       email: "alvin@mail.com",
-      password: hashText("alvin123"),
-      fistname: "Alvin",
+      password: pass3,
+      firstname: "Alvin",
       lastname: "Gunawan",
       budget: 3000000,
       profileImage:
