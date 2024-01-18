@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
 import { Icon } from "@iconify/react";
+import Link from "next/link";
 
 interface ModalLoginProps {
 	open: boolean;
@@ -46,31 +47,36 @@ const ModalLogin: React.FC<ModalLoginProps> = () => {
 						className="w-[50%] object-cover rounded-l-lg"
 					/>
 					<div className="paddingYShorter2 w-[50%] flex flex-col justify-between gap-4">
-						<span className="flex flex-col gap-4">
+						<div className="flex flex-col gap-4">
 							<h3 className="text-[#252525] text-left text-xl">
 								Join to enjoy the ease of participating in nation-building and
 								access to other features!
 							</h3>
-							<span className="flex gap-2">
+							<div className="flex gap-2">
 								<p className="text-base font-light text-[#74767e]">
 									Already have an Account?
 								</p>
 								<p className="underline text-base text-[#74767e] cursor-pointer">
 									Sign in
 								</p>
-							</span>
-						</span>
+							</div>
+						</div>
 
-						<span className="flex flex-col gap-4">
-							<div className="border px-2 py-1 rounded-lg flex justify-start gap-4 items-center hover:border-[#084225] cursor-pointer">
-								<Icon icon="ant-design:team-outlined" width={40} />
-								<p>I'm Project Owner</p>
-							</div>
-							<div className="border px-2 py-1  rounded-lg flex justify-start gap-4 items-center hover:border-[#084225] cursor-pointer">
-								<Icon icon="ant-design:idcard-twotone" width={40} />
-								<p>I'm Researcher</p>
-							</div>
-						</span>
+						<div className="flex flex-col gap-4">
+							<Link href="/sign-up-investor">
+								<div className="border px-2 py-1 rounded-lg flex justify-start gap-4 items-center hover:border-[#084225] cursor-pointer">
+									<Icon icon="ant-design:team-outlined" width={40} />
+									<p>I'm Project Owner</p>
+								</div>
+							</Link>
+
+							<Link href="/sign-up-researcher">
+								<div className="border px-2 py-1  rounded-lg flex justify-start gap-4 items-center hover:border-[#084225] cursor-pointer">
+									<Icon icon="ant-design:idcard-twotone" width={40} />
+									<p>I'm Researcher</p>
+								</div>
+							</Link>
+						</div>
 
 						<p className="text-[#74767e] font-light text-sm text-justify">
 							By joining, you agree to the Prevferr Terms of Service and to
