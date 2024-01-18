@@ -18,37 +18,31 @@ async function main() {
     description: "Pertanian Skala Mikro di Indonesia",
   };
 
-  const Comment = {
-    // Data untuk Comment
-    // ...
-    comment: "Bagus sekali",
-  };
+	const Jurnal = {
+		// Data untuk portofolio Jurnal
+		// ...
+		abstract: "Abstract of the journal",
+		title: "Petanian Skala Mikro di Indonesia",
+		description: "Pertanian Skala Mikro di Indonesia",
+	};
 
-  const Payment = {
-    // Data untuk Comment
-    // ...
-    price: 500000,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    // Investor: "alvin",
-    // investorId: 1,
-    status: false,
-    invoice: "Ini adalah invoice",
-  };
+	const Comment = {
+		// Data untuk Comment
+		// ...
+		comment: "Bagus sekali",
+	};
 
-  const Project = {
-    // Data untuk Project
-    // ...
-    project_name: "Pertanian Desa",
-    description_project: "Pertanian yang dilakukan di desa",
-    project_image:
-      "https://pertanian.uma.ac.id/wp-content/uploads/2023/06/Desain-tanpa-judul-34.png",
-    project_status: false, // or false
-    starting_date: new Date(), // Replace with actual starting date
-    expected_finish_date: new Date(), // Replace with actual expected finish date
-    project_budget: 1000000, // Replace with actual project budget
-    tags: "Project Tags",
-  };
+	const Payment = {
+		// Data untuk Comment
+		// ...
+		price: 500000,
+		createdAt: new Date(),
+		updatedAt: new Date(),
+		// Investor: "alvin",
+		// investorId: 1,
+		status: false,
+		invoice: "Ini adalah invoice",
+	};
 
   // Seeding satu researcher
   const dzul = await prisma.researcher.upsert({
@@ -129,11 +123,11 @@ async function main() {
   console.log({ dzul, vincent, alvin });
 }
 main()
-  .then(async () => {
-    await prisma.$disconnect();
-  })
-  .catch(async (e) => {
-    console.error(e);
-    await prisma.$disconnect();
-    process.exit(1);
-  });
+	.then(async () => {
+		await prisma.$disconnect();
+	})
+	.catch(async (e) => {
+		console.error(e);
+		await prisma.$disconnect();
+		process.exit(1);
+	});
