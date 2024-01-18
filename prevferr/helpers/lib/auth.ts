@@ -9,7 +9,7 @@ import { compare } from "bcryptjs";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: "sangat-rahasia",
   session: {
     strategy: "jwt",
   },
@@ -49,7 +49,7 @@ export const authOptions: NextAuthOptions = {
 
         return {
           id: existingUser.id + "",
-          firstname: existingUser.firstname,
+          username: existingUser.firstname,
           email: existingUser.email,
         };
       },
@@ -60,7 +60,7 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         return {
           ...token,
-          firstname: user.firstname,
+          firstname: user,
         };
       }
       return token;
@@ -70,7 +70,7 @@ export const authOptions: NextAuthOptions = {
         ...session,
         user: {
           ...session.user,
-          username: token.username,
+          firstame: token.firstname,
           id: parseInt(token.sub!),
         },
       };
