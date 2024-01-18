@@ -13,15 +13,12 @@ const JournalPage = () => {
 			<div className="flex flex-col gap-8">
 				<div className="flex justify-start gap-2 items-center">
 					<Link href="/">
-						<Icon
-							icon="fluent:home-28-regular"
-							width={20}
-							className="cursor-pointer"
-						/>
+						<Icon icon="fluent:home-28-regular" width={20} className="cursor-pointer" />
 					</Link>
 					<p className="text-[#74767e] font-light text-sm">/</p>
 					<p className="text-[#74767e] font-light text-sm">Journals - List</p>
 				</div>
+
 				{/*<span className="flex flex-col gap-2">
 					<h3 className="text-[#252525]">On going Project</h3>
 					<p className="text-[#74767e] font-light text-base">
@@ -48,9 +45,8 @@ const JournalPage = () => {
 						</div>
 					</div>
 				</div> */}
-				<p className="text-[#74767e] font-light text-sm">
-					100+ projects available
-				</p>
+
+				<p className="text-[#74767e] font-light text-sm">100+ projects available</p>
 				<div className="grid grid-cols-4 gap-4">
 					<CardProject />
 					<CardProject />

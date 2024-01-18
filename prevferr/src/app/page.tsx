@@ -24,14 +24,7 @@ export default function Home() {
 			{/* this is the right side */}
 			<div className="w-[25%] bg-[#ffff] p-4 rounded-3xl">
 				<div className="w-full flex flex-col gap-4 pt-4">
-<<<<<<< HEAD
-					<input className="border px-4 py-2 rounded-xl placeholder:text-sm" placeholder="Article Name, Category, Projects.." />
-=======
-					<input
-						className="bg-[#fff] border px-4 py-2 rounded-xl placeholder:text-sm"
-						placeholder="Article Name, Category, Projects.."
-					/>
->>>>>>> e6186bbc0208328e13e8641aa73b1c3973207753
+					<input className="bg-[#fff] border px-4 py-2 rounded-xl placeholder:text-sm" placeholder="Article Name, Category, Projects.." />
 					<div className="px-4 flex justify-between gap-2">
 						<p className="font-light text-base">Project on Going</p>
 						<Link href="/projects">
@@ -51,10 +44,7 @@ export default function Home() {
 					> */}
 					<div className="relative flex flex-col justify-center overflow-hidden rounded-3xl ">
 						{/* <SwiperSlide> */}
-						<img
-							src="https://kitabisa.com/_next/image?url=https%3A%2F%2Fimgix.kitabisa.com%2F76fb9c38-0999-414c-a382-eb0f40ba6db0.jpg%3Fauto%3Dformat%26fm%3Dpjpg%26ch%3DWidth%2CDPR%2CSave-Data%2CViewport-Width&w=640&q=75"
-							className="w-96 h-56 rounded-3xl object-cover overflow-hidden"
-						/>
+						<img src="https://kitabisa.com/_next/image?url=https%3A%2F%2Fimgix.kitabisa.com%2F76fb9c38-0999-414c-a382-eb0f40ba6db0.jpg%3Fauto%3Dformat%26fm%3Dpjpg%26ch%3DWidth%2CDPR%2CSave-Data%2CViewport-Width&w=640&q=75" className="w-96 h-56 rounded-3xl object-cover overflow-hidden" />
 						{/* </SwiperSlide> */}
 						<div className="absolute top-0 left-0 h-full w-full bg-black hover:bg-transparent cursor-pointer opacity-25 rounded-xl"></div>
 						{/* <p className="absolute bottom-4 left-2 text-base text-white rounded-full px-2 py-1 ">
@@ -68,11 +58,7 @@ export default function Home() {
 						<div className="flex flex-col">
 							<span className="flex items-center justify-start gap-4">
 								<p className="text-[#0096FF] text-sm font-semibold">Science</p>
-<<<<<<< HEAD
-								<p className="text-[#74767e] text-xs font-semibold">4 hour ago</p>
-=======
 								<p className="text-[#74767e] text-xs font-light">4 hour ago</p>
->>>>>>> e6186bbc0208328e13e8641aa73b1c3973207753
 							</span>
 							<p className="text-sm font-semibold cursor-pointer hover:underline">Peta Tingkat Bahaya Erosi DAS Batang Kuranji - Kota Padang</p>
 						</div>
@@ -83,11 +69,7 @@ export default function Home() {
 						<div className="flex flex-col">
 							<span className="flex items-center justify-start gap-4">
 								<p className="text-[#0096FF] text-sm font-semibold">Science</p>
-<<<<<<< HEAD
-								<p className="text-[#74767e] text-xs font-semibold">4 hour ago</p>
-=======
 								<p className="text-[#74767e] text-xs font-light">4 hour ago</p>
->>>>>>> e6186bbc0208328e13e8641aa73b1c3973207753
 							</span>
 							<p className="text-sm font-semibold cursor-pointer hover:underline">Peta Tingkat Bahaya Erosi DAS Batang Kuranji - Kota Padang</p>
 						</div>
