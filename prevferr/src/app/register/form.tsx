@@ -9,6 +9,7 @@ export const RegisterForm = () => {
     firstname: "",
     lastname: "",
     password: "",
+    research: "",
     education: "",
     scope: "",
     institution: "",
@@ -28,6 +29,7 @@ export const RegisterForm = () => {
       firstname: "",
       lastname: "",
       password: "",
+      research: "",
       education: "",
       scope: "",
       institution: "",
@@ -117,7 +119,18 @@ export const RegisterForm = () => {
           placeholder="Education"
           className={`${input_style}`}
         />
-      </div>{" "}
+      </div>
+      <div className="mb-6">
+        <input
+          required
+          type="text"
+          name="research"
+          value={formValues.research}
+          onChange={handleChange}
+          placeholder="Research"
+          className={`${input_style}`}
+        />
+      </div>
       <div className="mb-6">
         <input
           required

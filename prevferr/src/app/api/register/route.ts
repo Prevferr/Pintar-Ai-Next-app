@@ -8,6 +8,7 @@ export async function POST(req: Request) {
       firstname,
       lastname,
       password,
+      research,
       education,
       scope,
       institution,
@@ -21,6 +22,7 @@ export async function POST(req: Request) {
       firstname: string;
       lastname: string;
       password: string;
+      research: string;
       education: string;
       scope: string;
       institution: string;
@@ -37,6 +39,7 @@ export async function POST(req: Request) {
       data: {
         firstname,
         lastname,
+        research,
         password: hashed_password,
         education,
         scope,
@@ -55,6 +58,7 @@ export async function POST(req: Request) {
         firstname: researcher.firstname,
         lastname: researcher.lastname,
         education: researcher.education,
+        research: researcher.research,
         scope: researcher.scope,
         institution: researcher.institution,
         profileImage: researcher.profileImage,
