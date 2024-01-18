@@ -179,97 +179,26 @@ import Link from "next/link";
 import { handleFormAction } from "./action";
 
 const RegisterPage = () => {
-  return (
-    <section className="flex h-screen w-full flex-col items-center justify-center gap-4">
-      {/* Di sini kita akan menyelipkan ClientFlashComponent yang akan menampilkan error */}
-      {/* error yang ada pada URLSearchParams akan diterima oleh component ini dan ditampilkan error messagenya */}
-      {/* <ClientFlashComponent /> */}
-      <form
-        action={handleFormAction}
-        className="flex min-w-[25vw] flex-col gap-2"
-      >
-        <h1 className="text-center text-3xl font-semibold text-slate-700">
-          Sign Up Researcher
-        </h1>
-        <input
-          className="rounded px-4 py-2"
-          type="text"
-          id="firstname"
-          name="firstname"
-          placeholder="Firstname"
-        />
-        <input
-          className="rounded px-4 py-2"
-          type="text"
-          id="lastname"
-          name="lastname"
-          placeholder="Lastname"
-        />
-        <input
-          className="rounded px-4 py-2"
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Email"
-        />
-        <input
-          className="rounded px-4 py-2"
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Password"
-        />
-        <input
-          className="rounded px-4 py-2"
-          type="text"
-          id="education"
-          name="education"
-          placeholder="Education"
-        />
-        <input
-          className="rounded px-4 py-2"
-          type="text"
-          id="institution"
-          name="institution"
-          placeholder="Institution"
-        />
-        <input
-          className="rounded px-4 py-2"
-          type="text"
-          id="profileImage"
-          name="profileImage"
-          placeholder="Profile Image"
-        />
-        <input
-          className="rounded px-4 py-2"
-          type="text"
-          id="background"
-          name="background"
-          placeholder="Background"
-        />
-        <input
-          className="rounded px-4 py-2"
-          type="text"
-          id="role"
-          name="role"
-          placeholder="Role"
-        />
-        <input
-          className="rounded px-4 py-2"
-          type="text"
-          id="location"
-          name="location"
-          placeholder="Location"
-        />
-        <input
-          className="rounded px-4 py-2"
-          type="text"
-          id="gender"
-          name="gender"
-          placeholder="Gender"
-        />
-        {/* Gender Radio Buttons */}
-        {/* <div className="flex gap-2">
+	return (
+		<section className="flex h-screen w-full flex-col items-center justify-center gap-4">
+			{/* Di sini kita akan menyelipkan ClientFlashComponent yang akan menampilkan error */}
+			{/* error yang ada pada URLSearchParams akan diterima oleh component ini dan ditampilkan error messagenya */}
+			{/* <ClientFlashComponent /> */}
+			<form action={handleFormAction} className="flex min-w-[25vw] flex-col gap-2">
+				<h1 className="text-center text-3xl font-semibold text-slate-700">Sign Up Researcher</h1>
+				<input className="rounded px-4 py-2" type="text" id="firstname" name="firstname" placeholder="Firstname" />
+				<input className="rounded px-4 py-2" type="text" id="lastname" name="lastname" placeholder="Lastname" />
+				<input className="rounded px-4 py-2" type="email" id="email" name="email" placeholder="Email" />
+				<input className="rounded px-4 py-2" type="password" id="password" name="password" placeholder="Password" />
+				<input className="rounded px-4 py-2" type="text" id="education" name="education" placeholder="Education" />
+				<input className="rounded px-4 py-2" type="text" id="institution" name="institution" placeholder="Institution" />
+				<input className="rounded px-4 py-2" type="text" id="profileImage" name="profileImage" placeholder="Profile Image" />
+				<input className="rounded px-4 py-2" type="text" id="background" name="background" placeholder="Background" />
+				<input className="rounded px-4 py-2" type="text" id="role" name="role" placeholder="Role" />
+				<input className="rounded px-4 py-2" type="text" id="location" name="location" placeholder="Location" />
+				<input className="rounded px-4 py-2" type="text" id="gender" name="gender" placeholder="Gender" />
+				{/* Gender Radio Buttons */}
+				{/* <div className="flex gap-2">
           <div>
             <input type="radio" id="male" name="gender" value="male" />
             <label htmlFor="male" className="px-2">
@@ -283,21 +212,15 @@ const RegisterPage = () => {
             </label>
           </div>
         </div> */}
-        <button
-          type="submit"
-          className="rounded bg-emerald-300 px-4 py-2 transition-colors duration-300 hover:bg-emerald-500 hover:text-white/90"
-        >
-          Register
-        </button>
-      </form>
-      <Link
-        href="/sign-in"
-        className="text-blue-400 underline underline-offset-4 transition-colors duration-300 hover:text-blue-600"
-      >
-        or do you want to login ... ?
-      </Link>
-    </section>
-  );
+				<button type="submit" className="rounded bg-emerald-300 px-4 py-2 transition-colors duration-300 hover:bg-emerald-500 hover:text-white/90">
+					Register
+				</button>
+			</form>
+			<Link href="/sign-in" className="text-blue-400 underline underline-offset-4 transition-colors duration-300 hover:text-blue-600">
+				or do you want to login ... ?
+			</Link>
+		</section>
+	);
 };
 
 export default RegisterPage;

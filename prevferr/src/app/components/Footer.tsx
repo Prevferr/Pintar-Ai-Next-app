@@ -48,9 +48,9 @@ const Footer = () => {
 			</div>
 			<div className="border-b paddingYShorter3"></div>
 			<div className="paddingTopShorter2 flex justify-between gap-4 items-center">
-				<h1 className="text-3xl text-[#74767e]">Prevferr.</h1>
+				<h1 className="text-3xl text-[#74767e]">Pintar - Scholar.</h1>
 				<p className="text-sm text-[#74767e] underline">
-					© Prevferr International Ltd. 2024
+					© Pintar - Sholar International Ltd. 2024, Integrated with Open Ai.
 				</p>
 			</div>
 		</section>

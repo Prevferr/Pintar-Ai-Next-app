@@ -19,7 +19,11 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				{children}
+				<section className="paddingX paddingYShorter3">
+					<Navbar />
+					<div className="border-b my-2"></div>
+					{children}
+				</section>
 				<Footer />
 			</body>
 		</html>
