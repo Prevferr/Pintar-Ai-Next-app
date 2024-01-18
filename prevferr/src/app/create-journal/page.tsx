@@ -1,10 +1,8 @@
-// import { handleFormAction } from "./action";
 "use client";
 
 import { ChangeEvent, useState } from "react";
 
 const page = () => {
-	const [loading, setLoading] = useState(false);
 	const [form, setForm] = useState({
 		abstract: "",
 		title: "",
@@ -14,7 +12,7 @@ const page = () => {
 
 	const onSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		setLoading(true);
+
 		setForm({
 			abstract: "",
 			title: "",
@@ -22,45 +20,42 @@ const page = () => {
 		});
 
 		try {
-			const response = await fetch("/api/journals", {
+			await fetch("/api/journals", {
 				method: "POST",
 				body: JSON.stringify(form),
 				headers: {
 					"Content-Type": "application/json",
 				},
 			});
-
-			setLoading(false);
-			if (!response.ok) {
-				setError(await response.json());
-				return;
-			}
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
 	const handleChangeForm = (event: ChangeEvent<HTMLInputElement>) => {
-		console.log(event.target, "<<<");
+		// console.log(event.target.name, "<<<");
+
+		const { value, name } = event.target;
+		setForm({ ...form, [name]: value });
 	};
+
+	const input_style = "form-control block w-full px-4 py-5 text-sm font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none";
 
 	return (
 		<>
 			<div>Create Journals</div>
-			<form className="max-w-md mx-auto" onSubmit={onSubmit}>
-				<div className="relative z-0 w-full mb-5 group">
-					<input type="text" name="abstract" id="floating_abstrack" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " onChange={handleChangeForm} value={form.abstract} />
-					<label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Journal Abstrack</label>
+			<form onSubmit={onSubmit}>
+				{error && <p className="text-center bg-red-300 py-4 mb-6 rounded">{error}</p>}
+				<div className="mb-6">
+					<input required type="text" name="abstract" value={form.abstract} onChange={handleChangeForm} placeholder="Journal Abstract" className={`${input_style}`} />
 				</div>
-				<div className="relative z-0 w-full mb-5 group">
-					<input type="text" name="title" id="floating_title" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " onChange={handleChangeForm} value={form.title} />
-					<label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Journal Title</label>
+				<div className="mb-6">
+					<input required type="text" name="title" value={form.title} onChange={handleChangeForm} placeholder="Journal Title" className={`${input_style}`} />
 				</div>
-				<div className="relative z-0 w-full mb-5 group">
-					<input type="text" name="description" id="floating_description" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " onChange={handleChangeForm} value={form.description} />
-					<label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Journal Description</label>
+				<div className="mb-6">
+					<input required type="text" name="description" value={form.description} onChange={handleChangeForm} placeholder="Journal Description" className={`${input_style}`} />
 				</div>
-				<button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+				<button type="submit" style={{ backgroundColor: `"#3446eb"` }} className="inline-block px-7 py-4 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full">
 					Upload
 				</button>
 			</form>
