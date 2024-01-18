@@ -6,9 +6,11 @@ import { ChangeEvent, useState } from "react";
 import { signIn } from "next-auth/react";
 
 // Next ui
-import { Button } from "@nextui-org/button";
+// import { Button } from "@nextui-org/button";
 
-import { Input } from "@nextui-org/input";
+// import { Input } from "@nextui-org/input";
+
+import { Button, Input } from "@nextui-org/react";
 
 // Miscellaneous
 import Link from "next/link";
