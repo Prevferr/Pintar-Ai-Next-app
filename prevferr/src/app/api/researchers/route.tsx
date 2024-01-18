@@ -21,15 +21,9 @@ export async function POST(req: NextRequest) {
 		return NextResponse.json(validation.error.errors, { status: 400 });
 	}
 
-<<<<<<< HEAD
   const researcher = await prisma.researcher.findUnique({
     where: { email: body.email },
   });
-=======
-	const researcher = await PrismaClient.researcher.findUnique({
-		where: { email: body.email },
-	});
->>>>>>> a8a36de5830b52cf77f10adaeb48eaf1c9fdbbb2
 
 	if (researcher) {
 		return NextResponse.json({ error: "Researchers already exists" }, { status: 400 });

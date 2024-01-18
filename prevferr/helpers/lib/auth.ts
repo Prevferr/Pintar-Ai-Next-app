@@ -4,13 +4,8 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
 // Miscellaneous
-// import { PrismaClient } from "@prisma/client";
-// const prisma = new PrismaClient();
 import { prisma } from "./prisma";
-// import { compare } from "bcryptjs";
-import * as bcryptjs from "bcryptjs";
-
-
+import { compare } from "bcryptjs";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -19,7 +14,7 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
   },
   pages: {
-    signIn: "sign-in",
+    signIn: "loginn",
   },
   providers: [
     CredentialsProvider({
@@ -44,7 +39,7 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
-        const passwordMatch = bcryptjs.compare(
+        const passwordMatch = compare(
           credentials.password,
           existingUser.password
         );
@@ -54,7 +49,7 @@ export const authOptions: NextAuthOptions = {
 
         return {
           id: existingUser.id + "",
-          username: existingUser.username,
+          firstname: existingUser.firstname,
           email: existingUser.email,
         };
       },
@@ -65,7 +60,7 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         return {
           ...token,
-          username: user.username,
+          firstname: user.firstname,
         };
       }
       return token;
@@ -73,7 +68,7 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       return {
         ...session,
-        researcher: {
+        user: {
           ...session.user,
           username: token.username,
           id: parseInt(token.sub!),
