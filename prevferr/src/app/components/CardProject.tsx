@@ -6,7 +6,7 @@ import { Icon } from "@iconify/react";
 const CardProject = () => {
 	return (
 		<div className="my-4 w-full flex justify-between gap-6">
-			<div className="shadow rounded-xl flex flex-col pb-5">
+			<div className="shadow rounded-xl flex flex-col pb-5 bg-[#fff]">
 				<div className="relative flex flex-col justify-center overflow-hidden">
 					<img
 						src="https://kitabisa.com/_next/image?url=https%3A%2F%2Fimgix.kitabisa.com%2F76fb9c38-0999-414c-a382-eb0f40ba6db0.jpg%3Fauto%3Dformat%26fm%3Dpjpg%26ch%3DWidth%2CDPR%2CSave-Data%2CViewport-Width&w=640&q=75"
