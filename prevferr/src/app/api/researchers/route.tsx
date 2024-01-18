@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(validation.error.errors, { status: 400 });
   }
 
-  const researcher = await PrismaClient.researcher.findUnique({
+  const researcher = await prisma.researcher.findUnique({
     where: { email: body.email },
   });
 
