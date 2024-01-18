@@ -1,5 +1,5 @@
 // User
-type TGETUsers = {
+type TGETResearchers = {
     id: number;
     fistname: string,
     lastname: string,
@@ -15,7 +15,7 @@ type TGETUsers = {
     location: string
   };
 
-type TPOSTUsers = {
+type TPOSTResearchers = {
   id: number;
   fistname: string,
   lastname: string,

@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,12 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@prisma/client": "^5.8.1",
+=======
+    "@prisma/client": "^5.8.0",
+    "@types/bcryptjs": "^2.4.6",
+>>>>>>> e6186bbc0208328e13e8641aa73b1c3973207753
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.3.1"
   },

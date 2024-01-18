@@ -44,7 +44,7 @@ const DropDownList: React.FC = () => {
 			arrow={{ pointAtCenter: true }}
 		>
 			<div className="flex justify-start gap-2 px-3 py-1 items-center cursor-pointer rounded-lg bg-[#fff]">
-				<li className="text-[#252525] font-light ">Prevferr Pro</li>
+				<li className="text-[#1dbf73] ">Guides</li>
 				<Icon icon="mingcute:down-line" color="#252525" />
 			</div>
 		</Dropdown>
