@@ -20,32 +20,17 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 const initialValues = {
-<<<<<<< HEAD:prevferr/src/app/sign-up/page.tsx
-	fistname: "",
-	lastname: "",
-	password: "",
-	education: "",
-	scope: "",
-	institution: "",
-	profileImage: "",
 	email: "",
-	background: "",
-	gender: "",
-	role: "",
-	location: "",
-=======
-  email: "",
-  password: "",
-  firstname: "",
-  lastname: "",
-  budget: 0,
-  profileImage: "",
-  institution: "",
-  range_member: "",
-  industry: "",
-  industry_type: "",
-  isPremium: false
->>>>>>> e6186bbc0208328e13e8641aa73b1c3973207753:prevferr/src/app/sign-up-investor/page.tsx
+	password: "",
+	firstname: "",
+	lastname: "",
+	budget: 0,
+	profileImage: "",
+	institution: "",
+	range_member: "",
+	industry: "",
+	industry_type: "",
+	isPremium: false,
 };
 
 export default function SignUpPage() {
