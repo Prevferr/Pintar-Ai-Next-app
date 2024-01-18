@@ -12,6 +12,7 @@ const JournalPage = () => {
 	return (
 		<section className="paddingX paddingYShorter3">
 			<Navbar />
+			<div className="border-b my-2"></div>
 			<div className="flex flex-col gap-8">
 				<div className="flex justify-start gap-2 items-center">
 					<Link href="/">

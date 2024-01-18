@@ -15,9 +15,10 @@ const Navbar = () => {
 	return (
 		<div className="w-full">
 			<nav className="paddingYShorter4 bg-transparent flex justify-between">
-				<h3 className="text-[#1dbf73] text-xl bg-[#fff] px-4 py-1 rounded-xl">
-					Prevferr.
-				</h3>
+				{/* <h3 className="text-[#1dbf73] text-xl bg-[#fff] px-4 py-1 rounded-xl">
+					Pintar.
+				</h3> */}
+				<h3 className="text-[#1dbf73] text-2xl">Pintar.</h3>
 				<div className="flex justify-between items-center gap-4">
 					<ul className="flex justify-between gap-8 items-center">
 						<DropDownList />
