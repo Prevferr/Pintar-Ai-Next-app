@@ -11,6 +11,7 @@ const CardProject = () => {
 					src="https://kitabisa.com/_next/image?url=https%3A%2F%2Fimgix.kitabisa.com%2F76fb9c38-0999-414c-a382-eb0f40ba6db0.jpg%3Fauto%3Dformat%26fm%3Dpjpg%26ch%3DWidth%2CDPR%2CSave-Data%2CViewport-Width&w=640&q=75"
 					className="rounded-t-xl"
 				/>
+
 				<div className="p-2 flex flex-col gap-2">
 					<span className="flex justify-start gap-2 items-center">
 						<p className="text-xs text-[#74767e]">Pt Sinarmar Indonesia</p>
