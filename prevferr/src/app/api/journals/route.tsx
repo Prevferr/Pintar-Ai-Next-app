@@ -3,6 +3,8 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 console.log(prisma, "<<< prismanya");
 
+import * as bcryptjs from "bcryptjs";
+
 export async function GET(req: NextRequest) {
 	const journals = await prisma.journal.findMany();
 	console.log(journals, "<<< journal");
