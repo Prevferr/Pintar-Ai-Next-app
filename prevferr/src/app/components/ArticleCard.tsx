@@ -9,10 +9,10 @@ const ArticleCard = () => {
 				<div className="flex flex-col">
 					<div className="flex items-center justify-start gap-4">
 						<p className="text-[#0096FF] text-sm font-semibold">Science</p>
-						<p className="text-[#74767e] text-xs font-light">4 hour ago</p>
+						<p className="text-[#fff] text-xs font-light">4 hour ago</p>
 					</div>
 					<Link href="/journals/journal_name">
-						<p className="text-sm font-semibold cursor-pointer hover:underline">
+						<p className="text-sm font-semibold cursor-pointer hover:underline text-[#fff]">
 							Peta Tingkat Bahaya Erosi DAS Batang Kuranji - Kota Padang
 						</p>
 					</Link>
@@ -20,9 +20,9 @@ const ArticleCard = () => {
 					<div className="flex justify-start gap-2 items-center">
 						<img
 							src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/search_perseus/flat_minimalist.78e0303.svg"
-							className="m-1 object-cover rounded-full border h-8 w-8"
+							className="m-1 object-cover rounded-full  h-8 w-8 bg-[#fff]"
 						/>
-						<p className="text-xs text-[#74767e]">Pt Sinarmar Indonesia</p>
+						<p className="text-xs text-[#fff]">Pt Sinarmar Indonesia</p>
 						<Icon
 							icon="material-symbols-light:verified-outline"
 							color="#0096FF"
@@ -32,7 +32,7 @@ const ArticleCard = () => {
 				</div>
 				<img
 					src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?q=80&w=3274&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-					className="h-16 w-16 object-cover rounded-xl"
+					className="h-20 w-20 object-cover rounded-xl"
 				/>
 			</div>
 			<div className="border-b"></div>

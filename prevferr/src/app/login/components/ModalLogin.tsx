@@ -27,10 +27,13 @@ const ModalLogin: React.FC<ModalLoginProps> = () => {
 	return (
 		<>
 			<button
-				className="border border-[#1dbf73] text-[#1dbf73] px-5 py-1 rounded-xl  hover:rounded-md hover:bg-[#1dbf73] hover:text-[#fff]"
+				className="border border-[#fff] text-[#fff] px-5 py-1 rounded-xl  hover:rounded-md hover:bg-[#fff] hover:text-[#252525]"
 				onClick={showModal}
 			>
-				Join
+				<span className="flex gap-2 items-center">
+					Join
+					<Icon icon="tabler:arrow-up-right" width={20} />
+				</span>
 			</button>
 			<Modal
 				open={isModalOpen}
