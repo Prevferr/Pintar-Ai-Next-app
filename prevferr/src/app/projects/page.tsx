@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import { Icon } from "@iconify/react";
 import CardProject from "../components/CardProject";
 import Footer from "../components/Footer";
+import Link from "next/link";
 
 const ProjectPage = () => {
 	return (
@@ -11,7 +12,13 @@ const ProjectPage = () => {
 			<Navbar />
 			<div className="flex flex-col gap-8">
 				<div className="flex justify-start gap-2 items-center">
-					<Icon icon="fluent:home-28-regular" width={20} />
+					<Link href="/">
+						<Icon
+							icon="fluent:home-28-regular"
+							width={20}
+							className="cursor-pointer"
+						/>
+					</Link>
 					<p className="text-[#74767e] font-light text-sm">/</p>
 					<p className="text-[#74767e] font-light text-sm">Projects - List</p>
 				</div>
