@@ -4,7 +4,8 @@ import schema from "./schema";
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-import { hash } from "bcryptjs";
+import * as bcryptjs from "bcryptjs";
+
 
 // GET ALL USERS
 export async function GET(req: NextRequest) {
@@ -32,10 +33,10 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const hashedPassword = await hash(body.password, 10);
+  const hashedPassword = await bcryptjs.hash(body.password, 10);
   const userNew = await prisma.researcher.create({
     data: {
-      fistname: body.fistname,
+      firstname: body.firstname,
       lastname: body.lastname,
       password: hashedPassword,
       education: body.education,
