@@ -1,9 +1,11 @@
+"use client";
 import React from "react";
 import { FooterItems } from "../constants";
+import { Icon } from "@iconify/react";
 
 const Footer = () => {
 	return (
-		<section className="paddingX paddingYShorter border-t bg-[#252525]">
+		<section className="paddingX paddingYShorter border-t border-[#000] bg-[#252525]">
 			<div className="w-full flex justify-around gap-2">
 				<div className="w-[20%] flex flex-col gap-4">
 					<p className="font-semibold text-[#fff]">Categories</p>
@@ -48,7 +50,12 @@ const Footer = () => {
 			</div>
 			<div className="border-b paddingYShorter3"></div>
 			<div className="paddingTopShorter2 flex justify-between gap-4 items-center">
-				<h1 className="text-3xl text-[#fff]">Pintar - Scholar.</h1>
+				<span className="flex gap-2 items-center">
+					<Icon icon="el:livejournal" color="#fff" width={30} />
+					<h3 className="text-[#fff] text-4xl cursor-pointer">
+						Pintar - Scholar
+					</h3>
+				</span>
 				<p className="text-sm text-[#fff] underline">
 					© Pintar - Sholar International Ltd. 2024, Integrated with Open Ai.
 				</p>
