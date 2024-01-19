@@ -21,12 +21,21 @@ export async function POST(req: NextRequest) {
 		return NextResponse.json(validation.error.errors, { status: 400 });
 	}
 
+<<<<<<< HEAD
   const researcher = await prisma.researcher.findUnique({
     where: { email: body.email },
   });
+=======
+	const researcher = await prisma.researcher.findUnique({
+		where: { email: body.email },
+	});
+>>>>>>> 782fc9ed56a77933f740ac9a7d6163a20ecead69
 
 	if (researcher) {
-		return NextResponse.json({ error: "Researchers already exists" }, { status: 400 });
+		return NextResponse.json(
+			{ error: "Researchers already exists" },
+			{ status: 400 }
+		);
 	}
 
 	const hashedPassword = await bcryptjs.hash(body.password, 10);
@@ -36,6 +45,7 @@ export async function POST(req: NextRequest) {
 			lastname: body.lastname,
 			password: hashedPassword,
 			education: body.education,
+			research: body.research,
 			scope: body.scope,
 			institution: body.institution,
 			profileImage: body.profileImage,
