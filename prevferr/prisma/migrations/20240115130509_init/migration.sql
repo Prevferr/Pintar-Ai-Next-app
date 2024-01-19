@@ -4,16 +4,16 @@ CREATE TABLE "Researcher" (
     "firstname" TEXT NOT NULL,
     "lastname" TEXT NOT NULL,
     "education" TEXT NOT NULL,
-    "scope" TEXT NOT NULL,
-    "research" TEXT NOT NULL,
-    "institution" TEXT NOT NULL,
     "profileImage" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
+    "phone_number" TEXT NOT NULL,
     "background" TEXT NOT NULL,
     "gender" TEXT NOT NULL,
-    "role" TEXT NOT NULL,
+    "jabatan_akademik" TEXT NOT NULL,
+    "portofolio" TEXT NOT NULL,
     "location" TEXT NOT NULL,
+    "investasi" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -30,10 +30,7 @@ CREATE TABLE "Investor" (
     "budget" INTEGER NOT NULL,
     "profileImage" TEXT NOT NULL,
     "institution" TEXT NOT NULL,
-    "range_member" TEXT NOT NULL,
-    "industry" TEXT NOT NULL,
     "industry_type" TEXT NOT NULL,
-    "isPremium" BOOLEAN NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -65,7 +62,6 @@ CREATE TABLE "Project" (
     "tags" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "commentId" INTEGER,
     "researcherId" INTEGER,
     "investorId" INTEGER,
 
@@ -90,10 +86,10 @@ CREATE TABLE "Jurnal" (
     "id" SERIAL NOT NULL,
     "abstract" TEXT NOT NULL,
     "title" TEXT NOT NULL,
-    "description" TEXT NOT NULL,
+    "journal_file" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "researcherId" INTEGER,
+    "portofolio_id" INTEGER,
 
     CONSTRAINT "Jurnal_pkey" PRIMARY KEY ("id")
 );
@@ -133,8 +129,8 @@ ALTER TABLE "Comment" ADD CONSTRAINT "Comment_researcherId_fkey" FOREIGN KEY ("r
 -- AddForeignKey
 ALTER TABLE "Comment" ADD CONSTRAINT "Comment_investorId_fkey" FOREIGN KEY ("investorId") REFERENCES "Investor"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
--- AddForeignKey
-ALTER TABLE "Project" ADD CONSTRAINT "Project_commentId_fkey" FOREIGN KEY ("commentId") REFERENCES "Comment"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+-- -- AddForeignKey
+-- ALTER TABLE "Project" ADD CONSTRAINT "Project_commentId_fkey" FOREIGN KEY ("commentId") REFERENCES "Comment"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Project" ADD CONSTRAINT "Project_researcherId_fkey" FOREIGN KEY ("researcherId") REFERENCES "Researcher"("id") ON DELETE SET NULL ON UPDATE CASCADE;
