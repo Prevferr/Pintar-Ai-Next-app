@@ -7,7 +7,11 @@ const AddProjectForm = () => {
 		project_name: "",
 		description_project: "",
 		project_image: "",
+		project_status: false,
+		starting_date: "",
+		expected_finish_date: "",
 		project_budget: "",
+		tags: "",
 	});
 	const [error, setError] = useState("");
 
@@ -17,7 +21,11 @@ const AddProjectForm = () => {
 			project_name: "",
 			description_project: "",
 			project_image: "",
+			project_status: false,
+			starting_date: "",
+			expected_finish_date: "",
 			project_budget: "",
+			tags: "",
 		});
 
 		try {
@@ -28,7 +36,8 @@ const AddProjectForm = () => {
 					"Content-Type": "application/json",
 				},
 			});
-			console.log(response.json(), "<<<< response project");
+			const responseJSON = await response.json();
+			console.log(responseJSON, "<<<< response project");
 		} catch (error: any) {
 			console.log(error);
 			setError(error);
@@ -54,7 +63,16 @@ const AddProjectForm = () => {
 					<input type="text" name="project_image" placeholder="Enter Project Image URL" value={form.project_image} onChange={onHandlerForm} />
 				</div>
 				<div>
+					<input type="date" name="starting_date" value={form.starting_date} onChange={onHandlerForm} />
+				</div>
+				<div>
+					<input type="date" name="expected_finish_date" value={form.expected_finish_date} onChange={onHandlerForm} />
+				</div>
+				<div>
 					<input type="number" name="project_budget" placeholder="Enter Project Budget" value={form.project_budget} onChange={onHandlerForm} />
+				</div>
+				<div>
+					<input type="text" name="tags" placeholder="Enter Project Tags" value={form.tags} onChange={onHandlerForm} />
 				</div>
 				<button type="submit">Create Project</button>
 			</form>
