@@ -1,5 +1,18 @@
 import React from "react";
 
+// const ProjectsPage = () => {
+// 	const [projects, setProjects] = useState([]);
+  
+// 	useEffect(() => {
+// 	  const fetchProjects = async () => {
+// 		const response = await fetch('/api/projects'); // Assuming you have an API route set up to handle this request
+// 		const data = await response.json();
+// 		setProjects(data);
+// 	  };
+  
+// 	  fetchProjects();
+// 	}, []);
+
 const ProjectPage = () => {
 	return (
 		<section className="min-h-screen bg-[#E2E4DD]">
