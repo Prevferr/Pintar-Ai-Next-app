@@ -1,12 +1,12 @@
 import React from "react";
 
-const ProjectPage = () => {
+const ResearcherPage = () => {
 	return (
 		<section className="min-h-screen bg-[#E2E4DD]">
 			<div className="paddingX border-x border-[#000]">
 				<div className="w-full flex justify-center border-x border-[#000] h-80">
 					<div className="flex flex-col justify-center items-center gap-2">
-						<h1 className="font-mono font-light">List of Project</h1>
+						<h1 className="font-mono font-light">List of Journals</h1>
 						<p className="w-[70%] text-center font-mono text-base">
 							We're a team of engineers, marketers, designers, all passionate
 							about video and the work we create together. Welcome to our blog
@@ -37,4 +37,4 @@ const ProjectPage = () => {
 	);
 };
 
-export default ProjectPage;
+export default ResearcherPage;
