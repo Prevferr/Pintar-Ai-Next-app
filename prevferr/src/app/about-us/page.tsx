@@ -1,9 +1,17 @@
+"use client";
 import React from "react";
-import Footer from "../components/Footer";
+import { Icon } from "@iconify/react";
+import Link from "next/link";
 
 const AboutPage = () => {
 	return (
-		<div className="bg-[#f4f6f4] paddingX paddingYShorter">
+		<section className="bg-[#f4f6f4] paddingX paddingYShorter">
+			<Link href="/">
+				<div className="m-4 flex justify-end gap-2 items-center hover:underline cursor-pointer">
+					<Icon icon="ep:back" width={30} />
+					<p className="text-xl font-mono">Back to Home Page</p>
+				</div>
+			</Link>
 			<div className="paddingX paddingY bg-[#fff] min-h-screen border">
 				<div className="w-[60%] mx-auto flex flex-col gap-4">
 					<p className="font-mono text-[#565e67]">
@@ -27,7 +35,7 @@ const AboutPage = () => {
 				</div>
 				<div className="border-b my-8 w-[70%] mx-auto"></div>
 			</div>
-		</div>
+		</section>
 	);
 };
 
