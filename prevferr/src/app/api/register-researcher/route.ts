@@ -1,51 +1,79 @@
-import { z } from 'zod';
 import { prisma } from "../../../../helpers/lib/prisma";
 import { hash } from "bcryptjs";
 import { NextResponse } from "next/server";
 
-// Define the schema
-const researcherSchema = z.object({
-  firstname: z.string(),
-  lastname: z.string(),
-  education: z.string(),
-  profileImage: z.string().url().optional(), // Example: optional and must be a valid URL
-  email: z.string().email(),
-  password: z.string().min(5), // Example: enforce minimum length for password
-  research: z.string(),
-  scope: z.string(),
-  institution: z.string(),
-  background: z.string(),
-  gender: z.string(),
-  role: z.string(),
-  location: z.string(),
-});
-
 export async function POST(req: Request) {
   try {
-    // Parse and validate the request body
-    const parsedData = researcherSchema.parse(await req.json());
-
-    const hashed_password = await hash(parsedData.password, 10);
+    const {
+      firstname,
+      lastname,
+      password,
+      research,
+      education,
+      scope,
+      institution,
+      profileImage,
+      email,
+      background,
+      gender,
+      role,
+      location,
+    } = (await req.json()) as {
+      firstname: string;
+      lastname: string;
+      password: string;
+      research: string;
+      education: string;
+      scope: string;
+      institution: string;
+      profileImage: string;
+      email: string;
+      background: string;
+      gender: string;
+      role: string;
+      location: string;
+    };
+    const hashed_password = await hash(password, 10);
 
     const researcher = await prisma.researcher.create({
       data: {
-        ...parsedData,
+        firstname,
+        lastname,
+        research,
         password: hashed_password,
-        email: parsedData.email.toLowerCase(),
+        education,
+        scope,
+        institution,
+        profileImage,
+        email: email.toLowerCase(),
+        background,
+        gender,
+        role,
+        location,
       },
     });
 
     return NextResponse.json({
       researcher: {
-        ...researcher,
-        password: undefined, // Do not return the password hash
+        firstname: researcher.firstname,
+        lastname: researcher.lastname,
+        education: researcher.education,
+        research: researcher.research,
+        scope: researcher.scope,
+        institution: researcher.institution,
+        profileImage: researcher.profileImage,
+        email: researcher.email,
+        background: researcher.background,
+        gender: researcher.gender,
+        role: researcher.role,
+        location: researcher.location,
       },
     });
   } catch (error: any) {
     return new NextResponse(
       JSON.stringify({
         status: "error",
-        message: error instanceof z.ZodError ? error.errors : error.message,
+        message: error.message,
       }),
       { status: 500 }
     );
