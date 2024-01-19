@@ -192,6 +192,7 @@ const RegisterPage = () => {
 				<input className="rounded px-4 py-2" type="password" id="password" name="password" placeholder="Password" />
 				<input className="rounded px-4 py-2" type="text" id="education" name="education" placeholder="Education" />
 				<input className="rounded px-4 py-2" type="text" id="institution" name="institution" placeholder="Institution" />
+				<input className="rounded px-4 py-2" type="text" id="research" name="research" placeholder="Research" />
 				<input className="rounded px-4 py-2" type="text" id="profileImage" name="profileImage" placeholder="Profile Image" />
 				<input className="rounded px-4 py-2" type="text" id="background" name="background" placeholder="Background" />
 				<input className="rounded px-4 py-2" type="text" id="role" name="role" placeholder="Role" />

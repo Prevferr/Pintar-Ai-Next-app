@@ -69,7 +69,7 @@ export async function PUT(req: NextRequest, { params }: TProps) {
 
 // DELETE by id
 export async function DELETE(req: NextRequest, { params }: TProps) {
-	const user = await PrismaClient.researcher.findUnique({
+	const user = await prisma.researcher.findUnique({
 		where: { id: parseInt(params.id) },
 	});
 

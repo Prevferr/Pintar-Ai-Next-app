@@ -2,6 +2,7 @@
 
 import { signIn } from "next-auth/react";
 import { ChangeEvent, useState } from "react";
+import { redirect } from "next/navigation";
 
 export const RegisterForm = () => {
   const [loading, setLoading] = useState(false);
@@ -42,7 +43,7 @@ export const RegisterForm = () => {
     });
 
     try {
-      const res = await fetch("/api/register", {
+      const res = await fetch("/api/register-researcher", {
         method: "POST",
         body: JSON.stringify(formValues),
         headers: {
@@ -56,7 +57,7 @@ export const RegisterForm = () => {
         return;
       }
 
-      signIn(undefined, { callbackUrl: "/" });
+      signIn(undefined, { callbackUrl: "/loginn" });
     } catch (error: any) {
       setLoading(false);
       setError(error);

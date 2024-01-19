@@ -35,7 +35,7 @@ export const handleFormAction = async (formData: FormData) => {
 	// - baseUrl = http://yyy.vercel.app
 	// await fetch("/api/user");
 
-	const response = await fetch("http://localhost:3000/api/researchers", {
+	const response = await fetch("/api/register-researcher", {
 		method: "POST",
 		body: JSON.stringify({
 			firstname: formData.get("firstname"),
@@ -44,6 +44,7 @@ export const handleFormAction = async (formData: FormData) => {
 			education: formData.get("education"),
 			scope: formData.get("scope"),
 			institution: formData.get("institution"),
+			research: formData.get("research"),
 			profileImage: formData.get("profileImage"),
 			email: formData.get("email"),
 			background: formData.get("background"),
@@ -63,8 +64,8 @@ export const handleFormAction = async (formData: FormData) => {
 
 		let message = responseJson.error ?? "Something went wrong!";
 
-		return redirect(`/sing-up-researcher?error=${message}`);
+		return redirect(`/sign-up-researcher?error=${message}`);
 	}
 
-	return redirect("/sign-in");
+	return redirect("/loginn");
 };

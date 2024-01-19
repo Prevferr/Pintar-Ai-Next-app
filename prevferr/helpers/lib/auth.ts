@@ -8,7 +8,7 @@ import { prisma } from "./prisma";
 import { compare } from "bcryptjs";
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma),
+  adapter: PrismaAdapter(prisma as any),
   secret: "sangat-rahasia",
   session: {
     strategy: "jwt",
@@ -18,7 +18,8 @@ export const authOptions: NextAuthOptions = {
   },
   providers: [
     CredentialsProvider({
-      name: "Credentials",
+      name: "Sign In",
+      id: "credentials",
       credentials: {
         email: {
           label: "Email",
@@ -33,17 +34,16 @@ export const authOptions: NextAuthOptions = {
         }
 
         const existingUser = await prisma.researcher.findUnique({
-          where: { email: credentials?.email },
+          where: { email: credentials.email },
         });
         if (!existingUser) {
           return null;
         }
 
-        const passwordMatch = compare(
-          credentials.password,
-          existingUser.password
-        );
-        if (!passwordMatch) {
+        if (
+          !existingUser ||
+          !(await compare(credentials.password, existingUser.password!))
+        ) {
           return null;
         }
 
@@ -51,29 +51,32 @@ export const authOptions: NextAuthOptions = {
           id: existingUser.id + "",
           username: existingUser.firstname,
           email: existingUser.email,
+          randomKey: "Hey cool",
         };
       },
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
-        return {
-          ...token,
-          firstname: user,
-        };
-      }
-      return token;
-    },
-    async session({ session, token }) {
+    session: ({ session, token }) => {
       return {
         ...session,
         user: {
           ...session.user,
-          firstame: token.firstname,
-          id: parseInt(token.sub!),
+          id: token.id,
+          randomKey: token.randomKey,
         },
       };
+    },
+    jwt: ({ token, user }) => {
+      if (user) {
+        const u = user as unknown as any;
+        return {
+          ...token,
+          id: u.id,
+          randomKey: u.randomKey,
+        };
+      }
+      return token;
     },
   },
 };

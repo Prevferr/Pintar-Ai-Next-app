@@ -10,13 +10,29 @@ async function main() {
   const pass2 = await bcryptjs.hash("vincent123", 10);
   const pass3 = await bcryptjs.hash("alvin123", 10);
 
-  const Jurnal = {
-    // Data untuk portofolio Jurnal
-    // ...
-    abstract: "Abstract of the journal",
-    title: "Petanian Skala Mikro di Indonesia",
-    description: "Pertanian Skala Mikro di Indonesia",
-  };
+  // const Jurnal = {
+  //   // Data untuk portofolio Jurnal
+  //   // ...
+  //   abstract: "Abstract of the journal",
+  //   title: "Petanian Skala Mikro di Indonesia",
+  //   description: "Pertanian Skala Mikro di Indonesia",
+  // };
+
+  const Project = {
+		// Data untuk portofolio Jurnal
+		// ...
+		project_name: "Meningkatkan Efisiensi Mesin",
+		description_project: "Bagaiman caranya meningkatkan efisiensi mesin",
+		project_image : "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//104/MTA-63697343/no-brand_no-brand_full01.jpg",
+    project_status : false,
+    starting_date: new Date(),
+    expected_finish_date: new Date(),
+    project_budget  : 10000000,
+    tags: "Machine",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+	};
+
 
 	const Jurnal = {
 		// Data untuk portofolio Jurnal
@@ -30,6 +46,8 @@ async function main() {
 		// Data untuk Comment
 		// ...
 		comment: "Bagus sekali",
+    createdAt: new Date(),
+		updatedAt: new Date(),
 	};
 
 	const Payment = {
