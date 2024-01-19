@@ -7,7 +7,6 @@ const AddProjectForm = () => {
 		project_name: "",
 		description_project: "",
 		project_image: "",
-		expected_finish_date: "",
 		project_budget: "",
 	});
 	const [error, setError] = useState("");
@@ -18,7 +17,6 @@ const AddProjectForm = () => {
 			project_name: "",
 			description_project: "",
 			project_image: "",
-			expected_finish_date: "",
 			project_budget: "",
 		});
 
@@ -54,9 +52,6 @@ const AddProjectForm = () => {
 				</div>
 				<div>
 					<input type="text" name="project_image" placeholder="Enter Project Image URL" value={form.project_image} onChange={onHandlerForm} />
-				</div>
-				<div>
-					<input type="date" name="expected_finish_date" placeholder="Expected Finish Date" value={form.expected_finish_date} onChange={onHandlerForm} />
 				</div>
 				<div>
 					<input type="number" name="project_budget" placeholder="Enter Project Budget" value={form.project_budget} onChange={onHandlerForm} />
