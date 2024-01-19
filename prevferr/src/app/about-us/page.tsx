@@ -1,6 +1,7 @@
 import React from "react";
+import Footer from "../components/Footer";
 
-const JournalDetail = () => {
+const AboutPage = () => {
 	return (
 		<div className="bg-[#f4f6f4] paddingX paddingYShorter">
 			<div className="paddingX paddingY bg-[#fff] min-h-screen border">
@@ -30,4 +31,4 @@ const JournalDetail = () => {
 	);
 };
 
-export default JournalDetail;
+export default AboutPage;

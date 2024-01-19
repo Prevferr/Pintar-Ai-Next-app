@@ -18,13 +18,15 @@ const Navbar = () => {
 				{/* <h3 className="text-[#1dbf73] text-xl bg-[#fff] px-4 py-1 rounded-xl">
 					Pintar.
 				</h3> */}
-				<h3 className="text-[#fff] text-2xl hover:underline cursor-pointer">
-					Pintar - Scholar.
-				</h3>
+				<span className="flex gap-2 items-center">
+					<Icon icon="el:livejournal" color="#fff" width={30} />
+					<h3 className="text-[#fff] text-4xl cursor-pointer">Pintar</h3>
+				</span>
+
 				<div className="flex justify-between items-center gap-4">
 					<ul className="flex justify-between gap-8 items-center">
 						<DropDownList />
-						<DropDown />
+						{/* <DropDown /> */}
 						{/* <div className="flex justify-start gap-1 px-3 py-1 rounded-lg items-center cursor-pointer">
 							<Icon icon="bitcoin-icons:globe-outline" width={30} />
 							<li>English</li>

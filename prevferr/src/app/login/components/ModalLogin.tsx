@@ -30,7 +30,7 @@ const ModalLogin: React.FC<ModalLoginProps> = () => {
 				className="border border-[#fff] text-[#fff] px-5 py-1 rounded-xl  hover:rounded-md hover:bg-[#fff] hover:text-[#252525]"
 				onClick={showModal}
 			>
-				<span className="flex gap-2 items-center">
+				<span className="flex gap-2 items-center font-mono">
 					Join
 					<Icon icon="tabler:arrow-up-right" width={20} />
 				</span>
