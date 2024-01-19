@@ -57,7 +57,7 @@ export const RegisterForm = () => {
         return;
       }
 
-      signIn(undefined, { callbackUrl: "/loginn" });
+      signIn(undefined, { callbackUrl: "/" });
     } catch (error: any) {
       setLoading(false);
       setError(error);

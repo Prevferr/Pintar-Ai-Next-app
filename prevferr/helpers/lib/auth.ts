@@ -8,49 +8,46 @@ import { prisma } from "./prisma";
 import { compare } from "bcryptjs";
 
 export const authOptions: NextAuthOptions = {
+  // This is a temporary fix for prisma client.
+  // @see https://github.com/prisma/prisma/issues/16117
   adapter: PrismaAdapter(prisma as any),
-  secret: "sangat-rahasia",
+  pages: {
+    signIn: "/loginn",
+  },
   session: {
     strategy: "jwt",
   },
-  pages: {
-    signIn: "loginn",
-  },
   providers: [
     CredentialsProvider({
-      name: "Sign In",
+      name: "Sign in",
       id: "credentials",
       credentials: {
         email: {
           label: "Email",
           type: "email",
-          placeholder: "jsmith@mail.com",
+          placeholder: "example@example.com",
         },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
+        if (!credentials?.email || !credentials.password) {
           return null;
         }
 
-        const existingUser = await prisma.researcher.findUnique({
-          where: { email: credentials.email },
+        const user = await prisma.researcher.findUnique({
+          where: {
+            email: credentials.email,
+          },
         });
-        if (!existingUser) {
-          return null;
-        }
 
-        if (
-          !existingUser ||
-          !(await compare(credentials.password, existingUser.password!))
-        ) {
+        if (!user || !(await compare(credentials.password, user.password!))) {
           return null;
         }
 
         return {
-          id: existingUser.id + "",
-          firstname: existingUser.firstname,
-          email: existingUser.email,
+          id: user.id + "",
+          email: user.email,
+          firstname: user.firstname,
           randomKey: "Hey cool",
         };
       },
@@ -79,4 +76,6 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
   },
+  secret: process.env.NEXTAUTH_SECRET
 };
+

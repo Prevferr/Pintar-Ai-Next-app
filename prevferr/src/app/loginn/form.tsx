@@ -14,7 +14,11 @@ export const LoginForm = () => {
   const [error, setError] = useState("");
 
   const searchParams = useSearchParams();
+  // const callbackUrl = searchParams.get("callbackUrl") || "/";
   const callbackUrl = searchParams.get("callbackUrl") || "/";
+  console.log(callbackUrl, "APAAAAA");
+  
+
   console.log(callbackUrl, "wkwkwkwkwkwkkw");
   
 
