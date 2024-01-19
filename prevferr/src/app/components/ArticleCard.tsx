@@ -5,14 +5,14 @@ import Link from "next/link";
 const ArticleCard = () => {
 	return (
 		<Fragment>
-			<div className="px-2 flex justify-start gap-4 items-center">
+			<div className="px-4 py-2 flex justify-start gap-4 items-center">
 				<div className="flex flex-col">
 					<div className="flex items-center justify-start gap-4">
-						<p className="text-[#0096FF] text-sm font-semibold">Science</p>
-						<p className="text-[#fff] text-xs font-light">4 hour ago</p>
+						<p className="text-[#0096FF] text-sm font-mono">Science</p>
+						<p className="text-[#000] text-xs font-light">4 hour ago</p>
 					</div>
 					<Link href="/journals/journal_name">
-						<p className="text-sm font-semibold cursor-pointer hover:underline text-[#fff]">
+						<p className="text-sm font-mono cursor-pointer hover:underline text-[#000]">
 							Peta Tingkat Bahaya Erosi DAS Batang Kuranji - Kota Padang
 						</p>
 					</Link>
@@ -22,7 +22,7 @@ const ArticleCard = () => {
 							src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/search_perseus/flat_minimalist.78e0303.svg"
 							className="m-1 object-cover rounded-full  h-8 w-8 bg-[#fff]"
 						/>
-						<p className="text-xs text-[#fff]">Pt Sinarmar Indonesia</p>
+						<p className="text-xs text-[#000]">Pt Sinarmar Indonesia</p>
 						<Icon
 							icon="material-symbols-light:verified-outline"
 							color="#0096FF"
@@ -35,7 +35,7 @@ const ArticleCard = () => {
 					className="h-20 w-20 object-cover rounded-xl"
 				/>
 			</div>
-			<div className="border-b"></div>
+			<div className="border-b border-[#000]"></div>
 		</Fragment>
 	);
 };

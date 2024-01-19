@@ -1,3 +1,4 @@
+// import LoadToTop from "../../helpers/utils/LoadToTop";
 import Footer from "./components/Footer";
 import "./globals.css";
 import { NextAuthProvider } from "./providers";
@@ -15,8 +16,12 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body>
-				<NextAuthProvider>{children}</NextAuthProvider>
-				<Footer />
+				<NextAuthProvider>
+					<section>
+						{children}
+						<Footer />
+					</section>
+				</NextAuthProvider>
 			</body>
 		</html>
 	);
