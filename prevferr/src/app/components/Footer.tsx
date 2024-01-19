@@ -50,12 +50,12 @@ const Footer = () => {
 			</div>
 			<div className="border-b paddingYShorter3"></div>
 			<div className="paddingTopShorter2 flex justify-between gap-4 items-center">
-				<span className="flex gap-2 items-center">
-					<Icon icon="el:livejournal" color="#fff" width={30} />
+				{/* <span className="flex gap-2 items-center">
+					<Icon icon="mingcute:quill-pen-line" color="#fff" width={40} />
 					<h3 className="text-[#fff] text-4xl cursor-pointer">
 						Pintar - Scholar
 					</h3>
-				</span>
+				</span> */}
 				<p className="text-sm text-[#fff] underline">
 					© Pintar - Sholar International Ltd. 2024, Integrated with Open Ai.
 				</p>

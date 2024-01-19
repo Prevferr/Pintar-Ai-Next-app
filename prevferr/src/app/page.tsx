@@ -1,54 +1,39 @@
 "use client";
 import { Icon } from "@iconify/react";
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+// import required modules
+import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
+
 // import required modules
 import Link from "next/link";
-import DropDownList from "./components/DropDownLIst";
-import ModalLogin from "./login/components/ModalLogin";
-import { useState } from "react";
 import LoadToTop from "../../helpers/utils/LoadToTop";
 
 export default function Home() {
-	const [isModalOpen, setIsModalOpen] = useState(false);
-
-	const closeModal = () => {
-		setIsModalOpen(false);
-	};
 	return (
 		<section className="">
 			{/* layer 1  */}
 			<div className="bg-[#242628]">
-				<div className="flex justify-between py-6 border border-[#000] paddingX">
-					<span className="flex gap-2 items-center h-full">
-						<Icon icon="el:livejournal" color="#fff" width={30} />
-						<h3 className="text-[#fff] text-4xl font-mono cursor-pointer">
-							Pintar
-						</h3>
-					</span>
-					<div className="flex justify-between items-center gap-4">
-						<ul className="flex justify-between gap-8 items-center">
-							<DropDownList />
-						</ul>
-						<ModalLogin
-							open={isModalOpen}
-							onOk={closeModal}
-							onCancel={closeModal}
-						/>
-					</div>
-				</div>
 				<div className="paddingX">
 					<div className="w-full flex justify-center border-x border-b border-[#000]">
-						<div className="w-[50%] flex justify-center items-center">
-							<div className="p-4 flex flex-col gap-4">
-								<div className="flex flex-col gap-4 text-base text-white">
-									<h3 className="text-4xl font-mono">
-										Working for the development of research for the common good,
-										prioritizing the well-being of humanity and the environment.
+						<div className="w-[50%] flex justify-between items-center">
+							<div className="p-4 flex flex-col justify-between gap-8">
+								<div className="flex flex-col justify-around  gap-4 text-base text-white">
+									<h3 className="text-3xl font-mono text-left font-semibold">
+										Everything you need is here..
 									</h3>
 								</div>
 								<p className="text-[#fff] font-mono text-sm">
-									Everything needed to build a beautiful web player for Mux
-									Video — designed for any page and app, all from one platform.
+									Committed to advancing research for the collective welfare,
+									with a focus on prioritizing the health and prosperity of
+									humanity and the environment.
 								</p>
 								<Link href="/about-us">
 									<button
@@ -121,37 +106,122 @@ export default function Home() {
 			</div>
 
 			{/* layer 3 */}
-			<div className="bg-[#E2E4DD] paddingX paddingYShorter">
-				<div className="mx-auto border border-[#000] w-[80%] rounded-3xl flex flex-col">
-					<div className="bg-[#FFB200] rounded-t-3xl py-3 border-b border-[#000]">
-						<p className="text-[#000] text-center font-mono">Journals</p>
-					</div>
+			<div className="bg-[#E2E4DD] p-6">
+				<Swiper
+					cssMode={true}
+					navigation={true}
+					pagination={true}
+					mousewheel={true}
+					keyboard={true}
+					modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+					className="mySwiper"
+				>
+					<SwiperSlide>
+						<div className="mx-auto border border-[#000] w-[80%] rounded-3xl flex flex-col">
+							<div className="bg-[#FFB200] rounded-t-3xl py-3 border-b border-[#000]">
+								<p className="text-[#000] text-center font-mono">Journals</p>
+							</div>
 
-					<div className="flex justify-center items-center py-14">
-						<div className="w-[60%] mx-auto flex flex-col gap-4">
-							<p className="font-mono text-[#565e67]">
-								NOVEMBER 27, 2023 (ABOUT 2 MONTHS AGO)
-							</p>
-							<h1 className="text-5xl">
-								How to add a background video in Next.js
-							</h1>
-							<div className="flex justify-start items-center gap-4">
-								<img
-									src="https://cdn.sanity.io/images/2ejqxsnu/production/d6d798e8581a361efb9d9ef2923794da065d0e6e-450x445.jpg?w=128&q=75&fit=clip&auto=format"
-									className="h-14 w-14 rounded-full object-cover"
-								/>
-								<p className="text-base font-mono">
-									<span className="font-mono text-[#565e67] text-sm">BY</span>{" "}
-									Adam Turnere
-								</p>
-								<span className="text-[#565e67]">•</span>
-								<p className="font-mono text-[#565e67] text-sm">4 Mount Ago</p>
-								<span className="text-[#565e67]">•</span>
-								<p className="text-base font-mono">ENGGINERING</p>
+							<div className="w-full flex justify-center items-center py-14">
+								<div className="w-[60%] mx-auto flex flex-col gap-4">
+									<p className="font-mono text-[#565e67]">
+										NOVEMBER 27, 2023 (ABOUT 2 MONTHS AGO)
+									</p>
+									<h1 className="text-5xl">
+										How to add a background video in Next.js
+									</h1>
+									<div className="flex justify-start items-center gap-4">
+										<img
+											src="https://cdn.sanity.io/images/2ejqxsnu/production/d6d798e8581a361efb9d9ef2923794da065d0e6e-450x445.jpg?w=128&q=75&fit=clip&auto=format"
+											className="h-14 w-14 rounded-full object-cover"
+											alt="Author"
+										/>
+										<p className="text-base font-mono">
+											<span className="text-[#565e67] text-sm">BY</span> Adam
+											Turnere
+										</p>
+										<span className="text-[#565e67]">•</span>
+										<p className="font-mono text-[#565e67] text-sm">
+											4 Months Ago
+										</p>
+										<span className="text-[#565e67]">•</span>
+										<p className="text-base font-mono">ENGINEERING</p>
+									</div>
+								</div>
 							</div>
 						</div>
-					</div>
-				</div>
+					</SwiperSlide>
+					<SwiperSlide>
+						<div className="mx-auto border border-[#000] w-[80%] rounded-3xl flex flex-col">
+							<div className="bg-[#FFB200] rounded-t-3xl py-3 border-b border-[#000]">
+								<p className="text-[#000] text-center font-mono">Journals</p>
+							</div>
+
+							<div className="w-full flex justify-center items-center py-14">
+								<div className="w-[60%] mx-auto flex flex-col gap-4">
+									<p className="font-mono text-[#565e67]">
+										NOVEMBER 27, 2023 (ABOUT 2 MONTHS AGO)
+									</p>
+									<h1 className="text-5xl">
+										How to add a background video in Next.js
+									</h1>
+									<div className="flex justify-start items-center gap-4">
+										<img
+											src="https://cdn.sanity.io/images/2ejqxsnu/production/d6d798e8581a361efb9d9ef2923794da065d0e6e-450x445.jpg?w=128&q=75&fit=clip&auto=format"
+											className="h-14 w-14 rounded-full object-cover"
+											alt="Author"
+										/>
+										<p className="text-base font-mono">
+											<span className="text-[#565e67] text-sm">BY</span> Adam
+											Turnere
+										</p>
+										<span className="text-[#565e67]">•</span>
+										<p className="font-mono text-[#565e67] text-sm">
+											4 Months Ago
+										</p>
+										<span className="text-[#565e67]">•</span>
+										<p className="text-base font-mono">ENGINEERING</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</SwiperSlide>
+					<SwiperSlide>
+						<div className="mx-auto border border-[#000] w-[80%] rounded-3xl flex flex-col">
+							<div className="bg-[#FFB200] rounded-t-3xl py-3 border-b border-[#000]">
+								<p className="text-[#000] text-center font-mono">Journals</p>
+							</div>
+
+							<div className="w-full flex justify-center items-center py-14">
+								<div className="w-[60%] mx-auto flex flex-col gap-4">
+									<p className="font-mono text-[#565e67]">
+										NOVEMBER 27, 2023 (ABOUT 2 MONTHS AGO)
+									</p>
+									<h1 className="text-5xl">
+										How to add a background video in Next.js
+									</h1>
+									<div className="flex justify-start items-center gap-4">
+										<img
+											src="https://cdn.sanity.io/images/2ejqxsnu/production/d6d798e8581a361efb9d9ef2923794da065d0e6e-450x445.jpg?w=128&q=75&fit=clip&auto=format"
+											className="h-14 w-14 rounded-full object-cover"
+											alt="Author"
+										/>
+										<p className="text-base font-mono">
+											<span className="text-[#565e67] text-sm">BY</span> Adam
+											Turnere
+										</p>
+										<span className="text-[#565e67]">•</span>
+										<p className="font-mono text-[#565e67] text-sm">
+											4 Months Ago
+										</p>
+										<span className="text-[#565e67]">•</span>
+										<p className="text-base font-mono">ENGINEERING</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</SwiperSlide>
+				</Swiper>
 			</div>
 			{/* <div className="bg-[#242628] min-h-screen">x</div> */}
 			<div className="bg-[#FF6100] paddingYShorter paddingX flex justify-around flex-col items-center gap-4">
