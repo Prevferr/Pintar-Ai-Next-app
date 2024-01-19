@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 
 const CardJournal = () => {
 	return (
-		<div className="shadow bg-[#f2f2f2] flex justify-between rounded-xl  p-2">
+		<div className="shadow bg-[#fff] flex justify-between rounded-xl  p-2">
 			<div className="flex flex-col">
 				<div className="p-2 flex flex-col gap-2">
 					<span className="flex justify-start gap-2 items-center">

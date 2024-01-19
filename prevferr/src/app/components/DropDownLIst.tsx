@@ -43,9 +43,9 @@ const DropDownList: React.FC = () => {
 			placement="bottom"
 			arrow={{ pointAtCenter: true }}
 		>
-			<div className="flex justify-start gap-2 px-3 py-1 items-center cursor-pointer rounded-lg bg-[#fff]">
-				<li className="text-[#1dbf73] ">Guides</li>
-				<Icon icon="mingcute:down-line" color="#252525" />
+			<div className="flex justify-start gap-2 px-3 py-1 items-center cursor-pointer rounded-lg border border-[#fff]">
+				<li className="text-[#fff] ">Guides</li>
+				<Icon icon="mingcute:down-line" color="#fff" />
 			</div>
 		</Dropdown>
 	);
