@@ -1,19 +1,17 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import { prisma } from "../../../../helpers/lib/prisma";
 
 export async function POST(req: Request) {
 	try {
-		const { abstract, title, description } = (await req.json()) as {
+		const { abstract, title } = (await req.json()) as {
 			abstract: string;
 			title: string;
-			description: string;
 		};
 
 		const journal = await prisma.jurnal.create({
 			data: {
 				abstract,
 				title,
-				description,
 			},
 		});
 
@@ -21,7 +19,6 @@ export async function POST(req: Request) {
 			journal: {
 				abstract: journal.abstract,
 				title: journal.title,
-				description: journal.description,
 			},
 		});
 	} catch (error: any) {
@@ -33,4 +30,9 @@ export async function POST(req: Request) {
 			{ status: 500 }
 		);
 	}
+}
+
+export async function GET(req: NextRequest) {
+	const researchers = await prisma.researcher.findMany();
+	return NextResponse.json(researchers);
 }

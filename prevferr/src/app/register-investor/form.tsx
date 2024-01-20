@@ -9,19 +9,12 @@ export const RegisterForm = () => {
   const [formValues, setFormValues] = useState({
     firstname: "",
     lastname: "",
-    password: "",
-    research: "",
-    institution: "",
-    profileImage: "",
     email: "",
-    background: "",
-    gender: "",
-    role: "",
-    location: "",
-    phone_number:"",
-    jabatan_akademik:"",
-    investasi:"",
-    education:"",
+    password: "",
+    budget: 0,
+    profileImage: "",
+    institution: "",
+    industry_type: "",
   });
   const [error, setError] = useState("");
 
@@ -31,23 +24,16 @@ export const RegisterForm = () => {
     setFormValues({
       firstname: "",
       lastname: "",
-      password: "",
-      research: "",
-      institution: "",
-      profileImage: "",
       email: "",
-      background: "",
-      gender: "",
-      role: "",
-      location: "",
-      phone_number:"",
-      jabatan_akademik:"",
-      investasi:"",
-      education:"",
+      password: "",
+      budget: 0,
+      profileImage: "",
+      institution: "",
+      industry_type: "",
     });
 
     try {
-      const res = await fetch("/api/register-researcher", {
+      const res = await fetch("/api/register-investor", {
         method: "POST",
         body: JSON.stringify(formValues),
         headers: {
@@ -70,7 +56,8 @@ export const RegisterForm = () => {
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setFormValues({ ...formValues, [name]: value });
+    const newValue = name === 'budget' ? parseInt(value, 10) : value;
+    setFormValues({ ...formValues, [name]: newValue });
   };
 
   const input_style =
@@ -106,6 +93,17 @@ export const RegisterForm = () => {
       <div className="mb-6">
         <input
           required
+          type="email"
+          name="email"
+          value={formValues.email}
+          onChange={handleChange}
+          placeholder="Email address"
+          className={`${input_style}`}
+        />
+      </div>
+      <div className="mb-6">
+        <input
+          required
           type="password"
           name="password"
           value={formValues.password}
@@ -117,55 +115,11 @@ export const RegisterForm = () => {
       <div className="mb-6">
         <input
           required
-          type="text"
-          name="phone_number"
-          value={formValues.phone_number}
+          type="number"
+          name="budget"
+          value={formValues.budget}
           onChange={handleChange}
-          placeholder="Phone Number"
-          className={`${input_style}`}
-        />
-      </div>
-      <div className="mb-6">
-        <input
-          required
-          type="text"
-          name="research"
-          value={formValues.research}
-          onChange={handleChange}
-          placeholder="Research"
-          className={`${input_style}`}
-        />
-      </div>
-      <div className="mb-6">
-        <input
-          required
-          type="text"
-          name="education"
-          value={formValues.education}
-          onChange={handleChange}
-          placeholder="education"
-          className={`${input_style}`}
-        />
-      </div>
-      <div className="mb-6">
-        <input
-          required
-          type="text"
-          name="jabatan_akademik"
-          value={formValues.jabatan_akademik}
-          onChange={handleChange}
-          placeholder="Jabatan Akademik"
-          className={`${input_style}`}
-        />
-      </div>
-      <div className="mb-6">
-        <input
-          required
-          type="text"
-          name="institution"
-          value={formValues.institution}
-          onChange={handleChange}
-          placeholder="Institution"
+          placeholder="budget"
           className={`${input_style}`}
         />
       </div>
@@ -183,66 +137,23 @@ export const RegisterForm = () => {
       <div className="mb-6">
         <input
           required
-          type="email"
-          name="email"
-          value={formValues.email}
+          type="text"
+          name="institution"
+          value={formValues.institution}
           onChange={handleChange}
-          placeholder="Email address"
+          placeholder="Institution"
           className={`${input_style}`}
         />
       </div>
+     
       <div className="mb-6">
         <input
           required
           type="text"
-          name="background"
-          value={formValues.background}
+          name="industry_type"
+          value={formValues.industry_type}
           onChange={handleChange}
-          placeholder="Background"
-          className={`${input_style}`}
-        />
-      </div>
-      <div className="mb-6">
-        <input
-          required
-          type="text"
-          name="gender"
-          value={formValues.gender}
-          onChange={handleChange}
-          placeholder="Gender"
-          className={`${input_style}`}
-        />
-      </div>
-      <div className="mb-6">
-        <input
-          required
-          type="text"
-          name="investasi"
-          value={formValues.investasi}
-          onChange={handleChange}
-          placeholder="Investasi"
-          className={`${input_style}`}
-        />
-      </div>
-      <div className="mb-6">
-        <input
-          required
-          type="text"
-          name="role"
-          value={formValues.role}
-          onChange={handleChange}
-          placeholder="Role"
-          className={`${input_style}`}
-        />
-      </div>
-      <div className="mb-6">
-        <input
-          required
-          type="text"
-          name="location"
-          value={formValues.location}
-          onChange={handleChange}
-          placeholder="Location"
+          placeholder="Industry Type"
           className={`${input_style}`}
         />
       </div>
