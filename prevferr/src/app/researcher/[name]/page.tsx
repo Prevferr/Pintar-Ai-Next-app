@@ -1,4 +1,5 @@
 import JournalCard from "@/app/components/JournalCard";
+import Link from "next/link";
 import React from "react";
 
 const page = () => {
@@ -10,12 +11,21 @@ const page = () => {
 					className=" w-60 h-60 rounded-full object-cover"
 					alt="researcher"
 				/>
-				<p className="text-base font-mono">Adam Turnere</p>
+				<div className="text-center">
+					<p className="text-base font-mono">Adam Turnere</p>
+					<p className="text-base font-mono">Software Engginer</p>
+				</div>
 			</div>
 			<div className="w-[80%] flex flex-col">
-				<JournalCard />
-				<JournalCard />
-				<JournalCard />
+				<Link href={"/journals/journal_name"}>
+					<JournalCard />
+				</Link>
+				<Link href={"/journals/journal_name"}>
+					<JournalCard />
+				</Link>
+				<Link href={"/journals/journal_name"}>
+					<JournalCard />
+				</Link>
 			</div>
 		</section>
 	);
