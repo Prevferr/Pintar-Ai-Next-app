@@ -86,8 +86,8 @@ const ResearchersPage = () => {
 				</div>
 			</div>
 			<div className="paddingX border-x  border-t border-[#000]">
-				<div className="w-full border-x border-[#000] p-8">
-					<div className="grid grid-cols-4 gap-2">
+				<div className="w-full border-x border-[#000]">
+					<div className="grid grid-cols-4">
 						<Link href={"/researcher/name"}>
 							<ReseacrcherCard />
 						</Link>

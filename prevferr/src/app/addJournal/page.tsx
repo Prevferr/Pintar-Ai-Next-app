@@ -26,7 +26,7 @@ const AddJournalForm = () => {
 					"Content-Type": "application/json",
 				},
 			});
-			console.log(response.json(), "<<<< response journal");
+			// console.log(response.json(), "<<<< response journal");
 		} catch (error: any) {
 			console.log(error);
 			setError(error);
@@ -43,13 +43,28 @@ const AddJournalForm = () => {
 		<>
 			<form onSubmit={onSubmit}>
 				<div>
-					<input name="abstract" placeholder="Abstract" value={form.abstract} onChange={onHandlerForm} />
+					<input
+						name="abstract"
+						placeholder="Abstract"
+						value={form.abstract}
+						onChange={onHandlerForm}
+					/>
 				</div>
 				<div>
-					<input name="title" placeholder="Title" value={form.title} onChange={onHandlerForm} />
+					<input
+						name="title"
+						placeholder="Title"
+						value={form.title}
+						onChange={onHandlerForm}
+					/>
 				</div>
 				<div>
-					<input name="description" placeholder="Description" value={form.description} onChange={onHandlerForm} />
+					<input
+						name="description"
+						placeholder="Description"
+						value={form.description}
+						onChange={onHandlerForm}
+					/>
 				</div>
 				<button type="submit">Upload Journal</button>
 			</form>
