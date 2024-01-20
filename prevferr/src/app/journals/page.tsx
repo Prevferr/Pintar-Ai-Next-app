@@ -3,14 +3,14 @@ import JournalCard from "../components/JournalCard";
 
 // const JournalsPage = () => {
 // 	const [journals, setJournals] = useState([]);
-  
+
 // 	useEffect(() => {
 // 	  const fetchProjects = async () => {
 // 		const response = await fetch('/api/journals'); // Assuming you have an API route set up to handle this request
 // 		const data = await response.json();
 // 		setJournals(data);
 // 	  };
-  
+
 // 	  fetchProjects();
 // 	}, []);
 

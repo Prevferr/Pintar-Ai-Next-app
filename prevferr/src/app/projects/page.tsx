@@ -1,4 +1,5 @@
 import React from "react";
+import ReseacrcherCard from "../components/ReseacrcherCard";
 
 // const ProjectsPage = () => {
 // 	const [projects, setProjects] = useState([]);
@@ -21,9 +22,8 @@ const ProjectPage = () => {
 					<div className="flex flex-col justify-center items-center gap-2">
 						<h1 className="font-mono font-light">List of Project</h1>
 						<p className="w-[70%] text-center font-mono text-base">
-							We're a team of engineers, marketers, designers, all passionate
-							about video and the work we create together. Welcome to our blog
-							about video.
+							The Mux team has created some of the most respected products and
+							communities in video today.
 						</p>
 					</div>
 				</div>
@@ -42,8 +42,13 @@ const ProjectPage = () => {
 				</div>
 			</div>
 			<div className="paddingX border-x  border-y border-[#000]">
-				<div className="w-full flex justify-end items-center border-x border-[#000] px-4 min-h-screen">
-					xx
+				<div className="w-full border-x border-[#000]">
+					<div className="grid grid-cols-4">
+						<ReseacrcherCard />
+						<ReseacrcherCard />
+						<ReseacrcherCard />
+						<ReseacrcherCard />
+					</div>
 				</div>
 			</div>
 		</section>
