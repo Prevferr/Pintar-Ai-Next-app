@@ -9,7 +9,7 @@ interface Journal {
 
 
 const fetchCard = async () => {
-    const response = await fetch("api/get-journals", {
+    const response = await fetch("api/journals", {
       method: "GET"
     });
     const responseJson: Journal[] = await response.json();
