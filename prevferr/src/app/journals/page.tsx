@@ -1,5 +1,21 @@
+"use client";
 import React from "react";
 import JournalCard from "../components/JournalCard";
+import Link from "next/link";
+import { Icon } from "@iconify/react";
+
+// const JournalsPage = () => {
+// 	const [journals, setJournals] = useState([]);
+
+// 	useEffect(() => {
+// 	  const fetchProjects = async () => {
+// 		const response = await fetch('/api/journals'); // Assuming you have an API route set up to handle this request
+// 		const data = await response.json();
+// 		setJournals(data);
+// 	  };
+
+// 	  fetchProjects();
+// 	}, []);
 
 const JournalPage = () => {
 	return (
@@ -13,6 +29,14 @@ const JournalPage = () => {
 							about video and the work we create together. Welcome to our blog
 							about video.
 						</p>
+						<Link href="/researcher">
+							<button className="bg-[#FFB200] px-10 border py-3.5 rounded-full font-mono text-[#000]">
+								<span className="flex justify-between items-center gap-2">
+									See All By Researchers
+									<Icon icon="ph:arrow-up-right-thin" width={30} />
+								</span>
+							</button>
+						</Link>
 					</div>
 				</div>
 			</div>
@@ -30,7 +54,9 @@ const JournalPage = () => {
 				</div>
 			</div>
 			<div className="paddingX border-x  border-y border-[#000]">
-				<JournalCard />
+				<Link href={"/journals/journal_name"}>
+					<JournalCard />
+				</Link>
 				<JournalCard />
 				<JournalCard />
 				<JournalCard />

@@ -51,15 +51,15 @@ const ModalLogin: React.FC<ModalLoginProps> = () => {
 					/>
 					<div className="paddingYShorter2 w-[50%] flex flex-col justify-between gap-4">
 						<div className="flex flex-col gap-4">
-							<h3 className="text-[#1dbf73] text-left text-xl">
+							<h3 className="text-[#252525] font-mono text-justify text-xl">
 								Join to enjoy the ease of participating in nation-building and
 								access to other features!
 							</h3>
 							<div className="flex gap-2">
-								<p className="text-base font-light text-[#74767e]">
+								<p className="text-base font-light font-mono text-[#74767e]">
 									Already have an Account?
 								</p>
-								<p className="underline text-base text-[#1dbf73] cursor-pointer">
+								<p className="underline text-base font-mono text-[#1dbf73] cursor-pointer">
 									Sign in
 								</p>
 							</div>
@@ -69,19 +69,19 @@ const ModalLogin: React.FC<ModalLoginProps> = () => {
 							<Link href="/sign-up-investor">
 								<div className="border px-2 py-1 rounded-lg flex justify-start gap-4 items-center hover:border-[#1dbf73] cursor-pointer">
 									<Icon icon="ant-design:team-outlined" width={40} />
-									<p>I'm Project Owner</p>
+									<p className="font-mono">I'm Project Owner</p>
 								</div>
 							</Link>
 
 							<Link href="/sign-up-researcher">
 								<div className="border px-2 py-1  rounded-lg flex justify-start gap-4 items-center hover:border-[#1dbf73] cursor-pointer">
 									<Icon icon="ant-design:idcard-twotone" width={40} />
-									<p>I'm Researcher</p>
+									<p className="font-mono">I'm Researcher</p>
 								</div>
 							</Link>
 						</div>
 
-						<p className="text-[#74767e] font-light text-sm text-justify">
+						<p className="text-[#74767e] font-light font-mono text-xs text-justify">
 							By joining, you agree to the Prevferr Terms of Service and to
 							occasionally receive emails from us. Please read our Privacy
 							Policy to learn how we use your personal data.
