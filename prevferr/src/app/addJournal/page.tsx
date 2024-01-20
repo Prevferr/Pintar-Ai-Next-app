@@ -26,7 +26,7 @@ const AddJournalForm = () => {
 					"Content-Type": "application/json",
 				},
 			});
-			console.log(response.json(), "<<<< response journal");
+			// console.log(response.json(), "<<<< response journal");
 		} catch (error: any) {
 			console.log(error);
 			setError(error);
