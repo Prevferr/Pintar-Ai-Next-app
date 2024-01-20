@@ -10,14 +10,14 @@ export async function POST(req: Request) {
       password,
       research,
       education,
-      scope,
-      institution,
       profileImage,
       email,
       background,
       gender,
-      role,
       location,
+      phone_number,
+      jabatan_akademik,
+      investasi,
     } = (await req.json()) as {
       firstname: string;
       lastname: string;
@@ -32,6 +32,9 @@ export async function POST(req: Request) {
       gender: string;
       role: string;
       location: string;
+      phone_number: string
+      jabatan_akademik: string;
+      investasi: string;
     };
     const hashed_password = await hash(password, 10);
 
@@ -42,16 +45,17 @@ export async function POST(req: Request) {
         research,
         password: hashed_password,
         education,
-        scope,
-        institution,
         profileImage,
+        phone_number,
+        jabatan_akademik,
+        investasi,
         email: email.toLowerCase(),
         background,
         gender,
-        role,
         location,
       },
     });
+
 
     return NextResponse.json({
       researcher: {
@@ -59,13 +63,11 @@ export async function POST(req: Request) {
         lastname: researcher.lastname,
         education: researcher.education,
         research: researcher.research,
-        scope: researcher.scope,
-        institution: researcher.institution,
         profileImage: researcher.profileImage,
         email: researcher.email,
         background: researcher.background,
         gender: researcher.gender,
-        role: researcher.role,
+        investasi: researcher.investasi,
         location: researcher.location,
       },
     });
