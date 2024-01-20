@@ -14,7 +14,7 @@ const JournalCard = () => {
 						<img
 							src="https://cdn.sanity.io/images/2ejqxsnu/production/d6d798e8581a361efb9d9ef2923794da065d0e6e-450x445.jpg?w=128&q=75&fit=clip&auto=format"
 							className="h-10 w-10 rounded-full object-cover"
-							alt="Author"
+							alt="researcher"
 						/>
 						<p className="text-base font-mono">
 							<span className="text-[#565e67] text-sm">BY</span> Adam Turnere

@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../../../../helpers/lib/prisma";
 
 export async function POST(req: Request) {
@@ -33,4 +33,14 @@ export async function POST(req: Request) {
 			{ status: 500 }
 		);
 	}
+}
+
+// GET ALL JOURNALS
+export async function GET(req: NextRequest) {
+	const projects = await prisma.jurnal.findMany({
+		//   include: {
+		// 	order: true,
+		//   },
+	});
+	return NextResponse.json(projects);
 }
