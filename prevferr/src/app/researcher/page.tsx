@@ -42,6 +42,7 @@
 import React from "react";
 import ReseacrcherCard from "../components/ReseacrcherCard";
 import CategoryInput from "../components/CategoryInput";
+import Link from "next/link";
 
 // const ProjectsPage = () => {
 // 	const [projects, setProjects] = useState([]);
@@ -87,14 +88,21 @@ const ResearchersPage = () => {
 			<div className="paddingX border-x  border-t border-[#000]">
 				<div className="w-full border-x border-[#000] p-8">
 					<div className="grid grid-cols-4 gap-2">
-						<ReseacrcherCard />
-						<ReseacrcherCard />
-						<ReseacrcherCard />
-						<ReseacrcherCard />
-						<ReseacrcherCard />
-						<ReseacrcherCard />
-						<ReseacrcherCard />
-						<ReseacrcherCard />
+						<Link href={"/researcher/name"}>
+							<ReseacrcherCard />
+						</Link>
+						<Link href={"/researcher/name"}>
+							<ReseacrcherCard />
+						</Link>
+						<Link href={"/researcher/name"}>
+							<ReseacrcherCard />
+						</Link>
+						<Link href={"/researcher/name"}>
+							<ReseacrcherCard />
+						</Link>
+						<Link href={"/researcher/name"}>
+							<ReseacrcherCard />
+						</Link>
 					</div>
 				</div>
 			</div>

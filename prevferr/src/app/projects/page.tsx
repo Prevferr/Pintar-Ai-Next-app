@@ -1,7 +1,6 @@
 import React from "react";
-import ReseacrcherCard from "../components/ReseacrcherCard";
-import CategoryInput from "../components/CategoryInput";
 import ProjectCard from "../components/ProjectCard";
+import Link from "next/link";
 
 // const ProjectsPage = () => {
 // 	const [projects, setProjects] = useState([]);
@@ -47,9 +46,15 @@ const ProjectPage = () => {
 			<div className="paddingX border-x  border-t border-[#000]">
 				<div className="w-full border-x border-[#000] p-8">
 					<div className="grid grid-cols-3 gap-2">
-						<ProjectCard />
-						<ProjectCard />
-						<ProjectCard />
+						<Link href={"/projects/project-name"}>
+							<ProjectCard />
+						</Link>
+						<Link href={"/projects/project-name"}>
+							<ProjectCard />
+						</Link>
+						<Link href={"/projects/project-name"}>
+							<ProjectCard />
+						</Link>
 					</div>
 				</div>
 			</div>
