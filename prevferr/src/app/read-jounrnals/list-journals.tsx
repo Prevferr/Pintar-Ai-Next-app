@@ -1,5 +1,3 @@
-"use client";
-
 interface Journal {
     id: number;
     abstract: string;

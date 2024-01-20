@@ -1,6 +1,7 @@
 import { prisma } from "../../../../helpers/lib/prisma";
 import { hash } from "bcryptjs";
 import { NextResponse } from "next/server";
+import nodemailer from 'nodemailer';
 
 export async function POST(req: Request) {
   try {
@@ -38,7 +39,33 @@ export async function POST(req: Request) {
       },
     });
 
+    // Kirim email konfirmasi
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'dzulfiqar5819@mail.com',
+        pass: 'wzad nthu zpac jrea',
+      },
+    });
 
+    const mailOptions = {
+      from: 'dzulfiqar5819@mail.com',
+      to: investor.email,
+      subject: 'Selamat, registrasi berhasil!',
+      text: 'Terima kasih telah mendaftar di situs kami.',
+    };
+
+    let emailResult;
+
+    try {
+      emailResult = await transporter.sendMail(mailOptions);
+      console.log('Email terkirim: ' + emailResult.response);
+    } catch (error) {
+      console.error('Gagal mengirim email:', error);
+    }
+
+    // Sekarang, emailResult adalah hasil pengiriman email yang selesai
+    // dan akan dimasukkan dalam respons JSON
     return NextResponse.json({
       investor: {
         firstname: investor.firstname,
@@ -49,6 +76,7 @@ export async function POST(req: Request) {
         institution: investor.institution,
         industry_type: investor.industry_type,
       },
+      emailResult: emailResult ? emailResult.response : null,
     });
   } catch (error: any) {
     return new NextResponse(
