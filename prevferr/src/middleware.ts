@@ -4,3 +4,4 @@ export const config = {
   matcher: ["/profile"],
   // matcher: ["/((?!register|api|login).*)"],
 };
+ 
