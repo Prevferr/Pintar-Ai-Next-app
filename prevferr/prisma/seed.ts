@@ -21,75 +21,6 @@ async function main() {
   //   description: "Pertanian Skala Mikro di Indonesia",
   // };
 
-  const Project0 = {
-		// Data untuk portofolio Jurnal
-		// ...
-		project_name: "Meningkatkan Efisiensi Mesin",
-		description_project: "Bagaiman caranya meningkatkan efisiensi mesin",
-		project_image : "https://i.pinimg.com/564x/3d/b5/45/3db545fbc89144d41b8749e22af12d01.jpg",
-    project_status : false,
-    starting_date: new Date(),
-    expected_finish_date: new Date(),
-    project_budget  : 10000000,
-    tags: "Machine",
-    researcherId: 2,
-    investorId: 1,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-	};
-
-  const Project1 = {
-    // Data untuk portofolio Jurnal
-    // ...
-    project_name: "Pengembangan Aplikasi Pemantauan Tanaman",
-    description_project: "Pengembangan aplikasi pemantauan tanaman yang dapat membantu petani untuk memantau kondisi tanaman secara real-time",
-    project_image: "https://i.pinimg.com/564x/12/26/1a/12261af7aad2da6c91bae56db7031c66.jpg",
-    project_status: false,
-    starting_date: new Date(),
-    expected_finish_date: new Date(),
-    project_budget: 1000000,
-    tags: "Agriculture, Information Technology",
-    researcherId: 1,
-    investorId: 2,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  };
-
-  const Project2 = {
-    // Data untuk portofolio Jurnal
-    // ...
-    project_name: "Pengembangan Sistem Informasi Manajemen Pertanian",
-    description_project: "Pengembangan sistem informasi manajemen pertanian yang dapat membantu petani untuk mengelola usaha tani mereka secara lebih efisien",
-    project_image: "https://i.pinimg.com/564x/36/95/cc/3695ccaaa3120883eab3988dda8dd50c.jpg",
-    project_status: false,
-    starting_date: new Date(),
-    expected_finish_date: new Date(),
-    project_budget: 10000000,
-    tags: "Agriculture, Information Technology",
-    researcherId: 1,
-    investorId: 2,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  };
-
-  const Project3 = {
-    // Data untuk portofolio Jurnal
-    // ...
-    project_name: "Pengembangan Varietas Padi Tahan Kekeringan",
-    description_project: "Pengembangan varietas padi tahan kekeringan yang dapat meningkatkan produktivitas padi di daerah kering",
-    project_image: "https://i.pinimg.com/564x/c7/94/8a/c7948a813f05e64302d0ccb8a1a25c7b.jpg",
-    project_status: false,
-    starting_date: new Date(),
-    expected_finish_date: new Date(),
-    project_budget: 10000000,
-    tags: "Agriculture, Biotechnology",
-    researcherId: 1,
-    investorId: 2,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  };
-
-
   const Jurnal0 = {
     // Data untuk portofolio Jurnal
     // ...
@@ -188,7 +119,7 @@ async function main() {
       investasi: "Masoh blom tau",
       createdAt: new Date(),
       updatedAt: new Date(),
-      Project: { create: [Project1, Project2, Project3] },
+      Project: { create: [] }, // Project: { create: [Project1, Project2, Project3] }, sebelumnya
     },
   });
   const vincent = await prisma.researcher.upsert({
@@ -212,7 +143,7 @@ async function main() {
       investasi: "Masoh blom tau",
       createdAt: new Date(),
       updatedAt: new Date(),
-      Project: { create: Project0 },
+      Project: { create: [] }, // Project: { create: [Project0] }, sebelumnya
     },
   });
 
@@ -232,7 +163,7 @@ async function main() {
       industry_type: "Manufaktur",
       createdAt: new Date(),
       updatedAt: new Date(),
-      Project: { create: Project0 },
+      Project: { create: [] }, //Project: { create: Project0 },
       payment: { create: Payment },
     },
   });
@@ -252,11 +183,79 @@ async function main() {
       industry_type: "Agrikultur",
       createdAt: new Date(),
       updatedAt: new Date(),
-      Project: { create: [Project1, Project2, Project3] },
+      Project: { create: [] }, // Project: { create: [Project1, Project2, Project3] }, sebelumnya
       payment: { create: Payment },
     },
   });
   
+  const Project0 = {
+		// Data untuk portofolio Jurnal
+		// ...
+		project_name: "Meningkatkan Efisiensi Mesin",
+		description_project: "Bagaiman caranya meningkatkan efisiensi mesin",
+		project_image : "https://i.pinimg.com/564x/3d/b5/45/3db545fbc89144d41b8749e22af12d01.jpg",
+    project_status : false,
+    starting_date: new Date(),
+    expected_finish_date: new Date(),
+    project_budget  : 10000000,
+    tags: "Machine",
+    researcherId: 2,
+    investorId: 1,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+	};
+
+  const Project1 = {
+    // Data untuk portofolio Jurnal
+    // ...
+    project_name: "Pengembangan Aplikasi Pemantauan Tanaman",
+    description_project: "Pengembangan aplikasi pemantauan tanaman yang dapat membantu petani untuk memantau kondisi tanaman secara real-time",
+    project_image: "https://i.pinimg.com/564x/12/26/1a/12261af7aad2da6c91bae56db7031c66.jpg",
+    project_status: false,
+    starting_date: new Date(),
+    expected_finish_date: new Date(),
+    project_budget: 1000000,
+    tags: "Agriculture, Information Technology",
+    researcherId: 1,
+    investorId: 2,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
+
+  const Project2 = {
+    // Data untuk portofolio Jurnal
+    // ...
+    project_name: "Pengembangan Sistem Informasi Manajemen Pertanian",
+    description_project: "Pengembangan sistem informasi manajemen pertanian yang dapat membantu petani untuk mengelola usaha tani mereka secara lebih efisien",
+    project_image: "https://i.pinimg.com/564x/36/95/cc/3695ccaaa3120883eab3988dda8dd50c.jpg",
+    project_status: false,
+    starting_date: new Date(),
+    expected_finish_date: new Date(),
+    project_budget: 10000000,
+    tags: "Agriculture, Information Technology",
+    researcherId: 1,
+    investorId: 2,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
+
+  const Project3 = {
+    // Data untuk portofolio Jurnal
+    // ...
+    project_name: "Pengembangan Varietas Padi Tahan Kekeringan",
+    description_project: "Pengembangan varietas padi tahan kekeringan yang dapat meningkatkan produktivitas padi di daerah kering",
+    project_image: "https://i.pinimg.com/564x/c7/94/8a/c7948a813f05e64302d0ccb8a1a25c7b.jpg",
+    project_status: false,
+    starting_date: new Date(),
+    expected_finish_date: new Date(),
+    project_budget: 10000000,
+    tags: "Agriculture, Biotechnology",
+    researcherId: 1,
+    investorId: 2,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
+
 }
 main()
 	.then(async () => {
