@@ -1,12 +1,11 @@
 "use client";
-
 import Link from "next/link";
 import React from "react";
 import { Icon } from "@iconify/react";
-import { title } from "process";
 
 const JournalDetail = ({ params }: { params: { title: string } }) => {
 	const journal_name = params.title;
+	console.log(params);
 
 	return (
 		<div className="bg-[#f4f6f4] paddingX paddingYShorter">
