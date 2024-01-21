@@ -54,7 +54,7 @@ const AddJournalForm = () => {
 				</div>
 				<button type="submit">Upload Journal</button>
 			</form>
-			<Button btnClass="btn-primary" title="Upload" />
+			<Button btnClass="btn-primary" title="Upload Journal File" />
 		</>
 	);
 };
