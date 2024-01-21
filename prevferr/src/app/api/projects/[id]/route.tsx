@@ -19,7 +19,7 @@ type TProps = {
     });
   
     if (!project) {
-      return NextResponse.json({ error: "Journal not found" }, { status: 404 });
+      return NextResponse.json({ error: "Project not found" }, { status: 404 });
     }
   
     return NextResponse.json(project);
