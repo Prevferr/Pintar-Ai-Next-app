@@ -19,13 +19,6 @@ const items: MenuProps["items"] = [
 	{
 		key: "2",
 		label: (
-			// <a
-			// 	target="_blank"
-			// 	rel="noopener noreferrer"
-			// 	href="https://www.aliyun.com"
-			// >
-			// 	2nd menu item
-			// </a>
 			<Link href="/projects">
 				<div className="px-4 py-2 flex justify-start gap-4 items-center border rounded-xl border-[#084225]">
 					<Icon icon="eos-icons:project-outlined" width={40} color="#74767e" />
@@ -43,9 +36,9 @@ const DropDownList: React.FC = () => {
 			placement="bottom"
 			arrow={{ pointAtCenter: true }}
 		>
-			<div className="flex justify-start gap-2 px-3 py-1 items-center cursor-pointer rounded-lg bg-[#fff]">
-				<li className="text-[#252525] font-light ">Prevferr Pro</li>
-				<Icon icon="mingcute:down-line" color="#252525" />
+			<div className="flex justify-start gap-2 px-3 py-1 items-center cursor-pointer">
+				<li className="text-[#fff] hover:underline font-mono ">Guides</li>
+				<Icon icon="mingcute:down-line" color="#fff" />
 			</div>
 		</Dropdown>
 	);
