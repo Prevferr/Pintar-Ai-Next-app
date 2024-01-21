@@ -85,6 +85,7 @@ const AddJournalForm = () => {
 						if (file) {
 							const res = await edgestore.myPublicImages.upload({
 								file,
+								input: { type: "post" },
 								onProgressChange: (progress) => {
 									setProgress(progress);
 								},
