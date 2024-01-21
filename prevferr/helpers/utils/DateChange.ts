@@ -1,11 +1,11 @@
 import { format, parseISO, formatDistanceToNow } from "date-fns";
 
 const DateChnage = (dateString: string): string => {
-	const date = parseISO(dateString);
-	const formattedDate = format(date, "MMMM d, yyyy");
-	const relativeTime = formatDistanceToNow(date);
+  const date = parseISO(dateString);
+  const formattedDate = format(date, "MMMM d, yyyy");
+  const relativeTime = formatDistanceToNow(date);
 
-	return `${formattedDate} (about ${relativeTime} ago)`;
+  return `${formattedDate} (about ${relativeTime} ago)`;
 };
 
 export default DateChnage;
