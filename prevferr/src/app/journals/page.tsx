@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { JournalWithResearcher, Journals } from "../type-def";
 
-
 const JournalPage = () => {
 	const [journal, setJournal] = useState([] as JournalWithResearcher[]);
 	const fetchData = async () => {

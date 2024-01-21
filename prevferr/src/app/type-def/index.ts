@@ -34,6 +34,16 @@ export type JournalWithResearcher = {
 	portofolio: ResearcherJournal[];
 };
 
+export type JournalWithResearcherDetails = {
+	id: number;
+	abstract: string;
+	title: string;
+	createdAt: string;
+	updatedAt: string;
+	researcherId: number;
+	portofolio: ResearcherJournal[];
+};
+
 export type Journals = {
 	abstract: string;
 	title: string;
