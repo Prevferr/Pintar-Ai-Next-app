@@ -6,11 +6,11 @@ const prisma = new PrismaClient();
 
 import * as bcryptjs from "bcryptjs";
 
-// GET ALL USERS
-export async function GET(req: NextRequest) {
-	const researchers = await prisma.researcher.findMany();
-	return NextResponse.json(researchers);
-}
+// // GET ALL USERS
+// export async function GET(req: NextRequest) {
+// 	const researchers = await prisma.researcher.findMany();
+// 	return NextResponse.json(researchers);
+// }
 
 // ADD USER
 export async function POST(req: NextRequest) {
@@ -55,3 +55,14 @@ export async function POST(req: NextRequest) {
 
 	return NextResponse.json(rest, { status: 201 });
 }
+
+
+// GET ALL RESEARCHERS
+export async function GET(req: NextRequest) {
+	const projects = await prisma.researcher.findMany({
+	  include: {
+		portofolio: true,
+	  },
+	});
+	return NextResponse.json(projects);
+  }
