@@ -14,6 +14,7 @@ type TProps = {
         portofolio: true,
         // admin: true,
         // user: true,
+        // Dzul just kidding
       },
     });
   
