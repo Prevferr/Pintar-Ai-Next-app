@@ -1,5 +1,6 @@
-import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../../../../../helpers/lib/prisma";
+import { NextRequest, NextResponse } from "next/server";
+
 
 type TProps = {
   params: { title: string };
@@ -7,10 +8,11 @@ type TProps = {
 
 // GET journal by title
 export async function GET(req: NextRequest, { params }: TProps) {
+  
   const project = await prisma.jurnal.findFirst({
     where: { title: params.title },
-    include: {  
-      portofolio: true
+    include: {
+      portofolio: true,
     },
   });
 
