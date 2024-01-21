@@ -15,10 +15,11 @@ import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
 // import required modules
 import Link from "next/link";
 import LoadToTop from "../../helpers/utils/LoadToTop";
+import { Fragment } from "react";
 
 export default function Home() {
 	return (
-		<section className="">
+		<Fragment>
 			{/* layer 1  */}
 			<div className="bg-[#242628]">
 				<div className="paddingX">
@@ -236,6 +237,6 @@ export default function Home() {
 					Try Mux with a risk free trial and $20 in credit.
 				</p>
 			</div>
-		</section>
+		</Fragment>
 	);
 }

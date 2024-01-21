@@ -1,29 +1,45 @@
 import React from "react";
+import { JournalWithResearcher, Journals } from "../type-def";
+import TimeChange from "../../../helpers/utils/TimeChange";
+import DateChnage from "../../../helpers/utils/DateChange";
 
-const JournalCard = () => {
+type props = {
+	data: JournalWithResearcher;
+	// refetch: Function;
+};
+
+const JournalCard = ({ data }: props) => {
 	return (
 		<div className="w-full border-x border-[#000] cursor-pointer">
 			<div className="border-[#000] border-b h-48 flex justify-start gap-8 p-4 hover:bg-[#fff]">
-				<img src="https://cdn.sanity.io/images/2ejqxsnu/production/549f2b7b43d7cf94979e9061ec99a6c6e34a5f83-1200x760.png?w=750&q=75&fit=clip&auto=format" />
+				<img src="https://wp-pdf.com/wp-content/uploads/2021/07/pdf-image.png" />
 				<div className="w-[40%] flex flex-col gap-4">
 					<p className="font-mono text-[#565e67]">
-						NOVEMBER 27, 2023 (ABOUT 2 MONTHS AGO)
+						{/* NOVEMBER 27, 2023 (ABOUT 2 MONTHS AGO) */}
+						{DateChnage(data?.createdAt)}
 					</p>
-					<h1 className="text-xl">How to add a background video in Next.js</h1>
-					<div className="flex justify-start items-center gap-4">
-						<img
-							src="https://cdn.sanity.io/images/2ejqxsnu/production/d6d798e8581a361efb9d9ef2923794da065d0e6e-450x445.jpg?w=128&q=75&fit=clip&auto=format"
-							className="h-10 w-10 rounded-full object-cover"
-							alt="researcher"
-						/>
-						<p className="text-base font-mono">
-							<span className="text-[#565e67] text-sm">BY</span> Adam Turnere
-						</p>
-						<span className="text-[#565e67]">•</span>
-						<p className="font-mono text-[#565e67] text-sm">4 Months Ago</p>
-						<span className="text-[#565e67]">•</span>
-						<p className="text-base font-mono">ENGINEERING</p>
-					</div>
+					<h1 className="text-xl">{data?.title}</h1>
+					{data?.portofolio.map((e, i) => {
+						return (
+							<div className="flex justify-start items-center gap-4" key={i}>
+								<img
+									src={e?.profileImage}
+									className="h-10 w-10 rounded-full object-cover"
+									alt="researcher"
+								/>
+								<p className="text-base font-mono">
+									<span className="text-[#565e67] text-sm">BY</span>{" "}
+									{e?.firstname} {e?.lastname}
+								</p>
+								<span className="text-[#565e67]">•</span>
+								<p className="font-mono text-[#565e67] text-sm">
+									{TimeChange(e?.createdAt)}
+								</p>
+								<span className="text-[#565e67]">•</span>
+								<p className="text-base font-mono">{e?.research}</p>
+							</div>
+						);
+					})}
 				</div>
 			</div>
 		</div>

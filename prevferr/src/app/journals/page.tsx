@@ -1,23 +1,37 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import JournalCard from "../components/JournalCard";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
-
-// const JournalsPage = () => {
-// 	const [journals, setJournals] = useState([]);
-
-// 	useEffect(() => {
-// 	  const fetchProjects = async () => {
-// 		const response = await fetch('/api/journals'); // Assuming you have an API route set up to handle this request
-// 		const data = await response.json();
-// 		setJournals(data);
-// 	  };
-
-// 	  fetchProjects();
-// 	}, []);
+import { JournalWithResearcher, Journals } from "../type-def";
 
 const JournalPage = () => {
+	const [journal, setJournal] = useState([] as JournalWithResearcher[]);
+	const fetchData = async () => {
+		try {
+			const response = await fetch("http://localhost:3000/api/journals");
+
+			if (!response.ok) {
+				throw new Error("Failed fetching data");
+			}
+
+			const responseJSON = await response.json();
+			console.log(responseJSON);
+
+			setJournal(responseJSON);
+		} catch (error) {
+			if (error instanceof Error) {
+				console.log(error.message);
+			} else {
+				console.log(error);
+			}
+		}
+	};
+
+	useEffect(() => {
+		fetchData();
+	}, []);
+
 	return (
 		<section className="min-h-screen bg-[#E2E4DD]">
 			<div className="paddingX border-x border-[#000]">
@@ -54,13 +68,13 @@ const JournalPage = () => {
 				</div>
 			</div>
 			<div className="paddingX border-x  border-y border-[#000]">
-				<Link href={"/journals/journal_name"}>
-					<JournalCard />
-				</Link>
-				<JournalCard />
-				<JournalCard />
-				<JournalCard />
-				<JournalCard />
+				{journal?.map((journal) => {
+					return (
+						<Link href={`/journals/${journal?.title}`}>
+							<JournalCard data={journal} />
+						</Link>
+					);
+				})}
 			</div>
 		</section>
 	);
