@@ -15,7 +15,7 @@ export const LoginForm = () => {
 
   const searchParams = useSearchParams();
   // const callbackUrl = searchParams.get("callbackUrl") || "/";
-  const callbackUrl = searchParams.get("callbackUrl") || "/";
+  const callbackUrl = searchParams.get("callbackUrl") || "/welcome-researcher";
   console.log(callbackUrl, "APAAAAA");
   
 
