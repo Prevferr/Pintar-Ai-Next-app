@@ -6,7 +6,10 @@ const prisma = new PrismaClient();
 // import * as bcryptjs from "bcryptjs";
 const { hash } = require("bcryptjs");
 
-// npx prisma migrate reset --force
+/*
+npx prisma migrate reset --force
+npx prisma db seed
+*/
 
 async function main() {
   const pass1 = await hash("dzul123", 10);
