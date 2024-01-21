@@ -73,11 +73,19 @@ const AddJournalForm = () => {
 						setFile(e.target.files?.[0]);
 					}}
 				/>
+				<div className="h-[6px] w-44 border rounded overflow-hidden">
+					<div className="h-full bg-black transition-all duration-150" style={{ width: `${progress}%` }} />
+				</div>
 				<button
 					className="bg-white text-black rounded px-2 hover:opacity-80"
 					onClick={async () => {
 						if (file) {
-							const res = await edgestore.myPublicImages.upload({ file, onProgressChange: (progress) => {} });
+							const res = await edgestore.myPublicImages.upload({
+								file,
+								onProgressChange: (progress) => {
+									setProgress(progress);
+								},
+							});
 							setUrls({
 								url: res.url,
 								thumbnailUrl: res.thumbnailUrl,
