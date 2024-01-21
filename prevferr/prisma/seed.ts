@@ -42,7 +42,7 @@ async function main() {
     // ...
     abstract: "Abstract of the journal",
     title: "Petanian Skala Mikro di Indonesia",
-    researcherId: 0
+    researcherId: 1
     };
     
     const Jurnal1 = {
@@ -50,7 +50,7 @@ async function main() {
     // ...
     abstract: "Pengaruh iklim terhadap produktivitas pertanian",
     title: "Iklim: Faktor Utama Produktivitas Pertanian",
-    researcherId: 0
+    researcherId: 1
     };
     
     const Jurnal2 = {
@@ -58,7 +58,7 @@ async function main() {
     // ...
     abstract: "Peranan teknologi dalam meningkatkan produktivitas pertanian",
     title: "Teknologi: Kunci Produktivitas Pertanian",
-    researcherId: 0
+    researcherId: 1
     };
     
     const Jurnal3 = {
@@ -66,7 +66,7 @@ async function main() {
     // ...
     abstract: "Pengaruh pakan terhadap produktivitas ternak",
     title: "Pakan: Kunci Produktivitas Ternak",
-     researcherId: 0
+     researcherId: 1
     };
     
     const Jurnal4 = {
@@ -74,7 +74,7 @@ async function main() {
     // ...
     abstract: "Emisi gas buang kapal dan tumpahan minyak menjadi tantangan lingkungan yang dihadapi industri perkapalan.",
     title: "Melayari Laut Biru: Mencari Solusi Keberlanjutan Perkapalan",
-    researcherId: 1
+    researcherId: 2
     };
     
     const Jurnal5 = {
@@ -82,7 +82,7 @@ async function main() {
     // ...
     abstract: "Peningkatan penggunaan robot dan sistem otomatis meningkatkan efisiensi dan kecepatan pembongkaran muatan di pelabuhan.",
     title: "Pelabuhan Masa Depan: Sentuhan Teknologi, Sentuhan Kemanusiaan",
-    researcherId: 1
+    researcherId: 2
     };
     
     const Jurnal6 = {
@@ -90,7 +90,7 @@ async function main() {
     // ...
     abstract: "Teknologi digital dapat digunakan untuk meningkatkan efisiensi dan efektivitas pembelajaran, seperti pembelajaran jarak jauh, virtual reality, dan augmented reality.",
     title: "Teknologi Digital: Solusi untuk Pembelajaran Masa Depan",
-    researcherId: 0
+    researcherId: 1
     };
 
 	const Comment = {
