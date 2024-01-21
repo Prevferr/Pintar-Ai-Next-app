@@ -90,6 +90,8 @@ CREATE TABLE "Jurnal" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "portofolio_id" INTEGER,
+    -- "researcherId" INTEGER,
+
 
     CONSTRAINT "Jurnal_pkey" PRIMARY KEY ("id")
 );
@@ -131,6 +133,8 @@ ALTER TABLE "Comment" ADD CONSTRAINT "Comment_investorId_fkey" FOREIGN KEY ("inv
 
 -- -- AddForeignKey
 -- ALTER TABLE "Project" ADD CONSTRAINT "Project_commentId_fkey" FOREIGN KEY ("commentId") REFERENCES "Comment"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+
 
 -- AddForeignKey
 ALTER TABLE "Project" ADD CONSTRAINT "Project_researcherId_fkey" FOREIGN KEY ("researcherId") REFERENCES "Researcher"("id") ON DELETE SET NULL ON UPDATE CASCADE;

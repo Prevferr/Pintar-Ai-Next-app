@@ -1,10 +1,10 @@
-const { PrismaClient } = require('@prisma/client');
+const { PrismaClient } = require("@prisma/client");
 // import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 // import { hashText } from "../../helpers/utils/hash";
 // import * as bcryptjs from "bcryptjs";
-const {hash} = require("bcryptjs")
+const { hash } = require("bcryptjs");
 
 // npx prisma migrate reset --force
 
@@ -22,96 +22,99 @@ async function main() {
   // };
 
   const Project = {
-		// Data untuk portofolio Jurnal
-		// ...
-		project_name: "Meningkatkan Efisiensi Mesin",
-		description_project: "Bagaiman caranya meningkatkan efisiensi mesin",
-		project_image : "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//104/MTA-63697343/no-brand_no-brand_full01.jpg",
-    project_status : false,
+    // Data untuk portofolio Jurnal
+    // ...
+    project_name: "Meningkatkan Efisiensi Mesin",
+    description_project: "Bagaiman caranya meningkatkan efisiensi mesin",
+    project_image:
+      "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//104/MTA-63697343/no-brand_no-brand_full01.jpg",
+    project_status: false,
     starting_date: new Date(),
     expected_finish_date: new Date(),
-    project_budget  : 10000000,
+    project_budget: 10000000,
     tags: "Machine",
     createdAt: new Date(),
     updatedAt: new Date(),
-	};
-
+  };
 
   const Jurnal0 = {
     // Data untuk portofolio Jurnal
     // ...
     abstract: "Abstract of the journal",
     title: "Petanian Skala Mikro di Indonesia",
-    researcherId: 1
-    };
-    
-    const Jurnal1 = {
+    researcherId: 1,
+  };
+
+  const Jurnal1 = {
     // Data untuk portofolio Jurnal
     // ...
     abstract: "Pengaruh iklim terhadap produktivitas pertanian",
     title: "Iklim: Faktor Utama Produktivitas Pertanian",
-    researcherId: 1
-    };
-    
-    const Jurnal2 = {
+    researcherId: 2,
+  };
+
+  const Jurnal2 = {
     // Data untuk portofolio Jurnal
     // ...
     abstract: "Peranan teknologi dalam meningkatkan produktivitas pertanian",
     title: "Teknologi: Kunci Produktivitas Pertanian",
-    researcherId: 1
-    };
-    
-    const Jurnal3 = {
+    researcherId: 1,
+  };
+
+  const Jurnal3 = {
     // Data untuk portofolio Jurnal
     // ...
     abstract: "Pengaruh pakan terhadap produktivitas ternak",
     title: "Pakan: Kunci Produktivitas Ternak",
-     researcherId: 1
-    };
-    
-    const Jurnal4 = {
+    researcherId: 1,
+  };
+
+  const Jurnal4 = {
     // Data untuk portofolio Jurnal
     // ...
-    abstract: "Emisi gas buang kapal dan tumpahan minyak menjadi tantangan lingkungan yang dihadapi industri perkapalan.",
+    abstract:
+      "Emisi gas buang kapal dan tumpahan minyak menjadi tantangan lingkungan yang dihadapi industri perkapalan.",
     title: "Melayari Laut Biru: Mencari Solusi Keberlanjutan Perkapalan",
-    researcherId: 2
-    };
-    
-    const Jurnal5 = {
+    researcherId: 1,
+  };
+
+  const Jurnal5 = {
     // Data untuk portofolio Jurnal
     // ...
-    abstract: "Peningkatan penggunaan robot dan sistem otomatis meningkatkan efisiensi dan kecepatan pembongkaran muatan di pelabuhan.",
+    abstract:
+      "Peningkatan penggunaan robot dan sistem otomatis meningkatkan efisiensi dan kecepatan pembongkaran muatan di pelabuhan.",
     title: "Pelabuhan Masa Depan: Sentuhan Teknologi, Sentuhan Kemanusiaan",
-    researcherId: 2
-    };
-    
-    const Jurnal6 = {
+    researcherId: 1,
+  };
+
+  const Jurnal6 = {
     // Data untuk portofolio Jurnal
     // ...
-    abstract: "Teknologi digital dapat digunakan untuk meningkatkan efisiensi dan efektivitas pembelajaran, seperti pembelajaran jarak jauh, virtual reality, dan augmented reality.",
+    abstract:
+      "Teknologi digital dapat digunakan untuk meningkatkan efisiensi dan efektivitas pembelajaran, seperti pembelajaran jarak jauh, virtual reality, dan augmented reality.",
     title: "Teknologi Digital: Solusi untuk Pembelajaran Masa Depan",
-    researcherId: 1
-    };
+    researcherId: 2,
+  };
 
-	const Comment = {
-		// Data untuk Comment
-		// ...
-		comment: "Bagus sekali",
+  const Comment = {
+    // Data untuk Comment
+    // ...
+    comment: "Bagus sekali",
     createdAt: new Date(),
-		updatedAt: new Date(),
-	};
+    updatedAt: new Date(),
+  };
 
-	const Payment = {
-		// Data untuk Comment
-		// ...
-		price: 500000,
-		createdAt: new Date(),
-		updatedAt: new Date(),
-		// Investor: "alvin",
-		// investorId: 1,
-		status: false,
-		invoice: "Ini adalah invoice",
-	};
+  const Payment = {
+    // Data untuk Comment
+    // ...
+    price: 500000,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    // Investor: "alvin",
+    // investorId: 1,
+    status: false,
+    invoice: "Ini adalah invoice",
+  };
 
   // Seeding satu researcher
   const dzul = await prisma.researcher.upsert({
@@ -186,11 +189,11 @@ async function main() {
   console.log({ dzul, vincent, alvin });
 }
 main()
-	.then(async () => {
-		await prisma.$disconnect();
-	})
-	.catch(async (e) => {
-		console.error(e);
-		await prisma.$disconnect();
-		process.exit(1);
-	});
+  .then(async () => {
+    await prisma.$disconnect();
+  })
+  .catch(async (e) => {
+    console.error(e);
+    await prisma.$disconnect();
+    process.exit(1);
+  });
