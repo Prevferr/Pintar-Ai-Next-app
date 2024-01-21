@@ -43,26 +43,23 @@ export async function POST(req: Request) {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'dzulfiqar5819@mail.com',
-        pass: 'wzad nthu zpac jrea',
+        user: 'pintarscholar@gmail.com',
+        pass: 'ptfk nwfa znfd oajn',
       },
     });
 
     const mailOptions = {
-      from: 'dzulfiqar5819@mail.com',
+      from: {
+        name: "Pintar Scholar",
+        address: 'pintarscholar@gmail.com',
+      },
       to: investor.email,
       subject: 'Selamat, registrasi berhasil!',
       text: 'Terima kasih telah mendaftar di situs kami.',
     };
 
-    let emailResult;
 
-    try {
-      emailResult = await transporter.sendMail(mailOptions);
-      console.log('Email terkirim: ' + emailResult.response);
-    } catch (error) {
-      console.error('Gagal mengirim email:', error);
-    }
+     await transporter.sendMail(mailOptions);
 
     // Sekarang, emailResult adalah hasil pengiriman email yang selesai
     // dan akan dimasukkan dalam respons JSON
@@ -75,8 +72,7 @@ export async function POST(req: Request) {
         budget: investor.budget,
         institution: investor.institution,
         industry_type: investor.industry_type,
-      },
-      emailResult: emailResult ? emailResult.response : null,
+      }
     });
   } catch (error: any) {
     return new NextResponse(
