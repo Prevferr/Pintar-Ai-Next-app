@@ -17,6 +17,7 @@ import { Icon } from "@iconify/react";
 // 	  fetchProjects();
 // 	}, []);
 
+
 const JournalPage = () => {
 	return (
 		<section className="min-h-screen bg-[#E2E4DD]">
