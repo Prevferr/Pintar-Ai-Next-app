@@ -55,11 +55,14 @@ export const authOptions: NextAuthOptions = {
 	],
 	callbacks: {
 		session: ({ session, token }) => {
+			console.log(session, "wjwkwkwkwkwkwkwkwk");
+
 			return {
 				...session,
 				user: {
 					...session.user,
 					id: token.id,
+					email: token.email,
 					randomKey: token.randomKey,
 				},
 			};
@@ -70,6 +73,7 @@ export const authOptions: NextAuthOptions = {
 				return {
 					...token,
 					id: u.id,
+					email: u.email,
 					randomKey: u.randomKey,
 				};
 			}
