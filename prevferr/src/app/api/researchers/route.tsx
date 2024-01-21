@@ -37,19 +37,20 @@ export async function POST(req: NextRequest) {
 		data: {
 			firstname: body.firstname,
 			lastname: body.lastname,
-			password: hashedPassword,
 			education: body.education,
-			research: body.research,
-			scope: body.scope,
-			institution: body.institution,
 			profileImage: body.profileImage,
 			email: body.email,
+			password: hashedPassword,
+			research: body.research,
+			phone_number: body.phone_number,
 			background: body.background,
 			gender: body.gender,
-			role: body.role,
+			jabatan_akademik: body.jabatan_akademik,
 			location: body.location,
+			investasi: body.investasi
 		},
 	});
+
 	const { password, ...rest } = userNew;
 
 	return NextResponse.json(rest, { status: 201 });
