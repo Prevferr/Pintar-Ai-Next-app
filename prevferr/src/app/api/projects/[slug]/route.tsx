@@ -8,10 +8,10 @@ type TProps = {
 
 // GET order by id
 export async function GET(req: NextRequest, { params }: TProps) {
-  const slugmodified = params.project_name.replace(/%20/g, "-")
+  // const slugmodified = params.project_name.replace(/%20/g, "-")
   const project = await prisma.project.findFirst({
     
-    where: { project_name: slugmodified },
+    where: { project_name: params.project_name },
     include: {
       researcher: true,
       investor: true,

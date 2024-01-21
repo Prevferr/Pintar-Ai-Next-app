@@ -46,6 +46,7 @@ import { prisma } from "../../../../helpers/lib/prisma";
 // GET ALL PROJECTS
 export async function GET(req: NextRequest) {
 	const projects = await prisma.project.findMany({
+		
 	  include: {
 		researcher: true,
 		investor: true,
