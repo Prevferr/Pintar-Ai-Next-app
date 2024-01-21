@@ -1,6 +1,7 @@
 import { prisma } from "../../../../helpers/lib/prisma";
 import { hash } from "bcryptjs";
 import { NextResponse } from "next/server";
+import nodemailer from 'nodemailer';
 
 export async function POST(req: Request) {
   try {
@@ -55,6 +56,28 @@ export async function POST(req: Request) {
         location,
       },
     });
+
+      // Kirim email konfirmasi
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'pintarscholar@gmail.com',
+          pass: 'ptfk nwfa znfd oajn',
+        },
+      });
+  
+      const mailOptions = {
+        from: {
+          name: "Pintar Scholar",
+          address: 'pintarscholar@gmail.com',
+        },
+        to: researcher.email,
+        subject: 'Selamat, registrasi berhasil!',
+        text: 'Terima kasih telah mendaftar di situs kami.',
+      };
+  
+  
+       await transporter.sendMail(mailOptions);
 
 
     return NextResponse.json({
