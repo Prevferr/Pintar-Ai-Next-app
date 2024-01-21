@@ -90,7 +90,7 @@ async function main() {
     // ...
     abstract: "Teknologi digital dapat digunakan untuk meningkatkan efisiensi dan efektivitas pembelajaran, seperti pembelajaran jarak jauh, virtual reality, dan augmented reality.",
     title: "Teknologi Digital: Solusi untuk Pembelajaran Masa Depan",
-    researcherId: 0
+    researcherId: 1
     };
 
 	const Comment = {
