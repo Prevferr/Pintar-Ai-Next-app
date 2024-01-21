@@ -21,20 +21,73 @@ async function main() {
   //   description: "Pertanian Skala Mikro di Indonesia",
   // };
 
-  const Project = {
+  const Project0 = {
 		// Data untuk portofolio Jurnal
 		// ...
 		project_name: "Meningkatkan Efisiensi Mesin",
 		description_project: "Bagaiman caranya meningkatkan efisiensi mesin",
-		project_image : "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//104/MTA-63697343/no-brand_no-brand_full01.jpg",
+		project_image : "https://i.pinimg.com/564x/3d/b5/45/3db545fbc89144d41b8749e22af12d01.jpg",
     project_status : false,
     starting_date: new Date(),
     expected_finish_date: new Date(),
     project_budget  : 10000000,
     tags: "Machine",
+    researcherId: 2,
+    investorId: 1,
     createdAt: new Date(),
     updatedAt: new Date(),
 	};
+
+  const Project1 = {
+    // Data untuk portofolio Jurnal
+    // ...
+    project_name: "Pengembangan Aplikasi Pemantauan Tanaman",
+    description_project: "Pengembangan aplikasi pemantauan tanaman yang dapat membantu petani untuk memantau kondisi tanaman secara real-time",
+    project_image: "https://i.pinimg.com/564x/12/26/1a/12261af7aad2da6c91bae56db7031c66.jpg",
+    project_status: false,
+    starting_date: new Date(),
+    expected_finish_date: new Date(),
+    project_budget: 1000000,
+    tags: "Agriculture, Information Technology",
+    researcherId: 1,
+    investorId: 2,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
+
+  const Project2 = {
+    // Data untuk portofolio Jurnal
+    // ...
+    project_name: "Pengembangan Sistem Informasi Manajemen Pertanian",
+    description_project: "Pengembangan sistem informasi manajemen pertanian yang dapat membantu petani untuk mengelola usaha tani mereka secara lebih efisien",
+    project_image: "https://i.pinimg.com/564x/36/95/cc/3695ccaaa3120883eab3988dda8dd50c.jpg",
+    project_status: false,
+    starting_date: new Date(),
+    expected_finish_date: new Date(),
+    project_budget: 10000000,
+    tags: "Agriculture, Information Technology",
+    researcherId: 1,
+    investorId: 2,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
+
+  const Project3 = {
+    // Data untuk portofolio Jurnal
+    // ...
+    project_name: "Pengembangan Varietas Padi Tahan Kekeringan",
+    description_project: "Pengembangan varietas padi tahan kekeringan yang dapat meningkatkan produktivitas padi di daerah kering",
+    project_image: "https://i.pinimg.com/564x/c7/94/8a/c7948a813f05e64302d0ccb8a1a25c7b.jpg",
+    project_status: false,
+    starting_date: new Date(),
+    expected_finish_date: new Date(),
+    project_budget: 10000000,
+    tags: "Agriculture, Biotechnology",
+    researcherId: 1,
+    investorId: 2,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
 
 
   const Jurnal0 = {
@@ -125,9 +178,9 @@ async function main() {
         "https://i0.wp.com/anitrendz.net/news/wp-content/uploads/2022/10/roadtonarutopv_screenshot.png?resize=696%2C392&ssl=1",
       email: "dzul@mail.com",
       password: pass1,
-      research: "Pertanian",
+      research: "Agriculture",
       phone_number: "08569921322",
-      background: "Pertanian",
+      background: "Agriculture",
       gender: "Male",
       jabatan_akademik: "Dosen",
       portofolio: { create: [Jurnal0, Jurnal1, Jurnal2, Jurnal3] },
@@ -135,7 +188,7 @@ async function main() {
       investasi: "Masoh blom tau",
       createdAt: new Date(),
       updatedAt: new Date(),
-      Project: { create: Project },
+      Project: { create: [Project1, Project2, Project3] },
     },
   });
   const vincent = await prisma.researcher.upsert({
@@ -159,7 +212,7 @@ async function main() {
       investasi: "Masoh blom tau",
       createdAt: new Date(),
       updatedAt: new Date(),
-      Project: { create: Project },
+      Project: { create: Project0 },
     },
   });
 
@@ -176,14 +229,34 @@ async function main() {
       profileImage:
         "https://static.wikia.nocookie.net/naruto/images/2/21/Sasuke_Part_3_V2.png/revision/latest?cb=20170627161720&path-prefix=id",
       institution: "Pribadi",
-      industry_type: "Agrikultur",
+      industry_type: "Manufaktur",
       createdAt: new Date(),
       updatedAt: new Date(),
-      Project: { create: Project },
+      Project: { create: Project0 },
       payment: { create: Payment },
     },
   });
-  console.log({ dzul, vincent, alvin });
+
+  const adlin = await prisma.investor.upsert({
+    where: { email: "adlin@mail.com" },
+    update: {},
+    create: {
+      email: "adlin@mail.com",
+      password: pass3,
+      firstname: "adlin",
+      lastname: "uye",
+      budget: 3000000,
+      profileImage:
+        "https://static.wikia.nocookie.net/naruto/images/2/21/Sasuke_Part_3_V2.png/revision/latest?cb=20170627161720&path-prefix=id",
+      institution: "Pribadi",
+      industry_type: "Agrikultur",
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      Project: { create: [Project1, Project2, Project3] },
+      payment: { create: Payment },
+    },
+  });
+  
 }
 main()
 	.then(async () => {
