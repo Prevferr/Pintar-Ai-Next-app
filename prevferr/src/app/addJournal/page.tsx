@@ -3,6 +3,7 @@
 import { useEdgeStore } from "@/lib/edgestore";
 import Link from "next/link";
 import React, { useState } from "react";
+import { SingleImageDropzone } from "../components/singe-image-dropzone";
 
 const AddJournalForm = () => {
 	// Edge store state
@@ -67,10 +68,12 @@ const AddJournalForm = () => {
 				<button type="submit">Create Journal</button>
 			</form>
 			<div className="flex flex-col items-center m-6 gap-2">
-				<input
-					type="file"
-					onChange={(e) => {
-						setFile(e.target.files?.[0]);
+				<SingleImageDropzone
+					width={200}
+					height={200}
+					value={file}
+					onChange={(file) => {
+						setFile(file);
 					}}
 				/>
 				<div className="h-[6px] w-44 border rounded overflow-hidden">
