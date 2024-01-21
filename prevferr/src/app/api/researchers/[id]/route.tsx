@@ -1,6 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
 import schema from "../schema";
 import { PrismaClient } from "@prisma/client";
+import { NextRequest, NextResponse } from "next/server";
+
+
 const prisma = new PrismaClient();
 
 type TProps = {
