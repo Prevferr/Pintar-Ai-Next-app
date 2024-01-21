@@ -1,6 +1,12 @@
 import React from "react";
+import { Journals } from "../type-def";
 
-const JournalCard = () => {
+type props = {
+	data: Journals;
+	// refetch: Function;
+};
+
+const JournalCard = ({ data }: props) => {
 	return (
 		<div className="w-full border-x border-[#000] cursor-pointer">
 			<div className="border-[#000] border-b h-48 flex justify-start gap-8 p-4 hover:bg-[#fff]">
@@ -9,7 +15,7 @@ const JournalCard = () => {
 					<p className="font-mono text-[#565e67]">
 						NOVEMBER 27, 2023 (ABOUT 2 MONTHS AGO)
 					</p>
-					<h1 className="text-xl">How to add a background video in Next.js</h1>
+					<h1 className="text-xl">{data?.title}</h1>
 					<div className="flex justify-start items-center gap-4">
 						<img
 							src="https://cdn.sanity.io/images/2ejqxsnu/production/d6d798e8581a361efb9d9ef2923794da065d0e6e-450x445.jpg?w=128&q=75&fit=clip&auto=format"
