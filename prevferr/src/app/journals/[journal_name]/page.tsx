@@ -1,8 +1,23 @@
-import React from "react";
+"use client";
 
-const JournalDetail = () => {
+import Link from "next/link";
+import React from "react";
+import { Icon } from "@iconify/react";
+import { title } from "process";
+
+const JournalDetail = ({ params }: { params: { title: string } }) => {
+	const journal_name = params.title;
+
 	return (
 		<div className="bg-[#f4f6f4] paddingX paddingYShorter">
+			<Link href="/journals">
+				<div className="m-4 flex justify-end gap-2 items-center cursor-pointer">
+					<Icon icon="ep:back" width={30} color="#000" />
+					<p className="text-xl font-mono text-[#000] hover:underline">
+						Back to Lists
+					</p>
+				</div>
+			</Link>
 			<div className="paddingX paddingY bg-[#fff] min-h-screen border">
 				<div className="w-[60%] mx-auto flex flex-col gap-4">
 					<p className="font-mono text-[#565e67]">

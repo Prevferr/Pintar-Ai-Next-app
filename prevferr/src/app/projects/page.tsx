@@ -1,21 +1,38 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import ProjectCard from "../components/ProjectCard";
 import Link from "next/link";
-
-// const ProjectsPage = () => {
-// 	const [projects, setProjects] = useState([]);
-
-// 	useEffect(() => {
-// 	  const fetchProjects = async () => {
-// 		const response = await fetch('/api/projects'); // Assuming you have an API route set up to handle this request
-// 		const data = await response.json();
-// 		setProjects(data);
-// 	  };
-
-// 	  fetchProjects();
-// 	}, []);
+import { Project } from "../type-def";
 
 const ProjectPage = () => {
+	const [projects, setProjects] = useState([] as Project[]);
+	const fetchData = async () => {
+		try {
+			const response = await fetch("http://localhost:3000/api/projects");
+
+			if (!response.ok) {
+				throw new Error("Failed fetching data");
+			}
+
+			const responseJSON = await response.json();
+			console.log(responseJSON);
+
+			setProjects(responseJSON);
+		} catch (error) {
+			if (error instanceof Error) {
+				console.log(error.message);
+			} else {
+				console.log(error);
+			}
+		}
+	};
+
+	useEffect(() => {
+		fetchData();
+	}, []);
+
+	console.log(projects, "memek");
+
 	return (
 		<section className="min-h-screen bg-[#E2E4DD]">
 			<div className="paddingX border-x border-[#000] bg-[#ffb200]">
@@ -46,15 +63,13 @@ const ProjectPage = () => {
 			<div className="paddingX border-x  border-t border-[#000]">
 				<div className="w-full border-x border-[#000] p-8">
 					<div className="grid grid-cols-3 gap-2">
-						<Link href={"/projects/project-name"}>
-							<ProjectCard />
-						</Link>
-						<Link href={"/projects/project-name"}>
-							<ProjectCard />
-						</Link>
-						<Link href={"/projects/project-name"}>
-							<ProjectCard />
-						</Link>
+						{projects?.map((project) => {
+							return (
+								<Link href={`/projects/${project?.project_name}`}>
+									<ProjectCard data={project} />
+								</Link>
+							);
+						})}
 					</div>
 				</div>
 			</div>
