@@ -11,8 +11,10 @@ type TProps = {
     const journal = await prisma.jurnal.findUnique({
       where: { id: parseInt(params.id) },
       include: {
-        researcher: true,
-
+        portofolio: true,
+        // admin: true,
+        // user: true,
+        // Dzul just kidding
       },
     });
   
