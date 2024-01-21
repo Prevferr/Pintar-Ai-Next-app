@@ -1,4 +1,5 @@
 // import LoadToTop from "../../helpers/utils/LoadToTop";
+import { EdgeStoreProvider } from "@/lib/edgestore";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import "./globals.css";
@@ -16,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				<NextAuthProvider>
 					<section>
 						<Navbar />
-						{children}
+						<EdgeStoreProvider>{children}</EdgeStoreProvider>
 						<Footer />
 					</section>
 				</NextAuthProvider>
