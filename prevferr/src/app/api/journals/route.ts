@@ -36,9 +36,9 @@ export async function POST(req: Request) {
 // GET ALL JOURNALS
 export async function GET(req: NextRequest) {
 	const projects = await prisma.jurnal.findMany({
-	//   include: {
-	// 	order: true,
-	//   },
+	  include: {
+		portofolio: true,
+	  },
 	});
 	return NextResponse.json(projects);
   }
