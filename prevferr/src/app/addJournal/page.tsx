@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Button from "../components/Button";
 
 const AddJournalForm = () => {
 	const [form, setForm] = useState({
@@ -53,6 +54,7 @@ const AddJournalForm = () => {
 				</div>
 				<button type="submit">Upload Journal</button>
 			</form>
+			<Button btnClass="btn-primary" title="Upload" />
 		</>
 	);
 };
