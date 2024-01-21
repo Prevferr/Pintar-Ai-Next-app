@@ -1,3 +1,9 @@
+/*
+npx prisma migrate reset --force
+npx prisma db seed
+*/
+
+
 const { PrismaClient } = require("@prisma/client");
 // import { PrismaClient } from "@prisma/client";
 
