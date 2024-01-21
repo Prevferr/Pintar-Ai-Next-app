@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import JournalCard from "../components/JournalCard";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
-import { Journals } from "../type-def";
+import { JournalWithResearcher, Journals } from "../type-def";
 
 const JournalPage = () => {
-	const [journal, setJournal] = useState([] as Journals[]);
+	const [journal, setJournal] = useState([] as JournalWithResearcher[]);
 	const fetchData = async () => {
 		try {
 			const response = await fetch("http://localhost:3000/api/journals");
@@ -32,7 +32,6 @@ const JournalPage = () => {
 		fetchData();
 	}, []);
 
-	console.log(journal, "<<<<");
 	return (
 		<section className="min-h-screen bg-[#E2E4DD]">
 			<div className="paddingX border-x border-[#000]">
