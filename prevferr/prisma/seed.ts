@@ -37,12 +37,61 @@ async function main() {
 	};
 
 
-	const Jurnal = {
-		// Data untuk portofolio Jurnal
-		// ...
-		abstract: "Abstract of the journal",
-		title: "Petanian Skala Mikro di Indonesia",
-	};
+  const Jurnal0 = {
+    // Data untuk portofolio Jurnal
+    // ...
+    abstract: "Abstract of the journal",
+    title: "Petanian Skala Mikro di Indonesia",
+    researcherId: 0
+    };
+    
+    const Jurnal1 = {
+    // Data untuk portofolio Jurnal
+    // ...
+    abstract: "Pengaruh iklim terhadap produktivitas pertanian",
+    title: "Iklim: Faktor Utama Produktivitas Pertanian",
+    researcherId: 0
+    };
+    
+    const Jurnal2 = {
+    // Data untuk portofolio Jurnal
+    // ...
+    abstract: "Peranan teknologi dalam meningkatkan produktivitas pertanian",
+    title: "Teknologi: Kunci Produktivitas Pertanian",
+    researcherId: 0
+    };
+    
+    const Jurnal3 = {
+    // Data untuk portofolio Jurnal
+    // ...
+    abstract: "Pengaruh pakan terhadap produktivitas ternak",
+    title: "Pakan: Kunci Produktivitas Ternak",
+     researcherId: 0
+    };
+    
+    const Jurnal4 = {
+    // Data untuk portofolio Jurnal
+    // ...
+    abstract: "Emisi gas buang kapal dan tumpahan minyak menjadi tantangan lingkungan yang dihadapi industri perkapalan.",
+    title: "Melayari Laut Biru: Mencari Solusi Keberlanjutan Perkapalan",
+    researcherId: 1
+    };
+    
+    const Jurnal5 = {
+    // Data untuk portofolio Jurnal
+    // ...
+    abstract: "Peningkatan penggunaan robot dan sistem otomatis meningkatkan efisiensi dan kecepatan pembongkaran muatan di pelabuhan.",
+    title: "Pelabuhan Masa Depan: Sentuhan Teknologi, Sentuhan Kemanusiaan",
+    researcherId: 1
+    };
+    
+    const Jurnal6 = {
+    // Data untuk portofolio Jurnal
+    // ...
+    abstract: "Teknologi digital dapat digunakan untuk meningkatkan efisiensi dan efektivitas pembelajaran, seperti pembelajaran jarak jauh, virtual reality, dan augmented reality.",
+    title: "Teknologi Digital: Solusi untuk Pembelajaran Masa Depan",
+    researcherId: 0
+    };
 
 	const Comment = {
 		// Data untuk Comment
@@ -81,7 +130,7 @@ async function main() {
       background: "Pertanian",
       gender: "Male",
       jabatan_akademik: "Dosen",
-      portofolio: { create: Jurnal },
+      portofolio: { create: [Jurnal0, Jurnal1, Jurnal2, Jurnal3] },
       location: "Jakarta",
       investasi: "Masoh blom tau",
       createdAt: new Date(),
@@ -105,7 +154,7 @@ async function main() {
       background: "Perkapalan",
       gender: "Male",
       jabatan_akademik: "Dosen",
-      portofolio: { create: Jurnal },
+      portofolio: { create: [Jurnal4, Jurnal5] },
       location: "Madura",
       investasi: "Masoh blom tau",
       createdAt: new Date(),
