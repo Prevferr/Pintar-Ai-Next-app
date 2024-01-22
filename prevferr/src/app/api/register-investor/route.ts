@@ -2,28 +2,38 @@ import { prisma } from "../../../../helpers/lib/prisma";
 import { hash } from "bcryptjs";
 import { NextResponse } from "next/server";
 import nodemailer from 'nodemailer';
+import { z } from "zod";
+
+// Define the Zod schema for validation
+const investorSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(5),
+  firstname: z.string().min(1),
+  lastname: z.string().min(1),
+  budget: z.number(),
+  profileImage: z.string().min(1),
+  institution: z.string().min(1),
+  industry_type: z.string().min(1),
+});
 
 export async function POST(req: Request) {
   try {
-    const {
-      firstname,
-      lastname,
-      email,
-      password,
-      budget,
-      profileImage,
-      institution,
-      industry_type,
-    } = (await req.json()) as {
-      email: string;
-      password: string;
-      firstname: string;
-      lastname: string;
-      budget: number;
-      profileImage: string;
-      institution: string;
-      industry_type: string;
-    };
+    const requestData = await req.json();
+
+    // Validate data with Zod schema
+    const result = investorSchema.safeParse(requestData);
+
+    if (!result.success) {
+      return new NextResponse(JSON.stringify({
+        status: "error",
+        message: "Validation failed",
+        errors: result.error.issues,
+      }), { status: 400 });
+    }
+
+    // Destructure validated data
+    const { firstname, lastname, email, password, budget, profileImage, institution, industry_type } = result.data;
+
     const hashed_password = await hash(password, 10);
 
     const investor = await prisma.investor.create({
@@ -39,7 +49,7 @@ export async function POST(req: Request) {
       },
     });
 
-    // Kirim email konfirmasi
+    // Set up email sending with nodemailer
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -58,11 +68,9 @@ export async function POST(req: Request) {
       text: 'Terima kasih telah mendaftar di situs kami.',
     };
 
+    await transporter.sendMail(mailOptions);
 
-     await transporter.sendMail(mailOptions);
-
-    // Sekarang, emailResult adalah hasil pengiriman email yang selesai
-    // dan akan dimasukkan dalam respons JSON
+    // Send response
     return NextResponse.json({
       investor: {
         firstname: investor.firstname,
