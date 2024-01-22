@@ -8,7 +8,7 @@ import DateChnage from "../../../../helpers/utils/DateChange";
 
 const JournalDetail = ({ params }: { params: { slug: string } }) => {
 	const journalName = params.slug;
-	console.log(journalName);
+	// console.log(journalName);
 	const [journalData, setJournalData] =
 		useState<JournalWithResearcherDetails | null>(null);
 
@@ -39,7 +39,7 @@ const JournalDetail = ({ params }: { params: { slug: string } }) => {
 		fetchData();
 	}, []);
 
-	console.log(journalData, "zzz");
+	// console.log(journalData, "zzz");
 
 	return (
 		<div className="bg-[#f4f6f4] paddingX paddingYShorter">
