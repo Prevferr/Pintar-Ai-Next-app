@@ -84,10 +84,20 @@ const AddProjectForm = () => {
 					/>
 				</div>
 				<div>
-					<input type="date" name="starting_date" value={form.starting_date} onChange={onHandlerForm} />
+					<input
+						type="date"
+						name="starting_date"
+						value={form.starting_date}
+						onChange={onHandlerForm}
+					/>
 				</div>
 				<div>
-					<input type="date" name="expected_finish_date" value={form.expected_finish_date} onChange={onHandlerForm} />
+					<input
+						type="date"
+						name="expected_finish_date"
+						value={form.expected_finish_date}
+						onChange={onHandlerForm}
+					/>
 				</div>
 				<div>
 					<input
@@ -99,16 +109,38 @@ const AddProjectForm = () => {
 					/>
 				</div>
 				<div>
-					<input type="date" name="starting_date" value={form.starting_date} onChange={onHandlerForm} />
+					<input
+						type="date"
+						name="starting_date"
+						value={form.starting_date}
+						onChange={onHandlerForm}
+					/>
 				</div>
 				<div>
-					<input type="date" name="expected_finish_date" value={form.expected_finish_date} onChange={onHandlerForm} />
+					<input
+						type="date"
+						name="expected_finish_date"
+						value={form.expected_finish_date}
+						onChange={onHandlerForm}
+					/>
 				</div>
 				<div>
-					<input type="text" name="tags" placeholder="Enter Project Tags" value={form.tags} onChange={onHandlerForm} />
+					<input
+						type="text"
+						name="tags"
+						placeholder="Enter Project Tags"
+						value={form.tags}
+						onChange={onHandlerForm}
+					/>
 				</div>
 				<div>
-					<input type="text" name="tags" placeholder="Enter Project Tags" value={form.tags} onChange={onHandlerForm} />
+					<input
+						type="text"
+						name="tags"
+						placeholder="Enter Project Tags"
+						value={form.tags}
+						onChange={onHandlerForm}
+					/>
 				</div>
 				<button type="submit">Create Project</button>
 			</form>

@@ -104,6 +104,26 @@ import { OpenAI } from "openai";
 // 	.then((abstract) => console.log(abstract))
 // 	.catch((error) => console.error(error));
 
+// pages/api/extract-pdf.ts
+import type { NextApiRequest, NextApiResponse } from "next";
+import {pdfParse} from "pdf-parse";
+
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+	if (req.method !== "POST") {
+		return res.status(405).json({ message: "Method Not Allowed" });
+	}
+
+	try {
+		const file = req.body; // Adjust this according to how you're sending the file
+		const fileBuffer = Buffer.from(file);
+		const data = await PdfReader(fileBuffer);
+		res.status(200).json({ text: data.text });
+	} catch (err) {
+		console.error("Error extracting PDF:", err);
+		res.status(500).json({ error: "Failed to extract text" });
+	}
+};
+
 export async function POST(req: Request, res: Response) {
 	//  Cara buat bisa terima URL Encode?
 	// formData
