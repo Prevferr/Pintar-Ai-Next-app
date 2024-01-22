@@ -46,8 +46,15 @@ const AddJournalForm = () => {
 
 	const onHandlerForm = (event: React.ChangeEvent<HTMLInputElement>) => {
 		event.preventDefault();
+		if (!file) return;
 		const { name, value } = event.target;
 		setForm({ ...form, [name]: value });
+		try {
+			const data = new FormData();
+			data.set("file", file);
+		} catch (error: any) {
+			console.log(error);
+		}
 	};
 
 	// Edge store setup
@@ -65,6 +72,7 @@ const AddJournalForm = () => {
 				<div>
 					<input name="description" placeholder="Description" value={form.description} onChange={onHandlerForm} />
 				</div>
+				<input type="file" name="file" onChange={(e) => setFile(e.target.files?.[0])} />
 				<button type="submit">Create Journal</button>
 			</form>
 			<div className="flex flex-col items-center m-6 gap-2">
