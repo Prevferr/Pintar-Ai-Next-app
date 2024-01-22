@@ -82,4 +82,6 @@ export const doLogin = async (formData: FormData) => {
 
   // Melakukan redirect ke halaman "/dashboard/jokes"
   return redirect(`http://localhost:3000/welcome-investor`);
+
+
 };

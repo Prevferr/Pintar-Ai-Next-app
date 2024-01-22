@@ -1,10 +1,9 @@
 import { prisma } from "../../../../../helpers/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
-
 type TProps = {
   params: { slug: string };
-};
+
 
 // GET order by id
 export async function GET(req: NextRequest, { params }: TProps) {
@@ -20,9 +19,10 @@ export async function GET(req: NextRequest, { params }: TProps) {
     },
   });
 
-  if (!project) {
-    return NextResponse.json({ error: "Project not found" }, { status: 404 });
-  }
 
-  return NextResponse.json(project);
+	if (!project) {
+		return NextResponse.json({ error: "Project not found" }, { status: 404 });
+	}
+
+	return NextResponse.json(project);
 }
