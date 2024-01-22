@@ -20,4 +20,5 @@ export async function GET(req: NextRequest, { params }: TProps) {
 
 	return NextResponse.json(project);
 }
+
 // const slugmodified = slug.replace(/%20/g, " ")
