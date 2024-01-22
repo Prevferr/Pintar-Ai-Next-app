@@ -55,25 +55,17 @@ const ModalLogin: React.FC<ModalLoginProps> = () => {
 								Join to enjoy the ease of participating in nation-building and
 								access to other features!
 							</h3>
-							<div className="flex gap-2">
-								<p className="text-base font-light font-mono text-[#74767e]">
-									Already have an Account?
-								</p>
-								<p className="underline text-base font-mono text-[#1dbf73] cursor-pointer">
-									Sign in
-								</p>
-							</div>
 						</div>
 
 						<div className="flex flex-col gap-4">
-							<Link href="/sign-up-investor">
+							<Link href="/register-investor">
 								<div className="border px-2 py-1 rounded-lg flex justify-start gap-4 items-center hover:border-[#1dbf73] cursor-pointer">
 									<Icon icon="ant-design:team-outlined" width={40} />
 									<p className="font-mono">I'm Project Owner</p>
 								</div>
 							</Link>
 
-							<Link href="/sign-up-researcher">
+							<Link href="/register-researcher">
 								<div className="border px-2 py-1  rounded-lg flex justify-start gap-4 items-center hover:border-[#1dbf73] cursor-pointer">
 									<Icon icon="ant-design:idcard-twotone" width={40} />
 									<p className="font-mono">I'm Researcher</p>
