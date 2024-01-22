@@ -1,83 +1,100 @@
-// import { prisma } from "../../../../helpers/lib/prisma";
-// import { hash } from "bcryptjs";
-// import { NextResponse } from "next/server";
-// import nodemailer from "nodemailer";
-// import { PdfReader } from "pdfreader";
+/*
+  static async extractPDF(file: File, userId: string) {
+    try {
+      const fileArrBuff = await file.arrayBuffer()
+      const fileBuff = Buffer.from(fileArrBuff)
+      const result: string[] = []
 
-// import { z } from "zod";
-// import { OpenAI } from "openai";
+      const pdfreader = new PdfReader({})
+      pdfreader.parseBuffer(fileBuff, (err, item) => {
+        if (err) console.error('error:', err)
+        else if (!item) return this.sumPDF(result.join(' '), userId)
+        else if (item.text) {
+          result.push(item.text)
+        }
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
-// export async function extractPDF(file: File): Promise<void> {
-// 	try {
-// 		const fileArrBuff = await file.arrayBuffer();
-// 		const fileBuff = Buffer.from(fileArrBuff);
-// 		const result: string[] = [];
+  static async sumPDF(val: string, userId: string) {
+    try {
+      const collection = await this.connection()
 
-// 		const pdfreader = new PdfReader({});
-// 		pdfreader.parseBuffer(fileBuff, (err, item) => {
-// 			if (err) {
-// 				console.error("error:", err);
-// 			} else if (!item) {
-// 				sumPDF(result.join(" "));
-// 			} else if (item.text) {
-// 				result.push(item.text);
-// 			}
-// 		});
-// 	} catch (err) {
-// 		console.log(err);
-// 	}
-// }
+      const ai = await openai.chat.completions.create({
+        model: 'gpt-4',
+        messages: [
+          {
+            role: 'user',
+            content: `can you summarize this cv into four exact points divided by a dash in a line, first is only his total work experience in number of years, if less than a year put 1 year, second is his skills strict only his skills, third is his number of projects only number of projects, fourth is his projects name list divided by a coma with this format 'Names: his list of projects' , this is the cv, ${val}`,
+          },
+        ],
+      })
 
-// function sumPDF(text: string): void {
-// 	// Implement the logic for summarizing the PDF content
-// 	console.log("Summarized PDF content:", text);
-// }
+      const data = (ai.choices[0].message.content as string).split(' - ')
 
-// export async function POST(req: Request, res: Response, text: string) {
-// 	//  Cara buat bisa terima URL Encode?
-// 	// console.log("Summarized PDF content:", text);
+      const expYear = data[0]
+      const skills = data[1]?.split('Skills: ')[1]?.split(', ')
+      const numOfProjects = data[2]
+      const projectNames = data[3]?.split('Names: ')[1]?.split(', ')
 
-// 	// formData
-// 	const dataKembalianDariPostman = await req.formData();
-// 	// Pengen dapetin isinya nih
-// 	// Cara buat dapetin question?
-// 	const question = dataKembalianDariPostman.get("question");
+      await collection.findOneAndUpdate(
+        { _id: new ObjectId(userId) },
+        {
+          $set: {
+            cvData: {
+              expYear,
+              skills,
+              numOfProjects,
+              projectNames,
+            },
+          },
+        },
+      )
 
-// 	// console.log("ini gw coba liat di server dulu dhe", question);
+      return data
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
-// 	const openai = new OpenAI({
-// 		apiKey: "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", //env
-// 	});
-// 	try {
-// 		// const question = req.body.question;
-// 		const ai = await openai.chat.completions.create({
-// 			model: "gpt-4",
-// 			messages: [
-// 				{
-// 					role: "user",
-// 					content: `can you summarize this pdf file in part ABSTRACT into four exact points divided by a dash in a line, that is his name, his keyword and point of research and abstract description of research,  this is the pdf file give me on json format, only json format i need
-// ${text}`,
-// 				},
-// 			],
-// 		});
+  static async upPDF(file: File, userId: string) {
+    try {
+      const collection = await this.connection()
 
-// 		console.log(ai.choices[0].message.content);
+      const storageRef = ref(storage, file.name)
+      const upload = uploadBytes(storageRef, file)
 
-// 		const answer = ai.choices[0].message.content;
+      const data = await upload.then(async (snapshot) => {
+        return getDownloadURL(snapshot.ref).then((dataUrl) => {
+          return dataUrl
+        })
+      })
 
-// 		return NextResponse.json({ answer });
-// 	} catch (err) {
-// 		console.log(err);
-// 	}
-// }
+      await collection.findOneAndUpdate(
+        { _id: new ObjectId(userId) },
+        {
+          $set: {
+            cvLink: data,
+          },
+        },
+      )
+
+      return data
+    } catch (err) {
+      console.log(err)
+    }
+  }
+*/
 
 import { NextResponse } from "next/server";
 import { OpenAI } from "openai";
 // import fs from "fs";
 // import pdf from "pdf-parse";
 
-// async function extractAbstract(pdfPath: string): Promise<string> {
-// 	const dataBuffer = fs.readFileSync(pdfPath);
+// export async function extractAbstract(pdfPath: string): Promise<string> {
+// 	const dataBuffer = fs.readFile(pdfPath);
 
 // 	try {
 // 		const data = await pdf(dataBuffer);
@@ -97,12 +114,6 @@ import { OpenAI } from "openai";
 // 		return "Failed to extract abstract";
 // 	}
 // }
-
-// // Usage
-// const pdfPath = "path_to_your_pdf.pdf";
-// extractAbstract(pdfPath)
-// 	.then((abstract) => console.log(abstract))
-// 	.catch((error) => console.error(error));
 
 export async function POST(req: Request, res: Response) {
 	//  Cara buat bisa terima URL Encode?
