@@ -44,16 +44,77 @@ const AddJournalForm = () => {
 		<>
 			<form onSubmit={onSubmit}>
 				<div>
-					<input name="abstract" placeholder="Abstract" value={form.abstract} onChange={onHandlerForm} />
+					<input
+						name="abstract"
+						placeholder="Abstract"
+						value={form.abstract}
+						onChange={onHandlerForm}
+					/>
 				</div>
 				<div>
-					<input name="title" placeholder="Title" value={form.title} onChange={onHandlerForm} />
+					<input
+						name="title"
+						placeholder="Title"
+						value={form.title}
+						onChange={onHandlerForm}
+					/>
 				</div>
 				<div>
-					<input name="description" placeholder="Description" value={form.description} onChange={onHandlerForm} />
+					<input
+						name="description"
+						placeholder="Description"
+						value={form.description}
+						onChange={onHandlerForm}
+					/>
 				</div>
 				<button type="submit">Create Journal</button>
 			</form>
+			<div className="flex flex-col items-center m-6 gap-2">
+				<SingleImageDropzone
+					width={200}
+					height={200}
+					value={file}
+					onChange={(file) => {
+						setFile(file);
+					}}
+				/>
+				<div className="h-[6px] w-44 border rounded overflow-hidden">
+					<div
+						className="h-full bg-black transition-all duration-150"
+						style={{ width: `${progress}%` }}
+					/>
+				</div>
+				<button
+					className="bg-white text-black rounded px-2 hover:opacity-80"
+					onClick={async () => {
+						if (file) {
+							const res = await edgestore.myPublicImages.upload({
+								file,
+								input: { type: "post" },
+								onProgressChange: (progress) => {
+									setProgress(progress);
+								},
+							});
+							setUrls({
+								url: res.url,
+								thumbnailUrl: res.thumbnailUrl,
+							});
+						}
+					}}
+				>
+					Upload Journal
+				</button>
+				{urls?.url && (
+					<Link href={urls.url} target="_blank">
+						URL
+					</Link>
+				)}
+				{urls?.thumbnailUrl && (
+					<Link href={urls.thumbnailUrl} target="_blank">
+						THUMBNAIL
+					</Link>
+				)}
+			</div>
 		</>
 	);
 };
