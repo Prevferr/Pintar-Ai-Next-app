@@ -1,5 +1,5 @@
-import { prisma } from "../../../../../helpers/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "../../../../../helpers/lib/prisma";
 
 
 type TProps = {

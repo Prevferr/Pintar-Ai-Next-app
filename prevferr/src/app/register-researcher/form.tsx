@@ -3,12 +3,12 @@
 import { signIn } from "next-auth/react";
 import { ChangeEvent, useState } from "react";
 import { redirect } from "next/navigation";
-<<<<<<< HEAD
+
 import Link from "next/link";
-=======
+
 import { SingleImageDropzone } from "../components/singe-image-dropzone";
 import { useEdgeStore } from "@/lib/edgestore";
->>>>>>> 45da836fa46b69b25863f4d26502f565a58ad77f
+
 
 export const RegisterForm = () => {
 	// Edge store state
