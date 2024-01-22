@@ -2,9 +2,41 @@ import { prisma } from "../../../../helpers/lib/prisma";
 import { hash } from "bcryptjs";
 import { NextResponse } from "next/server";
 import nodemailer from 'nodemailer';
+import { z } from "zod";
+
+// Define the Zod schema for validation
+const researcherSchema = z.object({
+  firstname: z.string().min(1),
+  lastname: z.string().min(1),
+  password: z.string().min(5),
+  research: z.string().min(1),
+  education: z.string().min(1),
+  profileImage: z.string(),
+  email: z.string().email(),
+  background: z.string().min(1),
+  gender: z.string().min(1),
+  location: z.string().min(1),
+  phone_number: z.string().min(1),
+  jabatan_akademik: z.string().min(1),
+  investasi: z.string().default("0"),
+});
 
 export async function POST(req: Request) {
   try {
+    const requestData = await req.json();
+
+    // Validate data with Zod schema
+    const result = researcherSchema.safeParse(requestData);
+
+    if (!result.success) {
+      return new NextResponse(JSON.stringify({
+        status: "error",
+        message: "Validation failed",
+        errors: result.error.issues,
+      }), { status: 400 });
+    }
+
+    // Destructure validated data
     const {
       firstname,
       lastname,
@@ -19,24 +51,8 @@ export async function POST(req: Request) {
       phone_number,
       jabatan_akademik,
       investasi,
-    } = (await req.json()) as {
-      firstname: string;
-      lastname: string;
-      password: string;
-      research: string;
-      education: string;
-      scope: string;
-      institution: string;
-      profileImage: string;
-      email: string;
-      background: string;
-      gender: string;
-      role: string;
-      location: string;
-      phone_number: string
-      jabatan_akademik: string;
-      investasi: string;
-    };
+    } = result.data;
+
     const hashed_password = await hash(password, 10);
 
     const researcher = await prisma.researcher.create({
@@ -57,29 +73,28 @@ export async function POST(req: Request) {
       },
     });
 
-      // Kirim email konfirmasi
-      const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: 'pintarscholar@gmail.com',
-          pass: 'ptfk nwfa znfd oajn',
-        },
-      });
-  
-      const mailOptions = {
-        from: {
-          name: "Pintar Scholar",
-          address: 'pintarscholar@gmail.com',
-        },
-        to: researcher.email,
-        subject: 'Selamat, registrasi berhasil!',
-        text: 'Terima kasih telah mendaftar di situs kami.',
-      };
-  
-  
-       await transporter.sendMail(mailOptions);
+    // Set up email sending with nodemailer
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'pintarscholar@gmail.com',
+        pass: 'ptfk nwfa znfd oajn',
+      },
+    });
 
+    const mailOptions = {
+      from: {
+        name: "Pintar Scholar",
+        address: 'pintarscholar@gmail.com',
+      },
+      to: researcher.email,
+      subject: 'Selamat, registrasi berhasil!',
+      text: 'Terima kasih telah mendaftar di situs kami.',
+    };
 
+    await transporter.sendMail(mailOptions);
+
+    // Send response
     return NextResponse.json({
       researcher: {
         firstname: researcher.firstname,
