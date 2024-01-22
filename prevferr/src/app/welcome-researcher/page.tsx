@@ -212,7 +212,7 @@ import UserTable from "../components/UserTable";
 
 export default function UsersPage() {
   const { data: session } = useSession();
-  const userId = session?.user?.id;
+  const userId = session?.user?.email;
 
   // GET users
   const { data: dataUsers, isLoading: isLoadingUsers } = useQuery(
@@ -225,7 +225,7 @@ export default function UsersPage() {
   return (
     <div className="min-h-screen">
       <h1>Welcome to the dashboard!</h1>
-      <h1 className="text-xl">Admin - {session?.user?.username}</h1>
+      <h1 className="text-xl">Admin - {session?.user?.email}</h1>
       <section className="space-y-20">
         <UserTable data={dataUsers} isLoading={isLoadingUsers} />
       </section>
