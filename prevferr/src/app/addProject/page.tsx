@@ -60,13 +60,31 @@ const AddProjectForm = () => {
 		<>
 			<form onSubmit={onSubmit}>
 				<div>
-					<input type="text" name="project_name" placeholder="Enter Project Name" value={form.project_name} onChange={onHandlerForm} />
+					<input
+						type="text"
+						name="project_name"
+						placeholder="Enter Project Name"
+						value={form.project_name}
+						onChange={onHandlerForm}
+					/>
 				</div>
 				<div>
-					<input type="text" name="description_project" placeholder="Enter Project Description" value={form.description_project} onChange={onHandlerForm} />
+					<input
+						type="text"
+						name="description_project"
+						placeholder="Enter Project Description"
+						value={form.description_project}
+						onChange={onHandlerForm}
+					/>
 				</div>
 				<div>
-					<input type="text" name="project_image" placeholder="Enter Project Image URL" value={form.project_image} onChange={onHandlerForm} />
+					<input
+						type="text"
+						name="project_image"
+						placeholder="Enter Project Image URL"
+						value={form.project_image}
+						onChange={onHandlerForm}
+					/>
 				</div>
 				<div>
 					<input
@@ -85,7 +103,13 @@ const AddProjectForm = () => {
 					/>
 				</div>
 				<div>
-					<input type="number" name="project_budget" placeholder="Enter Project Budget" value={form.project_budget} onChange={onHandlerForm} />
+					<input
+						type="number"
+						name="project_budget"
+						placeholder="Enter Project Budget"
+						value={form.project_budget}
+						onChange={onHandlerForm}
+					/>
 				</div>
 				<div>
 					<input
