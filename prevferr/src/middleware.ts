@@ -1,60 +1,39 @@
-import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
-import { readPayload, readPayloadJose } from "../helpers/lib/jwt";
-
-export { default } from "next-auth/middleware";
-
-// export const config = {
-// 	// matcher: ["/profile"],
-// 	// matcher: ["/((?!register|api|login).*)"],
-// };
+import { cookies } from "next/headers";
+import { readPayloadJose } from "../helpers/lib/jwt";
 
 export const middleware = async (request: NextRequest) => {
-  if (
-    !request.url.includes("/api") &&
-    !request.url.includes("_next/static") &&
-    !request.url.includes("_next/image") &&
-    !request.url.includes("favicon.ico")
-  ) {
-    console.log(request.method, request.url);
-  }
+	if (!request.url.includes("/api") && !request.url.includes("_next/static") && !request.url.includes("_next/image") && !request.url.includes("favicon.ico")) {
+		console.log(request.method, request.url);
+	}
 
-  if (request.url.includes("/api") && !request.url.includes("/api/inipublic")) {
-    // semua route yang di dalam /api tapi dia bukan di dalam /api/inipublic, maka code di dalam sini akan dijalankan
-    console.log("API", request.method, request.url);
+	if (request.url.includes("/whislist")) {
+		console.log("API", request.method, request.url);
 
-    console.log("MASUK SINIIIIII ");
-    const cookiesStore = cookies();
-    const token = cookiesStore.get("token");
+		const token = cookies().get("token");
+		// console.log(token, "<<<<<< token");
 
-    console.log("token dari cookieStore", token);
+		if (!token) {
+			return NextResponse.json({
+				statusCode: 401,
+				error: "Unauthorized",
+			});
+		}
 
-    if (!token) {
-      return NextResponse.json({
-        statusCode: 401,
-        error: "Unauthorized",
-      });
-    }
+		const tokenData = await readPayloadJose<{ id: string; email: string }>(token.value);
+		// console.log(tokenData, "<<<<<< TOKEN DATA ");
 
-    // const tokenData = readPayload(token.value) as {
-    // 	id: string;
-    // 	email: string;
-    // };
-    const tokenData = await readPayloadJose<{ id: string; email: string }>(
-      token.value
-    );
+		const requestHeaders = new Headers(request.headers);
 
-    // console.log(tokenData, "<<< token data");
+		// USER LOGIN INFO
+		requestHeaders.set("x-user-id", tokenData.id); // DATA ORANG YANG LAGI LOGIN
+		requestHeaders.set("x-user-email", tokenData.email);
+		requestHeaders.set("x-custom-value", "Ini untuk mencoba data tambahan");
 
-    const requestHeaders = new Headers(request.headers);
+		return NextResponse.next({
+			headers: requestHeaders,
+		});
+	}
 
-    console.log("masukkk after request header");
-    requestHeaders.set("x-user-id", tokenData.id);
-
-    return NextResponse.next({
-      headers: requestHeaders,
-    });
-  }
-
-  return NextResponse.next();
+	return NextResponse.next();
 };

@@ -3,6 +3,9 @@ import { prisma } from "../../../../helpers/lib/prisma";
 
 export async function POST(req: Request) {
 	try {
+		const idUserLogin = req.headers.get("x-user-id");
+		// console.log(idUserLogin, "<<<<<<< LOGIN INFO");
+
 		const { project_name, description_project, project_image, project_status, starting_date, expected_finish_date, project_budget, tags } = (await req.json()) as {
 			project_name: string;
 			description_project: string;
@@ -12,6 +15,7 @@ export async function POST(req: Request) {
 			expected_finish_date: Date;
 			project_budget: number;
 			tags: string;
+			investorId: number;
 		};
 		console.log("masuk");
 
@@ -25,6 +29,7 @@ export async function POST(req: Request) {
 				expected_finish_date: new Date(expected_finish_date),
 				project_budget: Number(project_budget),
 				tags,
+				investorId: Number(idUserLogin),
 			},
 		});
 		// console.log(project, "<<< project");
@@ -54,8 +59,8 @@ export async function POST(req: Request) {
 
 // GET ALL PROJECTS
 export async function GET(req: NextRequest) {
-	console.log("masuk di get /api/projects");
-	console.log(req.headers.get("x-user-id"), "<<<< user id nih di get");
+	// console.log("masuk di get /api/projects");
+	// console.log(req.headers.get("x-user-id"), "<<<< user id nih di get");
 	const projects = await prisma.project.findMany({
 		include: {
 			researcher: true,
