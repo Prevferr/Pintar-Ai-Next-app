@@ -1,6 +1,6 @@
 "use server";
-import { prisma } from "../../../../helpers/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "../../../helpers/lib/prisma";
 
 type TProps = {
   params: { id: string };
@@ -18,16 +18,17 @@ export async function GET(req: NextRequest, { params }: TProps) {
     }
 
     // Find user with associated portofolio
-    const userWithPortofolio = await prisma.researcher.findUnique({
+    const userWithPortofolio = await prisma.investor.findUnique({
       where: { id: parseInt(userId) },
       include: {
-        portofolio: true,
+        Project: true,
+        
       },
     });
 
     // Check if user exists
     if (!userWithPortofolio) {
-      return NextResponse.json({ error: "User not found" }, { status: 404 });
+      return NextResponse.json({ error: "Investor not found" }, { status: 404 });
     }
 
     return NextResponse.json(userWithPortofolio);
