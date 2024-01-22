@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { JournalWithResearcher, Journals } from "../type-def";
 
-
 const JournalPage = () => {
 	const [journal, setJournal] = useState([] as JournalWithResearcher[]);
 	const fetchData = async () => {
@@ -68,7 +67,7 @@ const JournalPage = () => {
 					</div>
 				</div>
 			</div>
-			<div className="paddingX border-x  border-y border-[#000]">
+			<div className="paddingX border-x border-t border-[#000]">
 				{journal?.map((journal) => {
 					return (
 						<Link href={`/journals/${journal?.title}`}>

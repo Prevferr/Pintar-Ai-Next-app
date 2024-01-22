@@ -9,40 +9,55 @@ const Footer = () => {
 			<div className="w-full flex justify-around gap-2">
 				<div className="w-[20%] flex flex-col gap-4">
 					<p className="font-semibold text-[#fff]">Categories</p>
-					{FooterItems[0].map((e) => (
-						<p className="text-[#fff] text-sm font-light cursor-pointer hover:underline">
+					{FooterItems[0].map((e, i) => (
+						<p
+							className="text-[#fff] text-sm font-light cursor-pointer hover:underline"
+							key={i}
+						>
 							{e}
 						</p>
 					))}
 				</div>
 				<div className="w-[20%] flex flex-col gap-4">
 					<p className="font-semibold text-[#fff]">About</p>
-					{FooterItems[1].map((e) => (
-						<p className="text-[#fff] font-light text-sm cursor-pointer hover:underline">
+					{FooterItems[1].map((e, i) => (
+						<p
+							className="text-[#fff] font-light text-sm cursor-pointer hover:underline"
+							key={i}
+						>
 							{e}
 						</p>
 					))}
 				</div>
 				<div className="w-[20%] flex flex-col gap-4">
 					<p className="font-semibold text-[#fff]">Support and Education</p>
-					{FooterItems[2].map((e) => (
-						<p className="text-[#fff] font-light text-sm cursor-pointer hover:underline">
+					{FooterItems[2].map((e, i) => (
+						<p
+							className="text-[#fff] font-light text-sm cursor-pointer hover:underline"
+							key={i}
+						>
 							{e}
 						</p>
 					))}
 				</div>
 				<div className="w-[20%] flex flex-col gap-4">
 					<p className="font-semibold text-[#fff]">Community</p>
-					{FooterItems[3].map((e) => (
-						<p className="text-[#fff] font-light text-sm cursor-pointer hover:underline">
+					{FooterItems[3].map((e, i) => (
+						<p
+							className="text-[#fff] font-light text-sm cursor-pointer hover:underline"
+							key={i}
+						>
 							{e}
 						</p>
 					))}
 				</div>
 				<div className="w-[20%] flex flex-col gap-4">
 					<p className="font-semibold text-[#fff]">Business Solutions</p>
-					{FooterItems[4].map((e) => (
-						<p className="text-[#fff] font-light text-sm cursor-pointer hover:underline">
+					{FooterItems[4].map((e, i) => (
+						<p
+							className="text-[#fff] font-light text-sm cursor-pointer hover:underline"
+							key={i}
+						>
 							{e}
 						</p>
 					))}
