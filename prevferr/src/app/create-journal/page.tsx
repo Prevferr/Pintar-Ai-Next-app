@@ -79,7 +79,10 @@ const AddJournalForm = () => {
 					}}
 				/>
 				<div className="h-[6px] w-44 border rounded overflow-hidden">
-					<div className="h-full bg-black transition-all duration-150" style={{ width: `${progress}%` }} />
+					<div
+						className="h-full bg-black transition-all duration-150"
+						style={{ width: `${progress}%` }}
+					/>
 				</div>
 				<button
 					className="bg-white text-black rounded px-2 hover:opacity-80"
