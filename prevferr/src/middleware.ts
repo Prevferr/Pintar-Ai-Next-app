@@ -18,11 +18,11 @@ export const middleware = async (request: NextRequest) => {
 		// semua route yang di dalam /api tapi dia bukan di dalam /api/inipublic, maka code di dalam sini akan dijalankan
 		console.log("API", request.method, request.url);
 
-		console.log("MASUK SINIIIIII ");
+		// console.log("MASUK SINIIIIII ");
 		const cookiesStore = cookies();
 		const token = cookiesStore.get("token");
 
-		console.log("token dari cookieStore", token);
+		// console.log("token dari cookieStore", token);
 
 		if (!token) {
 			return NextResponse.json({
@@ -31,17 +31,19 @@ export const middleware = async (request: NextRequest) => {
 			});
 		}
 
+		// ! Probs here
 		// const tokenData = readPayload(token.value) as {
 		// 	id: string;
 		// 	email: string;
 		// };
+
 		const tokenData = await readPayloadJose<{ id: string; email: string }>(token.value);
 
-		console.log(tokenData, "<<< token data");
+		// console.log(tokenData, "<<< token data");
 
 		const requestHeaders = new Headers(request.headers);
 
-		console.log("masukkk after request header");
+		// console.log("masukkk after request header");
 		requestHeaders.set("x-user-id", tokenData.id);
 
 		return NextResponse.next({

@@ -8,6 +8,13 @@ export async function POST(req: Request) {
 			title: string;
 		};
 
+		// const journal = await prisma.jurnal.create({
+		// 	data: {
+		// 		abstract,
+		// 		title,
+		// 	},
+		// });
+
 		const journal = await prisma.jurnal.create({
 			data: {
 				abstract,

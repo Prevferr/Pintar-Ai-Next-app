@@ -54,8 +54,8 @@ export async function POST(req: Request) {
 
 // GET ALL PROJECTS
 export async function GET(req: NextRequest) {
-	console.log("masuk di get /api/projects");
-	console.log(req.headers.get("x-user-id"), "<<<< user id nih di get");
+	// console.log("masuk di get /api/projects");
+	// console.log(req.headers.get("x-user-id"), "<<<< user id nih di get");
 	const projects = await prisma.project.findMany({
 		include: {
 			researcher: true,
