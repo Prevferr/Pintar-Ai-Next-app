@@ -57,13 +57,28 @@ const AddJournalForm = () => {
 		<>
 			<form onSubmit={onSubmit}>
 				<div>
-					<input name="abstract" placeholder="Abstract" value={form.abstract} onChange={onHandlerForm} />
+					<input
+						name="abstract"
+						placeholder="Abstract"
+						value={form.abstract}
+						onChange={onHandlerForm}
+					/>
 				</div>
 				<div>
-					<input name="title" placeholder="Title" value={form.title} onChange={onHandlerForm} />
+					<input
+						name="title"
+						placeholder="Title"
+						value={form.title}
+						onChange={onHandlerForm}
+					/>
 				</div>
 				<div>
-					<input name="description" placeholder="Description" value={form.description} onChange={onHandlerForm} />
+					<input
+						name="description"
+						placeholder="Description"
+						value={form.description}
+						onChange={onHandlerForm}
+					/>
 				</div>
 				<button type="submit">Create Journal</button>
 			</form>
@@ -77,7 +92,10 @@ const AddJournalForm = () => {
 					}}
 				/>
 				<div className="h-[6px] w-44 border rounded overflow-hidden">
-					<div className="h-full bg-black transition-all duration-150" style={{ width: `${progress}%` }} />
+					<div
+						className="h-full bg-black transition-all duration-150"
+						style={{ width: `${progress}%` }}
+					/>
 				</div>
 				<button
 					className="bg-white text-black rounded px-2 hover:opacity-80"
