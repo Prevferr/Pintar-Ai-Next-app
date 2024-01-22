@@ -46,8 +46,8 @@ export const doLogin = async (formData: FormData) => {
   // Memvalidasi data terhadap database
   const getUserByEmail = async (email: string) => {
     const user = await prisma.investor.findUnique({
-        where: {email}
-    })
+      where: { email },
+    });
     return user;
   };
 
@@ -65,7 +65,6 @@ export const doLogin = async (formData: FormData) => {
     lastname: user.lastname,
   };
   console.log(payload, "INI PAYLOAD BOSSSSS");
-  
 
   const token = createToken(payload);
 

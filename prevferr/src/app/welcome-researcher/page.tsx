@@ -126,46 +126,127 @@
 // export default WelcomePage;
 
 
-import { getServerSession } from "next-auth";
-import { authOptions } from "../../../helpers/lib/auth";
-// import Header from "@/components/header.component";
-// import { authOptions } from "@/lib/auth";
+// import { getServerSession } from "next-auth";
+// import { authOptions } from "../../../helpers/lib/auth";
+// // import Header from "@/components/header.component";
+// // import { authOptions } from "@/lib/auth";
 
-export default async function Profile() {
-  const session = await getServerSession(authOptions);
-  const user = session?.user;
-  console.log(user);
+// export default async function Profile() {
+//   const session = await getServerSession(authOptions);
+//   const user = session?.user;
+//   console.log(user);
   
 
+//   return (
+//     <>
+//       {/* <Header /> */}
+//       <section className="bg-ct-blue-600  min-h-screen pt-20">
+//         <div className="max-w-4xl mx-auto bg-ct-dark-100 rounded-md h-[20rem] flex justify-center items-center">
+//           <div>
+//             <p className="mb-3 text-5xl text-center font-semibold">
+//               Profile Page
+//             </p>
+//             {!user ? (
+//               <p>Loading...</p>
+//             ) : (
+//               <div className="flex items-center gap-8">
+
+//                 <div className="mt-8">
+//                   <p className="mb-3">Email: {user.email}</p>
+//                 </div>
+//               </div>
+//             )}
+//           </div>
+//         </div>
+//       </section>
+//     </>
+//   );
+// }
+
+
+// ?? Untuk pembuktian penggunaan middleware, di sini kita akan membuat sebuah logic untuk mengambil data users dari server via GET /api/users.
+
+// ?? Sekarang kita akan menggunakan cookies
+// import { cookies } from "next/headers";
+// import { doLogin } from "../(credentials)/login-researcher/action";
+// const fetchUsers = async () => {
+//   const token = cookies().get("token"); // Assuming the token is stored in a cookie
+//   const response = await fetch("http://localhost:3000/api/researchers", {
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//     },
+//   });
+//   const data = await response.json();
+//   return data;
+// };
+
+
+// const DashboardPage = async () => {
+//   const users = await fetchUsers();
+
+//   return (
+//     <section>
+//       <h2 className="text-2xl font-semibold">Dashboard Page</h2>
+//       <pre>{JSON.stringify(users, null, 2)}</pre>
+//     </section>
+//   );
+// };
+
+
+// export default DashboardPage;
+
+
+"use client";
+
+// Api
+import { useQuery } from "@tanstack/react-query";
+import { getAllUsers } from "../../../api/routes/researchers";
+// import { getAllOrders } from "@/api/routes/orders";
+// import { getAllCars } from "@/api/routes/cars";
+
+// Next auth
+import { useSession } from "next-auth/react";
+
+// Components
+import UserTable from "./components/UserTable";
+import OrderTable from "./components/OrderTable";
+import CarTable from "./components/CarTable";
+
+export default function UsersPage() {
+  const { data: session } = useSession();
+  const userId = session?.user?.id;
+
+  // GET users
+  const { data: dataUsers, isLoading: isLoadingUsers } = useQuery(
+    ["usersData"],
+    getAllUsers
+  );
+
+  // GET orders
+  const { data: dataOrders, isLoading: isLoadingOrders } = useQuery(
+    ["ordersData"],
+    getAllOrders
+  );
+
+  // GET cars
+  const { data: dataCars, isLoading: isLoadingCars } = useQuery(
+    ["carsData"],
+    getAllCars
+  );
+
   return (
-    <>
-      {/* <Header /> */}
-      <section className="bg-ct-blue-600  min-h-screen pt-20">
-        <div className="max-w-4xl mx-auto bg-ct-dark-100 rounded-md h-[20rem] flex justify-center items-center">
-          <div>
-            <p className="mb-3 text-5xl text-center font-semibold">
-              Profile Page
-            </p>
-            {!user ? (
-              <p>Loading...</p>
-            ) : (
-              <div className="flex items-center gap-8">
-                <div>
-                  <img
-                    src={user.image ? user.image : "/images/default.png"}
-                    className="max-h-36"
-                    alt={`profile photo of ${user.name}`}
-                  />
-                </div>
-                <div className="mt-8">
-                  <p className="mb-3">Name: {user.name}</p>
-                  <p className="mb-3">Email: {user.email}</p>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
+    <div className="min-h-screen">
+      <h1>Welcome to the dashboard!</h1>
+      <h1 className="text-xl">Admin - {session?.user?.username}</h1>
+      <section className="space-y-20">
+        <UserTable data={dataUsers} isLoading={isLoadingUsers} />
+        <OrderTable
+          data={dataOrders}
+          isLoading={isLoadingOrders}
+          userId={+userId!}
+        />
+        <CarTable data={dataCars} isLoading={isLoadingCars} />
       </section>
-    </>
+    </div>
   );
 }
