@@ -31,7 +31,7 @@ const ProjectPage = () => {
 		fetchData();
 	}, []);
 
-	console.log(projects, "memek");
+	// console.log(projects, "memek");
 
 	return (
 		<section className="min-h-screen bg-[#E2E4DD]">

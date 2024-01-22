@@ -7,7 +7,7 @@
 // 	startDate: string;
 // };
 
-export type ResearcherJournal = {
+export type ResearcherDetails = {
 	firstname: string;
 	lastname: string;
 	education: string;
@@ -24,6 +24,26 @@ export type ResearcherJournal = {
 	updatedAt: string;
 };
 
+
+export type ResearcherJournal = {
+	id: number;
+	firstname: string;
+	lastname: string;
+	education: string;
+	profileImage: string;
+	email: string;
+	research: string;
+	phone_number: string;
+	background: string;
+	gender: string;
+	jabatan_akademik: string;
+	location: string;
+	investasi: string;
+	createdAt: string;
+	updatedAt: string;
+	portofolio: Journals[];  // Corrected field name
+};
+
 export type JournalWithResearcher = {
 	id: number;
 	abstract: string;
@@ -34,7 +54,18 @@ export type JournalWithResearcher = {
 	portofolio: ResearcherJournal[];
 };
 
+export type JournalWithResearcherDetails = {
+	id: number;
+	abstract: string;
+	title: string;
+	createdAt: string;
+	updatedAt: string;
+	researcherId: number;
+	portofolio: ResearcherJournal[];
+};
+
 export type Journals = {
+	id: number;
 	abstract: string;
 	title: string;
 	createdAt: string;

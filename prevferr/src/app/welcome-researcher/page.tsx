@@ -208,9 +208,7 @@ import { getAllUsers } from "../../../api/routes/researchers";
 import { useSession } from "next-auth/react";
 
 // Components
-import UserTable from "./components/UserTable";
-import OrderTable from "./components/OrderTable";
-import CarTable from "./components/CarTable";
+import UserTable from "../components/UserTable";
 
 export default function UsersPage() {
   const { data: session } = useSession();
@@ -222,17 +220,7 @@ export default function UsersPage() {
     getAllUsers
   );
 
-  // GET orders
-  const { data: dataOrders, isLoading: isLoadingOrders } = useQuery(
-    ["ordersData"],
-    getAllOrders
-  );
 
-  // GET cars
-  const { data: dataCars, isLoading: isLoadingCars } = useQuery(
-    ["carsData"],
-    getAllCars
-  );
 
   return (
     <div className="min-h-screen">
@@ -240,12 +228,6 @@ export default function UsersPage() {
       <h1 className="text-xl">Admin - {session?.user?.username}</h1>
       <section className="space-y-20">
         <UserTable data={dataUsers} isLoading={isLoadingUsers} />
-        <OrderTable
-          data={dataOrders}
-          isLoading={isLoadingOrders}
-          userId={+userId!}
-        />
-        <CarTable data={dataCars} isLoading={isLoadingCars} />
       </section>
     </div>
   );

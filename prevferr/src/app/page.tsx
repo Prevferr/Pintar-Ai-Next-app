@@ -1,5 +1,6 @@
 "use client";
 import { Icon } from "@iconify/react";
+import React, { useEffect, useState } from "react";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -16,8 +17,36 @@ import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
 import Link from "next/link";
 import LoadToTop from "../../helpers/utils/LoadToTop";
 import { Fragment } from "react";
+import { JournalWithResearcher } from "./type-def";
+import DateChnage from "../../helpers/utils/DateChange";
+import PostChange from "../../helpers/utils/PostChange";
 
 export default function Home() {
+	const [journal, setJournal] = useState([] as JournalWithResearcher[]);
+	const fetchData = async () => {
+		try {
+			const response = await fetch("http://localhost:3000/api/journals");
+
+			if (!response.ok) {
+				throw new Error("Failed fetching data");
+			}
+
+			const responseJSON = await response.json();
+			console.log(responseJSON);
+
+			setJournal(responseJSON);
+		} catch (error) {
+			if (error instanceof Error) {
+				console.log(error.message);
+			} else {
+				console.log(error);
+			}
+		}
+	};
+
+	useEffect(() => {
+		fetchData();
+	}, []);
 	return (
 		<Fragment>
 			{/* layer 1  */}
@@ -117,111 +146,51 @@ export default function Home() {
 					modules={[Navigation, Pagination, Mousewheel, Keyboard]}
 					className="mySwiper"
 				>
-					<SwiperSlide>
-						<div className="mx-auto border border-[#000] w-[80%] rounded-3xl flex flex-col">
-							<div className="bg-[#FFB200] rounded-t-3xl py-3 border-b border-[#000]">
-								<p className="text-[#000] text-center font-mono">Journals</p>
-							</div>
+					{journal?.map((e) => {
+						return (
+							<SwiperSlide>
+								<div className="mx-auto border border-[#000] w-[80%] rounded-3xl flex flex-col">
+									<div className="bg-[#FFB200] rounded-t-3xl py-3 border-b border-[#000]">
+										<p className="text-[#000] text-center font-mono">
+											Journals
+										</p>
+									</div>
 
-							<div className="w-full flex justify-center items-center py-14">
-								<div className="w-[60%] mx-auto flex flex-col gap-4">
-									<p className="font-mono text-[#565e67]">
-										NOVEMBER 27, 2023 (ABOUT 2 MONTHS AGO)
-									</p>
-									<h1 className="text-5xl">
-										How to add a background video in Next.js
-									</h1>
-									<div className="flex justify-start items-center gap-4">
-										<img
-											src="https://cdn.sanity.io/images/2ejqxsnu/production/d6d798e8581a361efb9d9ef2923794da065d0e6e-450x445.jpg?w=128&q=75&fit=clip&auto=format"
-											className="h-14 w-14 rounded-full object-cover"
-											alt="Author"
-										/>
-										<p className="text-base font-mono">
-											<span className="text-[#565e67] text-sm">BY</span> Adam
-											Turnere
-										</p>
-										<span className="text-[#565e67]">•</span>
-										<p className="font-mono text-[#565e67] text-sm">
-											4 Months Ago
-										</p>
-										<span className="text-[#565e67]">•</span>
-										<p className="text-base font-mono">ENGINEERING</p>
+									<div className="w-full flex justify-center items-center py-14">
+										<div className="w-[60%] mx-auto flex flex-col gap-4">
+											<p className="font-mono text-[#565e67]">
+												{DateChnage(e?.createdAt)}
+											</p>
+											<h1 className="text-5xl">{e?.title}</h1>
+											{e?.portofolio?.map((el) => {
+												return (
+													<div className="flex justify-start items-center gap-4">
+														<img
+															src={el?.profileImage}
+															className="h-14 w-14 rounded-full object-cover"
+															alt="Author"
+														/>
+														<p className="text-base font-mono">
+															<span className="text-[#565e67] text-sm">BY</span>{" "}
+															{el?.firstname} {el?.lastname}
+														</p>
+														<span className="text-[#565e67]">•</span>
+														<p className="font-mono text-[#565e67] text-sm">
+															{PostChange(el?.createdAt)}
+														</p>
+														<span className="text-[#565e67]">•</span>
+														<p className="text-base font-mono">
+															{el?.research.toUpperCase()}
+														</p>
+													</div>
+												);
+											})}
+										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-					</SwiperSlide>
-					<SwiperSlide>
-						<div className="mx-auto border border-[#000] w-[80%] rounded-3xl flex flex-col">
-							<div className="bg-[#FFB200] rounded-t-3xl py-3 border-b border-[#000]">
-								<p className="text-[#000] text-center font-mono">Journals</p>
-							</div>
-
-							<div className="w-full flex justify-center items-center py-14">
-								<div className="w-[60%] mx-auto flex flex-col gap-4">
-									<p className="font-mono text-[#565e67]">
-										NOVEMBER 27, 2023 (ABOUT 2 MONTHS AGO)
-									</p>
-									<h1 className="text-5xl">
-										How to add a background video in Next.js
-									</h1>
-									<div className="flex justify-start items-center gap-4">
-										<img
-											src="https://cdn.sanity.io/images/2ejqxsnu/production/d6d798e8581a361efb9d9ef2923794da065d0e6e-450x445.jpg?w=128&q=75&fit=clip&auto=format"
-											className="h-14 w-14 rounded-full object-cover"
-											alt="Author"
-										/>
-										<p className="text-base font-mono">
-											<span className="text-[#565e67] text-sm">BY</span> Adam
-											Turnere
-										</p>
-										<span className="text-[#565e67]">•</span>
-										<p className="font-mono text-[#565e67] text-sm">
-											4 Months Ago
-										</p>
-										<span className="text-[#565e67]">•</span>
-										<p className="text-base font-mono">ENGINEERING</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</SwiperSlide>
-					<SwiperSlide>
-						<div className="mx-auto border border-[#000] w-[80%] rounded-3xl flex flex-col">
-							<div className="bg-[#FFB200] rounded-t-3xl py-3 border-b border-[#000]">
-								<p className="text-[#000] text-center font-mono">Journals</p>
-							</div>
-
-							<div className="w-full flex justify-center items-center py-14">
-								<div className="w-[60%] mx-auto flex flex-col gap-4">
-									<p className="font-mono text-[#565e67]">
-										NOVEMBER 27, 2023 (ABOUT 2 MONTHS AGO)
-									</p>
-									<h1 className="text-5xl">
-										How to add a background video in Next.js
-									</h1>
-									<div className="flex justify-start items-center gap-4">
-										<img
-											src="https://cdn.sanity.io/images/2ejqxsnu/production/d6d798e8581a361efb9d9ef2923794da065d0e6e-450x445.jpg?w=128&q=75&fit=clip&auto=format"
-											className="h-14 w-14 rounded-full object-cover"
-											alt="Author"
-										/>
-										<p className="text-base font-mono">
-											<span className="text-[#565e67] text-sm">BY</span> Adam
-											Turnere
-										</p>
-										<span className="text-[#565e67]">•</span>
-										<p className="font-mono text-[#565e67] text-sm">
-											4 Months Ago
-										</p>
-										<span className="text-[#565e67]">•</span>
-										<p className="text-base font-mono">ENGINEERING</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</SwiperSlide>
+							</SwiperSlide>
+						);
+					})}
 				</Swiper>
 			</div>
 			{/* <div className="bg-[#242628] min-h-screen">x</div> */}
