@@ -9,9 +9,14 @@ const AddJournalForm = () => {
 	// Edge store state
 	const [file, setFile] = useState<File>();
 	const [progress, setProgress] = useState(0);
+
+	// const [urls, setUrls] = useState<{
+	// 	url: string;
+	// 	thumbnailUrl: string | null;
+	// }>();
+
 	const [urls, setUrls] = useState<{
 		url: string;
-		thumbnailUrl: string | null;
 	}>();
 
 	const [form, setForm] = useState({
@@ -46,15 +51,8 @@ const AddJournalForm = () => {
 
 	const onHandlerForm = (event: React.ChangeEvent<HTMLInputElement>) => {
 		event.preventDefault();
-		if (!file) return;
 		const { name, value } = event.target;
 		setForm({ ...form, [name]: value });
-		try {
-			const data = new FormData();
-			data.set("file", file);
-		} catch (error: any) {
-			console.log(error);
-		}
 	};
 
 	// Edge store setup
@@ -72,7 +70,6 @@ const AddJournalForm = () => {
 				<div>
 					<input name="description" placeholder="Description" value={form.description} onChange={onHandlerForm} />
 				</div>
-				<input type="file" name="file" onChange={(e) => setFile(e.target.files?.[0])} />
 				<button type="submit">Create Journal</button>
 			</form>
 			<div className="flex flex-col items-center m-6 gap-2">
@@ -91,17 +88,13 @@ const AddJournalForm = () => {
 					className="bg-white text-black rounded px-2 hover:opacity-80"
 					onClick={async () => {
 						if (file) {
-							const res = await edgestore.myPublicImages.upload({
+							const res = await edgestore.publicFiles.upload({
 								file,
-								input: { type: "post" },
 								onProgressChange: (progress) => {
 									setProgress(progress);
 								},
 							});
-							setUrls({
-								url: res.url,
-								thumbnailUrl: res.thumbnailUrl,
-							});
+							setUrls({ url: res.url });
 						}
 					}}
 				>
@@ -112,14 +105,37 @@ const AddJournalForm = () => {
 						URL
 					</Link>
 				)}
-				{urls?.thumbnailUrl && (
+				{/* {urls?.thumbnailUrl && (
 					<Link href={urls.thumbnailUrl} target="_blank">
 						THUMBNAIL
 					</Link>
-				)}
+				)} */}
 			</div>
 		</>
 	);
 };
 
 export default AddJournalForm;
+
+{
+	/* <button
+	className="bg-white text-black rounded px-2 hover:opacity-80"
+	onClick={async () => {
+		if (file) {
+			const res = await edgestore.myPublicImages.upload({
+				file,
+				input: { type: "post" },
+				onProgressChange: (progress) => {
+					setProgress(progress);
+				},
+			});
+			setUrls({
+				url: res.url,
+				thumbnailUrl: res.thumbnailUrl,
+			});
+		}
+	}}
+>
+	Upload Journal
+</button>; */
+}
