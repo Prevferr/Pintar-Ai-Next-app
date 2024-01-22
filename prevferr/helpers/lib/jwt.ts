@@ -13,8 +13,8 @@ export const readPayload = (token: string) => jwt.verify(token, SECRET_KEY);
 
 // ?? Di sini kita akan menambahkan fungsi untuk membaca payload dengan jose, karena di sini kita membutuhkan tipe data kembalian, maka kita akan menambahkan generic
 export const readPayloadJose = async <T>(token: string) => {
-  const secretKey = new TextEncoder().encode(SECRET_KEY);
-  const payloadJose = await jose.jwtVerify<T>(token, secretKey);
+	const secretKey = new TextEncoder().encode(SECRET_KEY);
+	const payloadJose = await jose.jwtVerify<T>(token, secretKey);
 
-  return payloadJose.payload;
+	return payloadJose.payload;
 };
