@@ -1,19 +1,9 @@
 "use client";
 
-import { useEdgeStore } from "@/lib/edgestore";
 import Link from "next/link";
 import React, { useState } from "react";
-import { SingleImageDropzone } from "../components/singe-image-dropzone";
 
 const AddJournalForm = () => {
-	// Edge store state
-	const [file, setFile] = useState<File>();
-	const [progress, setProgress] = useState(0);
-	const [urls, setUrls] = useState<{
-		url: string;
-		thumbnailUrl: string | null;
-	}>();
-
 	const [form, setForm] = useState({
 		abstract: "",
 		title: "",
@@ -37,7 +27,7 @@ const AddJournalForm = () => {
 					"Content-Type": "application/json",
 				},
 			});
-			// console.log(response.json(), "<<<< response journal");
+			console.log(response.json(), "<<<< response journal");
 		} catch (error: any) {
 			console.log(error);
 			setError(error);
@@ -49,9 +39,6 @@ const AddJournalForm = () => {
 		const { name, value } = event.target;
 		setForm({ ...form, [name]: value });
 	};
-
-	// Edge store setup
-	const { edgestore } = useEdgeStore();
 
 	return (
 		<>
@@ -92,10 +79,7 @@ const AddJournalForm = () => {
 					}}
 				/>
 				<div className="h-[6px] w-44 border rounded overflow-hidden">
-					<div
-						className="h-full bg-black transition-all duration-150"
-						style={{ width: `${progress}%` }}
-					/>
+					<div className="h-full bg-black transition-all duration-150" style={{ width: `${progress}%` }} />
 				</div>
 				<button
 					className="bg-white text-black rounded px-2 hover:opacity-80"
