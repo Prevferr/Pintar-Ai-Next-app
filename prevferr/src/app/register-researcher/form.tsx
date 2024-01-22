@@ -3,8 +3,12 @@
 import { signIn } from "next-auth/react";
 import { ChangeEvent, useState } from "react";
 import { redirect } from "next/navigation";
+
+import Link from "next/link";
+
 import { SingleImageDropzone } from "../components/singe-image-dropzone";
 import { useEdgeStore } from "@/lib/edgestore";
+
 
 export const RegisterForm = () => {
 	// Edge store state
@@ -175,8 +179,14 @@ export const RegisterForm = () => {
 				{loading ? "loading..." : "Sign Up"}
 			</button>
 			<div className="my-4 flex justify-center gap-2">
-				<p className="text-base font-light font-mono text-[#FF6100]">Already have an Account?</p>
-				<p className="underline text-base font-mono text-[#242628] cursor-pointer">Sign in</p>
+				<p className="text-base font-light font-mono text-[#FF6100]">
+					Already have an Account?
+				</p>
+				<Link href="/login-researcher">
+				<p className="underline text-base font-mono text-[#242628] cursor-pointer">
+					Sign in
+				</p>
+				</Link>
 			</div>
 		</form>
 	);

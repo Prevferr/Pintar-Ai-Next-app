@@ -46,8 +46,8 @@ export const doLogin = async (formData: FormData) => {
   // Memvalidasi data terhadap database
   const getUserByEmail = async (email: string) => {
     const user = await prisma.researcher.findUnique({
-        where: {email}
-    })
+      where: { email },
+    });
     return user;
   };
 
@@ -63,9 +63,18 @@ export const doLogin = async (formData: FormData) => {
     email: user.email,
     firstname: user.firstname,
     lastname: user.lastname,
+    education: user.education,
+    profileImage: user.profileImage,
+    phone_number: user.phone_number,
+    background: user.background,
+    gender: user.gender,
+    jabatan_akademik: user.jabatan_akademik,
+    location: user.location,
+    investasi: user.investasi,
+    portofolio: user.portofolio,
+    Project: user.Project,
   };
   console.log(payload, "INI PAYLOAD BOSSSSS");
-  
 
   const token = createToken(payload);
 

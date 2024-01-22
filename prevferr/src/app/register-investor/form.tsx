@@ -3,6 +3,7 @@
 import { signIn } from "next-auth/react";
 import { ChangeEvent, useState } from "react";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 
 export const RegisterForm = () => {
 	const [loading, setLoading] = useState(false);
@@ -171,9 +172,11 @@ export const RegisterForm = () => {
 				<p className="text-base font-light font-mono text-[#FF6100]">
 					Already have an Account?
 				</p>
+				<Link href="/login-investor">
 				<p className="underline text-base font-mono text-[#242628] cursor-pointer">
 					Sign in
 				</p>
+				</Link>
 			</div>
 		</form>
 	);
