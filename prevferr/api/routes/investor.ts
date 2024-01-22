@@ -9,3 +9,8 @@ export const PostResearcher = async (body: any) => {
   const res = await api.post(`/investors`, body);
   return res.data;
 };
+
+// export const getUserById = async () => {
+//   const res = await api.get(`/investors/${id}`);
+//   return res.data;
+// };
