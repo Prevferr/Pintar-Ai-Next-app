@@ -5,11 +5,16 @@ import JournalCard from "../components/JournalCard";
 import Link from "next/link";
 import { JournalWithResearcher } from "../type-def";
 import { NextRequest } from "next/server";
+import { readPayload } from "../../../helpers/lib/jwt";
 
 const WelcomePage = (request: NextRequest) => {
   const [journal, setJournal] = useState([] as JournalWithResearcher[]);
   const fetchData = async () => {
     try {
+      const idUserLogin = request.headers.get("x-user-id");
+      console.log(idUserLogin, "<<<<<<<<<<<<<<< WELCOME");
+      
+
       const response = await fetch("http://localhost:3000/api/journals");
 
       if (!response.ok) {
@@ -29,7 +34,6 @@ const WelcomePage = (request: NextRequest) => {
     }
     // console.log("MAAAFFFFFFFF", request.headers.get("x-user-id"));
     // console.log("xixixixixixixixiixxixixi");
-    
   };
 
   useEffect(() => {
