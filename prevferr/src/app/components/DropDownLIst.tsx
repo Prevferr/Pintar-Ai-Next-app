@@ -31,11 +31,7 @@ const items: MenuProps["items"] = [
 
 const DropDownList: React.FC = () => {
 	return (
-		<Dropdown
-			menu={{ items }}
-			placement="bottom"
-			arrow={{ pointAtCenter: true }}
-		>
+		<Dropdown menu={{ items }} placement="bottom" arrow={{ pointAtCenter: true }}>
 			<div className="flex justify-start gap-2 px-3 py-1 items-center cursor-pointer">
 				<li className="text-[#fff] hover:underline font-mono ">Guides</li>
 				<Icon icon="mingcute:down-line" color="#fff" />
