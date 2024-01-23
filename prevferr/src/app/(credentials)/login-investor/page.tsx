@@ -63,7 +63,11 @@ const LoginPage = () => {
 								</Link>
 							</div>
 							<div className="px-4 pb-2 pt-4">
-								<button className="w-full flex justify-center bg-[#0072e3] hover:bg-[#367fc7] text-gray-100 px-4 py-4 rounded-full tracking-wide font-mono shadow-lg cursor-pointer transition ease-in duration-500">
+								<button
+									
+									className="w-full flex justify-center bg-[#0072e3] hover:bg-[#367fc7] text-gray-100 px-4 py-4 rounded-full tracking-wide font-mono shadow-lg cursor-pointer transition ease-in duration-500"
+								
+								>
 									sign in
 								</button>
 							</div>
