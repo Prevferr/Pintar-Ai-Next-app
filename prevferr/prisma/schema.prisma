@@ -54,7 +54,7 @@ model Project {
   starting_date        DateTime
   project_budget       Int
   expected_finish_date DateTime
-  tags                 String
+  keywords             String
   investor             Investor?   @relation(fields: [investorId], references: [id])
   createdAt            DateTime    @default(now())
   updatedAt            DateTime    @default(now())
@@ -77,6 +77,7 @@ model Jurnal {
   id           Int          @id @default(autoincrement())
   abstract     String       
   title        String       @unique
+  keywords     String
   portofolio   Researcher[]
   createdAt    DateTime     @default(now())
   updatedAt    DateTime     @default(now())
