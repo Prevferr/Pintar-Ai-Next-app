@@ -81,7 +81,7 @@ and based on the existing abstract, the abstract includes
 			});
 
 			const data = ai.choices[0].message.content as string;
-      const title:string = "Analisis Risiko Kecelakaan Kerja Menggunakan Metode HIRARC dan Diagram Fishbone pada Lantai Produksi PT DRA Component Persada"
+      const title:string = "Analis HSE Kerjaan"
 const abstract:string = val
       
       const result = data.split("Keywords:")[0];
