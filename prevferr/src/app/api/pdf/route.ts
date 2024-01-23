@@ -55,14 +55,13 @@ export type ResponseAPIType<T> = {
 export const POST = async (req: NextRequest) => {
   try {
     const userId = req.headers.get('x-user-id') as string
-
+console.log(userId);
     const data = (await req.formData()).get('pdf') as File
 
     if (data) {
       // Upload.upPDF(data, userId)
-
-      // Upload.extractPDF(data, userId)
-      Upload.extractPDF(data)
+      Upload.extractPDF(data, userId)
+      // Upload.extractPDF(data)
       
     }
 
