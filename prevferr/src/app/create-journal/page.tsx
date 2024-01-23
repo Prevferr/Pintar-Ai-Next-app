@@ -64,11 +64,6 @@ const UploadPdf = () => {
 									<a className="text-blue-600 hover:underline">select a file</a>
 									from your computer
 								</p>
-								<input
-									type="file"
-									accept=".pdf"
-									// onChange={handleFileChange}
-								/>
 							</div>
 							<input
 								type="file"
