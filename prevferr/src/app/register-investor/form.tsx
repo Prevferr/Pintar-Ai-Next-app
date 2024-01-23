@@ -46,8 +46,8 @@ export const RegisterForm = () => {
 				return;
 			}
 
-			// signIn("/");
-			redirect("/")
+			signIn("/");
+			// redirect("/")
 		} catch (error: any) {
 			setLoading(false);
 			setError(error);
