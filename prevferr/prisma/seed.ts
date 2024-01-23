@@ -77,113 +77,6 @@ async function main() {
 		researcherId: 1,
 	};
 
-	const Comment = {
-		// Data untuk Comment
-		// ...
-		comment: "Bagus sekali",
-		createdAt: new Date(),
-		updatedAt: new Date(),
-	};
-
-	const Payment = {
-		// Data untuk Comment
-		// ...
-		price: 500000,
-		createdAt: new Date(),
-		updatedAt: new Date(),
-		// Investor: "alvin",
-		// investorId: 1,
-		status: false,
-		invoice: "Ini adalah invoice",
-	};
-
-	// Seeding satu researcher
-	const dzul = await prisma.researcher.upsert({
-		where: { email: "dzul@mail.com" },
-		update: {},
-		create: {
-			firstname: "Dzuuul",
-			lastname: "Sucipto",
-			education: "S3",
-			profileImage: "https://i0.wp.com/anitrendz.net/news/wp-content/uploads/2022/10/roadtonarutopv_screenshot.png?resize=696%2C392&ssl=1",
-			email: "dzul@mail.com",
-			password: pass1,
-			research: "Agriculture",
-			phone_number: "08569921322",
-			background: "Agriculture",
-			gender: "Male",
-			jabatan_akademik: "Dosen",
-			portofolio: { create: [Jurnal0, Jurnal1, Jurnal2, Jurnal3] },
-			location: "Jakarta",
-			investasi: "Masoh blom tau",
-			createdAt: new Date(),
-			updatedAt: new Date(),
-			Project: { create: [] }, // Project: { create: [Project1, Project2, Project3] }, sebelumnya
-		},
-	});
-	const vincent = await prisma.researcher.upsert({
-		where: { email: "vincent@mail.com" },
-		update: {},
-		create: {
-			firstname: "Vincent",
-			lastname: "Widodo",
-			education: "S2",
-			profileImage: "https://static.wikia.nocookie.net/naruto/images/7/70/Boruto_Boruto_Movie.png/revision/latest/thumbnail/width/360/height/360?cb=20150526164416&path-prefix=id",
-			email: "vincent@mail.com",
-			password: pass2,
-			research: "Perkapalan",
-			phone_number: "089686932111",
-			background: "Perkapalan",
-			gender: "Male",
-			jabatan_akademik: "Dosen",
-			portofolio: { create: [Jurnal4, Jurnal5] },
-			location: "Madura",
-			investasi: "Masoh blom tau",
-			createdAt: new Date(),
-			updatedAt: new Date(),
-			Project: { create: [] }, // Project: { create: [Project0] }, sebelumnya
-		},
-	});
-
-	// Untuk Investor
-	const alvin = await prisma.investor.upsert({
-		where: { email: "alvin@mail.com" },
-		update: {},
-		create: {
-			email: "alvin@mail.com",
-			password: pass3,
-			firstname: "Alvin",
-			lastname: "Gunawan",
-			budget: 3000000,
-			profileImage: "https://static.wikia.nocookie.net/naruto/images/2/21/Sasuke_Part_3_V2.png/revision/latest?cb=20170627161720&path-prefix=id",
-			institution: "Pribadi",
-			industry_type: "Manufaktur",
-			createdAt: new Date(),
-			updatedAt: new Date(),
-			Project: { create: [] }, //Project: { create: Project0 },
-			payment: { create: Payment },
-		},
-	});
-
-	const adlin = await prisma.investor.upsert({
-		where: { email: "adlin@mail.com" },
-		update: {},
-		create: {
-			email: "adlin@mail.com",
-			password: pass3,
-			firstname: "adlin",
-			lastname: "uye",
-			budget: 3000000,
-			profileImage: "https://static.wikia.nocookie.net/naruto/images/2/21/Sasuke_Part_3_V2.png/revision/latest?cb=20170627161720&path-prefix=id",
-			institution: "Pribadi",
-			industry_type: "Agrikultur",
-			createdAt: new Date(),
-			updatedAt: new Date(),
-			Project: { create: [] }, // Project: { create: [Project1, Project2, Project3] }, sebelumnya
-			payment: { create: Payment },
-		},
-	});
-
 	const Project0 = {
 		// Data untuk portofolio Jurnal
 		// ...
@@ -195,8 +88,7 @@ async function main() {
 		expected_finish_date: new Date(),
 		project_budget: 10000000,
 		tags: "Machine",
-		researcherId: 2,
-		investorId: 1,
+		// investorId: 1,
 		createdAt: new Date(),
 		updatedAt: new Date(),
 	};
@@ -212,8 +104,7 @@ async function main() {
 		expected_finish_date: new Date(),
 		project_budget: 1000000,
 		tags: "Agriculture, Information Technology",
-		researcherId: 1,
-		investorId: 2,
+		// investorId: 2,
 		createdAt: new Date(),
 		updatedAt: new Date(),
 	};
@@ -229,8 +120,7 @@ async function main() {
 		expected_finish_date: new Date(),
 		project_budget: 10000000,
 		tags: "Agriculture, Information Technology",
-		researcherId: 1,
-		investorId: 2,
+		// investorId: 2,
 		createdAt: new Date(),
 		updatedAt: new Date(),
 	};
@@ -246,11 +136,114 @@ async function main() {
 		expected_finish_date: new Date(),
 		project_budget: 10000000,
 		tags: "Agriculture, Biotechnology",
-		researcherId: 1,
-		investorId: 2,
+		// investorId: 2,
 		createdAt: new Date(),
 		updatedAt: new Date(),
 	};
+
+	const Payment1 = {
+		// Data untuk Comment
+		// ...
+		price: 500000,
+		createdAt: new Date(),
+		updatedAt: new Date(),
+		// Investor: "alvin",
+		// investorId: 1,
+		status: false,
+		invoice: "Ini adalah invoice",
+	};
+
+	const Payment2 = {
+		// Data untuk Comment
+		// ...
+		price: 500000,
+		createdAt: new Date(),
+		updatedAt: new Date(),
+		// Investor: "alvin",
+		// investorId: 2,
+		status: false,
+		invoice: "Ini adalah invoice",
+	};
+
+	// Seeding satu researcher
+	const dzul = await prisma.researcher.upsert({
+		where: { email: "dzul@mail.com" },
+		update: {},
+		create: {
+			firstname: "Dzuuul",
+			lastname: "Sucipto",
+			isPremium: false,
+			education: "S3",
+			profileImage: "https://i0.wp.com/anitrendz.net/news/wp-content/uploads/2022/10/roadtonarutopv_screenshot.png?resize=696%2C392&ssl=1",
+			email: "dzul@mail.com",
+			password: pass1,
+			background: "Agriculture",
+			gender: "Male",
+			jabatan_akademik: "Dosen",
+			portofolio: { create: [Jurnal0, Jurnal1, Jurnal2, Jurnal3] },
+			location: "Jakarta",
+			createdAt: new Date(),
+			updatedAt: new Date(),// Project: { create: [Project1, Project2, Project3] }, sebelumnya
+		},
+	});
+	const vincent = await prisma.researcher.upsert({
+		where: { email: "vincent@mail.com" },
+		update: {},
+		create: {
+			firstname: "Vincent",
+			lastname: "Widodo",
+			isPremium: true,
+			education: "S2",
+			profileImage: "https://static.wikia.nocookie.net/naruto/images/7/70/Boruto_Boruto_Movie.png/revision/latest/thumbnail/width/360/height/360?cb=20150526164416&path-prefix=id",
+			email: "vincent@mail.com",
+			password: pass2,
+			background: "Perkapalan",
+			gender: "Male",
+			jabatan_akademik: "Dosen",
+			portofolio: { create: [Jurnal4, Jurnal5] },
+			location: "Madura",
+			createdAt: new Date(),
+			updatedAt: new Date(),// Project: { create: [Project0] }, sebelumnya
+		},
+	});
+
+	// Untuk Investor
+	const alvin = await prisma.investor.upsert({
+		where: { email: "alvin@mail.com" },
+		update: {},
+		create: {
+			email: "alvin@mail.com",
+			password: pass3,
+			firstname: "Alvin",
+			lastname: "Gunawan",
+			profileImage: "https://static.wikia.nocookie.net/naruto/images/2/21/Sasuke_Part_3_V2.png/revision/latest?cb=20170627161720&path-prefix=id",
+			institution: "Pribadi",
+			industry_type: "Manufaktur",
+			createdAt: new Date(),
+			updatedAt: new Date(),
+			Project: { create: [Project0] }, //Project: { create: Project0 },
+			payment: { create: Payment1 },
+		},
+	});
+
+	const adlin = await prisma.investor.upsert({
+		where: { email: "adlin@mail.com" },
+		update: {},
+		create: {
+			email: "adlin@mail.com",
+			password: pass3,
+			firstname: "adlin",
+			lastname: "uye",
+			profileImage: "https://static.wikia.nocookie.net/naruto/images/2/21/Sasuke_Part_3_V2.png/revision/latest?cb=20170627161720&path-prefix=id",
+			institution: "Pribadi",
+			industry_type: "Agrikultur",
+			createdAt: new Date(),
+			updatedAt: new Date(),
+			Project: { create: [Project1, Project2, Project3] }, // Project: { create: [Project1, Project2, Project3] }, sebelumnya
+			payment: { create: Payment2 },
+		},
+	});
+
 }
 main()
 	.then(async () => {
