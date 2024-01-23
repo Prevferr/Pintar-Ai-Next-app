@@ -26,10 +26,7 @@ export async function POST(req: NextRequest) {
 	});
 
 	if (researcher) {
-		return NextResponse.json(
-			{ error: "Researchers already exists" },
-			{ status: 400 }
-		);
+		return NextResponse.json({ error: "Researchers already exists" }, { status: 400 });
 	}
 
 	const hashedPassword = await bcryptjs.hash(body.password, 10);
