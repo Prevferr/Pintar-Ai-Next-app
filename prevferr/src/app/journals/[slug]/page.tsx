@@ -77,12 +77,20 @@ const JournalDetail = ({ params }: { params: { slug: string } }) => {
 									{TimeChange(e?.createdAt)}
 								</p>
 								<span className="text-[#565e67]">•</span>
-								<p className="text-base font-mono">{e?.research}</p>
+								<p className="text-base font-mono">
+									{e?.background.toUpperCase()}
+								</p>
 							</div>
 						);
 					})}
 				</div>
 				<div className="border-b my-8 w-[70%] mx-auto"></div>
+				<div className="paddingX flex flex-col justify-center gap-4 items-center">
+					<h3>Abscract : </h3>
+					<p className="text-[#565e67] text-3xl text-justify">
+						{journalData?.abstract}
+					</p>
+				</div>
 			</div>
 		</div>
 	);

@@ -16,6 +16,7 @@ const JournalPage = () => {
 			if (!response.ok) {
 				throw new Error("Failed fetching data");
 			}
+			// WKWKKW
 
 			const responseJSON = await response.json();
 			console.log(responseJSON);
