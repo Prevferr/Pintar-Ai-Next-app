@@ -85,8 +85,11 @@ const JournalDetail = ({ params }: { params: { slug: string } }) => {
 					})}
 				</div>
 				<div className="border-b my-8 w-[70%] mx-auto"></div>
-				<div className="flex justify-center items-center">
-					<p className="text-[#565e67] text-base">{journalData?.abstract}</p>
+				<div className="paddingX flex flex-col justify-center gap-4 items-center">
+					<h3>Abscract : </h3>
+					<p className="text-[#565e67] text-3xl text-justify">
+						{journalData?.abstract}
+					</p>
 				</div>
 			</div>
 		</div>
