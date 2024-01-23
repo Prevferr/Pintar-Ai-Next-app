@@ -122,6 +122,10 @@ const YourComponent = () => {
 	};
 	return (
 		<div className="min-h-screen flex justify-center items-center  flex-col">
+			<h3 className="font-mono">
+				Enjoy our Ai feature, just one click and create your journal...
+			</h3>
+
 			<form
 				className="text-[#000000"
 				// onSubmit={handleUpload}
@@ -182,15 +186,14 @@ const YourComponent = () => {
 					Submit
 				</button>
 			</form>
+			<button
+				onClick={handleQuestionSubmit}
+				className="hover:underline font-mono text-[#000]"
+			>
+				Submit Question
+			</button>
 			{title && (
 				<div className="paddingX paddingY flex flex-col gap-4">
-					<button
-						onClick={handleQuestionSubmit}
-						className="hover:underline font-mono"
-					>
-						Submit Question
-					</button>
-
 					<p className="font-mono">Judul : {title}</p>
 					<p className="font-mono">Description : {descricption}</p>
 				</div>
