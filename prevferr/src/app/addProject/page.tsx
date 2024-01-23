@@ -18,11 +18,7 @@ const AddProjectForm = () => {
 	});
 	const [error, setError] = useState("");
 
-<<<<<<< HEAD
-	// console.log(readPayload, "ini");
-=======
-  console.log(readPayload, "ini");
->>>>>>> b8ddd0ffac9c502c3d714237a3cb244f2cc060ae
+	console.log(readPayload, "ini");
 
 	const onSubmit = async (event: React.FormEvent) => {
 		event.preventDefault();
@@ -61,11 +57,11 @@ const AddProjectForm = () => {
 		}
 	};
 
-  const onHandlerForm = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    const { name, value } = event.target;
-    setForm({ ...form, [name]: value });
-  };
+	const onHandlerForm = (event: React.ChangeEvent<HTMLInputElement>) => {
+		event.preventDefault();
+		const { name, value } = event.target;
+		setForm({ ...form, [name]: value });
+	};
 
 	return (
 		<>

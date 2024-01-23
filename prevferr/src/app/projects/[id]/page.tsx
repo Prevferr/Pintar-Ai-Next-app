@@ -1,19 +1,6 @@
 import React from "react";
 
-type ProjectType = {
-	id: string;
-};
-
-const fetchProjectById = async (id: number) => {
-	console.log(id, "<<<< id");
-
-	const response = await fetch(`http://localhost:3000/api/projects/${id}`);
-	// console.log(response.json(), "<<<< responsenyaaa");
-};
-
-const ProjectDetail = async ({ params }: { params: { id: string } }) => {
-	const projectDetail = await fetchProjectById(Number(params.id));
-
+const ProjectDetail = async () => {
 	return (
 		<section className="min-h-screen bg-[#E2E4DD]">
 			<div className="paddingX paddingYShorter2">
