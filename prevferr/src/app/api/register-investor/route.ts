@@ -31,7 +31,7 @@ export async function POST(req: Request) {
     }
 
     // Destructure validated data
-    const { firstname, lastname, email, password, budget, profileImage, institution, industry_type } = result.data;
+    const { firstname, lastname, email, password, profileImage, institution, industry_type } = result.data;
 
     const hashed_password = await hash(password, 10);
 
