@@ -48,9 +48,9 @@ const WelcomePage = () => {
 					return (
 						<>
 							<div key={el.id} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-								<a href="#">
+								<Link href={`/projects/${el.id}`}>
 									<img className="rounded-t-lg" src={el.project_image} alt="" />
-								</a>
+								</Link>
 								<div className="p-5">
 									<a href="#">
 										<h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{el.project_name}</h5>
@@ -71,8 +71,8 @@ export default WelcomePage;
 
 // import { getServerSession } from "next-auth";
 // import { authOptions } from "../../../helpers/lib/auth";
-// // import Header from "@/components/header.component";
-// // import { authOptions } from "@/lib/auth";
+// import Header from "@/components/header.component";
+// import { authOptions } from "@/lib/auth";
 
 // export default async function Profile() {
 //   const session = await getServerSession(authOptions);
