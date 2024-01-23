@@ -27,17 +27,14 @@ export const RegisterForm = () => {
 	const [formValues, setFormValues] = useState({
 		firstname: "",
 		lastname: "",
-		password: "",
-		institution: "",
-		profileImage: "",
+		isPremium: false,
 		email: "",
+		password: "",
+		profileImage: "",
 		background: "",
 		gender: "",
-		role: "",
 		location: "",
-		phone_number: "",
 		jabatan_akademik: "",
-		investasi: "",
 		education: "",
 	});
 	const [error, setError] = useState("");
@@ -48,17 +45,14 @@ export const RegisterForm = () => {
 		setFormValues({
 			firstname: "",
 			lastname: "",
-			password: "",
-			institution: "",
-			profileImage: "",
+			isPremium: false,
 			email: "",
+			password: "",
+			profileImage: "",
 			background: "",
 			gender: "",
-			role: "",
 			location: "",
-			phone_number: "",
 			jabatan_akademik: "",
-			investasi: "",
 			education: "",
 		});
 
@@ -126,104 +120,19 @@ export const RegisterForm = () => {
 				/>
 			</div>
 			<div className="mb-6">
-				<input
-					required
-					type="password"
-					name="password"
-					value={formValues.password}
-					onChange={handleChange}
-					placeholder="Password"
-					className={`${input_style}`}
-				/>
+				<input required type="email" name="email" value={formValues.email} onChange={handleChange} placeholder="Email address" className={`${input_style}`} />
 			</div>
 			<div className="mb-6">
-				<input
-					required
-					type="text"
-					name="phone_number"
-					value={formValues.phone_number}
-					onChange={handleChange}
-					placeholder="Phone Number"
-					className={`${input_style}`}
-				/>
-			</div>
-
-			<div className="mb-6">
-				<input
-					required
-					type="text"
-					name="education"
-					value={formValues.education}
-					onChange={handleChange}
-					placeholder="education"
-					className={`${input_style}`}
-				/>
+				<input required type="email" name="email" value={formValues.email} onChange={handleChange} placeholder="Email address" className={`${input_style}`} />
 			</div>
 			<div className="mb-6">
-				<input
-					required
-					type="text"
-					name="jabatan_akademik"
-					value={formValues.jabatan_akademik}
-					onChange={handleChange}
-					placeholder="Jabatan Akademik"
-					className={`${input_style}`}
-				/>
+				<input required type="text" name="education" value={formValues.education} onChange={handleChange} placeholder="education" className={`${input_style}`} />
 			</div>
 			<div className="mb-6">
-				<input
-					required
-					type="text"
-					name="institution"
-					value={formValues.institution}
-					onChange={handleChange}
-					placeholder="Institution"
-					className={`${input_style}`}
-				/>
+				<input required type="text" name="profileImage" value={formValues.profileImage} onChange={handleChange} placeholder="Profile Image" className={`${input_style}`} />
 			</div>
 			<div className="mb-6">
-				<input
-					required
-					type="text"
-					name="profileImage"
-					value={formValues.profileImage}
-					onChange={handleChange}
-					placeholder="Profile Image"
-					className={`${input_style}`}
-				/>
-			</div>
-			<div className="mb-6">
-				<input
-					required
-					type="email"
-					name="email"
-					value={formValues.email}
-					onChange={handleChange}
-					placeholder="Email address"
-					className={`${input_style}`}
-				/>
-			</div>
-			<div className="mb-6">
-				<input
-					required
-					type="text"
-					name="background"
-					value={formValues.background}
-					onChange={handleChange}
-					placeholder="Background"
-					className={`${input_style}`}
-				/>
-			</div>
-			<div className="mb-6">
-				<input
-					required
-					type="text"
-					name="gender"
-					value={formValues.gender}
-					onChange={handleChange}
-					placeholder="Gender"
-					className={`${input_style}`}
-				/>
+				<input required type="text" name="jabatan_akademik" value={formValues.jabatan_akademik} onChange={handleChange} placeholder="Jabatan Akademik" className={`${input_style}`} />
 			</div>
 			<div className="mb-6">
 				<input
@@ -237,26 +146,10 @@ export const RegisterForm = () => {
 				/>
 			</div>
 			<div className="mb-6">
-				<input
-					required
-					type="text"
-					name="role"
-					value={formValues.role}
-					onChange={handleChange}
-					placeholder="Role"
-					className={`${input_style}`}
-				/>
+				<input required type="text" name="gender" value={formValues.gender} onChange={handleChange} placeholder="Gender" className={`${input_style}`} />
 			</div>
 			<div className="mb-6">
-				<input
-					required
-					type="text"
-					name="location"
-					value={formValues.location}
-					onChange={handleChange}
-					placeholder="Location"
-					className={`${input_style}`}
-				/>
+				<input required type="text" name="location" value={formValues.location} onChange={handleChange} placeholder="Location" className={`${input_style}`} />
 			</div>
 			<div className="flex flex-col items-center m-6 gap-2">
 				<SingleImageDropzone
