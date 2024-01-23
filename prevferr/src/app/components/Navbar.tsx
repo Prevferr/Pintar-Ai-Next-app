@@ -58,6 +58,12 @@ const Navbar = () => {
             <ul className="flex justify-between gap-8 items-center">
               <DropDownList />
             </ul>
+			<button className="border border-[#fff] text-[#fff] px-5 py-1 rounded-xl  hover:rounded-md hover:bg-[#fff] hover:text-[#252525]" onClick={handleLogout}>
+              <span className="flex gap-2 items-center font-mono">
+                Logout
+                <Icon icon="heroicons-solid:logout" width={20} />
+              </span>
+            </button>
             <ModalLogin open={isModalOpen} onOk={closeModal} onCancel={closeModal} />
           </div>
         </nav>
