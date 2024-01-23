@@ -69,3 +69,11 @@ export async function GET(req: NextRequest) {
 	});
 	return NextResponse.json(projects);
 }
+
+// GET ALL RESEARCHER
+export async function GetAllResearchers(req: NextRequest) {
+	const researcher = await prisma.researcher.findMany();
+	console.log(researcher, "<<<<<< Researcher Dataaaaa");
+
+	return NextResponse.json(researcher);
+}
