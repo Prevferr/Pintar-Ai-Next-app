@@ -1,16 +1,14 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-// import { Icon } from "@iconify/react";
-// import JournalCard from "../components/JournalCard";
 import Link from "next/link";
 import { JournalWithResearcher } from "../type-def";
 import { useRouter } from "next/navigation";
-// import { cookies } from "next/headers";
+import { format, parseISO, formatDistanceToNow } from "date-fns";
 
 const WelcomePage = () => {
 	const router = useRouter();
-	const [journal, setJournal] = useState<JournalType>([]);
+	const [journal, setJournal] = useState([]);
 	const fetchData = async () => {
 		try {
 			const response = await fetch("http://localhost:3000/api/projects");
@@ -20,7 +18,7 @@ const WelcomePage = () => {
 			}
 
 			const responseJSON = await response.json();
-			console.log(responseJSON, "<<<<< RES JSON");
+			// console.log(responseJSON, "<<<<< RES JSON");
 
 			setJournal(responseJSON);
 		} catch (error) {
@@ -33,25 +31,19 @@ const WelcomePage = () => {
 	};
 	// console.log(journal, "<<<<<< KOWKOWKOKAWOKAWOKWA");
 
+	const DateChange = (dateString: string): string => {
+		const date = parseISO(dateString);
+		const formattedDate = format(date, "MMMM d, yyyy");
+
+		return `${formattedDate}`;
+	};
+
 	useEffect(() => {
 		fetchData();
 	}, []);
 	return (
 		<>
 			<section className="bg-[#242628] w-full">
-				<div className="paddingX">
-					{/* <div className="w-full flex justify-center border-x  border-[#000]">
-					<div className="flex justify-between items-center">
-					<div className="p-4 flex flex-col justify-between gap-8">
-					<div className="flex flex-col justify-around  gap-4 text-base text-white">
-					<h3 className="text-3xl font-mono text-left font-semibold">
-					Welcome Alvin JustKidding Everything you need is here..
-					</h3>
-					</div>
-					</div>
-					</div>
-				</div> */}
-				</div>
 				<div className="flex justify-center paddingX border-[#000]  min-h-screen">
 					<div className="w-[60%] border-l border-[#000] paddingXShorter3 paddingYShorter2">
 						<div className="flex justify-between items-center">
@@ -66,23 +58,23 @@ const WelcomePage = () => {
 							</div>
 						</div>
 					</div>
-					{journal.map((el) => {
+					{journal.map((el: any) => {
 						return (
 							<>
 								<div className="w-[40%] border-x border-[#000] paddingYShorter3  bg-[#E2E4DD] flex flex-col gap-4">
 									<div className="border-[#000] border-y h-48 flex justify-start gap-8 p-4 hover:bg-[#fff]">
 										<div className="flex flex-col gap-4">
-											<p className="font-mono text-[#565e67] text-base">{el.starting_date}</p>
-											<h1 className="text-xl">Petanian Skala Mikro di Indonesia</h1>
+											<p className="font-mono text-[#565e67] text-base">{DateChange(el.expected_finish_date)}</p>
+											<h1 className="text-xl">{el.project_name}</h1>
+											<img src={el.project_image} className="h-10 w-10 rounded-full object-cover" alt="researcher" />
 											<div className="flex justify-start items-center gap-4">
-												<img src="https://plus.unsplash.com/premium_photo-1676998930667-cab56c8fa602?q=80&w=3383&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="h-10 w-10 rounded-full object-cover" alt="researcher" />
 												<p className="text-base font-mono">
-													<span className="text-[#565e67] text-sm">BY</span> Dzul
+													<span className="text-[#565e67] text-sm">Budget</span> {el.project_budget}
 												</p>
 												<span className="text-[#565e67]">•</span>
-												<p className="font-mono text-[#565e67] text-sm">NOVEMBER 27, 2023</p>
+												<p className="font-mono text-[#565e67] text-sm">{DateChange(el.starting_date)}</p>
 												<span className="text-[#565e67]">•</span>
-												<p className="text-base font-mono">Membangun investasi emas di treasury di treasury.. investasi emas di treasury di treasury..</p>
+												<p className="text-base font-mono">{el.description_project}</p>
 											</div>
 										</div>
 									</div>
