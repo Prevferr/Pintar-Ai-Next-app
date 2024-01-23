@@ -6,94 +6,93 @@ import { PdfReader } from "pdfreader";
 
 
 export class Upload {
-	static async extractPDF(file: File, userId:any) {
-		try {
-	 const fileArrBuff = await file.arrayBuffer()
-      const fileBuff = Buffer.from(fileArrBuff)
-      const result: string[] = []
+  static async extractPDF(file: File) {
+  try {
+    const fileArrBuff = await file.arrayBuffer();
+    const fileBuff = Buffer.from(fileArrBuff);
+    const result: string[] = [];
 
-      const pdfreader = new PdfReader({})
-            pdfreader.parseBuffer(fileBuff, (err: any, item: any) => {
-        //   console.log(item, "<<<<< masuk ga");
+    const pdfreader = new PdfReader({});
 
-        if (err) console.error('error:', err)
-        // // else if (!item) return this.sumPDF(result.join(' '), userId)
-        else if (item) { // Add a check to ensure item is defined
-          if (item.text) {
-              result.push(item.text);
-            //   console.log(item.text,"<<<");
-              console.log(result, "mamamma");
-            
-          }
+    pdfreader.parseBuffer(fileBuff, (err: any, item: any) => {
+      if (err) {
+        console.error('error:', err);
+      } else if (item && item.text) {
+        if (item.text.includes('Abstract')) {
+          // Mulai memasukkan ke dalam array result ketika menemukan "Abstract"
+          result.push(item.text);
+          
+        } else if (result.length > 0) {
+          // Masukkan semua teks berikutnya ke dalam array result
+          result[result.length - 1] += ` ${item.text}`;
         }
-            })
+      
+      } else if (!item) {
+        let resultGabungan = "";
+
+        const pemisahKataKunci = result.toString().split("Kata kunci:")[0];
+        const pemisahKeywords = result.toString().split("Keywords:")[0];
+        
+        if (!pemisahKataKunci.toLocaleLowerCase().includes("kata kunci:") && !pemisahKataKunci.toLocaleLowerCase().includes("keywords:")) {
+          resultGabungan += pemisahKataKunci;
+        }
+
+        if (!pemisahKeywords.toLocaleLowerCase().includes("kata kunci:") && !pemisahKeywords.toLocaleLowerCase().includes("keywords:")) {
+          resultGabungan += pemisahKeywords;
+        }
+
+        console.log(resultGabungan);
+
+        // const resultGabungan = pemisahKataKunci + pemisahKeywords;
+
+        // console.log("Gabungan nih", resultGabungan);
+
+        // console.log("Ini udah terakhir nih", result.toString().split("Kata kunci:"));
+        return this.sumPDF(resultGabungan)
+      }
+    });
+    
+    return result
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+  static async sumPDF(val: string) {
+		try {
+	
+			const ai = await openai.chat.completions.create({
+				model: "gpt-4",
+				messages: [
+					{
+						role: "user",
+						content: `can you summarize this texts of abstract 
+and based on the existing abstract, the abstract includes 
+ which part of these 5 keywords: Education, Engineering, Healthcare, Agriculture, environment, please answer only the KEYWORD!${val}`,
+					},
+				],
+			});
+
+            const data = (ai.choices[0].message.content as string)
             
-            // const title = result[1]
-// Find the index of the element containing the keyword "Abstract"
-// const abstractIndex = result.findIndex((element) => element.includes('Abstract'));
 
-// Slice the array from the found index to a specific number of elements (e.g., 5 elements)
-            // const slicedArray = result.slice(abstractIndex, abstractIndex + 5);        
-            // console.log(title);
-            // console.log(abstractIndex);
+      const result = data.split("Keywords:")[0]
+	
+			// Prisma create query
+			// await prisma.jurnal.create({
+			// 	data: {
+			// 		researcherId: Number(userId),
+			// 		title,
+			// 		abstract,
+			// 	},
+      //       });
+            console.log(result, "<<<<");
 
-    } catch (err) {
-      console.log(err)
-    }
+			return data;
+		} catch (err) {
+			console.error(err);
+		}
 	}
-
-
-// 	static async sumPDF(val: string, userId: any) {
-// 		try {
-// 			// const userId = req.headers.get("x-user-id") as string;
-
-// 			const ai = await openai.chat.completions.create({
-// 				model: "gpt-4",
-// 				messages: [
-// 					{
-// 						role: "user",
-// 						content: `can you summarize this pdf file in the ABSTRACT section
-// and based on the existing abstract, the abstract includes 
-//  which part of these 5 keywords: Education, Engineering, Healthcare, Agriculture, environment, give me only the keyword points, not the others, just KEYWORD not other texts! ${val}`,
-// 					},
-// 				],
-// 			});
-
-//             const data = (ai.choices[0].message.content as string)
-            
-
-// 			// const title = data[1];
-// 			// const abstract = data[2];
-
-// 			// // Prisma create query
-// 			// await prisma.jurnal.create({
-// 			// 	data: {
-// 			// 		researcherId: Number(userId),
-// 			// 		title,
-// 			// 		abstract,
-// 			// 	},
-//             // });
-//             console.log(data, "<<<<");
-
-// 			return data;
-// 		} catch (err) {
-// 			console.error(err);
-// 		}
-// 	}
-
-	//   await collection.findOneAndUpdate(
-	//     { _id: new ObjectId(userId) },
-	//     {
-	//       $set: {
-	//         cvData: {
-	//           expYear,
-	//           skills,
-	//           numOfProjects,
-	//           projectNames,
-	//         },
-	//       },
-	//     },
-	//   )
 }
 
 // static async upPDF(file: File, userId: string) {
