@@ -69,7 +69,7 @@ export async function GET(req: NextRequest) {
 			investorId: Number(idUserLogin),
 		},
 	});
-	console.log(projects, "<<<<<<< PROJECTT");
+	// console.log(projects, "<<<<<<< PROJECTT");
 
 	return NextResponse.json(projects);
 }
