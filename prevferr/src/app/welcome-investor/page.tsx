@@ -15,7 +15,6 @@ const WelcomePage = () => {
 			}
 
 			const responseJSON = await response.json();
-			// console.log(responseJSON, "<<<<< RES JSON");
 
 			setJournal(responseJSON);
 		} catch (error) {
@@ -26,14 +25,6 @@ const WelcomePage = () => {
 			}
 		}
 	};
-	// console.log(journal, "<<<<<< KOWKOWKOKAWOKAWOKWA");
-
-	// const DateChange = (dateString: string): string => {
-	// 	const date = parseISO(dateString);
-	// 	const formattedDate = format(date, "MMMM d, yyyy");
-
-	// 	return `${formattedDate}`;
-	// };
 
 	const rupiah = (number: any) => {
 		return new Intl.NumberFormat("id-ID", {
@@ -47,22 +38,22 @@ const WelcomePage = () => {
 	}, []);
 	return (
 		<>
-			{journal.map((el: any) => {
-				return (
-					<>
-						<section className="flex w-full justify-center py-11">
-							<div className="rounded-2xl w-[400px] overflow-hidden" key={el.id}>
+			<section className="flex w-full justify-center py-11">
+				{journal.map((el: any) => {
+					return (
+						<>
+							<div className="rounded-2xl w-[400px] overflow-hidden shadow-md" key={el.id}>
 								<div className="shadow rounded-xl flex flex-col pb-5 bg-[#fff]">
 									<div className="relative flex flex-col justify-center overflow-hidden">
 										<img src={el.project_image} className="rounded-t-xl" alt="Image Description" />
 										<div className="absolute top-0 left-0 h-full w-full cursor-pointer opacity-25 rounded-xl"></div>
 									</div>
-									<div className="p-2 flex flex-col gap-2">
+									<div className="p-7 text-xl py-7">
 										<span className="flex justify-start gap-2 items-center">
 											<p className="text-xs text-[#74767e]">{el.tags}</p>
 											<Icon icon="material-symbols-light:verified-outline" color="#0096FF" width={15} />
 										</span>
-										<p className="text-[#252525] font-semibold text-sm">{el.project_name}</p>
+										<h1 className="text-gray-800 font-extrabold text-sm mb-5">{el.project_name}</h1>
 										<p className="text-[#252525] font-semibold text-sm">{el.description_project}</p>
 										<span className="flex justify-start gap-2 items-center">
 											<p className="text-xs font-light text-[#252525]">Budget</p>
@@ -71,10 +62,10 @@ const WelcomePage = () => {
 									</div>
 								</div>
 							</div>
-						</section>
-					</>
-				);
-			})}
+						</>
+					);
+				})}
+			</section>
 		</>
 	);
 };
