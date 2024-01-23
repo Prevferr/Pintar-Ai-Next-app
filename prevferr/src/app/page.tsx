@@ -56,11 +56,20 @@ export default function Home() {
 						<div className="w-[50%] flex justify-between items-center">
 							<div className="p-4 flex flex-col justify-between gap-8">
 								<div className="flex flex-col justify-around  gap-4 text-base text-white">
-									<h3 className="text-3xl font-mono text-left font-semibold">Everything you need is here..</h3>
+									<h3 className="text-3xl font-mono text-left font-semibold">
+										Everything you need is here..
+									</h3>
 								</div>
-								<p className="text-[#fff] font-mono text-sm">Committed to advancing research for the collective welfare, with a focus on prioritizing the health and prosperity of humanity and the environment.</p>
+								<p className="text-[#fff] font-mono text-sm">
+									Committed to advancing research for the collective welfare,
+									with a focus on prioritizing the health and prosperity of
+									humanity and the environment.
+								</p>
 								<Link href="/about-us">
-									<button className="mr-auto border flex items-center gap-2 bg-[#fff] py-3 px-2 rounded-lg text-[#000] cursor-pointer font-mono transition-transform duration-300 hover:transform translate-y-[-3px]" onClick={LoadToTop}>
+									<button
+										className="mr-auto border flex items-center gap-2 bg-[#fff] py-3 px-2 rounded-lg text-[#000] cursor-pointer font-mono transition-transform duration-300 hover:transform translate-y-[-3px]"
+										onClick={LoadToTop}
+									>
 										<p className="text-sm">Learn about Pintar Scholar</p>
 										<Icon icon="tabler:arrow-up-right" width={20} />
 									</button>
@@ -84,7 +93,11 @@ export default function Home() {
 						<h3 className="font-mono text-5xl">Video for developers</h3>
 					</div>
 					<div className="w-[70%]">
-						<p>Ship faster with more visibility. We're continuously solving the hardest problems in video streaming and wrapping it all up in thoughtfully designed developer tools and dashboards.</p>
+						<p>
+							Ship faster with more visibility. We're continuously solving the
+							hardest problems in video streaming and wrapping it all up in
+							thoughtfully designed developer tools and dashboards.
+						</p>
 					</div>
 				</div>
 				<div className="w-full flex paddingX border-b border-[#000] border-x paddingX">
@@ -100,7 +113,9 @@ export default function Home() {
 							</div>
 							<div className="border-b border-[#000] h-[5rem] flex justify-start items-center gap-4 px-4">
 								<Icon icon="ph:projector-screen-chart-thin" width={50} />
-								<p className="text-xl font-mono font-thin">Contribute Project</p>
+								<p className="text-xl font-mono font-thin">
+									Contribute Project
+								</p>
 							</div>
 							<div className="border-b border-[#000] h-[5rem] flex justify-start items-center gap-4 px-4">
 								<Icon icon="arcticons:samsung-finder" width={50} />
@@ -109,7 +124,10 @@ export default function Home() {
 						</div>
 						<div className="w-[65%]">
 							<div className="relative flex flex-col justify-center">
-								<img src="https://images.openai.com/blob/971cb9d4-66e4-46b0-95d8-f3b57931b08e/stangel-2022-0052.jpg?trim=0,0,0,0&width=3200" className="h-[40rem] object-cover" />
+								<img
+									src="https://images.openai.com/blob/971cb9d4-66e4-46b0-95d8-f3b57931b08e/stangel-2022-0052.jpg?trim=0,0,0,0&width=3200"
+									className="h-[40rem] object-cover"
+								/>
 								<div className="absolute top-0  bottom-0 h-full w-full bg-[#252525] cursor-pointer opacity-50"></div>
 							</div>
 						</div>
@@ -119,30 +137,51 @@ export default function Home() {
 
 			{/* layer 3 */}
 			<div className="bg-[#E2E4DD] p-6">
-				<Swiper cssMode={true} navigation={true} pagination={true} mousewheel={true} keyboard={true} modules={[Navigation, Pagination, Mousewheel, Keyboard]} className="mySwiper">
+				<Swiper
+					cssMode={true}
+					navigation={true}
+					pagination={true}
+					mousewheel={true}
+					keyboard={true}
+					modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+					className="mySwiper"
+				>
 					{journal?.map((e) => {
 						return (
 							<SwiperSlide>
 								<div className="mx-auto border border-[#000] w-[80%] rounded-3xl flex flex-col">
 									<div className="bg-[#FFB200] rounded-t-3xl py-3 border-b border-[#000]">
-										<p className="text-[#000] text-center font-mono">Journals</p>
+										<p className="text-[#000] text-center font-mono">
+											Journals
+										</p>
 									</div>
 
 									<div className="w-full flex justify-center items-center py-14">
 										<div className="w-[60%] mx-auto flex flex-col gap-4">
-											<p className="font-mono text-[#565e67]">{DateChnage(e?.createdAt)}</p>
+											<p className="font-mono text-[#565e67]">
+												{DateChnage(e?.createdAt)}
+											</p>
 											<h1 className="text-5xl">{e?.title}</h1>
 											{e?.portofolio?.map((el) => {
 												return (
 													<div className="flex justify-start items-center gap-4">
-														<img src={el?.profileImage} className="h-14 w-14 rounded-full object-cover" alt="Author" />
+														<img
+															src={el?.profileImage}
+															className="h-14 w-14 rounded-full object-cover"
+															alt="Author"
+														/>
 														<p className="text-base font-mono">
-															<span className="text-[#565e67] text-sm">BY</span> {el?.firstname} {el?.lastname}
+															<span className="text-[#565e67] text-sm">BY</span>{" "}
+															{el?.firstname} {el?.lastname}
 														</p>
 														<span className="text-[#565e67]">•</span>
-														<p className="font-mono text-[#565e67] text-sm">{PostChange(el?.createdAt)}</p>
+														<p className="font-mono text-[#565e67] text-sm">
+															{PostChange(el?.createdAt)}
+														</p>
 														<span className="text-[#565e67]">•</span>
-														<p className="text-base font-mono">{el?.research}</p>
+														<p className="text-base font-mono">
+															{el?.background.toUpperCase()}
+														</p>
 													</div>
 												);
 											})}
@@ -159,8 +198,13 @@ export default function Home() {
 				<button className="relative bg-[#242628] text-[#fff] font-mono w-[60%] mx-auto text-6xl overflow-hidden rounded-full hover:rounded-lg p-4">
 					<span className="z-10 relative">Start to Join</span>
 				</button>
-				<img src="https://www.mux.com/_next/static/media/player-default.f8e6da8b.svg" className="bg-[#000]" />
-				<p className="text-2xl font-mono">Try Mux with a risk free trial and $20 in credit.</p>
+				<img
+					src="https://www.mux.com/_next/static/media/player-default.f8e6da8b.svg"
+					className="bg-[#000]"
+				/>
+				<p className="text-2xl font-mono">
+					Try Mux with a risk free trial and $20 in credit.
+				</p>
 			</div>
 		</Fragment>
 	);

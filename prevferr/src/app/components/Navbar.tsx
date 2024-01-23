@@ -21,17 +21,23 @@ const Navbar = () => {
 			<Link href="/">
 				<span className="flex gap-2 items-center h-full">
 					<Icon icon="mingcute:quill-pen-line" color="#fff" width={40} />
-					<h3 className="text-[#fff] text-4xl font-mono cursor-pointer">Pintar Ai.</h3>
+					<h3 className="text-[#fff] text-4xl font-mono cursor-pointer">
+						Pintar Ai.
+					</h3>
 				</span>
 			</Link>
 			<div className="flex justify-between items-center gap-4">
 				<ul className="flex justify-between gap-8 items-center">
-					<li onClick={() => router.push("/addProject")} className="text-[#fff] hover:underline font-mono ">
+					{/* <li onClick={() => router.push("/addProject")} className="text-[#fff] hover:underline font-mono ">
 						Create Project
-					</li>
+					</li> */}
 					<DropDownList />
 				</ul>
-				<ModalLogin open={isModalOpen} onOk={closeModal} onCancel={closeModal} />
+				<ModalLogin
+					open={isModalOpen}
+					onOk={closeModal}
+					onCancel={closeModal}
+				/>
 			</div>
 		</nav>
 	);

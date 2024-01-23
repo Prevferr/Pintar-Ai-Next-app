@@ -61,7 +61,9 @@ export const POST = async (req: NextRequest) => {
     if (data) {
       // Upload.upPDF(data, userId)
 
-      Upload.extractPDF(data, userId)
+      // Upload.extractPDF(data, userId)
+      Upload.extractPDF(data)
+      
     }
 
     return NextResponse.json<ResponseAPIType<unknown>>(
