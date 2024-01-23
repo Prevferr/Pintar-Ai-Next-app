@@ -11,7 +11,9 @@ const WelcomePage = (request: NextRequest) => {
   const [journal, setJournal] = useState([] as JournalWithResearcher[]);
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/journals");
+      const response = await fetch(
+        "http://localhost:3000/api/welcome-researcher"
+      );
 
       if (!response.ok) {
         throw new Error("Failed fetching data");
@@ -30,7 +32,6 @@ const WelcomePage = (request: NextRequest) => {
     }
     // console.log("MAAAFFFFFFFF", request.headers.get("x-user-id"));
     // console.log("xixixixixixixixiixxixixi");
-    
   };
 
   useEffect(() => {
