@@ -41,13 +41,12 @@ export async function POST(req: NextRequest) {
 			profileImage: body.profileImage,
 			email: body.email,
 			password: hashedPassword,
-			research: body.research,
 			phone_number: body.phone_number,
 			background: body.background,
 			gender: body.gender,
 			jabatan_akademik: body.jabatan_akademik,
 			location: body.location,
-			investasi: body.investasi
+			investasi: body.investasi,
 		},
 	});
 
@@ -56,13 +55,12 @@ export async function POST(req: NextRequest) {
 	return NextResponse.json(rest, { status: 201 });
 }
 
-
 // GET ALL RESEARCHERS
 export async function GET(req: NextRequest) {
 	const projects = await prisma.researcher.findMany({
-	  include: {
-		portofolio: true,
-	  },
+		include: {
+			portofolio: true,
+		},
 	});
 	return NextResponse.json(projects);
-  }
+}

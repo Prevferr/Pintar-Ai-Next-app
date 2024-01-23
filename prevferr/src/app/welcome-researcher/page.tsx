@@ -4,6 +4,10 @@ import { Icon } from "@iconify/react";
 import JournalCard from "../components/JournalCard";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+// Import cookies dari next/headers
+import { cookies } from "next/headers";
+// Import redirect dari next/navigation
+import { redirect } from "next/navigation";
 
 import { JournalWithResearcher } from "../type-def";
 import { NextRequest } from "next/server";
@@ -15,7 +19,9 @@ const WelcomePage = (request: NextRequest) => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/welcome-researcher");
+      const response = await fetch(
+        "http://localhost:3000/api/welcome-researcher"
+      );
 
       if (!response.ok) {
         throw new Error("Failed fetching data");
@@ -35,6 +41,26 @@ const WelcomePage = (request: NextRequest) => {
   return (
     <>
       <section className="bg-[#242628] w-full">
+      <form
+        className="mt-8 text-center"
+        // Karena SideBar ini merupakan Server Component, maka tidak bisa menggunakan onSubmit, oleh karena itu, solusinya adalah menggunakan server action
+        action={async () => {
+          "use server";
+
+          // Menghapus cookie token bila exists
+          cookies().get("token") && cookies().delete("token");
+
+          // Redirect ke halaman login
+          redirect("/");
+        }}
+      >
+        <button
+          type="submit"
+          className="rounded bg-blue-200 px-4 py-2 transition-colors duration-300 hover:bg-blue-400 hover:text-white"
+        >
+          Logout
+        </button>
+      </form>
         <div className="paddingX"></div>
         <div className="flex justify-center paddingX border-[#000] min-h-screen">
           <div className="w-[60%] border-l border-[#000] paddingXShorter3 paddingYShorter7">
@@ -44,7 +70,9 @@ const WelcomePage = (request: NextRequest) => {
                   Empowering Scholars
                 </h3>
                 <p className="text-[#fff] font-mono text-sm">
-                  Elevating Academic Access: Researcher Website Introduces Journal Upload Feature to Foster Collaboration and Knowledge Dissemination
+                  Elevating Academic Access: Researcher Website Introduces
+                  Journal Upload Feature to Foster Collaboration and Knowledge
+                  Dissemination
                 </p>
                 <Link href="/create-journal">
                   <button
@@ -58,23 +86,23 @@ const WelcomePage = (request: NextRequest) => {
             </div>
           </div>
           {journal.map((el) => (
-            <div key={el.id} className="w-[40%] border-x border-[#000] paddingYShorter3 bg-[#E2E4DD] flex flex-col gap-4">
-              <div className="border-[#000] border-y h-48 flex justify-start gap-8 p-4 hover:bg-[#fff]">
+            <div
+              key={el.id}
+              className="w-[40%] border-x border-[#000] paddingYShorter3 bg-[#E2E4DD] flex flex-col gap-4"
+            >
+              <div className="border-[#000] border-y h-52 flex justify-start gap-8 p-4 hover:bg-[#fff]">
                 <div className="flex flex-col gap-4">
-                  <p className="font-mono text-[#565e67] text-base">{el.keywords}</p>
+                  <p className="font-mono text-[#565e67] text-base">
+                    [{el.keywords}]
+                  </p>
                   <h1 className="text-xl">{el.title}</h1>
                   <div className="flex justify-start items-center gap-4">
-                    <p className="text-base font-mono">
-
-                    </p>
-                    <span className="text-[#565e67]">•</span>
-                    <p className="font-mono text-[#565e67] text-sm">NOVEMBER 27, 2023</p>
-                    <span className="text-[#565e67]">•</span>
                     <p className="text-base font-mono">{el.abstract}</p>
                   </div>
                 </div>
               </div>
             </div>
+            
           ))}
         </div>
       </section>

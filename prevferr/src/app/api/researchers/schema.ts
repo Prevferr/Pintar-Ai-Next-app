@@ -7,7 +7,6 @@ const schema = z.object({
   profileImage: z.string(),
   email: z.string().email(),
   password: z.string().min(5),
-  research: z.string(),
   phone_number: z.string(),
   background: z.string(),
   gender: z.string(),
