@@ -112,6 +112,7 @@ export class Upload {
 					title: title,
 					keywords: keyword,
 					abstract: abstract,
+					journal_file: abstract,
 					researcherId: Number(userId),
 				},
 			});
