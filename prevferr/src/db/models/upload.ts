@@ -14,13 +14,12 @@ export class Upload {
 
       const pdfreader = new PdfReader({})
             pdfreader.parseBuffer(fileBuff, (err: any, item: any) => {
-          console.log(item, "<<<<?");
-        // if (err) console.error('error:', err)
-        // else if (!item) return this.sumPDF(result.join(' '), userId)
-        // else if (item.text) {
-        //   result.push(item.text)
-        // }
-        //   console.log(item, "<<<<< masuk ga");
+        if (err) console.error('error:', err)
+        else if (!item) return this.sumPDF(result.join(' '), userId)
+        else if (item.text) {
+          result.push(item.text)
+        }
+          console.log(item, "<<<<< masuk ga");
       })
             
     } catch (err) {
@@ -28,40 +27,43 @@ export class Upload {
     }
 	}
 
-	// static async sumPDF(val: string, req: Request) {
-	// 	try {
-	// 		const userId = req.headers.get("x-user-id") as string;
+	static async sumPDF(val: string, req: Request) {
+		try {
+			const userId = req.headers.get("x-user-id") as string;
 
-	// 		const ai = await openai.chat.completions.create({
-	// 			model: "gpt-4",
-	// 			messages: [
-	// 				{
-	// 					role: "user",
-	// 					content: `can you summarize this pdf file in part ABSTRACT into four exact points divided by a dash in a line, that is title, his keyword and point of research and abstract description of research ${val}`,
-	// 				},
-	// 			],
-	// 		});
+			const ai = await openai.chat.completions.create({
+				model: "gpt-4",
+				messages: [
+					{
+						role: "user",
+						content: `can you summarize this pdf file in the ABSTRACT section
+and based on the existing abstract, the abstract includes 
+ which part of these 5 keywords: Education, Engineering, Healthcare, Agriculture, environment, give me only the keyword points, not the others, just KEYWORD not other texts! ${val}`,
+					},
+				],
+			});
 
-    //         const data = (ai.choices[0].message.content as string)
+            const data = (ai.choices[0].message.content as string)
             
 
-	// 		const title = data[1];
-	// 		const abstract = data[2];
+			// const title = data[1];
+			// const abstract = data[2];
 
-	// 		// Prisma create query
-	// 		await prisma.jurnal.create({
-	// 			data: {
-	// 				researcherId: Number(userId),
-	// 				title,
-	// 				abstract,
-	// 			},
-	// 		});
+			// // Prisma create query
+			// await prisma.jurnal.create({
+			// 	data: {
+			// 		researcherId: Number(userId),
+			// 		title,
+			// 		abstract,
+			// 	},
+            // });
+            console.log(data, "<<<<");
 
-	// 		return data;
-	// 	} catch (err) {
-	// 		console.error(err);
-	// 	}
-	// }
+			return data;
+		} catch (err) {
+			console.error(err);
+		}
+	}
 
 	//   await collection.findOneAndUpdate(
 	//     { _id: new ObjectId(userId) },

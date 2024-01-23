@@ -11,28 +11,28 @@ datasource db {
 }
 
 model Researcher {
-  id           Int       @id @default(autoincrement())
-  firstname    String
-  lastname     String
-  isPremium    Boolean
-  education    String
-  profileImage String
-  email        String    @unique
-  password     String
-  background   String
-  gender       String
-  jabatan_akademik         String
-  portofolio   Jurnal[]
-  location     String
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @default(now())
+  id               Int      @id @default(autoincrement())
+  firstname        String
+  lastname         String
+  isPremium        Boolean
+  education        String
+  profileImage     String
+  email            String   @unique
+  password         String
+  background       String
+  gender           String
+  jabatan_akademik String
+  portofolio       Jurnal[]
+  location         String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @default(now())
 }
 
 model Investor {
   id            Int       @id @default(autoincrement())
   email         String    @unique
   password      String
-  firstname      String
+  firstname     String
   lastname      String
   profileImage  String
   institution   String
@@ -43,10 +43,8 @@ model Investor {
   payment       Payment[]
 }
 
-
-
 model Project {
-  id                   Int         @id @default(autoincrement())
+  id                   Int       @id @default(autoincrement())
   project_name         String
   description_project  String
   project_image        String
@@ -55,9 +53,9 @@ model Project {
   project_budget       Int
   expected_finish_date DateTime
   keywords             String
-  investor             Investor?   @relation(fields: [investorId], references: [id])
-  createdAt            DateTime    @default(now())
-  updatedAt            DateTime    @default(now())
+  investor             Investor? @relation(fields: [investorId], references: [id])
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @default(now())
   researcherId         Int?
   investorId           Int?
 }
@@ -75,7 +73,7 @@ model Payment {
 
 model Jurnal {
   id           Int          @id @default(autoincrement())
-  abstract     String       
+  abstract     String
   title        String       @unique
   keywords     String
   portofolio   Researcher[]
