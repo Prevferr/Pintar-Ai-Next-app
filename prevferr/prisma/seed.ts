@@ -26,6 +26,7 @@ async function main() {
 		// ...
 		abstract: "Abstract of the journal",
 		title: "Petanian Skala Mikro di Indonesia",
+		keywords: "agriculture",
 		researcherId: 1,
 	};
 
@@ -35,6 +36,7 @@ async function main() {
 		abstract: "Pengaruh iklim terhadap produktivitas pertanian",
 		title: "Iklim: Faktor Utama Produktivitas Pertanian",
 		researcherId: 1,
+		keywords: "agriculture",
 	};
 
 	const Jurnal2 = {
@@ -43,6 +45,7 @@ async function main() {
 		abstract: "Peranan teknologi dalam meningkatkan produktivitas pertanian",
 		title: "Teknologi: Kunci Produktivitas Pertanian",
 		researcherId: 1,
+		keywords: "agriculture",
 	};
 
 	const Jurnal3 = {
@@ -51,7 +54,10 @@ async function main() {
 		abstract: "Pengaruh pakan terhadap produktivitas ternak",
 		title: "Pakan: Kunci Produktivitas Ternak",
 		researcherId: 1,
+		keywords: "agriculture",
 	};
+
+	
 
 	const Jurnal4 = {
 		// Data untuk portofolio Jurnal
@@ -59,6 +65,7 @@ async function main() {
 		abstract: "Emisi gas buang kapal dan tumpahan minyak menjadi tantangan lingkungan yang dihadapi industri perkapalan.",
 		title: "Melayari Laut Biru: Mencari Solusi Keberlanjutan Perkapalan",
 		researcherId: 2,
+		keywords: "engineering",
 	};
 
 	const Jurnal5 = {
@@ -67,6 +74,7 @@ async function main() {
 		abstract: "Peningkatan penggunaan robot dan sistem otomatis meningkatkan efisiensi dan kecepatan pembongkaran muatan di pelabuhan.",
 		title: "Pelabuhan Masa Depan: Sentuhan Teknologi, Sentuhan Kemanusiaan",
 		researcherId: 2,
+		keywords: "engineering",
 	};
 
 	const Jurnal6 = {
@@ -75,7 +83,39 @@ async function main() {
 		abstract: "Teknologi digital dapat digunakan untuk meningkatkan efisiensi dan efektivitas pembelajaran, seperti pembelajaran jarak jauh, virtual reality, dan augmented reality.",
 		title: "Teknologi Digital: Solusi untuk Pembelajaran Masa Depan",
 		researcherId: 1,
+		keywords: "engineering",
 	};
+
+	const Jurnal7 = {
+		// Data untuk portofolio Jurnal
+		// ...
+		abstract: "Teknologi informasi dan komunikasi (TIK) telah menjadi bagian penting dalam kehidupan masyarakat, termasuk dalam dunia pendidikan. TIK dapat digunakan untuk meningkatkan kualitas pembelajaran, baik dari segi materi, metode, maupun evaluasi.",
+		title: "Pengaruh Penggunaan Teknologi Informasi dan Komunikasi (TIK) terhadap Hasil Belajar Siswa",
+		researcherId: 1,
+		keywords: "education",
+	};
+
+	const Jurnal8 = {
+		// Data untuk portofolio Jurnal
+		// ...
+		abstract: "Fungsi kognitif merupakan kemampuan mental yang diperlukan untuk berpikir, belajar, dan mengingat. Fungsi kognitif dapat menurun seiring bertambahnya usia. Buah dan sayur merupakan sumber nutrisi penting yang dapat membantu menjaga kesehatan otak, termasuk fungsi kognitif.",
+		title: "Pengaruh Konsumsi Buah dan Sayur terhadap Fungsi Kognitif pada Lansia",
+		researcherId: 1,
+		keywords: "health",
+	};
+
+	const Jurnal9 = {
+		// Data untuk portofolio Jurnal
+		// ...
+		abstract: "Perubahan iklim merupakan salah satu masalah lingkungan yang paling mendesak saat ini. Perubahan iklim dapat menyebabkan berbagai dampak negatif terhadap keanekaragaman hayati",
+		title: "Pengaruh Perubahan Iklim terhadap Keanekaragaman Hayati",
+		researcherId: 1,
+		keywords: "enviroment",
+	};
+
+
+
+
 
 	const Project0 = {
 		// Data untuk portofolio Jurnal
@@ -87,7 +127,7 @@ async function main() {
 		starting_date: new Date(),
 		expected_finish_date: new Date(),
 		project_budget: 10000000,
-		tags: "Machine",
+		keywords: "engineering",
 		// investorId: 1,
 		createdAt: new Date(),
 		updatedAt: new Date(),
@@ -103,7 +143,7 @@ async function main() {
 		starting_date: new Date(),
 		expected_finish_date: new Date(),
 		project_budget: 1000000,
-		tags: "Agriculture, Information Technology",
+		keywords: "agriculture",
 		// investorId: 2,
 		createdAt: new Date(),
 		updatedAt: new Date(),
@@ -119,7 +159,7 @@ async function main() {
 		starting_date: new Date(),
 		expected_finish_date: new Date(),
 		project_budget: 10000000,
-		tags: "Agriculture, Information Technology",
+		keywords: "agriculture",
 		// investorId: 2,
 		createdAt: new Date(),
 		updatedAt: new Date(),
@@ -135,7 +175,7 @@ async function main() {
 		starting_date: new Date(),
 		expected_finish_date: new Date(),
 		project_budget: 10000000,
-		tags: "Agriculture, Biotechnology",
+		keywords: "agriculture",
 		// investorId: 2,
 		createdAt: new Date(),
 		updatedAt: new Date(),
@@ -177,7 +217,7 @@ async function main() {
 			profileImage: "https://i0.wp.com/anitrendz.net/news/wp-content/uploads/2022/10/roadtonarutopv_screenshot.png?resize=696%2C392&ssl=1",
 			email: "dzul@mail.com",
 			password: pass1,
-			background: "Agriculture",
+			background: "agriculture",
 			gender: "Male",
 			jabatan_akademik: "Dosen",
 			portofolio: { create: [Jurnal0, Jurnal1, Jurnal2, Jurnal3] },
@@ -197,11 +237,74 @@ async function main() {
 			profileImage: "https://static.wikia.nocookie.net/naruto/images/7/70/Boruto_Boruto_Movie.png/revision/latest/thumbnail/width/360/height/360?cb=20150526164416&path-prefix=id",
 			email: "vincent@mail.com",
 			password: pass2,
-			background: "Perkapalan",
+			background: "engineering",
 			gender: "Male",
 			jabatan_akademik: "Dosen",
 			portofolio: { create: [Jurnal4, Jurnal5] },
 			location: "Madura",
+			createdAt: new Date(),
+			updatedAt: new Date(),// Project: { create: [Project0] }, sebelumnya
+		},
+	});
+
+	const bambang = await prisma.researcher.upsert({
+		where: { email: "bambang@mail.com" },
+		update: {},
+		create: {
+			firstname: "Bambang",
+			lastname: "Suherman",
+			isPremium: true,
+			education: "S3",
+			profileImage: "https://static.wikia.nocookie.net/naruto/images/7/70/Boruto_Boruto_Movie.png/revision/latest/thumbnail/width/360/height/360?cb=20150526164416&path-prefix=id",
+			email: "bambang@mail.com",
+			password: pass2,
+			background: "health",
+			gender: "Male",
+			jabatan_akademik: "Dosen",
+			portofolio: { create: [Jurnal8] },
+			location: "Ternate",
+			createdAt: new Date(),
+			updatedAt: new Date(),// Project: { create: [Project0] }, sebelumnya
+		},
+	});
+
+	const samsudin = await prisma.researcher.upsert({
+		where: { email: "samsudin@mail.com" },
+		update: {},
+		create: {
+			firstname: "Samsudin",
+			lastname: "Andara",
+			isPremium: true,
+			education: "S2",
+			profileImage: "https://static.wikia.nocookie.net/naruto/images/7/70/Boruto_Boruto_Movie.png/revision/latest/thumbnail/width/360/height/360?cb=20150526164416&path-prefix=id",
+			email: "samsudin@mail.com",
+			password: pass2,
+			background: "education",
+			gender: "Male",
+			jabatan_akademik: "Dosen",
+			portofolio: { create: [Jurnal7] },
+			location: "Ternate",
+			createdAt: new Date(),
+			updatedAt: new Date(),// Project: { create: [Project0] }, sebelumnya
+		},
+	});
+
+	const samsuri = await prisma.researcher.upsert({
+		where: { email: "samsuri@mail.com" },
+		update: {},
+		create: {
+			firstname: "Samsuri",
+			lastname: "Andara",
+			isPremium: true,
+			education: "S2",
+			profileImage: "https://static.wikia.nocookie.net/naruto/images/7/70/Boruto_Boruto_Movie.png/revision/latest/thumbnail/width/360/height/360?cb=20150526164416&path-prefix=id",
+			email: "samsuri@mail.com",
+			password: pass2,
+			background: "enviroment",
+			gender: "Male",
+			jabatan_akademik: "Dosen",
+			portofolio: { create: [Jurnal9] },
+			location: "Ternate",
 			createdAt: new Date(),
 			updatedAt: new Date(),// Project: { create: [Project0] }, sebelumnya
 		},
@@ -236,13 +339,15 @@ async function main() {
 			lastname: "uye",
 			profileImage: "https://static.wikia.nocookie.net/naruto/images/2/21/Sasuke_Part_3_V2.png/revision/latest?cb=20170627161720&path-prefix=id",
 			institution: "Pribadi",
-			industry_type: "Agrikultur",
+			industry_type: "agriculture",
 			createdAt: new Date(),
 			updatedAt: new Date(),
 			Project: { create: [Project1, Project2, Project3] }, // Project: { create: [Project1, Project2, Project3] }, sebelumnya
 			payment: { create: Payment2 },
 		},
 	});
+
+	
 
 }
 main()
