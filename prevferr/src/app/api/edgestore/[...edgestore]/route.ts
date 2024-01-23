@@ -9,7 +9,6 @@ const edgeStoreRouter = es.router({
 const handler = createEdgeStoreNextHandler({
 	router: edgeStoreRouter,
 });
-console.log(handler, "<<< handler");
 
 export { handler as GET, handler as POST };
 

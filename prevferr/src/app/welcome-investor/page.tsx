@@ -43,7 +43,7 @@ const WelcomePage = () => {
 					return (
 						<>
 							<div className="rounded-2xl w-[400px] overflow-hidden shadow-md" key={el.id}>
-								<div className="shadow rounded-xl flex flex-col pb-5 bg-[#fff]">
+								<div className="rounded-xl flex flex-col pb-5 bg-[#fff]">
 									<div className="relative flex flex-col justify-center overflow-hidden">
 										<img src={el.project_image} className="rounded-t-xl" alt="Image Description" />
 										<div className="absolute top-0 left-0 h-full w-full cursor-pointer opacity-25 rounded-xl"></div>
