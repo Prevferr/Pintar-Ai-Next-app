@@ -31,17 +31,25 @@ const Navbar = () => {
 				</span>
 			</Link>
 			<div className="flex justify-between items-center gap-4">
+<<<<<<< HEAD
+				<ul className="flex justify-between gap-4 items-center">
+=======
 				<ul className="flex justify-between gap-8 items-center">
 					{/* <li onClick={() => router.push("/addProject")} className="text-[#fff] hover:underline font-mono ">
 						Create Project
 					</li> */}
+>>>>>>> 7659818663357cd2be02913f69106e909cbb4ca7
 					<DropDownList />
+					<ModalLogin open={isModalOpen} onOk={closeModal} onCancel={closeModal} />
 				</ul>
+<<<<<<< HEAD
+=======
 				<ModalLogin
 					open={isModalOpen}
 					onOk={closeModal}
 					onCancel={closeModal}
 				/>
+>>>>>>> 7659818663357cd2be02913f69106e909cbb4ca7
 			</div>
 		</nav>
 
