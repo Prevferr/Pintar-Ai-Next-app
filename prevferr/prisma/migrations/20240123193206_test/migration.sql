@@ -1,7 +1,6 @@
 /*
   Warnings:
 
-  - You are about to drop the column `journal_file` on the `Jurnal` table. All the data in the column will be lost.
   - You are about to drop the column `portofolio_id` on the `Jurnal` table. All the data in the column will be lost.
   - You are about to drop the column `portofolio` on the `Researcher` table. All the data in the column will be lost.
   - You are about to drop the `Chat_Room` table. If the table is not empty, all the data it contains will be lost.
@@ -23,8 +22,7 @@ ALTER TABLE "Comment" DROP CONSTRAINT "Comment_investorId_fkey";
 ALTER TABLE "Comment" DROP CONSTRAINT "Comment_researcherId_fkey";
 
 -- AlterTable
-ALTER TABLE "Jurnal" DROP COLUMN "journal_file",
-DROP COLUMN "portofolio_id";
+ALTER TABLE "Jurnal" DROP COLUMN "portofolio_id";
 
 -- AlterTable
 ALTER TABLE "Researcher" DROP COLUMN "portofolio",
