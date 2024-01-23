@@ -57,7 +57,7 @@ CREATE TABLE "Project" (
     "starting_date" TIMESTAMP(3) NOT NULL,
     "expected_finish_date" TIMESTAMP(3) NOT NULL,
     "project_budget" INTEGER NOT NULL,
-    "tags" TEXT NOT NULL,
+    "keywords" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "researcherId" INTEGER,
@@ -84,12 +84,12 @@ CREATE TABLE "Jurnal" (
     "id" SERIAL NOT NULL,
     "abstract" TEXT NOT NULL,
     "title" TEXT NOT NULL,
+    "keywords" TEXT NOT NULL,
     "journal_file" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "portofolio_id" INTEGER,
     "researcherId" INTEGER,
-
 
     CONSTRAINT "Jurnal_pkey" PRIMARY KEY ("id")
 );
