@@ -76,6 +76,7 @@ model Jurnal {
   abstract     String
   title        String       @unique
   keywords     String
+  journal_file    String
   portofolio   Researcher[]
   createdAt    DateTime     @default(now())
   updatedAt    DateTime     @default(now())
