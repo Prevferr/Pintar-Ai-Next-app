@@ -6,10 +6,10 @@ import { PdfReader } from "pdfreader";
 
 export class Upload {
 	static async extractPDF(file: File, userId: string) {
-		console.log(userId, "<<<<");
+		// console.log(userId, "<<<<");
 		try {
 			const fileArrBuff = await file.arrayBuffer();
-      const fileBuff = Buffer.from(fileArrBuff);
+			const fileBuff = Buffer.from(fileArrBuff);
 			// const title: string[] = [];
 			const result: string[] = [];
 
@@ -19,11 +19,11 @@ export class Upload {
 				if (err) {
 					console.error("error:", err);
 				} else if (item && item.text) {
-					if (item.text.includes("Abstract")) {
+					if (item.text.includes("ABSTRACT")) {
 						// Mulai memasukkan ke dalam array result ketika menemukan "Abstract"
 						result.push(item.text);
-					// } else if (item.text.toString().split("Abstrak")[0]) {
-					// 	title.push(item.text);
+						// } else if (item.text) {
+						// 	title.push(item.text);
 					} else if (result.length > 0) {
 						// Masukkan semua teks berikutnya ke dalam array result
 						result[result.length - 1] += ` ${item.text}`;
@@ -49,14 +49,11 @@ export class Upload {
 					}
 
 					console.log(resultGabungan);
-					// console.log(title);
+					// console.log(title.toString().split("Analisis"));
 
 					// const resultGabungan = pemisahKataKunci + pemisahKeywords;
 
-					// console.log("Gabungan nih", resultGabungan);
-
-					// console.log("Ini udah terakhir nih", result.toString().split("Kata kunci:"));
-					return this.sumPDF(resultGabungan, userId)
+					return this.sumPDF(resultGabungan, userId);
 				}
 			});
 
@@ -73,30 +70,51 @@ export class Upload {
 				messages: [
 					{
 						role: "user",
-						content: `can you summarize this texts of abstract 
-and based on the existing abstract, the abstract includes 
- which part of these 5 keywords: Education, Engineering, Healthcare, Agriculture, environment, please answer only the KEYWORD!${val}`,
+						content: `Please summarize the attached texts and identify which of the following keywords - Education, Engineering, Health, Agriculture, Environment - it relates to. Also, provide a short title for the summary. Include only the keyword and the short title in your response, thats all. ${val}`,
 					},
 				],
 			});
 
-			const data = ai.choices[0].message.content as string;
-      const title:string = "Analisis Risiko Kecelakaan Kerja Menggunakan Metode HIRARC dan Diagram Fishbone pada Lantai Produksi PT DRA Component Persada"
-const abstract:string = val
-      
-      const result = data.split("Keywords:")[0];
-      
+			// // const data = ai.choices[0].message.content as string;
+			// const data = (ai.choices[0].message.content as string).split(" - ");
 
-			// // Prisma create query
+			// const abstract: string = val;
+			// // const keyword = data[0];
+			// const keyword = data[0];
+
+			// // const keyword = data[1]?.split('Keywords: ')[1]
+			// const title = data[1]
+			// // const title =data[3]?.split('Title: ')[1]
+
+			// console.log(keyword);
+			// console.log(title);
+
+			const data = (ai.choices[0].message.content as string).split("\n");
+			const abstract: string = val;
+
+			// Membersihkan karakter newline
+			const cleanedData = data.map((item) => item.trim());
+
+			// Jika keyword adalah elemen pertama, Anda dapat mengaksesnya dengan index 0
+			const keyword = cleanedData[0];
+
+			// Jika judul adalah elemen kedua, Anda dapat mengaksesnya dengan index 1
+			const title = cleanedData[1].replace(/"/g, "");
+
+			console.log("Keyword:", keyword);
+			console.log("Title:", title);
+
+			// const result = data.split("Keyword:")[0];
+
+			// // // Prisma create query
 			await prisma.jurnal.create({
 				data: {
-			    title,
-          abstract,
-          keywords:result,
+					title: title,
+					keywords: keyword,
+					abstract: abstract,
 					researcherId: Number(userId),
 				},
-			      });
-			      console.log(data, "<<<<");
+			});
 
 			return data;
 		} catch (err) {
