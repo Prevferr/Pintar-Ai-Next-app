@@ -1,7 +1,6 @@
 "use server";
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "../../../helpers/lib/prisma";
-
+import { prisma } from "../../../../helpers/lib/prisma";
 type TProps = {
   params: { id: string };
 };
@@ -12,8 +11,6 @@ export async function GET(req: NextRequest, { params }: TProps) {
     // Get user id from headers
     const userId = req.headers.get("x-user-id");
     console.log(userId, "<<<<>><><><><><><>><>><");
-    
-    
 
     // Check if user id exists
     if (!userId) {
@@ -28,7 +25,6 @@ export async function GET(req: NextRequest, { params }: TProps) {
       },
     });
     console.log(userId, "wkwkwkwkwkwkw");
-
 
     // Check if user exists
     if (!userWithPortofolio) {
