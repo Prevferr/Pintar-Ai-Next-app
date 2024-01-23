@@ -58,7 +58,7 @@ const WelcomePage = (request: NextRequest) => {
         </button>
       </form> */}
 				<div className="flex justify-between paddingX border-[#000] min-h-screen">
-					<div className="py-4 w-[40%] border-l border-[#000] paddingXShorter3 paddingYShorter7">
+					<div className="py-4 w-[60%] border-l border-[#000] paddingXShorter3 paddingYShorter7">
 						<div className="flex justify-between items-center">
 							<div className="flex flex-col justify-between gap-8">
 								<h3 className="text-5xl font-mono text-left font-semibold text-[#fff]">
@@ -80,23 +80,23 @@ const WelcomePage = (request: NextRequest) => {
 							</div>
 						</div>
 					</div>
-					<div className="w-[60%] ">
+					<div className="w-[40%] ">
 						{journal.map((el) => (
 							<div
 								key={el.id}
 								className="border-x border-[#000] paddingYShorter3 bg-[#E2E4DD] flex flex-col gap-4"
 							>
-								<div className="border-[#000] border-y h-52 flex justify-start gap-8 p-4 hover:bg-[#fff]">
+								<div className="border-[#000] border-y h-44 flex justify-start gap-8 p-4 hover:bg-[#fff]">
 									<div className="flex flex-col gap-4">
-										<p className="font-mono text-[#565e67] text-base">
-											[{el.keywords}]
-										</p>
 										<h1 className="text-xl">{el.title}</h1>
-										<div className="flex justify-start items-center gap-4">
+										{/* <div className="flex justify-start items-center gap-4">
 											<p className="text-base font-mono truncate">
 												{el.abstract}
 											</p>
-										</div>
+										</div> */}
+										<p className="font-mono text-[#565e67] text-base">
+											[{el.keywords.toUpperCase()}]
+										</p>
 									</div>
 								</div>
 							</div>
