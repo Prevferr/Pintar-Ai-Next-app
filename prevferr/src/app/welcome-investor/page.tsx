@@ -5,9 +5,11 @@ import React, { useEffect, useState } from "react";
 // import JournalCard from "../components/JournalCard";
 import Link from "next/link";
 import { JournalWithResearcher } from "../type-def";
+import { useRouter } from "next/navigation";
 // import { cookies } from "next/headers";
 
 const WelcomePage = () => {
+	const router = useRouter();
 	const [journal, setJournal] = useState([] as JournalWithResearcher[]);
 	const fetchData = async () => {
 		try {
@@ -60,11 +62,8 @@ const WelcomePage = () => {
 							<h3 className="text-5xl font-mono text-left font-semibold text-[#fff]">Everything you need is here..</h3>
 							<p className="text-[#fff] font-mono text-sm">From startups to the World Cup, modern software teams use Mux products to stream billions of minutes of video every day.</p>
 							<Link href="/create-journal">
-								<button
-									className="mr-auto border flex items-center gap-2 bg-[#fff] py-3 px-5 rounded-full text-[#000] cursor-pointer font-mono transition-transform duration-300 hover:transform translate-y-[-3px]"
-									// onClick={LoadToTop}
-								>
-									<p className="text-sm">Create Journal</p>
+								<button className="mr-auto border flex items-center gap-2 bg-[#fff] py-3 px-5 rounded-full text-[#000] cursor-pointer font-mono transition-transform duration-300 hover:transform translate-y-[-3px]" onClick={() => router.push("/addProject")}>
+									<p className="text-sm">Create Project</p>
 								</button>
 							</Link>
 						</div>
@@ -83,7 +82,7 @@ const WelcomePage = () => {
 								<span className="text-[#565e67]">•</span>
 								<p className="font-mono text-[#565e67] text-sm">NOVEMBER 27, 2023</p>
 								<span className="text-[#565e67]">•</span>
-								<p className="text-base font-mono">Berak</p>
+								<p className="text-base font-mono">Membangun investasi emas di treasury di treasury.. investasi emas di treasury di treasury..</p>
 							</div>
 						</div>
 					</div>
@@ -99,7 +98,7 @@ const WelcomePage = () => {
 								<span className="text-[#565e67]">•</span>
 								<p className="font-mono text-[#565e67] text-sm">NOVEMBER 27, 2023</p>
 								<span className="text-[#565e67]">•</span>
-								<p className="text-base font-mono">Berak</p>
+								<p className="text-base font-mono">Membangun investasi emas di treasury di treasury.. investasi emas di treasury di treasury..</p>
 							</div>
 						</div>
 					</div>
