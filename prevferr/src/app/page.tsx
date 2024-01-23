@@ -22,27 +22,27 @@ import DateChnage from "../../helpers/utils/DateChange";
 import PostChange from "../../helpers/utils/PostChange";
 
 export default function Home() {
-	const [journal, setJournal] = useState([] as JournalWithResearcher[]);
-	const fetchData = async () => {
-		try {
-			const response = await fetch("http://localhost:3000/api/journals");
+  const [journal, setJournal] = useState([] as JournalWithResearcher[]);
+  const fetchData = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/api/journals");
 
-			if (!response.ok) {
-				throw new Error("Failed fetching data");
-			}
+      if (!response.ok) {
+        throw new Error("Failed fetching data");
+      }
 
-			const responseJSON = await response.json();
-			console.log(responseJSON);
+      const responseJSON = await response.json();
+      console.log(responseJSON);
 
-			setJournal(responseJSON);
-		} catch (error) {
-			if (error instanceof Error) {
-				console.log(error.message);
-			} else {
-				console.log(error);
-			}
-		}
-	};
+      setJournal(responseJSON);
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      } else {
+        console.log(error);
+      }
+    }
+  };
 
 	useEffect(() => {
 		fetchData();
