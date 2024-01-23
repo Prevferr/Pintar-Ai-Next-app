@@ -4,10 +4,6 @@ import { Icon } from "@iconify/react";
 import JournalCard from "../components/JournalCard";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-// Import cookies dari next/headers
-import { cookies } from "next/headers";
-// Import redirect dari next/navigation
-import { redirect } from "next/navigation";
 
 import { JournalWithResearcher } from "../type-def";
 import { NextRequest } from "next/server";
@@ -41,7 +37,7 @@ const WelcomePage = (request: NextRequest) => {
   return (
     <>
       <section className="bg-[#242628] w-full">
-      <form
+      {/* <form
         className="mt-8 text-center"
         // Karena SideBar ini merupakan Server Component, maka tidak bisa menggunakan onSubmit, oleh karena itu, solusinya adalah menggunakan server action
         action={async () => {
@@ -60,7 +56,7 @@ const WelcomePage = (request: NextRequest) => {
         >
           Logout
         </button>
-      </form>
+      </form> */}
         <div className="paddingX"></div>
         <div className="flex justify-center paddingX border-[#000] min-h-screen">
           <div className="w-[60%] border-l border-[#000] paddingXShorter3 paddingYShorter7">
