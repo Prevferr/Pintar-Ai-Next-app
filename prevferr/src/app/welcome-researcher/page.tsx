@@ -4,10 +4,6 @@ import { Icon } from "@iconify/react";
 import JournalCard from "../components/JournalCard";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-// Import cookies dari next/headers
-import { cookies } from "next/headers";
-// Import redirect dari next/navigation
-import { redirect } from "next/navigation";
 
 import { JournalWithResearcher } from "../type-def";
 import { NextRequest } from "next/server";
