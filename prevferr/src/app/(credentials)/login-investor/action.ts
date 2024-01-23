@@ -10,6 +10,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 
 import { cookies } from "next/headers";
+import { prisma } from "../../../../helpers/lib/prisma";
 
 export const doLogin = async (formData: FormData) => {
 	const loginInputSchema = z.object({

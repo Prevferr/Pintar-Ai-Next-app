@@ -1,8 +1,13 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
-import { format, parseISO } from "date-fns";
 import { Icon } from "@iconify/react";
+import JournalCard from "../components/JournalCard";
+import Link from "next/link";
+import { JournalWithResearcher } from "../type-def";
+import { useRouter } from "next/navigation";
+
+import { NextRequest } from "next/server";
+import { readPayload } from "../../../helpers/lib/jwt";
 
 const WelcomePage = () => {
 	const [journal, setJournal] = useState([]);
@@ -63,3 +68,46 @@ const WelcomePage = () => {
 };
 
 export default WelcomePage;
+
+// import { getServerSession } from "next-auth";
+// import { authOptions } from "../../../helpers/lib/auth";
+// // import Header from "@/components/header.component";
+// // import { authOptions } from "@/lib/auth";
+
+// export default async function Profile() {
+//   const session = await getServerSession(authOptions);
+//   const user = session?.user;
+//   console.log(user);
+
+//   return (
+//     <>
+//       {/* <Header /> */}
+//       <section className="bg-ct-blue-600  min-h-screen pt-20">
+//         <div className="max-w-4xl mx-auto bg-ct-dark-100 rounded-md h-[20rem] flex justify-center items-center">
+//           <div>
+//             <p className="mb-3 text-5xl text-center font-semibold">
+//               Profile Page
+//             </p>
+//             {!user ? (
+//               <p>Loading...</p>
+//             ) : (
+//               <div className="flex items-center gap-8">
+//                 <div>
+//                   <img
+//                     src={user.image ? user.image : "/images/default.png"}
+//                     className="max-h-36"
+//                     alt={`profile photo of ${user.name}`}
+//                   />
+//                 </div>
+//                 <div className="mt-8">
+//                   <p className="mb-3">Name: {user.name}</p>
+//                   <p className="mb-3">Email: {user.email}</p>
+//                 </div>
+//               </div>
+//             )}
+//           </div>
+//         </div>
+//       </section>
+//     </>
+//   );
+// }
