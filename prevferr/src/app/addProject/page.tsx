@@ -14,8 +14,7 @@ const AddProjectForm = () => {
 		starting_date: "",
 		expected_finish_date: "",
 		project_budget: "",
-		tags: "",
-		investorId: "",
+		keywords: "",
 	});
 	const [error, setError] = useState("");
 
@@ -43,8 +42,7 @@ const AddProjectForm = () => {
 				starting_date: "",
 				expected_finish_date: "",
 				project_budget: "",
-				tags: "",
-				investorId: "",
+				keywords: "",
 			});
 
 			router.push("/welcome-investor");
@@ -102,10 +100,6 @@ const AddProjectForm = () => {
 								<div className="relative z-0 w-full mb-5 group">
 									<input type="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="project_budget" id="project_budget" className="text-black block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " value={form.project_budget} onChange={onHandlerForm} />
 									<label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Project Budget</label>
-								</div>
-								<div className="relative z-0 w-full mb-5 group">
-									<input type="text" name="tags" id="tags" className="text-black block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " value={form.tags} onChange={onHandlerForm} />
-									<label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Tags</label>
 								</div>
 							</div>
 

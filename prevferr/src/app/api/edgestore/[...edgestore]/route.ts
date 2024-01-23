@@ -1,22 +1,15 @@
 import { initEdgeStore } from "@edgestore/server";
 import { createEdgeStoreNextHandler } from "@edgestore/server/adapters/next/app";
-import { z } from "zod";
 
 const es = initEdgeStore.create();
 const edgeStoreRouter = es.router({
 	publicFiles: es.fileBucket(),
 });
 
-// const edgestoreRouter = es.router({
-// 	myPublicImages: es
-// 		.imageBucket()
-// 		.input(z.object({ type: z.enum(["post", "profile"]) }))
-// 		.path(({ input }) => [{ type: input.type }]),
-// });
-
 const handler = createEdgeStoreNextHandler({
 	router: edgeStoreRouter,
 });
+console.log(handler, "<<< handler");
 
 export { handler as GET, handler as POST };
 
