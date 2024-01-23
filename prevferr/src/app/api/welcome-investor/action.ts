@@ -6,10 +6,11 @@ type TProps = {
 };
 
 // GET portofolio by user id
-export async function GET(req: NextRequest, { params }: TProps) {
+export async function GET(req: Request, { params }: TProps) {
   try {
     // Get user id from headers
     const userId = req.headers.get("x-user-id");
+
     console.log(userId, "<<<<>><><><><><><>><>><");
 
     // Check if user id exists

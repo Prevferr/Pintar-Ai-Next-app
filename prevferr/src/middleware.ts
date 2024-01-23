@@ -12,12 +12,9 @@ export const middleware = async (request: NextRequest) => {
     console.log(request.method, request.url);
   }
 
-  if (request.url.includes("/api/projectsdsadsa")) {
+  if (request.url.includes("/api/projects")) {
     console.log("API", request.method, request.url);
-
     const token = cookies().get("token");
-    // console.log(token, "<<<<<< token");
-
     if (!token) {
       return NextResponse.json({
         statusCode: 401,
@@ -40,8 +37,7 @@ export const middleware = async (request: NextRequest) => {
       locaton: string;
       industry_type: string;
       institution: string;
-      budget: string
-
+      budget: string;
     }>(token.value);
     // console.log(tokenData, "<<<<<< TOKEN DATA ");
 
@@ -53,7 +49,6 @@ export const middleware = async (request: NextRequest) => {
     requestHeaders.set("x-user-firstname", tokenData.firstname);
     requestHeaders.set("x-user-lastname", tokenData.lastname);
     // Lanjutin massseeee !!!!
-
 
     requestHeaders.set("x-custom-value", "Ini untuk mencoba data tambahan");
 
