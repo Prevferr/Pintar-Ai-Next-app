@@ -18,11 +18,7 @@ const AddProjectForm = () => {
 	});
 	const [error, setError] = useState("");
 
-<<<<<<< HEAD
-	// console.log(readPayload, "ini");
-=======
   console.log(readPayload, "ini");
->>>>>>> b8ddd0ffac9c502c3d714237a3cb244f2cc060ae
 
 	const onSubmit = async (event: React.FormEvent) => {
 		event.preventDefault();
