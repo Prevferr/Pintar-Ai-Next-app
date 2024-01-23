@@ -12,7 +12,8 @@ export const middleware = async (request: NextRequest) => {
     console.log(request.method, request.url);
   }
 
-  if (request.url.includes("/api/projects")) {
+  if (request.url.includes("/api/projects" &&
+  "/api/welcome-researcher")) {
     console.log("API", request.method, request.url);
     const token = cookies().get("token");
     if (!token) {
@@ -34,7 +35,7 @@ export const middleware = async (request: NextRequest) => {
       background: string;
       gender: string;
       jabatan_akademik: string;
-      locaton: string;
+      location: string;
       industry_type: string;
       institution: string;
       budget: string;
