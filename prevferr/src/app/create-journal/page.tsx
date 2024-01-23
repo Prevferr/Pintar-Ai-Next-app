@@ -1,59 +1,3 @@
-// "use client";
-
-// import Link from "next/link";
-// import React, { useState } from "react";
-
-// const AddJournalForm = () => {
-// 	const [form, setForm] = useState({
-// 		abstract: "",
-// 		title: "",
-// 	});
-// 	const [error, setError] = useState("");
-
-// 	const onSubmit = async (e: React.FormEvent) => {
-// 		e.preventDefault();
-// 		setForm({
-// 			abstract: "",
-// 			title: "",
-// 		});
-
-// 		try {
-// 			await fetch("/api/journals", {
-// 				method: "POST",
-// 				body: JSON.stringify(form),
-// 				headers: {
-// 					"Content-Type": "application/json",
-// 				},
-// 			});
-// 		} catch (error: any) {
-// 			console.log(error);
-// 			setError(error);
-// 		}
-// 	};
-
-// 	const onHandlerForm = (event: React.ChangeEvent<HTMLInputElement>) => {
-// 		event.preventDefault();
-// 		const { name, value } = event.target;
-// 		setForm({ ...form, [name]: value });
-// 	};
-
-// 	return (
-// 		<>
-// 			<form onSubmit={onSubmit}>
-// 				<div>
-// 					<input name="abstract" placeholder="Abstract" value={form.abstract} onChange={onHandlerForm} />
-// 				</div>
-// 				<div>
-// 					<input name="title" placeholder="Title" value={form.title} onChange={onHandlerForm} />
-// 				</div>
-// 				<button type="submit">Create Journal</button>
-// 			</form>
-// 		</>
-// 	);
-// };
-
-// export default AddJournalForm;
-
 "use client";
 import { useState } from "react";
 
@@ -72,30 +16,107 @@ const UploadPdf = () => {
 	};
 
 	return (
-		<div>
-			<h1>Upload PDF</h1>
+		<div className="min-h-screen flex justify-center items-center  flex-col">
+			<h3 className="font-mono m-4">
+				Enjoy our Ai feature, just one click and create your journal...
+			</h3>
+
 			<form
+				className="text-[#000000"
 				onSubmit={(e) => {
 					e.preventDefault();
 					updatePDF();
 					// setRefresh(!refresh);
 					// router.refresh();
 				}}
-				encType="multipart/form-data"
 			>
-				<input
-					type="file"
-					onChange={(e) => {
-						e.target.files && setPdf(e.target.files[0]);
-					}}
-					className="file-input file-input-sm file-input-ghost w-full max-w-xs"
-				/>
-				{/* <input type="file" accept=".pdf" onChange={handleFileChange} /> */}
-				<button type="submit">Upload</button>
+				<div className="grid grid-cols-1 space-y-2">
+					<label className="text-sm font-mono text-gray-500 tracking-wide text-center">
+						Attach Document
+					</label>
+					<div className="flex items-center justify-center w-full">
+						<label className="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
+							<div className="h-full w-full text-center flex flex-col  justify-center items-center  ">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									className="w-10 h-10 text-blue-400 group-hover:text-blue-600"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+									/>
+								</svg>
+								<div className="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
+									<img
+										className="has-mask h-30 object-center"
+										src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg"
+										alt="freepik image"
+									/>
+								</div>
+								<p className="pointer-none text-gray-500 ">
+									<span className="text-sm">Drag and drop</span> files here{" "}
+									<br /> or
+									<a className="text-blue-600 hover:underline">select a file</a>
+									from your computer
+								</p>
+								<input
+									type="file"
+									accept=".pdf"
+									// onChange={handleFileChange}
+								/>
+							</div>
+							<input
+								type="file"
+								className="hidden"
+								accept="pdf/*"
+								onChange={(e) => {
+									e.target.files && setPdf(e.target.files[0]);
+								}}
+							/>
+						</label>
+					</div>
+				</div>
+				<p className="text-sm text-gray-300">
+					<span>File type: doc,pdf,types of images</span>
+				</p>
+				<button
+					type="submit"
+					className="text-white bg-[#3CB371] font-mono rounded-lg mx-auto text-sm w-[70%] px-5 py-2.5 block m-4"
+				>
+					Submit
+				</button>
 			</form>
-			{answer && <p>Extracted Text: {answer}</p>}
 		</div>
 	);
 };
 
 export default UploadPdf;
+
+// <div>
+// 	<h1>Upload PDF</h1>
+// 	<form
+// 		onSubmit={(e) => {
+// 			e.preventDefault();
+// 			updatePDF();
+// 			// setRefresh(!refresh);
+// 			// router.refresh();
+// 		}}
+// 		encType="multipart/form-data"
+// 	>
+// 		<input
+// 			type="file"
+// 			onChange={(e) => {
+// 				e.target.files && setPdf(e.target.files[0]);
+// 			}}
+// 			className="file-input file-input-sm file-input-ghost w-full max-w-xs"
+// 		/>
+// 		{/* <input type="file" accept=".pdf" onChange={handleFileChange} /> */}
+// 		<button type="submit">Upload</button>
+// 	</form>
+// 	{answer && <p>Extracted Text: {answer}</p>}
+// </div>
