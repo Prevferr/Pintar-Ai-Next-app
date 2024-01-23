@@ -13,6 +13,9 @@ export async function GET(req: NextRequest) {
 		where: {
 			researcherId: Number(idUserLogin),
 		},
+		include: {
+			portofolio: true
+		}
 	});
 	console.log(journals, "<<<<<<< JOURNALS");
 
