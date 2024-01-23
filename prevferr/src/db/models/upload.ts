@@ -14,56 +14,72 @@ export class Upload {
 
       const pdfreader = new PdfReader({})
             pdfreader.parseBuffer(fileBuff, (err: any, item: any) => {
+        //   console.log(item, "<<<<< masuk ga");
+
         if (err) console.error('error:', err)
-        else if (!item) return this.sumPDF(result.join(' '), userId)
-        else if (item.text) {
-          result.push(item.text)
-        }
-          console.log(item, "<<<<< masuk ga");
-      })
+        // // else if (!item) return this.sumPDF(result.join(' '), userId)
+        else if (item) { // Add a check to ensure item is defined
+          if (item.text) {
+              result.push(item.text);
+            //   console.log(item.text,"<<<");
+              console.log(result, "mamamma");
             
+          }
+        }
+            })
+            
+            // const title = result[1]
+// Find the index of the element containing the keyword "Abstract"
+// const abstractIndex = result.findIndex((element) => element.includes('Abstract'));
+
+// Slice the array from the found index to a specific number of elements (e.g., 5 elements)
+            // const slicedArray = result.slice(abstractIndex, abstractIndex + 5);        
+            // console.log(title);
+            // console.log(abstractIndex);
+
     } catch (err) {
       console.log(err)
     }
 	}
 
-	static async sumPDF(val: string, req: Request) {
-		try {
-			const userId = req.headers.get("x-user-id") as string;
 
-			const ai = await openai.chat.completions.create({
-				model: "gpt-4",
-				messages: [
-					{
-						role: "user",
-						content: `can you summarize this pdf file in the ABSTRACT section
-and based on the existing abstract, the abstract includes 
- which part of these 5 keywords: Education, Engineering, Healthcare, Agriculture, environment, give me only the keyword points, not the others, just KEYWORD not other texts! ${val}`,
-					},
-				],
-			});
+// 	static async sumPDF(val: string, userId: any) {
+// 		try {
+// 			// const userId = req.headers.get("x-user-id") as string;
 
-            const data = (ai.choices[0].message.content as string)
+// 			const ai = await openai.chat.completions.create({
+// 				model: "gpt-4",
+// 				messages: [
+// 					{
+// 						role: "user",
+// 						content: `can you summarize this pdf file in the ABSTRACT section
+// and based on the existing abstract, the abstract includes 
+//  which part of these 5 keywords: Education, Engineering, Healthcare, Agriculture, environment, give me only the keyword points, not the others, just KEYWORD not other texts! ${val}`,
+// 					},
+// 				],
+// 			});
+
+//             const data = (ai.choices[0].message.content as string)
             
 
-			// const title = data[1];
-			// const abstract = data[2];
+// 			// const title = data[1];
+// 			// const abstract = data[2];
 
-			// // Prisma create query
-			// await prisma.jurnal.create({
-			// 	data: {
-			// 		researcherId: Number(userId),
-			// 		title,
-			// 		abstract,
-			// 	},
-            // });
-            console.log(data, "<<<<");
+// 			// // Prisma create query
+// 			// await prisma.jurnal.create({
+// 			// 	data: {
+// 			// 		researcherId: Number(userId),
+// 			// 		title,
+// 			// 		abstract,
+// 			// 	},
+//             // });
+//             console.log(data, "<<<<");
 
-			return data;
-		} catch (err) {
-			console.error(err);
-		}
-	}
+// 			return data;
+// 		} catch (err) {
+// 			console.error(err);
+// 		}
+// 	}
 
 	//   await collection.findOneAndUpdate(
 	//     { _id: new ObjectId(userId) },
