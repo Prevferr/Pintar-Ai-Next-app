@@ -14,7 +14,8 @@ export const middleware = async (request: NextRequest) => {
 
   if (
     request.url.includes("/api/projects") ||
-    request.url.includes("/api/welcome-researcher")
+    request.url.includes("/api/welcome-researcher") ||
+    request.url.includes("/api/pdf")
   ) {
     console.log("API", request.method, request.url);
     const token = cookies().get("token");
