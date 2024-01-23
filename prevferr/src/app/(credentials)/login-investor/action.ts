@@ -58,7 +58,7 @@ export const doLogin = async (formData: FormData) => {
 		firstname: user.firstname,
 		lastname: user.lastname,
 	};
-	console.log(payload, "INI PAYLOAD BOSSSSS");
+	// console.log(payload, "INI PAYLOAD BOSSSSS");
 
 	const token = createToken(payload);
 

@@ -1,13 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import { JournalWithResearcher } from "../type-def";
-import { useRouter } from "next/navigation";
-import { format, parseISO, formatDistanceToNow } from "date-fns";
+import { format, parseISO } from "date-fns";
+import { Icon } from "@iconify/react";
 
 const WelcomePage = () => {
-	const router = useRouter();
 	const [journal, setJournal] = useState([]);
 	const fetchData = async () => {
 		try {
@@ -31,11 +28,18 @@ const WelcomePage = () => {
 	};
 	// console.log(journal, "<<<<<< KOWKOWKOKAWOKAWOKWA");
 
-	const DateChange = (dateString: string): string => {
-		const date = parseISO(dateString);
-		const formattedDate = format(date, "MMMM d, yyyy");
+	// const DateChange = (dateString: string): string => {
+	// 	const date = parseISO(dateString);
+	// 	const formattedDate = format(date, "MMMM d, yyyy");
 
-		return `${formattedDate}`;
+	// 	return `${formattedDate}`;
+	// };
+
+	const rupiah = (number: any) => {
+		return new Intl.NumberFormat("id-ID", {
+			style: "currency",
+			currency: "IDR",
+		}).format(number);
 	};
 
 	useEffect(() => {
@@ -43,47 +47,34 @@ const WelcomePage = () => {
 	}, []);
 	return (
 		<>
-			<section className="bg-[#242628] w-full">
-				<div className="flex justify-center paddingX border-[#000]  min-h-screen">
-					<div className="w-[60%] border-l border-[#000] paddingXShorter3 paddingYShorter2">
-						<div className="flex justify-between items-center">
-							<div className="flex flex-col justify-between gap-8">
-								<h3 className="text-5xl font-mono text-left font-semibold text-[#fff]">Everything you need is here..</h3>
-								<p className="text-[#fff] font-mono text-sm">From startups to the World Cup, modern software teams use Mux products to stream billions of minutes of video every day.</p>
-								<Link href="/create-journal">
-									<button className="mr-auto border flex items-center gap-2 bg-[#fff] py-3 px-5 rounded-full text-[#000] cursor-pointer font-mono transition-transform duration-300 hover:transform translate-y-[-3px]" onClick={() => router.push("/addProject")}>
-										<p className="text-sm">Create Project</p>
-									</button>
-								</Link>
-							</div>
-						</div>
-					</div>
-					{journal.map((el: any) => {
-						return (
-							<>
-								<div className="w-[40%] border-x border-[#000] paddingYShorter3  bg-[#E2E4DD] flex flex-col gap-4">
-									<div className="border-[#000] border-y h-48 flex justify-start gap-8 p-4 hover:bg-[#fff]">
-										<div className="flex flex-col gap-4">
-											<p className="font-mono text-[#565e67] text-base">{DateChange(el.expected_finish_date)}</p>
-											<h1 className="text-xl">{el.project_name}</h1>
-											<img src={el.project_image} className="h-10 w-10 rounded-full object-cover" alt="researcher" />
-											<div className="flex justify-start items-center gap-4">
-												<p className="text-base font-mono">
-													<span className="text-[#565e67] text-sm">Budget</span> {el.project_budget}
-												</p>
-												<span className="text-[#565e67]">•</span>
-												<p className="font-mono text-[#565e67] text-sm">{DateChange(el.starting_date)}</p>
-												<span className="text-[#565e67]">•</span>
-												<p className="text-base font-mono">{el.description_project}</p>
-											</div>
-										</div>
+			{journal.map((el: any) => {
+				return (
+					<>
+						<section className="flex w-full justify-center py-11">
+							<div className="rounded-2xl w-[400px] overflow-hidden" key={el.id}>
+								<div className="shadow rounded-xl flex flex-col pb-5 bg-[#fff]">
+									<div className="relative flex flex-col justify-center overflow-hidden">
+										<img src={el.project_image} className="rounded-t-xl" alt="Image Description" />
+										<div className="absolute top-0 left-0 h-full w-full cursor-pointer opacity-25 rounded-xl"></div>
+									</div>
+									<div className="p-2 flex flex-col gap-2">
+										<span className="flex justify-start gap-2 items-center">
+											<p className="text-xs text-[#74767e]">{el.tags}</p>
+											<Icon icon="material-symbols-light:verified-outline" color="#0096FF" width={15} />
+										</span>
+										<p className="text-[#252525] font-semibold text-sm">{el.project_name}</p>
+										<p className="text-[#252525] font-semibold text-sm">{el.description_project}</p>
+										<span className="flex justify-start gap-2 items-center">
+											<p className="text-xs font-light text-[#252525]">Budget</p>
+											<p className="text-[#0096FF] text-sm font-bold">{rupiah(el.project_budget)}</p>
+										</span>
 									</div>
 								</div>
-							</>
-						);
-					})}
-				</div>
-			</section>
+							</div>
+						</section>
+					</>
+				);
+			})}
 		</>
 	);
 };
