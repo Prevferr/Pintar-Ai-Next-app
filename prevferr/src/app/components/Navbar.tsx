@@ -12,6 +12,7 @@ const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [token, setToken] = useState(); // Anda perlu mengganti ini dengan logika otentikasi dan manajemen token yang sesuai
   console.log(token, "INI ADALAH TOKEN MASSS");
+  // KWWKWKWKWK
   
 
 //   const router = useRouter();
