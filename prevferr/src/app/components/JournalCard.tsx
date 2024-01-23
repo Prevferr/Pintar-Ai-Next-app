@@ -36,7 +36,9 @@ const JournalCard = ({ data }: props) => {
 									{TimeChange(e?.createdAt)}
 								</p>
 								<span className="text-[#565e67]">•</span>
-								<p className="text-base font-mono">{e?.research}</p>
+								<p className="text-base font-mono">
+									{e?.background.toUpperCase()}
+								</p>
 							</div>
 						);
 					})}
