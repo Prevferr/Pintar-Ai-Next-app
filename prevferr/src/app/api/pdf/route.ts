@@ -51,7 +51,6 @@ export type ResponseAPIType<T> = {
   error?: string
 }
 
-const prisma = new PrismaClient();
 
 export const POST = async (req: NextRequest) => {
   try {
@@ -60,7 +59,7 @@ export const POST = async (req: NextRequest) => {
     const data = (await req.formData()).get('pdf') as File
 
     if (data) {
-    //   Upload.upPDF(data, userId)
+      // Upload.upPDF(data, userId)
 
       Upload.extractPDF(data, userId)
     }

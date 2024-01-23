@@ -1,3 +1,4 @@
+import { openai } from "@/config/openAi.config";
 import { NextResponse } from "next/server";
 import { OpenAI } from "openai";
 
@@ -7,9 +8,6 @@ export async function POST(req: Request, res: Response) {
 
 	console.log("q>>>", question);
 
-	const openai = new OpenAI({
-		apiKey: "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", //env
-	});
 	try {
 		// const question = req.body.question;
 		const ai = await openai.chat.completions.create({
