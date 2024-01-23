@@ -2,7 +2,6 @@ import schema from "../schema";
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
-
 const prisma = new PrismaClient();
 
 type TProps = {
@@ -39,7 +38,10 @@ export async function PUT(req: NextRequest, { params }: TProps) {
 	});
 
 	if (!user) {
-		return NextResponse.json({ error: "Researcher not found." }, { status: 404 });
+		return NextResponse.json(
+			{ error: "Researcher not found." },
+			{ status: 404 }
+		);
 	}
 
 	const updatedUser = await prisma.researcher.update({
@@ -49,7 +51,6 @@ export async function PUT(req: NextRequest, { params }: TProps) {
 			lastname: body.lastname,
 			password: body.password,
 			education: body.education,
-			scope: body.scope,
 			institution: body.institution,
 			profileImage: body.profileImage,
 			email: body.email,

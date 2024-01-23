@@ -13,7 +13,6 @@ export type ResearcherDetails = {
 	education: string;
 	profileImage: string;
 	email: string;
-	research: string;
 	phone_number: string;
 	background: string;
 	gender: string;
@@ -32,7 +31,6 @@ export type ResearcherJournal = {
 	education: string;
 	profileImage: string;
 	email: string;
-	research: string;
 	phone_number: string;
 	background: string;
 	gender: string;

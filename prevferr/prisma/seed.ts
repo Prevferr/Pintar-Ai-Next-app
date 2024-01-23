@@ -205,26 +205,26 @@ async function main() {
 	};
 
 	// Seeding satu researcher
-	const dzul = await prisma.researcher.upsert({
-		where: { email: "dzul@mail.com" },
-		update: {},
-		create: {
-			firstname: "Dzuuul",
-			lastname: "Sucipto",
-			isPremium: false,
-			education: "S3",
-			profileImage: "https://i0.wp.com/anitrendz.net/news/wp-content/uploads/2022/10/roadtonarutopv_screenshot.png?resize=696%2C392&ssl=1",
-			email: "dzul@mail.com",
-			password: pass1,
-			background: "agriculture",
-			gender: "Male",
-			jabatan_akademik: "Dosen",
-			portofolio: { create: [Jurnal0, Jurnal1, Jurnal2, Jurnal3] },
-			location: "Jakarta",
-			createdAt: new Date(),
-			updatedAt: new Date(),// Project: { create: [Project1, Project2, Project3] }, sebelumnya
-		},
-	});
+	// const dzul = await prisma.researcher.upsert({
+	// 	where: { email: "dzul@mail.com" },
+	// 	update: {},
+	// 	create: {
+	// 		firstname: "Dzuuul",
+	// 		lastname: "Sucipto",
+	// 		isPremium: false,
+	// 		education: "S3",
+	// 		profileImage: "https://i0.wp.com/anitrendz.net/news/wp-content/uploads/2022/10/roadtonarutopv_screenshot.png?resize=696%2C392&ssl=1",
+	// 		email: "dzul@mail.com",
+	// 		password: pass1,
+	// 		background: "agriculture",
+	// 		gender: "Male",
+	// 		jabatan_akademik: "Dosen",
+	// 		portofolio: { create: [Jurnal0, Jurnal1, Jurnal2, Jurnal3] },
+	// 		location: "Jakarta",
+	// 		createdAt: new Date(),
+	// 		updatedAt: new Date(),// Project: { create: [Project1, Project2, Project3] }, sebelumnya
+	// 	},
+	// });
 	const vincent = await prisma.researcher.upsert({
 		where: { email: "vincent@mail.com" },
 		update: {},
