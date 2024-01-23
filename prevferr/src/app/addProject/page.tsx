@@ -36,8 +36,8 @@ const AddProjectForm = () => {
 					"Content-Type": "application/json",
 				},
 			});
-			// const responseJSON = await response.json();
-			// console.log(responseJSON, "<<<< response project");
+			const responseJSON = await response.json();
+			console.log(responseJSON, "<<<< response project");
 
 			setForm({
 				project_name: "",

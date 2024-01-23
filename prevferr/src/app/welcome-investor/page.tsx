@@ -38,28 +38,20 @@ const WelcomePage = () => {
 	}, []);
 	return (
 		<>
-			<section className="flex w-full justify-center py-11">
+			<section className="flex w-full justify-center py-11 gap-6">
 				{journal.map((el: any) => {
 					return (
 						<>
-							<div className="rounded-2xl w-[400px] overflow-hidden shadow-md" key={el.id}>
-								<div className="rounded-xl flex flex-col pb-5 bg-[#fff]">
-									<div className="relative flex flex-col justify-center overflow-hidden">
-										<img src={el.project_image} className="rounded-t-xl" alt="Image Description" />
-										<div className="absolute top-0 left-0 h-full w-full cursor-pointer opacity-25 rounded-xl"></div>
-									</div>
-									<div className="p-7 text-xl py-7">
-										<span className="flex justify-start gap-2 items-center">
-											<p className="text-xs text-[#74767e]">{el.tags}</p>
-											<Icon icon="material-symbols-light:verified-outline" color="#0096FF" width={15} />
-										</span>
-										<h1 className="text-gray-800 font-extrabold text-sm mb-5">{el.project_name}</h1>
-										<p className="text-[#252525] font-semibold text-sm">{el.description_project}</p>
-										<span className="flex justify-start gap-2 items-center">
-											<p className="text-xs font-light text-[#252525]">Budget</p>
-											<p className="text-[#0096FF] text-sm font-bold">{rupiah(el.project_budget)}</p>
-										</span>
-									</div>
+							<div key={el.id} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+								<a href="#">
+									<img className="rounded-t-lg" src={el.project_image} alt="" />
+								</a>
+								<div className="p-5">
+									<a href="#">
+										<h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{el.project_name}</h5>
+									</a>
+									<p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{el.description_project}</p>
+									<p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Budget: {rupiah(el.project_budget)}</p>
 								</div>
 							</div>
 						</>

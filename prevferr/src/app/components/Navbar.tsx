@@ -25,13 +25,10 @@ const Navbar = () => {
 				</span>
 			</Link>
 			<div className="flex justify-between items-center gap-4">
-				<ul className="flex justify-between gap-8 items-center">
-					<li onClick={() => router.push("/addProject")} className="text-[#fff] hover:underline font-mono ">
-						Create Project
-					</li>
+				<ul className="flex justify-between gap-4 items-center">
 					<DropDownList />
+					<ModalLogin open={isModalOpen} onOk={closeModal} onCancel={closeModal} />
 				</ul>
-				<ModalLogin open={isModalOpen} onOk={closeModal} onCancel={closeModal} />
 			</div>
 		</nav>
 	);
