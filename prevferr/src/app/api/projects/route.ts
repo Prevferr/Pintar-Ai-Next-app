@@ -61,12 +61,16 @@ export async function POST(req: Request) {
 export async function GET(req: NextRequest) {
 	// console.log("masuk di get /api/projects");
 	// console.log(req.headers.get("x-user-id"), "<<<< user id nih di get");
+	const idUserLogin = req.headers.get("x-user-id");
+	// console.log(idUserLogin, "WKOAKWOKAOWKAW");
+
 	const projects = await prisma.project.findMany({
-		include: {
-			researcher: true,
-			investor: true,
+		where: {
+			investorId: Number(idUserLogin),
 		},
 	});
+	console.log(projects, "<<<<<<< PROJECTT");
+
 	return NextResponse.json(projects);
 }
 
