@@ -20,7 +20,7 @@ async function main() {
 	//   title: "Petanian Skala Mikro di Indonesia",
 	//   description: "Pertanian Skala Mikro di Indonesia",
 	// };
-
+ 
 	const Jurnal0 = {
 		// Data untuk portofolio Jurnal
 		// ...
