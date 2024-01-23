@@ -1,19 +1,18 @@
 -- CreateTable
 CREATE TABLE "Researcher" (
     "id" SERIAL NOT NULL,
+    "isPremium" BOOLEAN,
     "firstname" TEXT NOT NULL,
     "lastname" TEXT NOT NULL,
     "education" TEXT NOT NULL,
     "profileImage" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
-    "phone_number" TEXT NOT NULL,
     "background" TEXT NOT NULL,
     "gender" TEXT NOT NULL,
     "jabatan_akademik" TEXT NOT NULL,
     "portofolio" TEXT NOT NULL,
     "location" TEXT NOT NULL,
-    "investasi" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -27,7 +26,6 @@ CREATE TABLE "Investor" (
     "password" TEXT NOT NULL,
     "firstname" TEXT NOT NULL,
     "lastname" TEXT NOT NULL,
-    "budget" INTEGER NOT NULL,
     "profileImage" TEXT NOT NULL,
     "institution" TEXT NOT NULL,
     "industry_type" TEXT NOT NULL,
@@ -90,7 +88,7 @@ CREATE TABLE "Jurnal" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "portofolio_id" INTEGER,
-    -- "researcherId" INTEGER,
+    "researcherId" INTEGER,
 
 
     CONSTRAINT "Jurnal_pkey" PRIMARY KEY ("id")
@@ -137,7 +135,7 @@ ALTER TABLE "Comment" ADD CONSTRAINT "Comment_investorId_fkey" FOREIGN KEY ("inv
 
 
 -- AddForeignKey
-ALTER TABLE "Project" ADD CONSTRAINT "Project_researcherId_fkey" FOREIGN KEY ("researcherId") REFERENCES "Researcher"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+-- ALTER TABLE "Project" ADD CONSTRAINT "Project_researcherId_fkey" FOREIGN KEY ("researcherId") REFERENCES "Researcher"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Project" ADD CONSTRAINT "Project_investorId_fkey" FOREIGN KEY ("investorId") REFERENCES "Investor"("id") ON DELETE SET NULL ON UPDATE CASCADE;

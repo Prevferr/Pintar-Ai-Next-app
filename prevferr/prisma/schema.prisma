@@ -14,21 +14,18 @@ model Researcher {
   id           Int       @id @default(autoincrement())
   firstname    String
   lastname     String
+  isPremium    Boolean
   education    String
   profileImage String
   email        String    @unique
   password     String
-  research     String
-  phone_number  String
   background   String
   gender       String
   jabatan_akademik         String
   portofolio   Jurnal[]
   location     String
-  investasi       String
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @default(now())
-  Project      Project[]
 }
 
 model Investor {
@@ -37,7 +34,6 @@ model Investor {
   password      String
   firstname      String
   lastname      String
-  budget        Int
   profileImage  String
   institution   String
   industry_type String
@@ -56,10 +52,9 @@ model Project {
   project_image        String
   project_status       Boolean
   starting_date        DateTime
-  expected_finish_date DateTime
   project_budget       Int
+  expected_finish_date DateTime
   tags                 String
-  researcher           Researcher? @relation(fields: [researcherId], references: [id])
   investor             Investor?   @relation(fields: [investorId], references: [id])
   createdAt            DateTime    @default(now())
   updatedAt            DateTime    @default(now())
