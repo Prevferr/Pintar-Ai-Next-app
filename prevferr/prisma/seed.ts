@@ -116,7 +116,6 @@ async function main() {
 
 
 
-
 	const Project0 = {
 		// Data untuk portofolio Jurnal
 		// ...

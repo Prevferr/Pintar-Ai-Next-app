@@ -10,7 +10,6 @@ const investorSchema = z.object({
   password: z.string().min(5),
   firstname: z.string().min(1),
   lastname: z.string().min(1),
-  budget: z.number(),
   profileImage: z.string().min(1),
   institution: z.string().min(1),
   industry_type: z.string().min(1),
@@ -42,7 +41,6 @@ export async function POST(req: Request) {
         lastname,
         email: email.toLowerCase(),
         password: hashed_password,
-        budget,
         profileImage,
         institution,
         industry_type,
@@ -77,7 +75,6 @@ export async function POST(req: Request) {
         lastname: investor.lastname,
         profileImage: investor.profileImage,
         email: investor.email,
-        budget: investor.budget,
         institution: investor.institution,
         industry_type: investor.industry_type,
       }

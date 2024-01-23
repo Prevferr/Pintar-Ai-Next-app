@@ -6,7 +6,7 @@ export async function POST(req: Request) {
 		const idUserLogin = req.headers.get("x-user-id");
 		// console.log(idUserLogin, "<<<<<<< LOGIN INFO");
 
-		const { project_name, description_project, project_image, project_status, starting_date, expected_finish_date, project_budget, tags } = (await req.json()) as {
+		const { project_name, description_project, project_image, project_status, starting_date, expected_finish_date, project_budget, keywords } = (await req.json()) as {
 			project_name: string;
 			description_project: string;
 			project_image: string;
@@ -14,7 +14,7 @@ export async function POST(req: Request) {
 			starting_date: Date;
 			expected_finish_date: Date;
 			project_budget: number;
-			tags: string;
+			keywords: string;
 			investorId: number;
 		};
 		console.log("masuk");
@@ -28,7 +28,7 @@ export async function POST(req: Request) {
 				starting_date: new Date(starting_date),
 				expected_finish_date: new Date(expected_finish_date),
 				project_budget: Number(project_budget),
-				tags,
+				keywords,
 				investorId: Number(idUserLogin),
 			},
 		});
@@ -43,7 +43,7 @@ export async function POST(req: Request) {
 				starting_date: project.starting_date,
 				expected_finish_date: project.expected_finish_date,
 				project_budget: project.project_budget,
-				tags: project.tags,
+				keywords: project.keywords,
 			},
 		});
 	} catch (error: any) {

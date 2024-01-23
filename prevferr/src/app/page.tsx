@@ -156,56 +156,40 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <div className="w-full flex justify-center items-center py-14">
-                    <div className="w-[60%] mx-auto flex flex-col gap-4">
-                      <p className="font-mono text-[#565e67]">
-                        {DateChnage(e?.createdAt)}
-                      </p>
-                      <h1 className="text-5xl">{e?.title}</h1>
-                      {e?.portofolio?.map((el) => {
-                        return (
-                          <div className="flex justify-start items-center gap-4">
-                            <img
-                              src={el?.profileImage}
-                              className="h-14 w-14 rounded-full object-cover"
-                              alt="Author"
-                            />
-                            <p className="text-base font-mono">
-                              <span className="text-[#565e67] text-sm">BY</span>{" "}
-                              {el?.firstname} {el?.lastname}
-                            </p>
-                            <span className="text-[#565e67]">•</span>
-                            <p className="font-mono text-[#565e67] text-sm">
-                              {PostChange(el?.createdAt)}
-                            </p>
-                            <span className="text-[#565e67]">•</span>
-                            <p className="text-base font-mono">
-                              {el?.research.toUpperCase()}
-                            </p>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-      </div>
-      {/* <div className="bg-[#242628] min-h-screen">x</div> */}
-      <div className="bg-[#FF6100] paddingYShorter paddingX flex justify-around flex-col items-center gap-4">
-        <button className="relative bg-[#242628] text-[#fff] font-mono w-[60%] mx-auto text-6xl overflow-hidden rounded-full hover:rounded-lg p-4">
-          <span className="z-10 relative">Start to Join</span>
-        </button>
-        <img
-          src="https://www.mux.com/_next/static/media/player-default.f8e6da8b.svg"
-          className="bg-[#000]"
-        />
-        <p className="text-2xl font-mono">
-          Try Mux with a risk free trial and $20 in credit.
-        </p>
-      </div>
-    </Fragment>
-  );
+									<div className="w-full flex justify-center items-center py-14">
+										<div className="w-[60%] mx-auto flex flex-col gap-4">
+											<p className="font-mono text-[#565e67]">{DateChnage(e?.createdAt)}</p>
+											<h1 className="text-5xl">{e?.title}</h1>
+											{e?.portofolio?.map((el) => {
+												return (
+													<div className="flex justify-start items-center gap-4">
+														<img src={el?.profileImage} className="h-14 w-14 rounded-full object-cover" alt="Author" />
+														<p className="text-base font-mono">
+															<span className="text-[#565e67] text-sm">BY</span> {el?.firstname} {el?.lastname}
+														</p>
+														<span className="text-[#565e67]">•</span>
+														<p className="font-mono text-[#565e67] text-sm">{PostChange(el?.createdAt)}</p>
+														<span className="text-[#565e67]">•</span>
+														<p className="text-base font-mono">{el?.research}</p>
+													</div>
+												);
+											})}
+										</div>
+									</div>
+								</div>
+							</SwiperSlide>
+						);
+					})}
+				</Swiper>
+			</div>
+			{/* <div className="bg-[#242628] min-h-screen">x</div> */}
+			<div className="bg-[#FF6100] paddingYShorter paddingX flex justify-around flex-col items-center gap-4">
+				<button className="relative bg-[#242628] text-[#fff] font-mono w-[60%] mx-auto text-6xl overflow-hidden rounded-full hover:rounded-lg p-4">
+					<span className="z-10 relative">Start to Join</span>
+				</button>
+				<img src="https://www.mux.com/_next/static/media/player-default.f8e6da8b.svg" className="bg-[#000]" />
+				<p className="text-2xl font-mono">Try Mux with a risk free trial and $20 in credit.</p>
+			</div>
+		</Fragment>
+	);
 }
