@@ -12,7 +12,6 @@ export const RegisterForm = () => {
 		lastname: "",
 		email: "",
 		password: "",
-		budget: 0,
 		profileImage: "",
 		institution: "",
 		industry_type: "",
@@ -27,7 +26,6 @@ export const RegisterForm = () => {
 			lastname: "",
 			email: "",
 			password: "",
-			budget: 0,
 			profileImage: "",
 			institution: "",
 			industry_type: "",
@@ -78,9 +76,6 @@ export const RegisterForm = () => {
 			</div>
 			<div className="mb-6">
 				<input required type="password" name="password" value={formValues.password} onChange={handleChange} placeholder="Password" className={`${input_style}`} />
-			</div>
-			<div className="mb-6">
-				<input required type="number" name="budget" value={formValues.budget} onChange={handleChange} placeholder="budget" className={`${input_style}`} />
 			</div>
 			<div className="mb-6">
 				<input required type="text" name="profileImage" value={formValues.profileImage} onChange={handleChange} placeholder="Profile Image" className={`${input_style}`} />

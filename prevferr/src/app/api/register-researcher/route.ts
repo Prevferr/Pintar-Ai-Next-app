@@ -8,15 +8,14 @@ import { z } from "zod";
 const researcherSchema = z.object({
   firstname: z.string().min(1),
   lastname: z.string().min(1),
+  isPremium: z.boolean(),
+  email: z.string().email(),
   password: z.string().min(5),
-  research: z.string().min(1),
   education: z.string().min(1),
   profileImage: z.string(),
-  email: z.string().email(),
   background: z.string().min(1),
   gender: z.string().min(1),
   location: z.string().min(1),
-  phone_number: z.string().min(1),
   jabatan_akademik: z.string().min(1),
   investasi: z.string().default("0"),
 });
@@ -40,17 +39,15 @@ export async function POST(req: Request) {
     const {
       firstname,
       lastname,
+      isPremium,
       password,
-      research,
       education,
       profileImage,
       email,
       background,
       gender,
       location,
-      phone_number,
       jabatan_akademik,
-      investasi,
     } = result.data;
 
     const hashed_password = await hash(password, 10);
@@ -59,13 +56,11 @@ export async function POST(req: Request) {
       data: {
         firstname,
         lastname,
-        research,
+        isPremium: false,
         password: hashed_password,
         education,
         profileImage,
-        phone_number,
         jabatan_akademik,
-        investasi,
         email: email.toLowerCase(),
         background,
         gender,
@@ -99,13 +94,12 @@ export async function POST(req: Request) {
       researcher: {
         firstname: researcher.firstname,
         lastname: researcher.lastname,
+        isPremium: researcher.isPremium,
         education: researcher.education,
-        research: researcher.research,
         profileImage: researcher.profileImage,
         email: researcher.email,
         background: researcher.background,
         gender: researcher.gender,
-        investasi: researcher.investasi,
         location: researcher.location,
       },
     });

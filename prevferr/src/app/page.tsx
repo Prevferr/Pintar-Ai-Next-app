@@ -142,7 +142,7 @@ export default function Home() {
 														<span className="text-[#565e67]">•</span>
 														<p className="font-mono text-[#565e67] text-sm">{PostChange(el?.createdAt)}</p>
 														<span className="text-[#565e67]">•</span>
-														<p className="text-base font-mono">{el?.research.toUpperCase()}</p>
+														<p className="text-base font-mono">{el?.research}</p>
 													</div>
 												);
 											})}
