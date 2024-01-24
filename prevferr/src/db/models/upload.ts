@@ -118,8 +118,6 @@ export class Upload {
 				},
 			});
 
-			console.log(data, "in");
-
 			return data;
 		} catch (err) {
 			console.error(err);
