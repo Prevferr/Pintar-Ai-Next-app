@@ -3,6 +3,8 @@
 import { Project } from "@/app/type-def";
 import { parseISO, format } from "date-fns";
 import React, { useEffect, useState } from "react";
+import DateChnage from "../../../../helpers/utils/DateChange";
+import { formatDate } from "../../../../helpers/utils/formatDate";
 
 const ProjectDetail = ({ params }: { params: { slug: string } }) => {
 	const projectName = params.slug;
@@ -38,7 +40,7 @@ const ProjectDetail = ({ params }: { params: { slug: string } }) => {
 		}).format(number);
 	};
 
-	const DateChange = (dateString: string): string => {
+	const DateChange = (dateString: any): string => {
 		const date = parseISO(dateString);
 		const formattedDate = format(date, "MMMM d, yyyy");
 
@@ -75,11 +77,11 @@ const ProjectDetail = ({ params }: { params: { slug: string } }) => {
 								<div className="mb-8">
 									<h2 className="w-[7rem] pb-1 mb-4 text-sm font-bold border-b border-blue-300 dark:text-gray-400 dark:border-gray-600">Starting Date</h2>
 									<div className="flex flex-wrap -mx-2 -mb-2">
-										<span className="p-1 mb-2 mr-3">{DateChange(projectData?.starting_date)}</span>
+										<span className="p-1 mb-2 mr-3">{formatDate(projectData?.starting_date)}</span>
 									</div>
 									<h2 className="w-[7rem] pb-1 mb-4 text-sm font-bold border-b border-blue-300 dark:text-gray-400 dark:border-gray-600">Expected Finish Date</h2>
 									<div className="flex flex-wrap -mx-2 -mb-2">
-										<span className="p-1 mb-2 mr-3">{DateChange(projectData?.expected_finish_date)}</span>
+										<span className="p-1 mb-2 mr-3">{formatDate(projectData?.expected_finish_date)}</span>
 									</div>
 								</div>
 							</div>
