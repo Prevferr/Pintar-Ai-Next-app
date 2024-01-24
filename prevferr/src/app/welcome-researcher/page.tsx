@@ -40,27 +40,6 @@ const WelcomePage = (request: NextRequest) => {
 	return (
 		<>
 			<section className="bg-[#E2E4DD] w-full">
-				{/* <form
-        className="mt-8 text-center"
-        // Karena SideBar ini merupakan Server Component, maka tidak bisa menggunakan onSubmit, oleh karena itu, solusinya adalah menggunakan server action
-        action={async () => {
-          "use server";
-
-          // Menghapus cookie token bila exists
-          cookies().get("token") && cookies().delete("token");
-
-          // Redirect ke halaman login
-          redirect("/");
-        }}
-      >
-        <button
-          type="submit"
-          className="rounded bg-blue-200 px-4 py-2 transition-colors duration-300 hover:bg-blue-400 hover:text-white"
-        >
-          Logout
-        </button>
-      </form> */}
-
 				<div className="flex justify-between paddingX border-[#000] min-h-screen">
 					<div className="py-4 w-[60%] border-l border-[#000] paddingXShorter paddingYShorter7 flex flex-col justify-around">
 						<div className="flex justify-between items-center">
@@ -68,7 +47,7 @@ const WelcomePage = (request: NextRequest) => {
 								<h3 className="text-5xl font-mono text-left font-semibold text-[#000]">
 									Hello Researchers! At Pintar Ai,
 								</h3>
-								<p className="text-[#000] font-mono text-base">
+								<p className="text-[#000] font-mono text-xl">
 									The hub of inspiration and discovery for talented researchers!
 									Let's explore the world of knowledge together.
 								</p>
@@ -86,25 +65,6 @@ const WelcomePage = (request: NextRequest) => {
 					</div>
 					<div className="w-[40%] flex flex-col gap-4 paddingYShorter2">
 						{journal.map((el, i) => (
-							// 	<div
-							// 		key={el.id}
-							// 		// className="border-x border-[#000] paddingYShorter3 bg-[#E2E4DD] flex flex-col gap-4"
-							// 		className="mt-5 border-2 px-5 py-2 rounded-lg border-black border-b-4 font-black translate-y-2 border-l-4 bg-[#0072e3] hover:bg-[#367fc7] cursor-pointer"
-							// 	>
-							// 		<div className="h-44 flex justify-start gap-8 p-4">
-							// 			<div className="flex flex-col gap-4">
-							// 				<h1 className="text-xl text-[#E2E4DD]">{el.title}</h1>
-							// 				{/* <div className="flex justify-start items-center gap-4">
-							// 				<p className="text-base font-mono truncate">
-							// 					{el.abstract}
-							// 				</p>
-							// 			</div> */}
-							// 				<p className="font-mono text-[#252525] text-base">
-							// 					[{el.keywords.toUpperCase()}]
-							// 				</p>
-							// 			</div>
-							// 		</div>
-							// 	</div>
 							<div
 								className="mx-auto border w-full border-[#000] rounded-3xl flex flex-col"
 								key={el?.id}
