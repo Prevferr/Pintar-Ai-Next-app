@@ -31,8 +31,6 @@ const ProjectPage = () => {
 		fetchData();
 	}, []);
 
-	// console.log(projects, "memek");
-
 	return (
 		<section className="min-h-screen bg-[#E2E4DD]">
 			<div className="paddingX border-x border-[#000] bg-[#ffb200]">
@@ -57,7 +55,7 @@ const ProjectPage = () => {
 					<div className="grid grid-cols-3 gap-2">
 						{projects?.map((project) => {
 							return (
-								<Link href={`/projects/${project?.project_name}`}>
+								<Link href={`/projects/${project?.id}`}>
 									<ProjectCard data={project} />
 								</Link>
 							);

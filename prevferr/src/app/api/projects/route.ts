@@ -61,6 +61,7 @@ export async function POST(req: Request) {
 export async function GET(req: NextRequest) {
 	// console.log("masuk di get /api/projects");
 	// console.log(req.headers.get("x-user-id"), "<<<< user id nih di get");
+
 	const idUserLogin = req.headers.get("x-user-id");
 	// console.log(idUserLogin, "WKOAKWOKAOWKAW");
 
@@ -75,9 +76,9 @@ export async function GET(req: NextRequest) {
 }
 
 // GET ALL RESEARCHER
-export async function GetAllResearchers(req: NextRequest) {
-	const researcher = await prisma.researcher.findMany();
-	console.log(researcher, "<<<<<< Researcher Dataaaaa");
+// export async function GetAllResearchers(req: NextRequest) {
+// 	const researcher = await prisma.researcher.findMany();
+// 	console.log(researcher, "<<<<<< Researcher Dataaaaa");
 
-	return NextResponse.json(researcher);
-}
+// 	return NextResponse.json(researcher);
+// }
