@@ -13,7 +13,7 @@ const WelcomePage = () => {
 	const [journal, setJournal] = useState([]);
 	const fetchData = async () => {
 		try {
-			const response = await fetch("http://localhost:3000/api/projects");
+			const response = await fetch("http://localhost:3000/api/welcome-investor");
 
 			if (!response.ok) {
 				throw new Error("Failed fetching data");

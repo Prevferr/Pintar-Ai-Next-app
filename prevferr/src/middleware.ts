@@ -13,7 +13,7 @@ export const middleware = async (request: NextRequest) => {
   }
 
   if (
-    request.url.includes("/api/projects") ||
+    request.url.includes("/api/welcome-investor") ||
     request.url.includes("/api/welcome-researcher") ||
     request.url.includes("/api/pdf")
   ) {
