@@ -51,31 +51,55 @@ const WelcomePage = () => {
 					</div>
 					<div className="rounded-xl bg-white paddingXShorter2 py-4 flex flex-col">
 						<p className="font-mono">Your project : </p>
-						<div className="bg-[#E2E4DD]">x</div>
+						<div className="bg-[#E2E4DD]">
+							<Link href="/create-project">
+								<button
+									// className="mr-auto border flex items-center gap-2 bg-[#fff] py-3 px-5 rounded-lg text-[#000] cursor-pointer font-mono transition-transform duration-300 hover:transform translate-y-[-3px]"
+									className="w-full flex justify-center bg-[#fff] hover:bg-[#d6e7aa] text-[#000] hover:border  px-4 py-4 rounded-full tracking-wide font-mono shadow-lg cursor-pointer transition ease-in duration-500"
+									// onClick={() => router.push("/create-journal")}
+								>
+									<p className="text-sm">Create Journal</p>
+								</button>
+							</Link>
+						</div>
 					</div>
 				</div>
-				<div className="bg-red-700 w-[30%] rounded-r-xl">x</div>
+				<div className="w-[30%] rounded-r-xl flex flex-col">
+					<section className="flex w-full justify-center py-11 gap-6">
+						{journal.map((el: any) => {
+							return (
+								<>
+									<div
+										key={el.id}
+										className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+									>
+										<Link href={`/projects/${el.project_name}`}>
+											<img
+												className="rounded-t-lg"
+												src={el.project_image}
+												alt=""
+											/>
+										</Link>
+										<div className="p-5">
+											<a href="#">
+												<h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+													{el.project_name}
+												</h5>
+											</a>
+											<p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+												{el.description_project}
+											</p>
+											<p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+												Budget: {rupiah(el.project_budget)}
+											</p>
+										</div>
+									</div>
+								</>
+							);
+						})}
+					</section>
+				</div>
 			</section>
-			{/* <section className="flex w-full justify-center py-11 gap-6">
-				{journal.map((el: any) => {
-					return (
-						<>
-							<div key={el.id} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-								<Link href={`/projects/${el.project_name}`}>
-									<img className="rounded-t-lg" src={el.project_image} alt="" />
-								</Link>
-								<div className="p-5">
-									<a href="#">
-										<h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{el.project_name}</h5>
-									</a>
-									<p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{el.description_project}</p>
-									<p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Budget: {rupiah(el.project_budget)}</p>
-								</div>
-							</div>
-						</>
-					);
-				})}
-			</section> */}
 		</>
 	);
 };

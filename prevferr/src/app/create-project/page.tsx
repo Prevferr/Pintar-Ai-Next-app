@@ -4,7 +4,22 @@ import React, { useState, useEffect } from "react";
 import { readPayload } from "../../../helpers/lib/jwt";
 import { useRouter } from "next/navigation";
 import { PlusOutlined } from "@ant-design/icons";
-import { Button, Cascader, Checkbox, ColorPicker, DatePicker, Form, Input, InputNumber, Radio, Select, Slider, Switch, TreeSelect, Upload } from "antd";
+import {
+	Button,
+	Cascader,
+	Checkbox,
+	ColorPicker,
+	DatePicker,
+	Form,
+	Input,
+	InputNumber,
+	Radio,
+	Select,
+	Slider,
+	Switch,
+	TreeSelect,
+	Upload,
+} from "antd";
 import { ResearcherJournal } from "../type-def";
 
 const { RangePicker } = DatePicker;
@@ -117,13 +132,16 @@ const AddProjectForm = () => {
 				<div
 					className="w-full flex items-center justify-center text-center md:px-16 px-0 z-0 relative overflow-hidden paddingY"
 					style={{
-						backgroundImage: "url(https://images.unsplash.com/photo-1608303588026-884930af2559?q=80&w=3403&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
+						backgroundImage:
+							"url(https://images.unsplash.com/photo-1608303588026-884930af2559?q=80&w=3403&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
 					}}
 				>
 					<div className="absolute bg-gradient-to-b bg-[#252525] opacity-75 inset-0 z-0"></div>
 
 					<div className="absolute mx-auto bg-[#E2E4DD] w-[80%] rounded-3xl flex flex-col gap-6 z-10 paddingXShorter paddingYShorter3">
-						<h3 className="font-mono text-xl text-[#252525] text-start">Create a New Project</h3>
+						<h3 className="font-mono text-xl text-[#252525] text-start">
+							Create a New Project
+						</h3>
 						{/* <Form
 							labelCol={{ span: 4 }}
 							wrapperCol={{ span: 14 }}
@@ -173,36 +191,94 @@ const AddProjectForm = () => {
 						<div className="w-full py-6 z-20">
 							<form className="mx-auto pt-9 pb-9" onSubmit={onSubmit}>
 								<div className="relative z-0 w-full mb-5 group">
-									<input type="text" name="project_name" id="project_name" className=" text-black block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " value={form.project_name} onChange={onHandlerForm} />
-									<label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Project Name</label>
+									<input
+										type="text"
+										name="project_name"
+										id="project_name"
+										className=" text-black block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+										placeholder=" "
+										value={form.project_name}
+										onChange={onHandlerForm}
+									/>
+									<label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+										Project Name
+									</label>
 								</div>
 								<div className="relative z-0 w-full mb-5 group">
-									<input type="text" name="description_project" id="description_project" className="text-black block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " value={form.description_project} onChange={onHandlerForm} />
-									<label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Project Description</label>
+									<input
+										type="text"
+										name="description_project"
+										id="description_project"
+										className="text-black block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+										placeholder=" "
+										value={form.description_project}
+										onChange={onHandlerForm}
+									/>
+									<label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+										Project Description
+									</label>
 								</div>
 								<div className="relative z-0 w-full mb-5 group">
-									<input type="text" name="project_image" id="project_image" className="text-black block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " value={form.project_image} onChange={onHandlerForm} />
-									<label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Project Image URL</label>
+									<input
+										type="text"
+										name="project_image"
+										id="project_image"
+										className="text-black block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+										placeholder=" "
+										value={form.project_image}
+										onChange={onHandlerForm}
+									/>
+									<label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+										Project Image URL
+									</label>
 								</div>
 								<div className="grid md:grid-cols-2 md:gap-6">
 									<div className="relative z-0 w-full mb-5 group">
-										<input type="date" name="starting_date" id="starting_date" className="text-black block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " value={form.starting_date} onChange={onHandlerForm} />
-										<label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Starting Date</label>
+										<input
+											type="date"
+											name="starting_date"
+											id="starting_date"
+											className="text-black block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+											placeholder=" "
+											value={form.starting_date}
+											onChange={onHandlerForm}
+										/>
+										<label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+											Starting Date
+										</label>
 									</div>
 									<div className="relative z-0 w-full mb-5 group">
-										<input type="date" name="expected_finish_date" id="expected_finish_date" className="text-black block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " value={form.expected_finish_date} onChange={onHandlerForm} />
-										<label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Expected Finish Date</label>
+										<input
+											type="date"
+											name="expected_finish_date"
+											id="expected_finish_date"
+											className="text-black block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+											placeholder=" "
+											value={form.expected_finish_date}
+											onChange={onHandlerForm}
+										/>
+										<label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+											Expected Finish Date
+										</label>
 									</div>
 									<label>Choose a Category:</label>
-									<select id="keywords" name="keywords" className="bg-[#E2E4DD] border border-black">
-										<option value="Education">Education</option>
-										<option value="Engineering">Engineering</option>
-										<option value="Health">Health</option>
-										<option value="Agriculture">Agriculture</option>
-										<option value="Environment">Environment</option>
+									<select
+										id="keywords"
+										name="keywords"
+										className="bg-[#E2E4DD] border border-black"
+									>
+										<option value="education">Education</option>
+										<option value="engineering">Engineering</option>
+										<option value="health">Health</option>
+										<option value="agriculture">Agriculture</option>
+										<option value="environment">Environment</option>
 									</select>
 									<label>Choose a reseracher:</label>
-									<select id="keywords" name="keywords" className="bg-[#E2E4DD] border border-black">
+									<select
+										id="researcherId"
+										name="researcherId"
+										className="bg-[#E2E4DD] border border-black"
+									>
 										{/* {researcher.map((researcher) => (
 											<option key={researcher.id} value={researcher.keyword}>
 												{researcher.keyword}
@@ -210,7 +286,10 @@ const AddProjectForm = () => {
 										))} */}
 										{researcher.map((researcher) => {
 											return (
-												<option key={researcher.id} value={researcher.firstname}>
+												<option
+													key={researcher.id}
+													value={researcher.firstname}
+												>
 													{researcher.firstname}
 													{researcher.lastname}
 												</option>
@@ -220,14 +299,31 @@ const AddProjectForm = () => {
 								</div>
 								<div className="grid md:grid-cols-2 md:gap-6">
 									<div className="relative z-0 w-full mb-5 group">
-										<input type="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="project_budget" id="project_budget" className="text-black block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " value={form.project_budget} onChange={onHandlerForm} />
-										<label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Project Budget</label>
+										<input
+											type="number"
+											pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+											name="project_budget"
+											id="project_budget"
+											className="text-black block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+											placeholder=" "
+											value={form.project_budget}
+											onChange={onHandlerForm}
+										/>
+										<label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+											Project Budget
+										</label>
 									</div>
 								</div>
-								<button type="submit" className="text-white bg-green-700 hover:bg-blue-800 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+								<button
+									type="submit"
+									className="text-white bg-green-700 hover:bg-blue-800 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+								>
 									Create
 								</button>
-								<button onClick={() => router.push("/welcome-investor")} className="ml-2 text-white bg-red-700 hover:bg-blue-800 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+								<button
+									onClick={() => router.push("/welcome-investor")}
+									className="ml-2 text-white bg-red-700 hover:bg-blue-800 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+								>
 									Cancel
 								</button>
 							</form>
