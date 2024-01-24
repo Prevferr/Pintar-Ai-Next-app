@@ -10,7 +10,7 @@ type TProps = {
 
 export async function GET(req: NextRequest, { params }: TProps) {
 	try {
-		console.log(params.email, "<<<<<<<<< AKWOAKWOKAOW");
+		// console.log(params.email, "<<<<<<<<< AKWOAKWOKAOW");
 		const transporter = nodemailer.createTransport({
 			service: "gmail",
 			auth: {
@@ -26,7 +26,7 @@ export async function GET(req: NextRequest, { params }: TProps) {
 			},
 			to: params.email,
 			subject: "Selamat, registrasi berhasil!",
-			text: "Terima kasih telah mendaftar di situs kami.",
+			text: "anda dapet duit dari investor silahkan kabur.",
 		};
 
 		const sendMail = await transporter.sendMail(mailOptions);

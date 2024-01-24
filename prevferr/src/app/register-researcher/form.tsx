@@ -88,14 +88,14 @@ export const RegisterForm = () => {
 
 	const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
 		const { name, value } = event.target;
-		setFormValues({ ...formValues, [name]: value });
+		// setFormValues({ ...formValues, [name]: value });
 
 
-		// if (name === "education") {
-		// 	setFormValues({ ...formValues, education: value, gender: value });
-		// } else {
-		// 	setFormValues({ ...formValues, [name]: value });
-		// }
+		if (name === "education") {
+			setFormValues({ ...formValues, education: value, gender: value });
+		} else {
+			setFormValues({ ...formValues, [name]: value });
+		}
 	};
 
 	// Edge store setup

@@ -49,7 +49,10 @@ const AddProjectForm = () => {
 
 		const formPayload = {
 			...form,
+			project_status: false
 		};
+		console.log(formPayload, "<<< form payload");
+		
 
 		try {
 			// SEMUANYA AJA LAH lengkapin aja linknya
@@ -194,12 +197,13 @@ const AddProjectForm = () => {
 										<label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Expected Finish Date</label>
 									</div>
 									<label>Choose a Category:</label>
-									<select id="keywords" name="keywords" className="bg-[#E2E4DD] border border-black">
-										<option value="Education">Education</option>
-										<option value="Engineering">Engineering</option>
-										<option value="Health">Health</option>
-										<option value="Agriculture">Agriculture</option>
-										<option value="Environment">Environment</option>
+									<select id="keywords" name="keywords" className="bg-[#E2E4DD] border border-black" value={form.keywords} onChange={onHandlerForm}>
+										<option value="" disabled>Select Keywords</option>
+										<option value="education">Education</option>
+										<option value="engineering">Engineering</option>
+										<option value="health">Health</option>
+										<option value="agriculture">Agriculture</option>
+										<option value="environment">Environment</option>
 									</select>
 									<label>Choose a reseracher:</label>
 									<select id="keywords" name="keywords" className="bg-[#E2E4DD] border border-black">
