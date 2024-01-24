@@ -47,14 +47,15 @@ export async function GET(req: NextRequest) {
   // console.log("masuk di get /api/projects");
   // console.log(req.headers.get("x-user-id"), "<<<< user id nih di get");
   const idUserLogin = req.headers.get("x-user-id");
-  console.log(idUserLogin, "WKOXIXIXIXAKWOKAOWKAW");
+  // console.log(idUserLogin, "WKOXIXIXIXAKWOKAOWKAW");
 
   const journals = await prisma.project.findMany({
     where: {
       investorId: Number(idUserLogin),
     },
+    include: {investor:true}
   });
-  console.log(journals, "<<<<<<< PROJECTS BY LOGIN");
+  // console.log(journals, "<<<<<<< PROJECTS BY LOGIN");
 
   return NextResponse.json(journals);
 }
