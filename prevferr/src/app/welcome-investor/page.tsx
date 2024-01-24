@@ -43,7 +43,11 @@ const WelcomePage = () => {
 	}, []);
 	return (
 		<>
-			<section className="flex w-full justify-center py-11 gap-6">
+			<section className="paddingX paddingYShorter3 min-h-screen w-full flex justify-center gap-2">
+				<div className="bg-blue-700 w-[70%] rounded-l-xl">x</div>
+				<div className="bg-red-700 w-[30%] rounded-r-xl">x</div>
+			</section>
+			{/* <section className="flex w-full justify-center py-11 gap-6">
 				{journal.map((el: any) => {
 					return (
 						<>
@@ -62,7 +66,7 @@ const WelcomePage = () => {
 						</>
 					);
 				})}
-			</section>
+			</section> */}
 		</>
 	);
 };

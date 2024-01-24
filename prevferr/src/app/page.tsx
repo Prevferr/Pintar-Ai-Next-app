@@ -23,27 +23,27 @@ import DateChnage from "../../helpers/utils/DateChange";
 import PostChange from "../../helpers/utils/PostChange";
 
 export default function Home() {
-  const [journal, setJournal] = useState([] as JournalWithResearcher[]);
-  const fetchData = async () => {
-    try {
-      const response = await fetch("http://localhost:3000/api/journals");
+	const [journal, setJournal] = useState([] as JournalWithResearcher[]);
+	const fetchData = async () => {
+		try {
+			const response = await fetch("http://localhost:3000/api/journals");
 
-      if (!response.ok) {
-        throw new Error("Failed fetching data");
-      }
+			if (!response.ok) {
+				throw new Error("Failed fetching data");
+			}
 
-      const responseJSON = await response.json();
-      console.log(responseJSON);
+			const responseJSON = await response.json();
+			console.log(responseJSON);
 
-      setJournal(responseJSON);
-    } catch (error) {
-      if (error instanceof Error) {
-        console.log(error.message);
-      } else {
-        console.log(error);
-      }
-    }
-  };
+			setJournal(responseJSON);
+		} catch (error) {
+			if (error instanceof Error) {
+				console.log(error.message);
+			} else {
+				console.log(error);
+			}
+		}
+	};
 
 	useEffect(() => {
 		fetchData();
@@ -52,7 +52,7 @@ export default function Home() {
 		<Fragment>
 			{/* layer 1  */}
 			<div className="bg-[#242628]">
-				<div className="paddingX">
+				<div className="paddingX ">
 					<div className="w-full flex justify-center border-x border-b border-[#000]">
 						<div className="w-[50%] flex justify-between items-center">
 							<div className="p-4 flex flex-col justify-between gap-8">
@@ -109,8 +109,14 @@ export default function Home() {
 								className="bg-[#000]"
 							/> */}
 							<div className="border-b border-[#000] h-[5rem] flex justify-start items-center bg-[#0072e3] gap-4 px-4">
-								<Icon icon="material-symbols-light:upload" width={50} />
-								<p className="text-xl font-mono font-thin">Upload Journal</p>
+								<Icon
+									icon="material-symbols-light:upload"
+									width={50}
+									color="#fff"
+								/>
+								<p className="text-xl font-mono font-thin text-[#fff]">
+									Upload Journal
+								</p>
 							</div>
 							<div className="border-b border-[#000] h-[5rem] flex justify-start items-center gap-4 px-4">
 								<Icon icon="ph:projector-screen-chart-thin" width={50} />

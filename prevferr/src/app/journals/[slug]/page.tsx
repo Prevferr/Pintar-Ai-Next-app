@@ -100,9 +100,12 @@ const JournalDetail = ({ params }: { params: { slug: string } }) => {
 				</div>
 				<button
 					onClick={() => openPdfInNewWindow(journalData?.journal_file)}
-					className="absolute bottom-0 right-28"
+					className="m-4 flex justify-center gap-2 items-center cursor-pointer hover:underline mx-auto"
 				>
-					Open PDF in New Window
+					<Icon icon="line-md:download-loop" width={30} color="#000" />
+					<p className="text-xl font-mono text-[#000] hover:underline">
+						Read More
+					</p>
 				</button>
 			</div>
 		</div>
