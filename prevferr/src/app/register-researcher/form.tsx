@@ -30,7 +30,7 @@ export const RegisterForm = () => {
 		isPremium: false,
 		email: "",
 		password: "",
-		profileImage: urls?.url,
+		profileImage: "",
 		background: "",
 		gender: "",
 		location: "",
@@ -41,11 +41,17 @@ export const RegisterForm = () => {
 
 	const onSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
+		const payload = {
+			...formValues,
+			isPremium: false,
+		}
+		console.log(payload, "<<<< payloaddd");
+		
 
 		try {
 			const res = await fetch("/api/register-researcher", {
 				method: "POST",
-				body: JSON.stringify(formValues),
+				body: JSON.stringify(payload),
 				headers: {
 					"Content-Type": "application/json",
 				},
@@ -59,7 +65,7 @@ export const RegisterForm = () => {
 				isPremium: false,
 				email: "",
 				password: "",
-				profileImage: urls?.url,
+				profileImage: "",
 				background: "",
 				gender: "",
 				location: "",
@@ -73,7 +79,7 @@ export const RegisterForm = () => {
 			// 	return;
 			// }
 
-			signIn("/");
+			// signIn("/");
 		} catch (error: any) {
 			// setLoading(false);
 			setError(error);
@@ -82,6 +88,8 @@ export const RegisterForm = () => {
 
 	const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
 		const { name, value } = event.target;
+		// setFormValues({ ...formValues, [name]: value });
+
 
 		if (name === "education") {
 			setFormValues({ ...formValues, education: value, gender: value });
@@ -131,10 +139,10 @@ export const RegisterForm = () => {
 					Education Level
 				</label>
 				<select required name="education" value={formValues.education} onChange={handleChange} className={`${input_style}`}>
-					<option value="">Select Your Education</option>
-					<option value="S1">S1</option>
-					<option value="S2">S2</option>
-					<option value="S3">S3</option>
+					<option value="" disabled>Select Your Education</option>
+					<option value="s1">S1</option>
+					<option value="s2">S2</option>
+					<option value="s3">S3</option>
 				</select>
 			</div>
 			<div className="mb-6">
@@ -148,9 +156,22 @@ export const RegisterForm = () => {
 					Gender
 				</label>
 				<select required name="gender" value={formValues.gender} onChange={handleChange} className={`${input_style}`}>
-					<option value="">Select Gender</option>
-					<option value="Male">Male</option>
-					<option value="Female">Female</option>
+					<option value="" disabled>Select Gender</option>
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+				</select>
+			</div>
+			<div className="mb-6">
+				<label htmlFor="background" className="text-sm font-normal text-gray-700">
+				Background
+				</label>
+				<select required name="background" value={formValues.background} onChange={handleChange} className={`${input_style}`}>
+					<option value="" disabled>Select Background</option>
+					<option value="health">Health</option>
+					<option value="agriculture">Agriculture</option>
+					<option value="engineering">Engineering</option>
+					<option value="education">Education</option>
+					<option value="enviroment">Enviroment</option>
 				</select>
 			</div>
 			<div className="mb-6">
@@ -159,7 +180,13 @@ export const RegisterForm = () => {
 				</label>
 				<input required type="text" name="location" value={formValues.location} onChange={handleChange} placeholder="Location" className={`${input_style}`} />
 			</div>
-			<div className="flex flex-col items-center m-6 gap-2">
+			<div className="mb-6">
+				<label htmlFor="profileImage" className="text-sm font-normal text-gray-700">
+					Profile Image Link
+				</label>
+				<input required type="text" name="profileImage" value={formValues.profileImage} onChange={handleChange} placeholder="Profile Image Link" className={`${input_style}`} />
+			</div>
+			{/* <div className="flex flex-col items-center m-6 gap-2">
 				<SingleImageDropzone
 					width={200}
 					height={200}
@@ -171,21 +198,21 @@ export const RegisterForm = () => {
 				<div className="h-[6px] w-44 border rounded overflow-hidden">
 					<div className="h-full bg-black transition-all duration-150" style={{ width: `${progress}%` }} />
 				</div>
-			</div>
+			</div> */}
 			<button
-				onClick={async () => {
-					if (file) {
-						const res = await edgestore.publicFiles.upload({
-							file,
-							onProgressChange: (progress) => {
-								setProgress(progress);
-							},
-						});
-						console.log(res.url, "<<<<< URL");
+				// onClick={async () => {
+				// 	if (file) {
+				// 		const res = await edgestore.publicFiles.upload({
+				// 			file,
+				// 			onProgressChange: (progress) => {
+				// 				setProgress(progress);
+				// 			},
+				// 		});
+				// 		console.log(res.url, "<<<<< URL");
 
-						setUrls({ url: res.url });
-					}
-				}}
+				// 		setUrls({ url: res.url });
+				// 	}
+				// }}
 				type="submit"
 				style={{ backgroundColor: `${loading ? "#ccc" : "#3446eb"}` }}
 				className="inline-block px-7 py-4 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"

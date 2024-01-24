@@ -13,7 +13,7 @@ const researcherSchema = z.object({
 	password: z.string().min(5),
 	education: z.string().min(1),
 	profileImage: z.string(),
-	background: z.string().min(1),
+	background: z.string(),
 	gender: z.string().min(1),
 	location: z.string().min(1),
 	jabatan_akademik: z.string().min(1),
@@ -23,6 +23,8 @@ const researcherSchema = z.object({
 export async function POST(req: Request) {
 	try {
 		const requestData = await req.json();
+		console.log(requestData, "<<<< req data");
+		
 
 		// Validate data with Zod schema
 		const result = researcherSchema.safeParse(requestData);
