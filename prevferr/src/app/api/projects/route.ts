@@ -66,9 +66,6 @@ export async function GET(req: NextRequest) {
 	// console.log(idUserLogin, "WKOAKWOKAOWKAW");
 
 	const projects = await prisma.project.findMany({
-		where: {
-			investorId: Number(idUserLogin),
-		},
 	});
 	// console.log(projects, "<<<<<<< PROJECTT");
 
