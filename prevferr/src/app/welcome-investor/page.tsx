@@ -43,11 +43,16 @@ const WelcomePage = () => {
 	}, []);
 	return (
 		<>
-			<section className="paddingX paddingYShorter3 min-h-screen w-full flex justify-center gap-2">
-				<div className="bg-blue-700 w-[70%] rounded-l-xl flex flex-col justify-around">
-					<div>s</div>
-					<div>s</div>
-					<div>s</div>
+			<section className="paddingX paddingYShorter3 min-h-screen w-full flex justify-center gap-2 bg-[#E2E4DD]">
+				<div className="border border-[#000] w-[70%] rounded-l-xl flex flex-col gap-4 paddingXShorter3 paddingYShorter3">
+					<div className="rounded-xl bg-white paddingXShorter2 paddingY flex justify-around gap-4">
+						<h3 className="font-mono">Hello Our Pronerss! At Pintar Ai,</h3>
+						<Icon icon="guidance:projection-room" width={80} />
+					</div>
+					<div className="rounded-xl bg-white paddingXShorter2 py-4 flex flex-col">
+						<p className="font-mono">Your project : </p>
+						<div className="bg-[#E2E4DD]">x</div>
+					</div>
 				</div>
 				<div className="bg-red-700 w-[30%] rounded-r-xl">x</div>
 			</section>

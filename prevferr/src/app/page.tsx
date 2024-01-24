@@ -2,6 +2,7 @@
 
 import { Icon } from "@iconify/react";
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -23,6 +24,7 @@ import DateChnage from "../../helpers/utils/DateChange";
 import PostChange from "../../helpers/utils/PostChange";
 
 export default function Home() {
+	const router = useRouter();
 	const [journal, setJournal] = useState([] as JournalWithResearcher[]);
 	const fetchData = async () => {
 		try {
@@ -51,8 +53,37 @@ export default function Home() {
 	return (
 		<Fragment>
 			{/* layer 1  */}
-			<div className="bg-[#242628]">
-				<div className="paddingX ">
+			<div className="bg-[#242628] min-h-screen">
+				<div className="relative">
+					<img
+						src="https://images.openai.com/blob/47e8bf4c-ffd5-4b80-b481-568ed1329f97/stangel-2022-1598.jpg?trim=0,0,0,0&width=3200"
+						alt="Background object-cover"
+					/>
+					<div className="absolute top-0 bottom-0 h-full w-full bg-[#252525] cursor-pointer opacity-75"></div>
+					<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 text-center text-white w-[70%] flex flex-col gap-12">
+						<p className="text-4xl font-mono font-semibold w-full text-left">
+							Create a one-click journal that is useful for educating and
+							developing humans
+						</p>
+						{/* <Link href="/about-us"> */}
+						<button
+							className="border flex justify-center items-center gap-2 bg-transparent border-[#fff] py-3 px-2 rounded-lg text-[#fff] cursor-pointer font-mono hover:bg-[#fff] hover:text-[#000] w-[25%]"
+							// onClick={LoadToTop}
+							onClick={() => {
+								router.push("/about-us");
+								LoadToTop();
+							}}
+						>
+							<p className="text-sm font-semibold font-mono">
+								Learn about Pintar Ai.
+							</p>
+							<Icon icon="tabler:arrow-up-right" width={20} />
+						</button>
+						{/* </Link> */}
+					</div>
+				</div>
+
+				{/* <div className="paddingX ">
 					<div className="w-full flex justify-center border-x border-b border-[#000]">
 						<div className="w-[50%] flex justify-between items-center">
 							<div className="p-4 flex flex-col justify-between gap-8">
@@ -84,20 +115,20 @@ export default function Home() {
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> */}
 			</div>
 
 			{/* layer 2  */}
 			<div className="bg-[#E2E4DD]">
 				<div className="w-full flex paddingX paddingYShorter  border border-[#000] border-x paddingX">
-					<div className="w-[30%]">
-						<h3 className="font-mono text-5xl">Video for developers</h3>
+					<div className="w-[30%] items-center">
+						<h3 className="font-mono text-5xl">Our main features</h3>
 					</div>
 					<div className="w-[70%]">
-						<p>
-							Ship faster with more visibility. We're continuously solving the
-							hardest problems in video streaming and wrapping it all up in
-							thoughtfully designed developer tools and dashboards.
+						<p className="font-mono text-xl">
+							Create instant journals, a powerful tool to educate and nurture
+							human growth with just one click, and connect you with project
+							owners for growth and life development.
 						</p>
 					</div>
 				</div>
@@ -153,51 +184,55 @@ export default function Home() {
 					modules={[Navigation, Pagination, Mousewheel, Keyboard]}
 					className="mySwiper"
 				>
-					{journal?.map((e) => {
-						return (
-							<SwiperSlide>
-								<div className="mx-auto border border-[#000] w-[80%] rounded-3xl flex flex-col">
-									<div className="bg-[#FFB200] rounded-t-3xl py-3 border-b border-[#000]">
-										<p className="text-[#000] text-center font-mono">
-											Journals
-										</p>
-									</div>
-
-									<div className="w-full flex justify-center items-center py-14">
-										<div className="w-[60%] mx-auto flex flex-col gap-4">
-											<p className="font-mono text-[#565e67]">
-												{DateChnage(e?.createdAt)}
+					{journal
+						?.map((e) => {
+							return (
+								<SwiperSlide>
+									<div className="mx-auto border border-[#000] w-[80%] rounded-3xl flex flex-col">
+										<div className="bg-[#FFB200] rounded-t-3xl py-3 border-b border-[#000]">
+											<p className="text-[#000] text-center font-mono">
+												Journals
 											</p>
-											<h1 className="text-5xl">{e?.title}</h1>
-											{e?.portofolio?.map((el) => {
-												return (
-													<div className="flex justify-start items-center gap-4">
-														<img
-															src={el?.profileImage}
-															className="h-14 w-14 rounded-full object-cover"
-															alt="Author"
-														/>
-														<p className="text-base font-mono">
-															<span className="text-[#565e67] text-sm">BY</span>{" "}
-															{el?.firstname} {el?.lastname}
-														</p>
-														<span className="text-[#565e67]">•</span>
-														<p className="font-mono text-[#565e67] text-sm">
-															{PostChange(el?.createdAt)}
-														</p>
-														<span className="text-[#565e67]">•</span>
-														<p className="text-base font-mono">
-															{el?.background.toUpperCase()}
-														</p>
-													</div>
-												);
-											})}
+										</div>
+
+										<div className="w-full flex justify-center items-center py-14">
+											<div className="w-[60%] mx-auto flex flex-col gap-4">
+												<p className="font-mono text-[#565e67]">
+													{DateChnage(e?.createdAt)}
+												</p>
+												<h1 className="text-5xl">{e?.title}</h1>
+												{e?.portofolio?.map((el) => {
+													return (
+														<div className="flex justify-start items-center gap-4">
+															<img
+																src={el?.profileImage}
+																className="h-14 w-14 rounded-full object-cover"
+																alt="Author"
+															/>
+															<p className="text-base font-mono">
+																<span className="text-[#565e67] text-sm">
+																	BY
+																</span>{" "}
+																{el?.firstname} {el?.lastname}
+															</p>
+															<span className="text-[#565e67]">•</span>
+															<p className="font-mono text-[#565e67] text-sm">
+																{PostChange(el?.createdAt)}
+															</p>
+															<span className="text-[#565e67]">•</span>
+															<p className="text-base font-mono">
+																{el?.background.toUpperCase()}
+															</p>
+														</div>
+													);
+												})}
+											</div>
 										</div>
 									</div>
-								</div>
-							</SwiperSlide>
-						);
-					})}
+								</SwiperSlide>
+							);
+						})
+						.slice(0, 5)}
 				</Swiper>
 			</div>
 			{/* <div className="bg-[#242628] min-h-screen">x</div> */}
