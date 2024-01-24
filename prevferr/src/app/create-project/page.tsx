@@ -205,14 +205,14 @@ const AddProjectForm = () => {
 										<option value="agriculture">Agriculture</option>
 										<option value="environment">Environment</option>
 									</select>
-									<label>Choose a reseracher:</label>
-									<select id="keywords" name="keywords" className="bg-[#E2E4DD] border border-black">
+									{/* <label>Choose a reseracher:</label> */}
+									{/* <select id="keywords" name="keywords" className="bg-[#E2E4DD] border border-black"> */}
 										{/* {researcher.map((researcher) => (
 											<option key={researcher.id} value={researcher.keyword}>
 												{researcher.keyword}
 											</option>
 										))} */}
-										{researcher.map((researcher) => {
+										{/* {researcher.map((researcher) => {
 											return (
 												<option key={researcher.id} value={researcher.firstname}>
 													{researcher.firstname}
@@ -220,7 +220,7 @@ const AddProjectForm = () => {
 												</option>
 											);
 										})}
-									</select>
+									</select> */}
 								</div>
 								<div className="grid md:grid-cols-2 md:gap-6">
 									<div className="relative z-0 w-full mb-5 group">
