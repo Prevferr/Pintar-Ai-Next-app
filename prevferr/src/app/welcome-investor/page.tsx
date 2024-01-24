@@ -1,12 +1,25 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { Icon } from "@iconify/react";
 import JournalCard from "../components/JournalCard";
 import Link from "next/link";
+import { JournalWithResearcher } from "../type-def";
+import { useRouter } from "next/navigation";
+import ProgressBar from "@ramonak/react-progress-bar";
+
+import { NextRequest } from "next/server";
+import { readPayload } from "../../../helpers/lib/jwt";
+import PostChange from "../../../helpers/utils/PostChange";
+import { formatDate } from "../../../helpers/utils/formatDate";
+// import { formatCurrency } from "../../../helpers/utils/formatCurrency";
+
 const WelcomePage = () => {
 	const [journal, setJournal] = useState([]);
 	const fetchData = async () => {
 		try {
-			const response = await fetch("http://localhost:3000/api/projects");
+			const response = await fetch(
+				"http://localhost:3000/api/welcome-investor"
+			);
 
 			if (!response.ok) {
 				throw new Error("Failed fetching data");
@@ -34,73 +47,58 @@ const WelcomePage = () => {
 	useEffect(() => {
 		fetchData();
 	}, []);
+
+	console.log(journal, "<<<<");
+
+	const today = new Date();
+	const currentDateTime = today.toLocaleString();
+	const [datePart, timePart] = currentDateTime.split(", ");
+
 	return (
 		<>
-			<section className="flex w-full justify-center py-11 gap-6">
-				{journal.map((el: any) => {
-					return (
-						<>
-							<div key={el.id} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-								<Link href={`/projects/${el.project_name}`}>
-									<img className="rounded-t-lg" src={el.project_image} alt="" />
-								</Link>
-								<div className="p-5">
-									<a href="#">
-										<h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{el.project_name}</h5>
-									</a>
-									<p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{el.description_project}</p>
-									<p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Budget: {rupiah(el.project_budget)}</p>
-								</div>
-							</div>
-						</>
-					);
-				})}
+			<section className="paddingXShorter3 paddingYShorter3 w-full flex justify-center gap-2 bg-[#193718] min-h-screen">
+				<div className="w-[50%] paddingX paddingY flex justify-center items-center">
+					<div className="flex flex-col gap-4">
+						<h3 className="text-[#fff] font-mono">Welcome Proners..</h3>
+						<p className="text-[#fff] font-mono">
+							Our 6-month program is a bridge for brilliant technical
+							researchers from diverse fields to transition into AI.
+						</p>
+						<Link href="/create-project">
+							<button className="w-[40%] flex justify-center  hover:bg-[#ff8bff] hover:text-[#000] text-[#ff8bff] border border-[#ff8bff] px-4 py-4 rounded-lg">
+								<p className="text-base font-mono">Create Journal</p>
+							</button>
+						</Link>
+					</div>
+				</div>
+				<div className="w-[50%]">
+					<div className="flex justify-center items-center gap-2">
+						<div className="grid grid-cols-2 gap-4">
+							{journal?.Project?.map((el?: any) => {
+								return (
+									<Link key={el?.id} href={`/projects/${el?.project_name}`}>
+										<div className="bg-[#E2E4DD] w-full text-[#000] flex flex-col gap-4 shadow-md rounded-lg px-4 py-2">
+											<p className="text-base font-mono">{el?.project_name}</p>
+											<p className="text-sm font-mono">
+												{el?.description_project}
+											</p>
+											<ProgressBar
+												completed={18}
+												bgColor="#0096FF"
+												baseBgColor="#FFB200"
+												height="13px"
+												labelSize="10px"
+											/>
+										</div>
+									</Link>
+								);
+							})}
+						</div>
+					</div>
+				</div>
 			</section>
 		</>
 	);
 };
 
 export default WelcomePage;
-
-// import { getServerSession } from "next-auth";
-// import { authOptions } from "../../../helpers/lib/auth";
-// import Header from "@/components/header.component";
-// import { authOptions } from "@/lib/auth";
-
-// export default async function Profile() {
-//   const session = await getServerSession(authOptions);
-//   const user = session?.user;
-//   console.log(user);
-
-//   return (
-//     <>
-//       {/* <Header /> */}
-//       <section className="bg-ct-blue-600  min-h-screen pt-20">
-//         <div className="max-w-4xl mx-auto bg-ct-dark-100 rounded-md h-[20rem] flex justify-center items-center">
-//           <div>
-//             <p className="mb-3 text-5xl text-center font-semibold">
-//               Profile Page
-//             </p>
-//             {!user ? (
-//               <p>Loading...</p>
-//             ) : (
-//               <div className="flex items-center gap-8">
-//                 <div>
-//                   <img
-//                     src={user.image ? user.image : "/images/default.png"}
-//                     className="max-h-36"
-//                     alt={`profile photo of ${user.name}`}
-//                   />
-//                 </div>
-//                 <div className="mt-8">
-//                   <p className="mb-3">Name: {user.name}</p>
-//                   <p className="mb-3">Email: {user.email}</p>
-//                 </div>
-//               </div>
-//             )}
-//           </div>
-//         </div>
-//       </section>
-//     </>
-//   );
-// }
