@@ -7,18 +7,19 @@
 // 	startDate: string;
 // };
 
-export type ResearcherDetails = {
+export type Researchers = {
+	id: number;
 	firstname: string;
 	lastname: string;
+	isPremium: boolean;
 	education: string;
 	profileImage: string;
 	email: string;
-	phone_number: string;
+	password: string;
 	background: string;
 	gender: string;
 	jabatan_akademik: string;
 	location: string;
-	investasi: string;
 	createdAt: string;
 	updatedAt: string;
 };
@@ -87,3 +88,4 @@ export type Project = {
 	researcherId: number;
 	researcher: ResearcherJournal;
 };
+

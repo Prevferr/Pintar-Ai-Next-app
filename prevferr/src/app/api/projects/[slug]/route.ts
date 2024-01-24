@@ -8,7 +8,7 @@ type TProps = {
 // GET order by title
 export async function GET(req: NextRequest, { params }: TProps) {
 	try {
-		console.log(params.slug);
+		// console.log(params.slug);
 		const project = await prisma.project.findFirst({
 			where: { project_name: params.slug },
 		});
@@ -16,10 +16,25 @@ export async function GET(req: NextRequest, { params }: TProps) {
 		if (!project) {
 			return NextResponse.json({ error: "Project not found" }, { status: 404 });
 		}
+		// console.log(project, "ini projectud");
 
-		return NextResponse.json(project);
+		const researchers = await prisma.researcher.findMany({
+			where: {background: project.keywords}
+		})
+		
+
+		// console.log(researchers);
+
+		const responseObj = {
+            project,
+            researchers
+        };
+		
+		return NextResponse.json(responseObj);
 	} catch (error) {
 		console.error("Prisma error:", error);
 		return NextResponse.json({ error: "An error occurred" }, { status: 500 });
 	}
 }
+
+
