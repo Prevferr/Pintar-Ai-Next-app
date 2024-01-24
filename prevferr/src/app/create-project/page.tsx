@@ -102,6 +102,7 @@ const AddProjectForm = () => {
 			console.log(responseJSON);
 
 			setResearcher(responseJSON);
+			// router.push(`/projects/${responseJSON.project_name}`);
 		} catch (error) {
 			if (error instanceof Error) {
 				console.log(error.message);
