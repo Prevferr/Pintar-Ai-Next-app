@@ -101,6 +101,7 @@ export class Upload {
 			// Jika judul adalah elemen kedua, Anda dapat mengaksesnya dengan index 1
 			const title = cleanedData[1].replace(/"/g, "");
 
+			const file = "https://drive.google.com/file/d/1mHWOVEd0QJcyJ1qs2lVt_EWwNYxbGPQn/view?usp=sharing"
 			console.log("Keyword:", keyword);
 			console.log("Title:", title);
 
@@ -112,7 +113,7 @@ export class Upload {
 					title: title,
 					keywords: keyword,
 					abstract: abstract,
-					journal_file: abstract,
+					journal_file: file,
 					researcherId: Number(userId),
 				},
 			});
