@@ -9,11 +9,14 @@ import DateChnage from "../../../../helpers/utils/DateChange";
 const JournalDetail = ({ params }: { params: { slug: string } }) => {
 	const journalName = params.slug;
 	// console.log(journalName);
-	const [journalData, setJournalData] = useState<JournalWithResearcherDetails | null>(null);
+	const [journalData, setJournalData] =
+		useState<JournalWithResearcherDetails | null>(null);
 
 	const fetchData = async () => {
 		try {
-			const response = await fetch(`http://localhost:3000/api/journals/${journalName}`);
+			const response = await fetch(
+				`http://localhost:3000/api/journals/${journalName}`
+			);
 
 			if (!response.ok) {
 				throw new Error("Failed fetching data");
@@ -50,24 +53,40 @@ const JournalDetail = ({ params }: { params: { slug: string } }) => {
 			<Link href="/journals">
 				<div className="m-4 flex justify-end gap-2 items-center cursor-pointer">
 					<Icon icon="ep:back" width={30} color="#000" />
-					<p className="text-xl font-mono text-[#000] hover:underline">Back to Lists</p>
+					<p className="text-xl font-mono text-[#000] hover:underline">
+						Back to Lists
+					</p>
 				</div>
 			</Link>
 			<div className="paddingX paddingY bg-[#fff] min-h-screen border">
-				<div className="w-[60%] mx-auto flex flex-col gap-4" key={journalData?.id}>
-					<p className="font-mono text-[#565e67]">{journalData ? DateChnage(journalData.createdAt) : null}</p>
+				<div
+					className="w-[60%] mx-auto flex flex-col gap-4"
+					key={journalData?.id}
+				>
+					<p className="font-mono text-[#565e67]">
+						{journalData ? DateChnage(journalData.createdAt) : null}
+					</p>
 					<h1 className="text-5xl">{journalData?.title}</h1>
 					{journalData?.portofolio?.map((e, i) => {
 						return (
 							<div className="flex justify-start items-center gap-4" key={i}>
-								<img src={e?.profileImage} className="h-10 w-10 rounded-full object-cover" alt="researcher" />
+								<img
+									src={e?.profileImage}
+									className="h-10 w-10 rounded-full object-cover"
+									alt="researcher"
+								/>
 								<p className="text-base font-mono">
-									<span className="text-[#565e67] text-sm">BY</span> {e?.firstname} {e?.lastname}
+									<span className="text-[#565e67] text-sm">BY</span>{" "}
+									{e?.firstname} {e?.lastname}
 								</p>
 								<span className="text-[#565e67]">•</span>
-								<p className="font-mono text-[#565e67] text-sm">{TimeChange(e?.createdAt)}</p>
+								<p className="font-mono text-[#565e67] text-sm">
+									{TimeChange(e?.createdAt)}
+								</p>
 								<span className="text-[#565e67]">•</span>
-								<p className="text-base font-mono">{e?.background.toUpperCase()}</p>
+								<p className="text-base font-mono">
+									{e?.background.toUpperCase()}
+								</p>
 							</div>
 						);
 					})}
@@ -75,10 +94,18 @@ const JournalDetail = ({ params }: { params: { slug: string } }) => {
 				<div className="border-b my-8 w-[70%] mx-auto"></div>
 				<div className="paddingX flex flex-col justify-center gap-4 items-center">
 					<h3>Abstract : </h3>
-					<p className="text-[#565e67] text-3xl text-justify">{journalData?.abstract}</p>
+					<p className="text-[#565e67] text-3xl text-justify">
+						{journalData?.abstract}
+					</p>
 				</div>
-				<button onClick={() => openPdfInNewWindow(journalData?.journal_file)} className="absolute bottom-0 right-28">
-					Open PDF in New Window
+				<button
+					onClick={() => openPdfInNewWindow(journalData?.journal_file)}
+					className="m-4 flex justify-center gap-2 items-center cursor-pointer hover:underline mx-auto"
+				>
+					<Icon icon="line-md:download-loop" width={30} color="#000" />
+					<p className="text-xl font-mono text-[#000] hover:underline">
+						Read More
+					</p>
 				</button>
 			</div>
 		</div>
