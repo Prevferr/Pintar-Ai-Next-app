@@ -1,27 +1,56 @@
-import React from "react";
+import { Project } from "@/app/type-def";
+import React, { useEffect, useState } from "react";
 
-const ProjectDetail = async () => {
+const ProjectDetail = ({ params }: { params: { slug: string } }) => {
+	const projectName = params.slug;
+	const [projectData, setProjectData] = useState<Project | null>(null);
+
+	const fetchData = async () => {
+		try {
+			const response = await fetch(`http://localhost:3000/api/projects/${projectName}`);
+			if (!response.ok) {
+				throw new Error("Failed fetching data");
+			}
+			const responseJSON = await response.json();
+			console.log(responseJSON, "<<<<< Response JSON");
+
+			setProjectData(responseJSON);
+		} catch (error) {
+			if (error instanceof Error) {
+				console.log(error.message);
+			} else {
+				console.log(error);
+			}
+		}
+	};
+
+	useEffect(() => {
+		fetchData();
+	}, []);
+
 	return (
-		<section className="min-h-screen bg-[#E2E4DD]">
-			<div className="paddingX paddingYShorter2">
-				<div className="w-[60%] mx-auto flex flex-col gap-4">
-					<p className="font-mono text-[#565e67]">NOVEMBER 27, 2023 (ABOUT 2 MONTHS AGO)</p>
-					<h1 className="text-5xl">How to add a background video in Next.js</h1>
-					<div className="flex justify-start items-center gap-4">
-						<img src="https://cdn.sanity.io/images/2ejqxsnu/production/d6d798e8581a361efb9d9ef2923794da065d0e6e-450x445.jpg?w=128&q=75&fit=clip&auto=format" className="h-14 w-14 rounded-full object-cover" />
-						<p className="text-base font-mono">
-							<span className="font-mono text-[#565e67] text-sm">BY</span> Adam Turnere
-						</p>
-						<span className="text-[#565e67]">•</span>
-						<p className="font-mono text-[#565e67] text-sm">4 Mount Ago</p>
-						<span className="text-[#565e67]">•</span>
-						<p className="text-base font-mono">ENGGINERING</p>
+		<>
+			<section className="min-h-screen bg-[#E2E4DD]">
+				<div className="paddingX paddingYShorter2">
+					<div className="w-[60%] mx-auto flex flex-col gap-4">
+						<p className="font-mono text-[#565e67]">{projectData?.starting_date}</p>
+						<h1 className="text-5xl">{projectData?.project_name}</h1>
+						<div className="flex justify-start items-center gap-4">
+							{/* <img src={projectData?.project_image} className="h-14 w-14 rounded-full object-cover" /> */}
+							<p className="text-base font-mono">
+								<span className="font-mono text-[#565e67] text-sm">Budget</span> {projectData?.project_budget}
+							</p>
+							<span className="text-[#565e67]">•</span>
+							<p className="font-mono text-[#565e67] text-sm">{projectData?.expected_finish_date}</p>
+							<span className="text-[#565e67]">•</span>
+							<p className="text-base font-mono">{projectData?.tags}</p>
+						</div>
 					</div>
+					<div className="border-b my-8 w-[70%] mx-auto"></div>
+					<img src={projectData?.project_image} className="rounded-3xl" />
 				</div>
-				<div className="border-b my-8 w-[70%] mx-auto"></div>
-				<img src="https://images.openai.com/blob/557a9f70-0bf6-4d72-91c6-5bc5423ad462/stangel-2022-0602.jpg?trim=90,0,630,0&width=3200" className="rounded-3xl" />
-			</div>
-		</section>
+			</section>
+		</>
 	);
 };
 

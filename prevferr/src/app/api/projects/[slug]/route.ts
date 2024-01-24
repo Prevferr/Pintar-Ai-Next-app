@@ -1,27 +1,25 @@
 import { prisma } from "../../../../../helpers/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
-// export type ProjectType = {
-// 	id: number;
-// 	project_name: string;
-// 	description_project: string;
-// 	project_image: string;
-// 	project_status: boolean;
-// 	starting_date: Date;
-// 	expected_finish_date: Date;
-// 	project_budget: number;
-// 	keywords: string;
-// 	createdAt: string;
-// 	updatedAt: string;
-// 	researcherId: number;
-// 	investorId: number;
-// };
+type TProps = {
+	params: { slug: string };
+};
 
-// GET order by id
-export async function GET(req: NextRequest) {
-	const project = await prisma.project.findFirst({
-		where: {
-			id,
-		},
-	});
+// GET order by title
+export async function GET(req: NextRequest, { params }: TProps) {
+	try {
+		console.log(params.slug);
+		const project = await prisma.project.findFirst({
+			where: { project_name: params.slug },
+		});
+
+		if (!project) {
+			return NextResponse.json({ error: "Project not found" }, { status: 404 });
+		}
+
+		return NextResponse.json(project);
+	} catch (error) {
+		console.error("Prisma error:", error);
+		return NextResponse.json({ error: "An error occurred" }, { status: 500 });
+	}
 }

@@ -55,7 +55,7 @@ const ProjectPage = () => {
 					<div className="grid grid-cols-3 gap-2">
 						{projects?.map((project) => {
 							return (
-								<Link href={`/projects/${project?.id}`}>
+								<Link href={`/projects/${project?.project_name}`}>
 									<ProjectCard data={project} />
 								</Link>
 							);
