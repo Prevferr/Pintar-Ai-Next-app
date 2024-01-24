@@ -1,4 +1,7 @@
+"use client";
+
 import { Project } from "@/app/type-def";
+import { parseISO, format } from "date-fns";
 import React, { useEffect, useState } from "react";
 
 const ProjectDetail = ({ params }: { params: { slug: string } }) => {
@@ -28,6 +31,20 @@ const ProjectDetail = ({ params }: { params: { slug: string } }) => {
 		fetchData();
 	}, []);
 
+	const rupiah = (number: any) => {
+		return new Intl.NumberFormat("id-ID", {
+			style: "currency",
+			currency: "IDR",
+		}).format(number);
+	};
+
+	const DateChange = (dateString: string): string => {
+		const date = parseISO(dateString);
+		const formattedDate = format(date, "MMMM d, yyyy");
+
+		return `${formattedDate}`;
+	};
+
 	return (
 		<>
 			<section className="min-h-screen bg-[#E2E4DD]">
@@ -38,7 +55,7 @@ const ProjectDetail = ({ params }: { params: { slug: string } }) => {
 						<div className="flex justify-start items-center gap-4">
 							{/* <img src={projectData?.project_image} className="h-14 w-14 rounded-full object-cover" /> */}
 							<p className="text-base font-mono">
-								<span className="font-mono text-[#565e67] text-sm">Budget</span> {projectData?.project_budget}
+								<span className="font-mono text-[#565e67] text-sm">Budget</span> {rupiah(projectData?.project_budget)}
 							</p>
 							<span className="text-[#565e67]">•</span>
 							<p className="font-mono text-[#565e67] text-sm">{projectData?.expected_finish_date}</p>
@@ -48,6 +65,7 @@ const ProjectDetail = ({ params }: { params: { slug: string } }) => {
 					</div>
 					<div className="border-b my-8 w-[70%] mx-auto"></div>
 					<img src={projectData?.project_image} className="rounded-3xl" />
+					<p className="text-base font-mono">{projectData?.description_project}</p>
 				</div>
 			</section>
 		</>

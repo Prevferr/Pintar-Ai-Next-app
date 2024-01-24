@@ -48,7 +48,7 @@ const WelcomePage = () => {
 					return (
 						<>
 							<div key={el.id} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-								<Link href={`/projects/${el.id}`}>
+								<Link href={`/projects/${el.project_name}`}>
 									<img className="rounded-t-lg" src={el.project_image} alt="" />
 								</Link>
 								<div className="p-5">
