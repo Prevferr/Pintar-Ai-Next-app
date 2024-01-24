@@ -26,6 +26,7 @@ async function main() {
 		// ...
 		abstract: "Abstract of the journal",
 		title: "Petanian Skala Mikro di Indonesia",
+		journal_file: "https://drive.google.com/file/d/1mHWOVEd0QJcyJ1qs2lVt_EWwNYxbGPQn/view?usp=sharing",
 		keywords: "agriculture",
 		researcherId: 1,
 	};
@@ -35,6 +36,7 @@ async function main() {
 		// ...
 		abstract: "Pengaruh iklim terhadap produktivitas pertanian",
 		title: "Iklim: Faktor Utama Produktivitas Pertanian",
+		journal_file: "https://drive.google.com/file/d/1mHWOVEd0QJcyJ1qs2lVt_EWwNYxbGPQn/view?usp=sharing",
 		researcherId: 1,
 		keywords: "agriculture",
 	};
@@ -44,6 +46,7 @@ async function main() {
 		// ...
 		abstract: "Peranan teknologi dalam meningkatkan produktivitas pertanian",
 		title: "Teknologi: Kunci Produktivitas Pertanian",
+		journal_file: "https://drive.google.com/file/d/1mHWOVEd0QJcyJ1qs2lVt_EWwNYxbGPQn/view?usp=sharing",
 		researcherId: 1,
 		keywords: "agriculture",
 	};
@@ -53,6 +56,7 @@ async function main() {
 		// ...
 		abstract: "Pengaruh pakan terhadap produktivitas ternak",
 		title: "Pakan: Kunci Produktivitas Ternak",
+		journal_file: "https://drive.google.com/file/d/1mHWOVEd0QJcyJ1qs2lVt_EWwNYxbGPQn/view?usp=sharing",
 		researcherId: 1,
 		keywords: "agriculture",
 	};
@@ -64,6 +68,7 @@ async function main() {
 		// ...
 		abstract: "Emisi gas buang kapal dan tumpahan minyak menjadi tantangan lingkungan yang dihadapi industri perkapalan.",
 		title: "Melayari Laut Biru: Mencari Solusi Keberlanjutan Perkapalan",
+		journal_file: "https://drive.google.com/file/d/1mHWOVEd0QJcyJ1qs2lVt_EWwNYxbGPQn/view?usp=sharing",
 		researcherId: 2,
 		keywords: "engineering",
 	};
@@ -73,6 +78,7 @@ async function main() {
 		// ...
 		abstract: "Peningkatan penggunaan robot dan sistem otomatis meningkatkan efisiensi dan kecepatan pembongkaran muatan di pelabuhan.",
 		title: "Pelabuhan Masa Depan: Sentuhan Teknologi, Sentuhan Kemanusiaan",
+		journal_file: "https://drive.google.com/file/d/1mHWOVEd0QJcyJ1qs2lVt_EWwNYxbGPQn/view?usp=sharing",
 		researcherId: 2,
 		keywords: "engineering",
 	};
@@ -82,6 +88,7 @@ async function main() {
 		// ...
 		abstract: "Teknologi digital dapat digunakan untuk meningkatkan efisiensi dan efektivitas pembelajaran, seperti pembelajaran jarak jauh, virtual reality, dan augmented reality.",
 		title: "Teknologi Digital: Solusi untuk Pembelajaran Masa Depan",
+		journal_file: "https://drive.google.com/file/d/1mHWOVEd0QJcyJ1qs2lVt_EWwNYxbGPQn/view?usp=sharing",
 		researcherId: 1,
 		keywords: "engineering",
 	};
@@ -91,6 +98,7 @@ async function main() {
 		// ...
 		abstract: "Teknologi informasi dan komunikasi (TIK) telah menjadi bagian penting dalam kehidupan masyarakat, termasuk dalam dunia pendidikan. TIK dapat digunakan untuk meningkatkan kualitas pembelajaran, baik dari segi materi, metode, maupun evaluasi.",
 		title: "Pengaruh Penggunaan Teknologi Informasi dan Komunikasi (TIK) terhadap Hasil Belajar Siswa",
+		journal_file: "https://drive.google.com/file/d/1mHWOVEd0QJcyJ1qs2lVt_EWwNYxbGPQn/view?usp=sharing",
 		researcherId: 1,
 		keywords: "education",
 	};
@@ -100,6 +108,7 @@ async function main() {
 		// ...
 		abstract: "Fungsi kognitif merupakan kemampuan mental yang diperlukan untuk berpikir, belajar, dan mengingat. Fungsi kognitif dapat menurun seiring bertambahnya usia. Buah dan sayur merupakan sumber nutrisi penting yang dapat membantu menjaga kesehatan otak, termasuk fungsi kognitif.",
 		title: "Pengaruh Konsumsi Buah dan Sayur terhadap Fungsi Kognitif pada Lansia",
+		journal_file: "https://drive.google.com/file/d/1mHWOVEd0QJcyJ1qs2lVt_EWwNYxbGPQn/view?usp=sharing",
 		researcherId: 1,
 		keywords: "health",
 	};
@@ -109,6 +118,7 @@ async function main() {
 		// ...
 		abstract: "Perubahan iklim merupakan salah satu masalah lingkungan yang paling mendesak saat ini. Perubahan iklim dapat menyebabkan berbagai dampak negatif terhadap keanekaragaman hayati",
 		title: "Pengaruh Perubahan Iklim terhadap Keanekaragaman Hayati",
+		journal_file: "https://drive.google.com/file/d/1mHWOVEd0QJcyJ1qs2lVt_EWwNYxbGPQn/view?usp=sharing",
 		researcherId: 1,
 		keywords: "enviroment",
 	};

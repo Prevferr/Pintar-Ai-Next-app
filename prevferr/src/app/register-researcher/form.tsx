@@ -73,16 +73,21 @@ export const RegisterForm = () => {
 			// 	return;
 			// }
 
-			// signIn(undefined, { callbackUrl: "/" });
+			signIn("/");
 		} catch (error: any) {
 			// setLoading(false);
 			setError(error);
 		}
 	};
 
-	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+	const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
 		const { name, value } = event.target;
-		setFormValues({ ...formValues, [name]: value });
+
+		if (name === "education") {
+			setFormValues({ ...formValues, education: value, gender: value });
+		} else {
+			setFormValues({ ...formValues, [name]: value });
+		}
 	};
 
 	// Edge store setup
@@ -90,32 +95,68 @@ export const RegisterForm = () => {
 
 	const input_style = "form-control block w-full px-4 py-5 text-sm font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none";
 
+	// ... (previous code)
+	// ... (previous code)
+
 	return (
 		<form onSubmit={onSubmit}>
 			<h1 className="m-5 text-3xl text-center">Welcome Researcher Everything you need is here..</h1>
 			{error && <p className="text-center bg-red-300 py-4 mb-6 rounded">{error}</p>}
 			<div className="mb-6">
+				<label htmlFor="firstname" className="text-sm font-normal text-gray-700">
+					Firstname
+				</label>
 				<input required type="text" name="firstname" value={formValues.firstname} onChange={handleChange} placeholder="Firstname" className={`${input_style}`} />
 			</div>
 			<div className="mb-6">
+				<label htmlFor="lastname" className="text-sm font-normal text-gray-700">
+					Lastname
+				</label>
 				<input required type="text" name="lastname" value={formValues.lastname} onChange={handleChange} placeholder="Lastname" className={`${input_style}`} />
 			</div>
 			<div className="mb-6">
+				<label htmlFor="email" className="text-sm font-normal text-gray-700">
+					Email address
+				</label>
 				<input required type="email" name="email" value={formValues.email} onChange={handleChange} placeholder="Email address" className={`${input_style}`} />
 			</div>
 			<div className="mb-6">
+				<label htmlFor="password" className="text-sm font-normal text-gray-700">
+					Password
+				</label>
 				<input required type="password" name="password" value={formValues.password} onChange={handleChange} placeholder="Password" className={`${input_style}`} />
 			</div>
 			<div className="mb-6">
-				<input required type="text" name="education" value={formValues.education} onChange={handleChange} placeholder="education" className={`${input_style}`} />
+				<label htmlFor="education" className="text-sm font-normal text-gray-700">
+					Education Level
+				</label>
+				<select required name="education" value={formValues.education} onChange={handleChange} className={`${input_style}`}>
+					<option value="">Select Your Education</option>
+					<option value="S1">S1</option>
+					<option value="S2">S2</option>
+					<option value="S3">S3</option>
+				</select>
 			</div>
 			<div className="mb-6">
+				<label htmlFor="jabatan_akademik" className="text-sm font-normal text-gray-700">
+					Jabatan Akademik
+				</label>
 				<input required type="text" name="jabatan_akademik" value={formValues.jabatan_akademik} onChange={handleChange} placeholder="Jabatan Akademik" className={`${input_style}`} />
 			</div>
 			<div className="mb-6">
-				<input required type="text" name="gender" value={formValues.gender} onChange={handleChange} placeholder="Gender" className={`${input_style}`} />
+				<label htmlFor="gender" className="text-sm font-normal text-gray-700">
+					Gender
+				</label>
+				<select required name="gender" value={formValues.gender} onChange={handleChange} className={`${input_style}`}>
+					<option value="">Select Gender</option>
+					<option value="Male">Male</option>
+					<option value="Female">Female</option>
+				</select>
 			</div>
 			<div className="mb-6">
+				<label htmlFor="location" className="text-sm font-normal text-gray-700">
+					Location
+				</label>
 				<input required type="text" name="location" value={formValues.location} onChange={handleChange} placeholder="Location" className={`${input_style}`} />
 			</div>
 			<div className="flex flex-col items-center m-6 gap-2">

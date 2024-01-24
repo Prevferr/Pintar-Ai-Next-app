@@ -4,10 +4,13 @@ import JournalCard from "../components/JournalCard";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { JournalWithResearcher, Journals } from "../type-def";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const JournalPage = () => {
 	const [journal, setJournal] = useState([] as JournalWithResearcher[]);
-	console.log(journal, "<<<<< JOURNALLLLLLLLLLL");
+	const [search, setSearch] = useState("");
+	const [filteredJournal, setFilteredJournal] = useState([] as JournalWithResearcher[]);
+	const [page, setPage] = useState<number>(1);
 
 	const fetchData = async () => {
 		try {
@@ -16,12 +19,12 @@ const JournalPage = () => {
 			if (!response.ok) {
 				throw new Error("Failed fetching data");
 			}
-			// WKWKKW
 
 			const responseJSON = await response.json();
 			console.log(responseJSON);
 
 			setJournal(responseJSON);
+			setFilteredJournal(responseJSON);
 		} catch (error) {
 			if (error instanceof Error) {
 				console.log(error.message);
@@ -35,6 +38,14 @@ const JournalPage = () => {
 		fetchData();
 	}, []);
 
+	const handleSearch = () => {
+		const filtered = journal.filter((jur) => jur.title.toLowerCase().includes(search.toLowerCase()));
+		setFilteredJournal(filtered);
+	};
+	const loadMore = async () => {
+		const nextPage = page + 1;
+		setPage(nextPage);
+	};
 	return (
 		<section className="min-h-screen bg-[#E2E4DD]">
 			<div className="paddingX border-x border-[#000]">
@@ -53,23 +64,25 @@ const JournalPage = () => {
 					</div>
 				</div>
 			</div>
-			<div className="paddingX border-x  border-t border-[#000]">
-				<div className="w-full flex justify-end items-center border-x border-[#000] h-32 px-4">
-					<div className="w-[60%] flex justify-end items-center">
-						<input className="rounded-l-full w-full border h-14 px-4 transition-colors duration-300 focus:border-[#FFB200] placeholder:font-mono placeholder:text-sm" placeholder="Find journals here..." />
-						<button className="bg-[#0072E3] px-4 py-3.5 rounded-r-full font-mono text-[#000]">Find</button>
+			<InfiniteScroll dataLength={journal.length} next={loadMore} hasMore={true} loader={<></>}>
+				<div className="paddingX border-x border-t border-[#000]">
+					<div className="w-full flex justify-end items-center border-x border-[#000] h-32 px-4">
+						<div className="w-[60%] flex justify-end items-center">
+							<input type="text" value={search} onChange={(e) => setSearch(e.target.value)} className="rounded-l-full w-full border h-14 px-4 transition-colors duration-300 focus:border-[#FFB200] placeholder:font-mono placeholder:text-sm" placeholder="Find journals here..." />
+							<button onClick={handleSearch} className="bg-[#0072E3] px-4 py-3.5 rounded-r-full font-mono text-[#000] cursor-pointer">
+								Find
+							</button>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div className="paddingX border-x border-t border-[#000]">
-				{journal?.map((jur) => {
-					return (
-						<Link href={`/journals/${jur?.title}`}>
-							<JournalCard data={jur} />
+				<div className="paddingX border-x border-t border-[#000]">
+					{filteredJournal?.map((jur) => (
+						<Link key={jur.id} href={`/journals/${jur?.title}`}>
+							<JournalCard key={jur.id} data={jur} />
 						</Link>
-					);
-				})}
-			</div>
+					))}
+				</div>
+			</InfiniteScroll>
 		</section>
 	);
 };

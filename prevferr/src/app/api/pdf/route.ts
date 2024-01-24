@@ -38,11 +38,8 @@
 // }
 
 import { NextRequest, NextResponse } from 'next/server';
-import { OpenAI } from "openai";
-import pdf from 'pdf-parse';
 import { Upload } from '@/db/models/upload'
 
-import { PrismaClient } from '@prisma/client';
 
 export type ResponseAPIType<T> = {
   statusCode: number
