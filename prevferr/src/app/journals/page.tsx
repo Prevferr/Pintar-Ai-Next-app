@@ -37,6 +37,11 @@ const JournalPage = () => {
 		}
 	};
 
+
+
+
+	///////
+
 	useEffect(() => {
 		fetchData();
 	}, []);
