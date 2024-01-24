@@ -1,14 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Icon } from "@iconify/react";
 import JournalCard from "../components/JournalCard";
 import Link from "next/link";
-import { JournalWithResearcher } from "../type-def";
-import { useRouter } from "next/navigation";
-
-import { NextRequest } from "next/server";
-import { readPayload } from "../../../helpers/lib/jwt";
-
 const WelcomePage = () => {
 	const [journal, setJournal] = useState([]);
 	const fetchData = async () => {
