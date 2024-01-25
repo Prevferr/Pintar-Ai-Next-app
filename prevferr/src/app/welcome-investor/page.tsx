@@ -11,7 +11,6 @@ import { NextRequest } from "next/server";
 import { readPayload } from "../../../helpers/lib/jwt";
 import PostChange from "../../../helpers/utils/PostChange";
 import { formatDate } from "../../../helpers/utils/formatDate";
-// import { formatCurrency } from "../../../helpers/utils/formatCurrency";
 
 const WelcomePage = () => {
 	const [journal, setJournal] = useState([]);

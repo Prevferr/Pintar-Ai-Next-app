@@ -25,8 +25,8 @@ export async function GET(req: NextRequest, { params }: TProps) {
 				address: "pintarscholar@gmail.com",
 			},
 			to: params.email,
-			subject: "Selamat, registrasi berhasil!",
-			text: "anda dapet duit dari investor silahkan kabur.",
+			subject: "Project are here!",
+			text: "Hello Researchers! anda mendapatkan undangan unutk join project.",
 		};
 
 		const sendMail = await transporter.sendMail(mailOptions);
