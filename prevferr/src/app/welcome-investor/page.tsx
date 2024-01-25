@@ -11,7 +11,6 @@ import { NextRequest } from "next/server";
 import { readPayload } from "../../../helpers/lib/jwt";
 import PostChange from "../../../helpers/utils/PostChange";
 import { formatDate } from "../../../helpers/utils/formatDate";
-// import { formatCurrency } from "../../../helpers/utils/formatCurrency";
 
 const WelcomePage = () => {
 	const [journal, setJournal] = useState([]);
@@ -66,7 +65,7 @@ const WelcomePage = () => {
 						</p>
 						<Link href="/create-project">
 							<button className="w-[40%] flex justify-center  hover:bg-[#ff8bff] hover:text-[#000] text-[#ff8bff] border border-[#ff8bff] px-4 py-4 rounded-lg">
-								<p className="text-base font-mono">Create Journal</p>
+								<p className="text-base font-mono">Create Project</p>
 							</button>
 						</Link>
 					</div>

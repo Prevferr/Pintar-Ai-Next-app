@@ -240,12 +240,12 @@ export default function Home() {
 				<button className="relative bg-[#242628] text-[#fff] font-mono w-[60%] mx-auto text-6xl overflow-hidden rounded-full hover:rounded-lg p-4">
 					<span className="z-10 relative">Start to Join</span>
 				</button>
-				<img
+				{/* <img
 					src="https://www.mux.com/_next/static/media/player-default.f8e6da8b.svg"
 					className="bg-[#000]"
-				/>
+				/> */}
 				<p className="text-2xl font-mono">
-					Try Mux with a risk free trial and $20 in credit.
+					Try to contribute to change the word, start from here!
 				</p>
 			</div>
 		</Fragment>
