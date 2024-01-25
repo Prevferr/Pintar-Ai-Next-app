@@ -66,7 +66,7 @@ const WelcomePage = () => {
 						</p>
 						<Link href="/create-project">
 							<button className="w-[40%] flex justify-center  hover:bg-[#ff8bff] hover:text-[#000] text-[#ff8bff] border border-[#ff8bff] px-4 py-4 rounded-lg">
-								<p className="text-base font-mono">Create Journal</p>
+								<p className="text-base font-mono">Create Project</p>
 							</button>
 						</Link>
 					</div>

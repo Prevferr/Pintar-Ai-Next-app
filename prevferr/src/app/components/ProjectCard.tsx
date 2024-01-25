@@ -11,7 +11,7 @@ type props = {
 
 const ProjectCard = ({ data }: props) => {
 	return (
-		<div className="bg-[#fff] border border-[#000] rounded-3xl overflow-hidden">
+		<div className="bg-[#fff] h-96 border border-[#000] rounded-3xl overflow-hidden">
 			<div className="flex flex-col">
 				<div className="w-full flex justify-center border-b border-[#000]">
 					<img
